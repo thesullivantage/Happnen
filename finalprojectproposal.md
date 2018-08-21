@@ -73,13 +73,26 @@ Happnen is an event platform for big and small scale events alike (separate in f
   * Probably stay away from things like Facebook until very ADVANCED stages of development
 
 ## Design Layouts
-### Front Page
-![Front Page]()
+  ### Front Page
+  ![Front Page](https://i.imgur.com/AmQOrQVr.jpg)
+  - Use modals with login
 
-### Events Page
+  ### Events Page
+  ![Events](https://i.imgur.com/Aj5kHVd.jpg)
 
-![Events]()
+  ### Profile
+  ![Events](https://i.imgur.com/aV9TAg9.jpg)
 
+  ### Event Creation 
+  ![Events](https://i.imgur.com/3PG8S7x.jpg)
+
+  ### Event Page
+  ![Events](https://i.imgur.com/3PG8S7x.jpg)
+
+  
+
+  ### Invitations Page
+  #### Coming Soon!
 
 
 ## Group Members And Roles
@@ -88,7 +101,7 @@ Happnen is an event platform for big and small scale events alike (separate in f
   * User/Login Base Functionality (w/ tokens): Wyatt, Jack
   * Map and Results: Wyatt, Kyle
   * Event Page: Patrick 
-  * User/Location Encryption/QR code Generation based   functionality: Jack, Kyle
+  * User/Location Encryption/QR code Generation based functionality: Jack, Kyle
     - Use json tokens
   * Vcard rendering service (probably): Aaron
   * Invitation Page: Patrick
@@ -105,8 +118,10 @@ MVP done
 - Event creation divided into big & small
 
 ## Trello
+Link: 
+https://trello.com/b/pk9TEWmM/mvp-stage
 
 
-
-Note: Age Verification for alcohol/21+ events
-Note: Venmo functionality
+## Additional Icebox Ideas
+- Age Verification for alcohol/21+ events </br>
+- Venmo functionality
