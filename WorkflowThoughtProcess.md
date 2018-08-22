@@ -30,7 +30,7 @@ _*But make sure to keep in mind what other people be working on*_
 
 ### "I have my own excel spreadsheet where I keep all of my progress logged"
 ![Nope Nope Nope](https://i.imgur.com/nFPhJcR.png) </br>
-⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵
+⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵⇵</br>
 ![dog](https://www.govloop.com/wp-content/uploads/2017/11/teamwork.jpg)</br>
 
 ---
