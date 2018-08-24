@@ -4,6 +4,7 @@ import NoMatch from "./pages/NoMatch";
 import Homepage from "./pages/Homepage";
 import Signup from "./pages/Signup";
 import CreateEvent from "./pages/CreateEvent";
+import Map from "./components/Map";
 
 const App = () => (
   <Router>
@@ -20,7 +21,7 @@ const App = () => (
         {/* <Route exact path="/profile/:id" component={Profile} />
         <Route exact path="/profilesettings/:id" component={Events} /> 
         <Route exact path="/event/:id" component={EventWithid} /> */}
-
+        <Map />
 
         <Route component={NoMatch} />
   
