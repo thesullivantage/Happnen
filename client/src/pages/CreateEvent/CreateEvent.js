@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, DatePicker } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./CreateEvent.css";
 import moment from 'moment';
@@ -18,6 +18,7 @@ class Event extends Component {
         invited: [],
         attending: [],
         description: "",
+        type: 1,
         picUrl: ""
     };
 
@@ -72,7 +73,7 @@ class Event extends Component {
                         label="Date"
                         name="date"
                         type="text"
-                        className="validate"
+                        className="datepicker"
                         value={this.state.date}
                         onChange={this.handleInputChange}>
                         <Icon></Icon>
@@ -113,11 +114,33 @@ class Event extends Component {
                 </Row>
 
                 <Row>
-                    <Input type="file" label="File" s={12} />
+                <Input 
+                name='type' 
+                type='radio' 
+                value='1' 
+                label='Public' />
+                <Input 
+                name='type' 
+                type='radio' 
+                value='2' 
+                label='Invite Only' />
+                <Input 
+                name='type' 
+                type='radio' 
+                value='3' 
+                label='Private' />
                 </Row>
 
                 <Row>
-                    <Button className="Submit" onClick={this.handleFormSubmit}>Submit</Button>
+                    <Input 
+                    type="file" 
+                    label="File" s={12} />
+                </Row>
+
+                <Row>
+                    <Button 
+                    className="Submit" 
+                    onClick={this.handleFormSubmit}>Submit</Button>
                 </Row>
 
             </Container>
