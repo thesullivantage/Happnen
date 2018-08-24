@@ -1,5 +1,5 @@
 import React from "react";
-import Happnen from "./Logo5.png";
+import Happnen from "./Logo6.png";
 import "./Logo.css";
 
 const Logo = (props) => (

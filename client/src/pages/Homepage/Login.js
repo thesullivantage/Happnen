@@ -56,7 +56,7 @@ class Homepage extends Component {
             s={6}
             label="Password"
             name="password"
-            type="text"
+            type="password"
             value={this.state.password}
             onChange={this.handleInputChange}>
             <Icon>lock</Icon>

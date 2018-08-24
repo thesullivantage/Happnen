@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, DatePicker } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, DatePicker, Select } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./CreateEvent.css";
 import moment from 'moment';
@@ -18,7 +18,8 @@ class Event extends Component {
         invited: [],
         attending: [],
         description: "",
-        type: 1,
+        type: 0,
+        ageReq: 0,
         picUrl: ""
     };
 
@@ -103,20 +104,26 @@ class Event extends Component {
 
                 <Row>
                     <Input
+                        s={6}
                         name='type'
-                        type='radio'
-                        value='1'
-                        label='Public' />
+                        type='select'
+                        label="Privacy"
+                        defaultValue='0'>
+                        <option value='0'>Public</option>
+                        <option value='1'>Invite Only</option>
+                        <option value='2'>Private</option>
+                    </Input>
+
                     <Input
-                        name='type'
-                        type='radio'
-                        value='2'
-                        label='Invite Only' />
-                    <Input
-                        name='type'
-                        type='radio'
-                        value='3'
-                        label='Private' />
+                        s={6}
+                        name='ageReq'
+                        type='select'
+                        label="Age Restrictions"
+                        defaultValue='0'>
+                        <option value='0'>All Ages</option>
+                        <option value='1'>18+</option>
+                        <option value='2'>21+</option>
+                    </Input>
                 </Row>
 
                 <Row>
