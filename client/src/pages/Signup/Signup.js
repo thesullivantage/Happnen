@@ -84,7 +84,7 @@ class Signup extends Component {
             s={12}
             label="Birthday"
             name="birthday"
-            type="text"
+            type="date"
             className="validate"
             value={this.state.birthday}
             onChange={this.handleInputChange}>
