@@ -9,7 +9,6 @@ class Homepage extends Component {
   state = {
     username: "",
     password: "",
-    email: ""
   };
 
   handleInputChange = event => {
@@ -22,8 +21,8 @@ class Homepage extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    alert(`Username: ${this.state.username}\nPassword: ${this.state.password}\nEmail: ${this.state.email}`);
-    this.setState({ username: "", password: "", email: "" });
+    alert(`Username: ${this.state.username}\nPassword: ${this.state.password}`);
+    this.setState({ username: "", password: ""});
   };
 
   render() {
@@ -64,18 +63,11 @@ class Homepage extends Component {
           </Input>
         </Row>
 
-        <Input
-          s={6}
-          label="email"
-          name="email"
-          type="text"
-          value={this.state.email}
-          onChange={this.handleInputChange}>
-          <Icon>email</Icon>
-        </Input>
         <Row>
           <Button className="Submit" onClick={this.handleFormSubmit}>Submit</Button>
         </Row>
+
+        <p> Continue Without Account </p> <p> Create Account </p> <p>Forgot Your Account/Password</p>
       </Container>
     );
   }

@@ -1,4 +1,11 @@
 .Submit { 
 display: flex;
 justify-content: center;
+margin: auto;
 }
+
+.Logo { 
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    }

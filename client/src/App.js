@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NoMatch from "./pages/NoMatch";
-import Homepage from "./pages/Homepage"
+import Homepage from "./pages/Homepage";
+import Signup from "./pages/Signup";
+import CreateEvent from "./pages/CreateEvent";
 
 const App = () => (
   <Router>
@@ -9,16 +11,14 @@ const App = () => (
       <Switch>
         {/* None of these components are created yet */}
         <Route exact path="/" component={Homepage} />
-        {/* <Route exact path="/signup" component={Signup} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/createevent" component={CreateEvent} />
+        {/*<Route exact path="/login" component={Login} />
         <Route exact path="/events" component={Events} /> */}
 
         {/* We can also avoid /:id and get user info from user stored in user state after login */}
         {/* <Route exact path="/profile/:id" component={Profile} />
-        <Route exact path="/profilesettings/:id" component={Events} />
-
-        <Route exact path="/createevent" component={NewEvent} />
-        
+        <Route exact path="/profilesettings/:id" component={Events} /> 
         <Route exact path="/event/:id" component={EventWithid} /> */}
 
 
