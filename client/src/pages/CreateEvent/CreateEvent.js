@@ -4,8 +4,8 @@ import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, DatePi
 import Logo from "../../components/Logo/index";
 import "./CreateEvent.css";
 import moment from 'moment';
-
 import 'react-datepicker/dist/react-datepicker.css';
+import TimePicker from 'react-time-picker';
 
 class Event extends Component {
     state = {
@@ -69,35 +69,23 @@ class Event extends Component {
 
                 <Row>
                     <Input
-                        s={6}
+                        s={4}
                         label="Date"
                         name="date"
-                        type="text"
+                        type="date"
                         className="datepicker"
                         value={this.state.date}
                         onChange={this.handleInputChange}>
                         <Icon></Icon>
                     </Input>
 
-                    <Input
-                        s={6}
-                        label="Time"
+                    <TimePicker
+                        s={4}
                         name="time"
-                        type="text"
-                        className="validate"
-                        value={this.state.time}
-                        onChange={this.handleInputChange}>
-                        <Icon></Icon>
-                    </Input>
-                </Row>
-
-                <Row>
-                    <Input
-                        s={12}
-                        label="QR Code"
-                        name="QR"
-                        type="checkbox"
-                        value={this.state.QR} />
+                        type="time"
+                        className="timepicker"
+                        onChange={this.onChange}
+                        value={this.state.time} />
                 </Row>
 
                 <Row>
@@ -114,33 +102,42 @@ class Event extends Component {
                 </Row>
 
                 <Row>
-                <Input 
-                name='type' 
-                type='radio' 
-                value='1' 
-                label='Public' />
-                <Input 
-                name='type' 
-                type='radio' 
-                value='2' 
-                label='Invite Only' />
-                <Input 
-                name='type' 
-                type='radio' 
-                value='3' 
-                label='Private' />
+                    <Input
+                        name='type'
+                        type='radio'
+                        value='1'
+                        label='Public' />
+                    <Input
+                        name='type'
+                        type='radio'
+                        value='2'
+                        label='Invite Only' />
+                    <Input
+                        name='type'
+                        type='radio'
+                        value='3'
+                        label='Private' />
                 </Row>
 
                 <Row>
-                    <Input 
-                    type="file" 
-                    label="File" s={12} />
+                    <Input
+                        type="file"
+                        label="Event Photo" s={12} />
                 </Row>
 
                 <Row>
-                    <Button 
-                    className="Submit" 
-                    onClick={this.handleFormSubmit}>Submit</Button>
+                    <Input
+                        s={12}
+                        label="QR Code"
+                        name="QR"
+                        type="checkbox"
+                        value={this.state.QR} />
+                </Row>
+
+                <Row>
+                    <Button
+                        className="Submit"
+                        onClick={this.handleFormSubmit}>Submit</Button>
                 </Row>
 
             </Container>
