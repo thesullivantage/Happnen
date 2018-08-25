@@ -61,7 +61,7 @@ class Signup extends Component {
             s={6}
             label="Password"
             name="password"
-            type="text"
+            type="password"
             className="validate"
             value={this.state.password}
             onChange={this.handleInputChange}>
@@ -72,9 +72,9 @@ class Signup extends Component {
             s={6}
             label="Validate Your Password"
             name="passwordValidate"
-            type="text"
+            type="password"
             className="validate"
-            value={this.state.password}>
+            value={this.state.passwordValidate}>
             <Icon>lock</Icon>
           </Input>
         </Row>
@@ -84,7 +84,7 @@ class Signup extends Component {
             s={12}
             label="Birthday"
             name="birthday"
-            type="text"
+            type="date"
             className="validate"
             value={this.state.birthday}
             onChange={this.handleInputChange}>

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, DatePicker, Select } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./CreateEvent.css";
 import moment from 'moment';
-
 import 'react-datepicker/dist/react-datepicker.css';
+import TimePicker from 'react-time-picker';
 
 class Event extends Component {
     state = {
@@ -18,6 +18,8 @@ class Event extends Component {
         invited: [],
         attending: [],
         description: "",
+        type: 0,
+        ageReq: 0,
         picUrl: ""
     };
 
@@ -68,35 +70,23 @@ class Event extends Component {
 
                 <Row>
                     <Input
-                        s={6}
+                        s={4}
                         label="Date"
                         name="date"
-                        type="text"
-                        className="validate"
+                        type="date"
+                        className="datepicker"
                         value={this.state.date}
                         onChange={this.handleInputChange}>
                         <Icon></Icon>
                     </Input>
 
-                    <Input
-                        s={6}
-                        label="Time"
+                    <TimePicker
+                        s={4}
                         name="time"
-                        type="text"
-                        className="validate"
-                        value={this.state.time}
-                        onChange={this.handleInputChange}>
-                        <Icon></Icon>
-                    </Input>
-                </Row>
-
-                <Row>
-                    <Input
-                        s={12}
-                        label="QR Code"
-                        name="QR"
-                        type="checkbox"
-                        value={this.state.QR} />
+                        type="time"
+                        className="timepicker"
+                        onChange={this.onChange}
+                        value={this.state.time} />
                 </Row>
 
                 <Row>
@@ -113,11 +103,48 @@ class Event extends Component {
                 </Row>
 
                 <Row>
-                    <Input type="file" label="File" s={12} />
+                    <Input
+                        s={6}
+                        name='type'
+                        type='select'
+                        label="Privacy"
+                        defaultValue='0'>
+                        <option value='0'>Public</option>
+                        <option value='1'>Invite Only</option>
+                        <option value='2'>Private</option>
+                    </Input>
+
+                    <Input
+                        s={6}
+                        name='ageReq'
+                        type='select'
+                        label="Age Restrictions"
+                        defaultValue='0'>
+                        <option value='0'>All Ages</option>
+                        <option value='1'>18+</option>
+                        <option value='2'>21+</option>
+                    </Input>
                 </Row>
 
                 <Row>
-                    <Button className="Submit" onClick={this.handleFormSubmit}>Submit</Button>
+                    <Input
+                        type="file"
+                        label="Event Photo" s={12} />
+                </Row>
+
+                <Row>
+                    <Input
+                        s={12}
+                        label="QR Code"
+                        name="QR"
+                        type="checkbox"
+                        value={this.state.QR} />
+                </Row>
+
+                <Row>
+                    <Button
+                        className="Submit"
+                        onClick={this.handleFormSubmit}>Submit</Button>
                 </Row>
 
             </Container>
