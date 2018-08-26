@@ -23,6 +23,7 @@
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "google-maps-react": "^2.0.2",
     "if-env": "^1.0.4",
     "moment": "^2.22.2",
     "mongoose": "^5.0.17",
