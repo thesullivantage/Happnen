@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-// This file empties the happnen collection and inserts the books below
+// This file empties the happnen collection and inserts the events below
 
 mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/happnen"
 );
 
-// const usersSeed = [
+// const eventsSeed = [
 //   {
 //    
 //   },
@@ -17,9 +17,9 @@ mongoose.connect(
 //   }
 // ];
 
-db.Users
+db.Events
   .remove({})
-  .then(() => db.Users.collection.insertMany(usersSeed))
+  .then(() => db.Events.collection.insertMany(eventsSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
