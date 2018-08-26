@@ -14,7 +14,8 @@ const eventSchema = new Schema({
   location: { type: String, required: true },
   //Maybe use unix epoch format with a js library to convert to date and time (separate)
   //Also, combined date and time just based on the format; will concat when making the call
-  datetime: { type: Date, default: Date.now },
+  datetimeStart: { type: Date, default: Date.now },
+  datetimeEnd: { type: Date, default: (Date.now + 3600000) },
   qr: { type: String, required: false },
   //add id's here upon invitation by event creator:
   invited: [ { type: Schema.Types.ObjectId, ref: 'Users' } ],
@@ -27,6 +28,6 @@ const eventSchema = new Schema({
   userQrs: [{ type: Schema.Types.ObjectId, ref: "Users" }]
 });
 
-const Events = mongoose.model("Book", eventSchema);
+const Events = mongoose.model("Events", eventSchema);
 
 module.exports = Events;
