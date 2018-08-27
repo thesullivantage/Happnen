@@ -13,10 +13,14 @@ module.exports = {
     },
 
     // FIND USER BY ID
-    findUserById: function(req, res) {
+    findUserByUsername: function(req, res) {
+      console.log( req.body );
       db.Users
-        .findById(req.params.id)
-        .then(dbModel => res.json(dbModel))
+        .findOne({ 'username': req.body.username })
+        .then(dbModel => {
+          console.log(dbModel);
+          res.json(dbModel);
+        })
         .catch(err => res.status(422).json(err));
     },
 
@@ -24,7 +28,10 @@ module.exports = {
     createUser: function(req, res) {
       db.Users
         .create(req.body)
-        .then(dbModel => res.json(dbModel))
+        .then(dbModel => {
+          console.log( dbModel )
+          res.json(dbModel)}
+        )
         .catch(err => res.status(422).json(err));
     },
 

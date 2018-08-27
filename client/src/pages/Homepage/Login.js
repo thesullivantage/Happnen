@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./Login.css";
+import API from "../../utils/API"
 
 import { MapContainer } from "../../components/MapContainer/MapContainer";
 import { Map } from "../../components/Map/Map";
@@ -26,7 +27,19 @@ class Homepage extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     alert(`Username: ${this.state.username}\nPassword: ${this.state.password}`);
-    this.setState({ username: "", password: ""});
+
+    const suObj = {
+      username: this.state.username,
+    }
+
+    API.signUp(suObj)
+      .then(res => {
+        this.setState({ username: "", password: ""})
+        console.log(res)
+      }
+      )
+      .catch(err => console.log(err));
+
   };
 
   render() {

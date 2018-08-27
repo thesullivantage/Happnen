@@ -9,7 +9,7 @@ export default {
   },
 
   signUp: function (suObj) {
-    return axios.post("/api/signup", suObj)
+    return axios.post("/api/users/signup", suObj)
   },
   
 

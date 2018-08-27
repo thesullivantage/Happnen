@@ -4,18 +4,18 @@ const usersController = require("../../controllers/usersController");
 // Matches with "/api/users"
 router
     .route("/")
-    .get(usersController.findAll)
-    .post(usersController.create);
+    .get(usersController.findAllUsers)
+    .post(usersController.createUser);
 
 // Matches with "/api/users/:id"
 router
     .route("/:id")
-    .get(usersController.findById)
-    .put(usersController.update)
-    .delete(usersController.remove);
+    .get(usersController.findUserByUsername)
+    .put(usersController.updateUser)
+    .delete(usersController.removeUser);
 
 
 router 
-    .route("/api/login")
+    .route("/signup")
     .post(usersController.findUserByUsername)
 module.exports = router;
