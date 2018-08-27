@@ -28,6 +28,14 @@ class Homepage extends Component {
   render() {
     return (
       <Container>
+      
+        <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
+          <Button floating icon='assignment_ind' className='red' node='a' href='http://localhost:3000/profile' />
+          <Button floating icon='add_box' className='yellow darken-1' node='a' href='http://localhost:3000/createevent' />
+          <Button floating icon='person_add' className='green' node='a' href='http://localhost:3000/signup' />
+          <Button floating icon='attach_file' className='blue' />
+        </Button>
+
         <Row>
           <Logo
             className="Logo"
