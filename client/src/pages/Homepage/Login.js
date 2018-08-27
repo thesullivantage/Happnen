@@ -6,6 +6,7 @@ import "./Login.css";
 
 import { MapContainer } from "../../components/MapContainer/MapContainer";
 import { Map } from "../../components/Map/Map";
+// import { GoogleApiWrapper } from 'google-maps-react';
 
 
 class Homepage extends Component {
@@ -71,10 +72,12 @@ class Homepage extends Component {
         </Row>
 
         <p> Continue Without Account </p> <p> Create Account </p> <p>Forgot Your Account/Password</p>
-
-        <MapContainer>
-          <Map />
-        </MapContainer>
+        
+        {/* <GoogleApiWrapper> */}
+          <MapContainer>
+            <Map />
+          </MapContainer>
+        {/* </GoogleApiWrapper> */}
 
       </Container>
     );
