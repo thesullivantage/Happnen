@@ -23,7 +23,6 @@ const App = () => (
         <Route exact path="/profilesettings/:id" component={Events} /> 
         <Route exact path="/event/:id" component={EventWithid} /> */}
 
-
         <Route component={NoMatch} />
   
       </Switch>

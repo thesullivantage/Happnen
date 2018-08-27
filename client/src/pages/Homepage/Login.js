@@ -4,6 +4,10 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./Login.css";
 
+import { MapContainer } from "../../components/MapContainer/MapContainer";
+import { Map } from "../../components/Map/Map";
+// import { GoogleApiWrapper } from 'google-maps-react';
+
 
 class Homepage extends Component {
   state = {
@@ -76,6 +80,13 @@ class Homepage extends Component {
         </Row>
 
         <p> Continue Without Account </p> <p> Create Account </p> <p>Forgot Your Account/Password</p>
+        
+        {/* <GoogleApiWrapper> */}
+          <MapContainer>
+            <Map />
+          </MapContainer>
+        {/* </GoogleApiWrapper> */}
+
       </Container>
     );
   }
