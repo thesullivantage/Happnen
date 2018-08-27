@@ -1,1 +1,1 @@
-export { default } from './MapContainer.js';
+export { default, Map } from './MapContainer.js';

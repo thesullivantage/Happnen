@@ -1,30 +1,51 @@
-// import React, {Component} from 'react';
-// import './Map.css';
-// import {GoogleApiWrapper} from 'google-maps-react';
+import React from 'react';
+import './Map.css';
+import { GoogleApiWrapper } from 'google-maps-react';
 
-// class Map extends Component {
- 
-//     componentDidMount() {
-//         this.initMap();
-//     };
-    
-//     initMap = () => {
-//         // The location of Uluru
-//         var uluru = {lat: 33.749, lng: -84.388};
-//         // The map, centered at Uluru
-//         var map = new google.maps.Map(
-//             document.getElementById('map'), {zoom: 4, center: uluru});
-//         // The marker, positioned at Uluru
-//         var marker = new google.maps.Marker({position: uluru, map: map});
-//     };
+export class Map extends React.Component {
+    componentDidMount() {
+        this.loadMap();
+    }
 
-//     render () {
-//         return (
-//             <div id="map">
-//                 {/* asdfqwerty */}
-//             </div>
-//         )
-//     };
-// };
+    loadMap() {
+        if (this.props && this.props.google) {
+            // google is available
+            const { google } = this.props;
+            const maps = google.maps;
 
-// export default Map;
+            const mapRef = this.refs.map;
+            const node = React.ReactDOM.findDOMNode(mapRef);
+            let zoom = 14;
+            let lat = 37.774929;
+            let lng = -122.419416;
+            const center = new maps.LatLng(lat, lng);
+            const mapConfig = Object.assign({}, {
+                center: center,
+                zoom: zoom
+            });
+            this.map = new maps.Map(node, mapConfig);
+
+            Map.propTypes = {
+                google: React.PropTypes.object,
+                zoom: React.PropTypes.number,
+                initialCenter: React.PropTypes.object
+            }
+
+            Map.defaultProps = {
+                zoom: 13,
+                // San Francisco, by default
+                initialCenter: {
+                  lat: 37.774929,
+                  lng: -122.419416
+                }
+            }
+        }
+        // ...
+    }
+
+    render() {
+        return (
+            <div ref="map"></div>
+        )
+    }
+}

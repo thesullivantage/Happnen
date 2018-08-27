@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Map, InfoWindow, Marker, GoogleApiComponent } from 'google-maps-react';
 
-export class MapContainer extends React.Component {
+export class MapContainer extends Component {
     render() {
         return (
-            <Map google={this.props.google} zoom={14}>
-            {console.log("this.props=", this.props)}
+            <Map 
+                google={this.props.google} 
+                zoom={14}>
+
+                {console.log("this.props=", this.props)}
 
                 <Marker onClick={this.onMarkerClick}
                     name={'Current location'} />
@@ -18,6 +21,6 @@ export class MapContainer extends React.Component {
             </Map>
         );
     }
-}
+};
 
-export default GoogleApiComponent({ apiKey: "AIzaSyCzhrxRlHVOD13tasY5VxcdBrOGeDjsPIU" })(MapContainer)
+export default GoogleApiComponent({ apiKey: "AIzaSyCzhrxRlHVOD13tasY5VxcdBrOGeDjsPIU" })(MapContainer);
