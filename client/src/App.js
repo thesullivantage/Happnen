@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage";
 import Signup from "./pages/Signup";
 import CreateEvent from "./pages/CreateEvent";
 import Profile from "./pages/Profile";
+import MapDisplay from "./pages/MapDisplay";
 
 const App = () => (
   <Router>
@@ -15,6 +16,7 @@ const App = () => (
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/createevent" component={CreateEvent} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/mapdisplay" component={MapDisplay} />
         {/*<Route exact path="/login" component={Login} />
         <Route exact path="/events" component={Events} /> */}
 
