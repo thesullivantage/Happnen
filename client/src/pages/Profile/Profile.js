@@ -32,7 +32,7 @@ class Profile extends Component {
                     <Button floating icon='assignment_ind' className='red' node='a' href='http://localhost:3000/profile' />
                     <Button floating icon='add_box' className='yellow darken-1' node='a' href='http://localhost:3000/createevent' />
                     <Button floating icon='person_add' className='green' node='a' href='http://localhost:3000/signup' />
-                    <Button floating icon='attach_file' className='blue' />
+                    <Button floating icon='attach_file' className='blue' node='a' href='http://localhost:3000/mapdisplay'/>
                 </Button>
 
                 <Row>
