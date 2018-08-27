@@ -14,4 +14,8 @@ router
     .put(usersController.update)
     .delete(usersController.remove);
 
+
+router 
+    .route("/api/login")
+    .post(usersController.findUserByUsername)
 module.exports = router;
