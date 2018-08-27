@@ -10,20 +10,27 @@ export class MapContainer extends Component {
     }
 
     render() {
+        const style = {
+            width: '100vw',
+            height: '100vh'
+        }
+
         return (
-            <Map 
-                google={this.props.google} 
-                zoom={14}>
+            <div style={style}>
+                <Map 
+                    google={this.props.google} 
+                    zoom={14}>
 
-                <Marker onClick={this.onMarkerClick}
-                    name={'Current location'} />
+                    <Marker onClick={this.onMarkerClick}
+                        name={'Current location'} />
 
-                <InfoWindow onClose={this.onInfoWindowClose}>
-                    <div>
-                        <h1>{this.state.selectedPlace.name}</h1>
-                    </div>
-                </InfoWindow>
-            </Map>
+                    <InfoWindow onClose={this.onInfoWindowClose}>
+                        <div>
+                            <h1>{this.state.selectedPlace.name}</h1>
+                        </div>
+                    </InfoWindow>
+                </Map>
+            </div>
         );
     }
 };
