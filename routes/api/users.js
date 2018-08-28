@@ -14,9 +14,17 @@ router
     .put(usersController.updateUser)
     .delete(usersController.removeUser);
 
+router 
+    .route("/login")
+    .post(usersController.validateUser)
 
 router 
     .route("/signup")
-    .post(usersController.validateUser)
+    .post(usersController.createUser)
+
+router  
+    .route("/populatedata")
+    .post(usersController.populateProfile)
+
     
 module.exports = router;
