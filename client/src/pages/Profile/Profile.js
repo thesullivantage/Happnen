@@ -8,9 +8,21 @@ import "./Profile.css";
 class Profile extends Component {
     state = {
         bio: "",
-        links: "",
+        imgLink: "",
         events: "",
     };
+
+    // componentDidMount() {
+    //     API.populateProfile(username);
+    //     
+    // }
+
+    // loadEvents = (username) => {
+    //     API.getEvents(username)
+    //     .then(res =>
+    //     this.setState({eventsShit}))
+    //     .catch(err => console.log(err));
+    // };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -22,6 +34,13 @@ class Profile extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        // if (this.state.bio & this.state.imgLink) {
+            //API.saveProfile({
+            //bio: this.state.bio
+            //link: this.state.imgLink
+            //})
+            //.then(res => this.populateProfile())
+        //}
         alert("Profile settings saved.")
     };
 

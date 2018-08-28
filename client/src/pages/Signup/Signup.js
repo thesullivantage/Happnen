@@ -4,9 +4,10 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./Signup.css";
 import moment from 'moment';
-import 'react-datepicker/dist/react-datepicker.css';
+// import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
-import HappnenIcon from "../../components/Icon/index"
+import HappnenIcon from "../../components/Icon/index";
+import API from "../../utils/API";
 
 class Signup extends Component {
   state = {
@@ -31,6 +32,7 @@ class Signup extends Component {
     this.setState({
       birthday: date
     });
+    console.log(date);
   }
 
   handleInputChange = event => {
@@ -43,7 +45,19 @@ class Signup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.setState({ username: "", password: "", email: "", over18: false });
+    if(this.state.username && this.state.password){
+      API.signUp({
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email
+      })
+      .then(res => {
+        console.log(res);
+        sessionStorage.setItem('userState', res.username);
+      })
+      .catch(err => console.log(err));
+    }
+    this.setState({ username: "", password: "", passwordValidate: "", email: "", over18: false });
   };
 
   render() {
