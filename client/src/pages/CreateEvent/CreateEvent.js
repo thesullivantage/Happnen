@@ -1,19 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, DatePicker, Select } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, Select } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./CreateEvent.css";
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
-import TimePicker from 'react-time-picker';
+import DatePicker from 'react-datepicker';
 
 class Event extends Component {
     state = {
         host: "",
         eventName: "",
         location: "",
-        date: "",
-        time: "",
         QR: "",
         invited: [],
         attending: [],
@@ -22,6 +20,20 @@ class Event extends Component {
         ageReq: 0,
         picUrl: ""
     };
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            date: moment()
+        };
+        this.handleDateTimeChange = this.handleDateTimeChange.bind(this);
+    }
+
+    handleDateTimeChange(date) {
+        this.setState({
+            date: date
+        });
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -37,15 +49,23 @@ class Event extends Component {
         this.setState({ eventName: "", location: "", date: "", time: "", QR: "", description: "", picUrl: "" });
     };
 
+
+
     render() {
         return (
             <Container>
+                <Logo
+                    className="Logo"
+                    alt="HappnenLogo"
+                    height="300px"
+                    width="75%"
+                />
 
                 <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
                     <Button floating icon='assignment_ind' className='red' node='a' href='http://localhost:3000/profile' />
                     <Button floating icon='add_box' className='yellow darken-1' node='a' href='http://localhost:3000/createevent' />
                     <Button floating icon='person_add' className='green' node='a' href='http://localhost:3000/signup' />
-                    <Button floating icon='attach_file' className='blue' node='a' href='http://localhost:3000/mapdisplay'/>
+                    <Button floating icon='attach_file' className='blue' node='a' href='http://localhost:3000/mapdisplay' />
                 </Button>
 
                 <Row>
@@ -75,24 +95,23 @@ class Event extends Component {
                 </Row>
 
                 <Row>
-                    <Input
-                        s={4}
-                        label="Date"
+                    <DatePicker
+                        s={12}
                         name="date"
                         type="date"
-                        className="datepicker"
+                        className="date"
+                        placeholderText="Event Date/Time"
+                        isClearable={true}
+                        selected={this.state.date}
                         value={this.state.date}
-                        onChange={this.handleInputChange}>
-                        <Icon></Icon>
-                    </Input>
-
-                    <TimePicker
-                        s={4}
-                        name="time"
-                        type="time"
-                        className="timepicker"
-                        onChange={this.onChange}
-                        value={this.state.time} />
+                        showYearDropdown
+                        dateFormatCalendar="MMMM"
+                        scrollableYearDropdown
+                        onChange={this.handleDateTimeChange}
+                        showTimeSelect
+                        minDate={moment()}
+                        dateFormat="LLL"
+                        withPortal />
                 </Row>
 
                 <Row>

@@ -4,8 +4,9 @@ export default {
   //SEPARATE WITH SPACES AND COMMENTS (FOR NOW)!!!
 
   //BASIC LOGIN
+
   login: function(loginObj) {
-    return axios.post("/api/login", loginObj)
+    return axios.post("/api/users/login", loginObj)
   },
 
   signUp: function (suObj) {

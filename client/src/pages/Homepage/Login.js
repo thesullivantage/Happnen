@@ -30,14 +30,14 @@ class Homepage extends Component {
 
     const suObj = {
       username: this.state.username,
+      password: this.state.password
     }
-
+    console.log("suObj: ", suObj)
     API.signUp(suObj)
       .then(res => {
         this.setState({ username: "", password: ""})
         console.log(res)
-      }
-      )
+      })
       .catch(err => console.log(err));
 
   };
@@ -95,9 +95,9 @@ class Homepage extends Component {
         <p> Continue Without Account </p> <p> Create Account </p> <p>Forgot Your Account/Password</p>
         
         {/* <GoogleApiWrapper> */}
-          <MapContainer>
+          {/* <MapContainer>
             <Map />
-          </MapContainer>
+          </MapContainer> */}
         {/* </GoogleApiWrapper> */}
 
       </Container>
