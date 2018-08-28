@@ -4,8 +4,8 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./Signup.css";
 import moment from 'moment';
-
 import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker';
 
 class Signup extends Component {
   state = {
@@ -17,6 +17,20 @@ class Signup extends Component {
     userEvents: [],
     invites: []
   };
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      birthday: moment()
+    };
+    this.handleBirthdayChange = this.handleBirthdayChange.bind(this);
+  }
+
+  handleBirthdayChange(date) {
+    this.setState({
+      birthday: date
+    });
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -39,7 +53,7 @@ class Signup extends Component {
           <Button floating icon='assignment_ind' className='red' node='a' href='http://localhost:3000/profile' />
           <Button floating icon='add_box' className='yellow darken-1' node='a' href='http://localhost:3000/createevent' />
           <Button floating icon='person_add' className='green' node='a' href='http://localhost:3000/signup' />
-          <Button floating icon='attach_file' className='blue' node='a' href='http://localhost:3000/mapdisplay'/>
+          <Button floating icon='attach_file' className='blue' node='a' href='http://localhost:3000/mapdisplay' />
         </Button>
 
         <Row>
@@ -88,16 +102,23 @@ class Signup extends Component {
         </Row>
 
         <Row>
-          <Input
-            s={12}
-            label="Birthday"
-            name="birthday"
-            type="date"
-            className="validate"
-            value={this.state.birthday}
-            onChange={this.handleInputChange}>
-            <Icon>event</Icon>
-          </Input>
+          <Icon>pregnant_woman</Icon>
+          <DatePicker
+                        s={12}
+                        name="birthday"
+                        type="date"
+                        className="date"
+                        isClearable={true}
+                        selected={this.state.birthday}
+                        value={this.state.birthday}
+                        showYearDropdown
+                        dateFormatCalendar="MMMM"
+                        scrollableYearDropdown
+                        yearDropdownItemNumber={50}
+                        onChange={this.handleBirthdayChange}
+                        withPortal
+                        placeholderText="Birthday"
+                        />
         </Row>
 
         <Row>
