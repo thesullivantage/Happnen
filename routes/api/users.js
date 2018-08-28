@@ -18,4 +18,5 @@ router
 router 
     .route("/signup")
     .post(usersController.validateUser)
+    
 module.exports = router;
