@@ -54,7 +54,7 @@ const eventsSeed = [
   {
     host: "Sandy",
     title: "Third Party",
-    category: 3,
+    category: 2,
     location: "1 AMB Drive Northwest, Atlanta, GA 30313",
     //Maybe use unix epoch format with a js library to convert to date and time (separate)
     //Also, combined date and time just based on the format; will concat when making the call
