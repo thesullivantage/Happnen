@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require('../models');
 
 // Defining methods for the usersController
 module.exports = {
@@ -18,7 +18,21 @@ module.exports = {
       db.Users
         .findOne({'username': req.body.username })
         .then(dbModel => {
-          console.log("DBMODEL", dbModel);
+          console.log('DBMODEL', dbModel);
+          res.json(dbModel);
+        })
+        .catch(err => res.status(422).json(err));
+    },
+
+    populateProfile: function (req, res) {
+      const user = sessionStorage.getItem('userState')
+      console.log(user)
+      db.Users
+        .findOne({'username': user.username })
+        .populate('myEvents')
+        .populate('invites')
+        .then(dbModel => {
+          console.log('DBMODEL', dbModel);
           res.json(dbModel);
         })
         .catch(err => res.status(422).json(err));
@@ -32,36 +46,32 @@ module.exports = {
         .findOne({'username': req.body.username })
         .then(dbModel => {
           
-          
-          // console.log("DBMODEL: ", dbModel)
+          // console.log('DBMODEL: ', dbModel)
           // if (err) throw err; 
           // user.comparePassword(req.body.password, function(err, isMatch) {
           //   if (err) throw err;
           //   console.log('Password Check:', isMatch); // -> Password123: true
           // });
           
-          // console.log(dbModel)
-
-          
+          // console.log(dbModel)          
 
           if (!dbModel) {
-            res.status(605).json({ message: "User not found." });
-            console.log("User Not Found");
+            res.status(605).json({ message: 'User not found.' });
+            console.log('User Not Found');
           }           
           else if (!dbModel.comparePassword(req.body.password)) {
-            res.status(401).json({ message: "Invalid password." });
-            console.log("Incorrect Password");
+            res.status(401).json({ message: 'Invalid password.' });
+            console.log('Incorrect Password');
             
           } else {
-
-            console.log("Successful Login!")
-            res.status(200).json({ message: "Success"})
+            console.log('Successful Login!')
+            res.status(200).json({ message: 'Success'})
             sessionStorage.setItem('userState', dbModel);
 
             // req.session.dbModel = dbModel.dataValues;
             // console.log(req.session.dbModel);
-            // console.log("TEST");
-            // res.json({ message: "Successful login." });
+            // console.log('TEST');
+            // res.json({ message: 'Successful login.' });
           }
 
           console.log(dbModel.comparePassword(req.body.password))
