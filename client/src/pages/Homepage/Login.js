@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from 'react-router'
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./Login.css";
@@ -10,6 +11,7 @@ class Homepage extends Component {
   state = {
     username: "",
     password: "",
+    redirect: false
   };
 
   handleInputChange = event => {
@@ -31,7 +33,8 @@ class Homepage extends Component {
     console.log("suObj: ", suObj)
     API.signUp(suObj)
       .then(res => {
-        this.setState({ username: "", password: "" })
+        // Do this if status is 200
+        this.setState({ username: "", password: "", redirect: true })
         console.log(res)
       })
       .catch(err => console.log(err));
@@ -39,6 +42,13 @@ class Homepage extends Component {
   };
 
   render() {
+
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to='/mapdisplay'/>;
+    }
+
     return (
       <Container>
 
