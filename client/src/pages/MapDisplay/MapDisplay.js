@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./MapDisplay.css";
-import { MapComponent } from "../../components/MapContainer/MapContainer";
-import { Map } from "../../components/Map/Map";
-// import { GoogleApiWrapper } from 'google-maps-react';
+import { MapComponent, MapWithAMarkerWithLabel } from "../../components/MapContainer/MapContainer";
 
 class MapDisplay extends Component {
 
@@ -28,11 +26,10 @@ class MapDisplay extends Component {
                         data-position="top" data-delay="50" tooltip="Profile" />
                 </Button>
 
-                {/* <GoogleApiWrapper> */}
-                <MapComponent>
-                    {/* <Map /> */}
-                </MapComponent>
-                {/* </GoogleApiWrapper> */}
+                <div className="mapStyle">
+                    <MapComponent />
+                    {/* <MapWithAMarkerWithLabel /> */}
+                </div>
             </Container>
         );
     }
