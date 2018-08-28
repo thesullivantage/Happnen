@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
+import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
 
 class Profile extends Component {
@@ -40,6 +41,12 @@ class Profile extends Component {
                     <Button floating icon='assignment_ind' className='red' node='a' href='http://localhost:3000/profile'
                         data-position="top" data-delay="50" tooltip="Profile" />
                 </Button>
+
+                <HappnenIcon
+                    className="Icon"
+                    alt="HappnenIcon"
+                    height="300px"
+                    width="75%" />
 
                 <Row>
                     <h1>USERNAME:{this.state.username}</h1>
