@@ -35,7 +35,7 @@ class Homepage extends Component {
     console.log("suObj: ", suObj)
     API.signUp(suObj)
       .then(res => {
-        this.setState({ username: "", password: ""})
+        this.setState({ username: "", password: "" })
         console.log(res)
       })
       .catch(err => console.log(err));
@@ -45,12 +45,18 @@ class Homepage extends Component {
   render() {
     return (
       <Container>
-      
+
         <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
-          <Button floating icon='assignment_ind' className='red' node='a' href='http://localhost:3000/profile' />
-          <Button floating icon='add_box' className='yellow darken-1' node='a' href='http://localhost:3000/createevent' />
-          <Button floating icon='person_add' className='green' node='a' href='http://localhost:3000/signup' />
-          <Button floating icon='attach_file' className='blue' node='a' href='http://localhost:3000/mapdisplay'/>
+          <Button floating icon='pin_drop' className='blue' node='a' href='http://localhost:3000/mapdisplay'
+            data-position="top" data-delay="50" tooltip="What's Happnen" />
+          <Button floating icon='person' className='blue' node='a' href='http://localhost:3000/'
+            data-position="top" data-delay="50" tooltip="Login" />
+          <Button floating icon='person_add' className='green' node='a' href='http://localhost:3000/signup'
+            data-position="top" data-delay="50" tooltip="Create Account" />
+          <Button floating icon='add_box' className='yellow darken-1' node='a' href='http://localhost:3000/createevent'
+            data-position="top" data-delay="50" tooltip="Create Event" />
+          <Button floating icon='assignment_ind' className='red' node='a' href='http://localhost:3000/profile'
+            data-position="top" data-delay="50" tooltip="Profile" />
         </Button>
 
         <Row>
@@ -93,9 +99,9 @@ class Homepage extends Component {
         </Row>
 
         <p> Continue Without Account </p> <p> Create Account </p> <p>Forgot Your Account/Password</p>
-        
+
         {/* <GoogleApiWrapper> */}
-          {/* <MapContainer>
+        {/* <MapContainer>
             <Map />
           </MapContainer> */}
         {/* </GoogleApiWrapper> */}
