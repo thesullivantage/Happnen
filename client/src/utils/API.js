@@ -6,11 +6,11 @@ export default {
   //BASIC LOGIN
 
   login: function(loginObj) {
-    return axios.post("/api/users", loginObj)
+    return axios.post("/api/users/login", loginObj)
   },
 
   signUp: function (suObj) {
-    return axios.post("/api/users", suObj)
+    return axios.post("/api/users/signup", suObj)
   },
 
  
