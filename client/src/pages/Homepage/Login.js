@@ -4,7 +4,7 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./Login.css";
 import API from "../../utils/API"
-
+import HappnenIcon from "../../components/Icon/index"
 import { MapContainer } from "../../components/MapContainer/MapContainer";
 import { Map } from "../../components/Map/Map";
 // import { GoogleApiWrapper } from 'google-maps-react';
@@ -46,7 +46,7 @@ class Homepage extends Component {
     return (
       <Container>
 
-        <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
+        <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ bottom: '45px', left: '24px' }}>
           <Button floating icon='pin_drop' className='blue' node='a' href='http://localhost:3000/mapdisplay'
             data-position="top" data-delay="50" tooltip="What's Happnen" />
           <Button floating icon='person' className='blue' node='a' href='http://localhost:3000/'
@@ -63,8 +63,8 @@ class Homepage extends Component {
           <Logo
             className="Logo"
             alt="HappnenLogo"
-            height="300px"
-            width="75%"
+            height="500px"
+            width="100%"
           />
         </Row>
 
@@ -98,7 +98,11 @@ class Homepage extends Component {
           <Button className="Submit" onClick={this.handleFormSubmit}>Submit</Button>
         </Row>
 
-        <p> Continue Without Account </p> <p> Create Account </p> <p>Forgot Your Account/Password</p>
+        <HappnenIcon
+          className="Icon"
+          alt="HappnenIcon"
+          height="320px"
+          width="100%" />
 
         {/* <GoogleApiWrapper> */}
         {/* <MapContainer>

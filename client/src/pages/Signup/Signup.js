@@ -6,6 +6,7 @@ import "./Signup.css";
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
+import HappnenIcon from "../../components/Icon/index"
 
 class Signup extends Component {
   state = {
@@ -145,10 +146,9 @@ class Signup extends Component {
           <Button className="Submit" onClick={this.handleFormSubmit}>Submit</Button>
         </Row>
 
-        <p> Continue Without Account </p> <p> Forgot Your Account/Password? </p>
       </Container>
-    );
-  }
-}
-
+        );
+      }
+    }
+    
 export default Signup;
