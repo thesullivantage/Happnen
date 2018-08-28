@@ -10,7 +10,12 @@ class Profile extends Component {
         bio: "",
         links: "",
         events: "",
+        username: ""
     };
+
+    componentDidMount = () => {
+        this.setState({ username: sessionStorage.user })
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -49,7 +54,7 @@ class Profile extends Component {
                     width="75%" />
 
                 <Row>
-                    <h1>USERNAME:{this.state.username}</h1>
+                    <h1>USERNAME: {this.state.username}</h1>
 
                 </Row>
 
