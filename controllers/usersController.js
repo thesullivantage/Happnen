@@ -80,17 +80,19 @@ module.exports = {
     },
     
     // CREATE NEW USER
+
     createUser: function(req, res) {
       db.Users
         .create(req.body)
         .then(dbModel => {
           console.log( dbModel )
-          res.json(dbModel)}
-        )
+          res.json(dbModel)
+        })
         .catch(err => res.status(422).json(err));
     },
 
     // UPDATE USER INFORMATION
+    
     updateUser: function(req, res) {
       db.Users
         .findOneAndUpdate({ _id: req.params.id }, req.body)
