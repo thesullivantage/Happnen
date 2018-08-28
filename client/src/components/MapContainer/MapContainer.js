@@ -20,4 +20,4 @@ export const MapComponent = compose(
   </GoogleMap>
 );
 
-<MapComponent isMarkerShown />
+{/* <MapComponent isMarkerShown /> */}

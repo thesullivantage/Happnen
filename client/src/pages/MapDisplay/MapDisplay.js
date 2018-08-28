@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./MapDisplay.css";
-import { MapContainer } from "../../components/MapContainer/MapContainer";
+import { MapComponent } from "../../components/MapContainer/MapContainer";
 import { Map } from "../../components/Map/Map";
 // import { GoogleApiWrapper } from 'google-maps-react';
 
@@ -22,9 +22,9 @@ class MapDisplay extends Component {
                     <Button floating icon='attach_file' className='blue' node='a' href='http://localhost:3000/mapdisplay'/>
                 </Button>
                 {/* <GoogleApiWrapper> */}
-                <MapContainer>
+                <MapComponent>
                     {/* <Map /> */}
-                </MapContainer>
+                </MapComponent>
                 {/* </GoogleApiWrapper> */}
             </Container>
         );
