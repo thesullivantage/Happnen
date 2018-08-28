@@ -26,13 +26,14 @@ class Homepage extends Component {
     event.preventDefault();
     alert(`Username: ${this.state.username}\nPassword: ${this.state.password}`);
 
-    const suObj = {
+    const loginObj = {
       username: this.state.username,
       password: this.state.password
     }
-    console.log("suObj: ", suObj)
-    API.signUp(suObj)
+    console.log("suObj: ", loginObj)
+    API.login(loginObj)
       .then(res => {
+        sessionStorage.user = loginObj.username;
         // Do this if status is 200
         this.setState({ username: "", password: "", redirect: true })
         console.log(res)

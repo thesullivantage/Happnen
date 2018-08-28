@@ -10,7 +10,9 @@ class Profile extends Component {
         bio: "",
         imgLink: "",
         events: "",
+        username: ""
     };
+
 
     // componentDidMount() {
     //     API.populateProfile(username);
@@ -23,6 +25,11 @@ class Profile extends Component {
     //     this.setState({eventsShit}))
     //     .catch(err => console.log(err));
     // };
+
+    componentDidMount = () => {
+        this.setState({ username: sessionStorage.user })
+    }
+
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -68,7 +75,7 @@ class Profile extends Component {
                     width="75%" />
 
                 <Row>
-                    <h1>USERNAME:{this.state.username}</h1>
+                    <h1>USERNAME: {this.state.username}</h1>
 
                 </Row>
 

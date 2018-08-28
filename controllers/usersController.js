@@ -66,7 +66,6 @@ module.exports = {
           } else {
             console.log('Successful Login!')
             res.status(200).json({ message: 'Success'})
-            sessionStorage.setItem('userState', dbModel);
 
             // req.session.dbModel = dbModel.dataValues;
             // console.log(req.session.dbModel);

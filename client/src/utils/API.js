@@ -17,6 +17,9 @@ export default {
 
 
   
+  populateProfile: function () {
+    return axios.post("/api/users/populatedata")
+  }
 
 
 
