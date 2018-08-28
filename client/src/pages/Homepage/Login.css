@@ -1,53 +1,66 @@
-.Submit { 
-display: flex;
-justify-content: center;
-margin: auto;
-}
-
-.Logo { 
+.Submit {
     display: flex;
     justify-content: center;
     margin: auto;
+    color: rgb(186, 253, 250);
+    border-radius: 150px;
+    width: 200px;
+    height: 40px;
+}
+
+.btn {
+    background-color: rgb(143, 55, 143);
+}
+
+.btn:hover {
+    background-color: rgb(71, 154, 160);
+}
+
+.Logo {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    height: 125px;
+    width: 100%;
+    border-radius: 100px;
+}
+
+.input-field {
+    color: rgb(143, 55, 143);
+    text-align: left;
 }
 
 .input-field input[type=text]:focus {
     border-bottom: 1px solid #000;
     box-shadow: 0 1px 0 0 #000;
-  }
+    border-radius: 85px;
+}
 
-/* label focus color */
-.input-field input:focus + label {
-color: red !important;
+label focus color .input-field input:focus+label {
+    color: rgb(143, 55, 143) !important;
 }
 
 .input-field input[type=text]:focus {
-    border-bottom: 1px solid red;
-    box-shadow: 0 1px 0 0 red;
+    border-bottom: 1px solid rgb(143, 55, 143);
+    box-shadow: 0 1px 0 0 rgb(143, 55, 143);
 }
 
 .input-field input[type=password]:focus {
-    border-bottom: 1px solid red;
-    box-shadow: 0 1px 0 0 red;
+    border-bottom: 1px solid rgb(143, 55, 143);
+    box-shadow: 0 1px 0 0 rgb(143, 55, 143);
+    border-radius: 85px;
 }
 
-
 .input-field input[type=text] {
-    border-bottom: 1px solid black;
-    box-shadow: 0 1px 0 0 black;
+    border-bottom: 1px solid rgb(71, 154, 160);
+    box-shadow: 0 1px 0 0 rgb(71, 154, 160);
 }
 
 .input-field input[type=password] {
-    border-bottom: 1px solid black;
-    box-shadow: 0 1px 0 0 black;
+    border-bottom: 1px solid rgb(71, 154, 160);
+    box-shadow: 0 1px 0 0 rgb(71, 154, 160);
 }
 
 .input-field .prefix.active {
-    color: red;
-}
-
-.btn{
-background-color: red
-}
-.btn:hover {
-background-color: purple
+    color: rgb(143, 55, 143);
 }
