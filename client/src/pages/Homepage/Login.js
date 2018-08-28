@@ -95,9 +95,9 @@ class Homepage extends Component {
         <p> Continue Without Account </p> <p> Create Account </p> <p>Forgot Your Account/Password</p>
         
         {/* <GoogleApiWrapper> */}
-          <MapContainer>
+          {/* <MapContainer>
             <Map />
-          </MapContainer>
+          </MapContainer> */}
         {/* </GoogleApiWrapper> */}
 
       </Container>
