@@ -1,9 +1,3 @@
-.container {
-    margin: 0;
-    padding: 0;
-    width: 100%
-}
-
-.mapStyle {
-    width: 100%;
+.mapButton {
+    margin-right: 35px
 }
