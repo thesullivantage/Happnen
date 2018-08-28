@@ -21,19 +21,19 @@ class Event extends Component {
         picUrl: ""
     };
 
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {
-          date: moment()
+            date: moment()
         };
         this.handleDateTimeChange = this.handleDateTimeChange.bind(this);
-      }
-     
-      handleDateTimeChange(date) {
+    }
+
+    handleDateTimeChange(date) {
         this.setState({
-          date: date
+            date: date
         });
-      }
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -54,6 +54,12 @@ class Event extends Component {
     render() {
         return (
             <Container>
+                <Logo
+                    className="Logo"
+                    alt="HappnenLogo"
+                    height="300px"
+                    width="75%"
+                />
 
                 <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
                     <Button floating icon='assignment_ind' className='red' node='a' href='http://localhost:3000/profile' />
@@ -103,6 +109,7 @@ class Event extends Component {
                         scrollableYearDropdown
                         onChange={this.handleDateTimeChange}
                         showTimeSelect
+                        minDate={moment()}
                         dateFormat="LLL"
                         withPortal />
                 </Row>

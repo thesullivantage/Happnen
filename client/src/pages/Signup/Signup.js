@@ -104,21 +104,21 @@ class Signup extends Component {
         <Row>
           <Icon>pregnant_woman</Icon>
           <DatePicker
-                        s={12}
-                        name="birthday"
-                        type="date"
-                        className="date"
-                        isClearable={true}
-                        selected={this.state.birthday}
-                        value={this.state.birthday}
-                        showYearDropdown
-                        dateFormatCalendar="MMMM"
-                        scrollableYearDropdown
-                        yearDropdownItemNumber={50}
-                        onChange={this.handleBirthdayChange}
-                        withPortal
-                        placeholderText="Birthday"
-                        />
+            s={12}
+            name="birthday"
+            type="date"
+            className="date"
+            isClearable={true}
+            selected={this.state.birthday}
+            value={this.state.birthday}
+            showYearDropdown
+            dateFormatCalendar="MMMM"
+            scrollableYearDropdown
+            yearDropdownItemNumber={50}
+            onChange={this.handleBirthdayChange}
+            withPortal
+            placeholderText="Birthday"
+          />
         </Row>
 
         <Row>
