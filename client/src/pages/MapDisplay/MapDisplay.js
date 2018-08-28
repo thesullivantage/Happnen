@@ -23,7 +23,7 @@ class MapDisplay extends Component {
                 </Button>
                 {/* <GoogleApiWrapper> */}
                 <MapContainer>
-                    <Map />
+                    {/* <Map /> */}
                 </MapContainer>
                 {/* </GoogleApiWrapper> */}
             </Container>

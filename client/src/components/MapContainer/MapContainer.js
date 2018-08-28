@@ -1,38 +1,23 @@
-import React, {Component} from 'react';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import React from "react";
+import { compose, withProps } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
-export class MapContainer extends Component {
-    
-    state = {
-        selectedPlace: {
-            name: "Testing"
-        } 
-    }
+export const MapComponent = compose(
+  withProps({
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `400px` }} />,
+    mapElement: <div style={{ height: `100%` }} />,
+  }),
+  withScriptjs,
+  withGoogleMap
+)((props) =>
+  <GoogleMap
+    defaultZoom={8}
+    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+  >
+    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+  </GoogleMap>
+);
 
-    render() {
-        const style = {
-            width: '100vw',
-            height: '100vh'
-        }
-
-        return (
-            <div style={style}>
-                <Map 
-                    google={this.props.google} 
-                    zoom={14}>
-
-                    <Marker onClick={this.onMarkerClick}
-                        name={'Current location'} />
-
-                    <InfoWindow onClose={this.onInfoWindowClose}>
-                        <div>
-                            <h1>{this.state.selectedPlace.name}</h1>
-                        </div>
-                    </InfoWindow>
-                </Map>
-            </div>
-        );
-    }
-};
-
-export default GoogleApiWrapper({ apiKey: "AIzaSyCzhrxRlHVOD13tasY5VxcdBrOGeDjsPIU" })(MapContainer);
+<MapComponent isMarkerShown />
