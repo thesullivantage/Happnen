@@ -13,7 +13,14 @@ export default {
     return axios.post("/api/users/signup", suObj)
   },
 
- 
+  createEvent: function(eventObj){
+    return axios.post("api/events/create", eventObj)
+  },
+
+//  inviteUsers: function(id) {
+//  return axios.get("api/users/")
+//}
+
 
 
   

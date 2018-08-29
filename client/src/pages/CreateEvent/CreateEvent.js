@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, Select } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, Select, Autocomplete } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./CreateEvent.css";
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
+import API from '../../utils/API';
 
 class Event extends Component {
     state = {
@@ -18,7 +19,9 @@ class Event extends Component {
         description: "",
         type: 0,
         ageReq: 0,
-        picUrl: ""
+        picUrl: "",
+        userSearch: ""
+        //userQrs?
     };
 
     constructor(props) {
@@ -43,10 +46,38 @@ class Event extends Component {
         });
     };
 
+    handleAdd = event => {
+        event.preventDefault();
+        this.setState({ 
+            invited: [...this.state.invited, this.state.userSearch]
+        })
+        
+        // const {invited} = this.state
+        // invited.push(this.state.userSearch)
+    }
+
     handleFormSubmit = event => {
         event.preventDefault();
-        alert(`Username: ${this.state.username}\nPassword: ${this.state.password}`);
-        this.setState({ eventName: "", location: "", date: "", time: "", QR: "", description: "", picUrl: "" });
+        if (this.state.eventName && this.state.location) {
+            API.createEvent({
+                host: sessionStorage.user,
+                eventName: this.state.eventName,
+                location: this.state.location,
+                date: this.state.date,
+                description: this.state.description,
+                invited: this.state.invited,
+                type: this.state.type,
+                ageReq: this.state.ageReq,
+            })
+                .then(res => {
+                    console.log(res);
+                    //MAKE THIS! 
+                    API.invitedUsers(this.state.invited)
+                })
+                .catch(err => console.log(err));
+        }
+        alert(`${this.state.eventName}\n Created!`);
+        this.setState({ eventName: "", location: "", description: "" });
     };
 
 
@@ -152,8 +183,7 @@ class Event extends Component {
                         label="Age Restrictions"
                         defaultValue='0'>
                         <option value='0'>All Ages</option>
-                        <option value='1'>18+</option>
-                        <option value='2'>21+</option>
+                        <option value='1'>21+</option>
                     </Input>
                 </Row>
 
@@ -170,6 +200,28 @@ class Event extends Component {
                         name="QR"
                         type="checkbox"
                         value={this.state.QR} />
+                </Row>
+
+                <Row>
+                    <Autocomplete
+                        s={8}
+                        type="text"
+                        name="userSearch"
+                        value={this.state.userSearch}
+                        onChange={this.handleInputChange}
+                        title='Invite Users'
+                        data={
+                            {
+                                'Apple': null,
+                                'Microsoft': null,
+                                'Google': 'http://placehold.it/250x250'
+                            }
+                        }
+                    />
+
+                    <Button
+                        className="Add"
+                        onClick={this.handleAdd}>Add</Button>
                 </Row>
 
                 <Row>
