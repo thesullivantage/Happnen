@@ -25,14 +25,14 @@ module.exports = {
 	},
 
 	populateProfile: function (req, res) {
-		const user = sessionStorage.getItem('userState')
-		console.log(user)
+		console.log("")
+		console.log("REQ", req.body.username)
 		db.Users
-			.findOne({ 'username': user.username })
+			.findOne({ 'username': req.body.username  })
 			.populate('myEvents')
 			.populate('invites')
 			.then(dbModel => {
-				console.log('DBMODEL', dbModel);
+				console.log('111111', dbModel);
 				res.json(dbModel);
 			})
 			.catch(err => res.status(422).json(err));
@@ -42,7 +42,7 @@ module.exports = {
 		const user = sessionStorage.getItem('userState')
 		db.Users
 			.findOneAndUpdate(
-				{'user': user.username},
+				{'user': req.body.username},
 				{$set:{'bio': req.body.bio, 'picLink': req.body.picLink}})
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
@@ -103,12 +103,12 @@ module.exports = {
 
 	// UPDATE USER INFORMATION
 
-	updateUser: function (req, res) {
-		db.Users
-			.findOneAndUpdate({ _id: req.params.id }, req.body)
-			.then(dbModel => res.json(dbModel))
-			.catch(err => res.status(422).json(err));
-	},
+	// updateUser: function (req, res) {
+	// 	db.Users
+	// 		.findOneAndUpdate({ _id: req.params.id }, req.body)
+	// 		.then(dbModel => res.json(dbModel))
+	// 		.catch(err => res.status(422).json(err));
+	// },
 
 	// DELETE USER ACCOUNT
 	removeUser: function (req, res) {

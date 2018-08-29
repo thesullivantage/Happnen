@@ -17,7 +17,7 @@ cloudinary.config({
 class Profile extends Component {
 
     state = {
-        user: '',
+        user: "",
         username: "",
         bio: "",
         picLink: "",
@@ -38,27 +38,58 @@ class Profile extends Component {
     // };
 
     componentDidMount = () => {
-        this.setState({ username: sessionStorage.user })
-        if (this.state.username) {
-            API.populateProfile(this.state.username)
-                .then(res =>
+        this.setState({ username: sessionStorage.user }, () => {
+            
+            console.log(this.state.username)
+
+            if (this.state.username) {
+                const userObj = {
+                    username: sessionStorage.user
+                }
+                API.populateProfile(userObj)
+                .then(res => {
+                    console.log(res)
                     this.setState({ 
                         user: res, 
                         // bio: this.state.user.bio, 
                         // picLink: this.state.user.picLink, 
                         // events: this.state.user.myEvents
-                     })
-                       
-                )
-                .catch(err => console.log(err));
-
-        }
-        console.log(this.state.user)
+                    }, () => {
+                        console.log(this.state.user)
+                    })
+                    console.log("SUCCESS")
+                })
+                .catch(err => console.log(err));        
+            }
+        })
     };
+
+    populateFunction = () => {
+        const userObj = {
+            username: 'MrRoboto'
+        }
+        API.populateProfile(userObj)
+        .then(res => {
+            console.log(res)
+            this.setState({ 
+                user: res, 
+                // bio: this.state.user.bio, 
+                // picLink: this.state.user.picLink, 
+                // events: this.state.user.myEvents
+            })
+            console.log("SUCCESS")
+            
+        })
+        .catch(err => console.log(err));
+    }
+
+  
 
 
 
     handleInputChange = event => {
+        console.log(this.state)
+        
         const { name, value } = event.target;
 
         this.setState({
@@ -74,11 +105,11 @@ class Profile extends Component {
             bio: this.state.bio,
             picLink: this.state.picLink
         })
-            .then(res => {
-                console.log(this);
-                this.populateProfile()
-            })
-            .catch(err => console.log(err));
+        .then(res => {
+            console.log(this);
+            this.populateFunction()
+        })
+        .catch(err => console.log(err));
     };
     }
     // if (this.state.picLink) {
