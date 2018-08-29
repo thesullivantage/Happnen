@@ -22,8 +22,8 @@ class MapDisplay extends Component {
           .then(res => {
             // for each item in the data array
             for (let i = 0; i < res.data.length; i++) {
-            // push location to locations array
-            this.state.locations.push(res.data[i].location)}
+            // add location to locations array
+            this.state.locations = [...this.state.locations, res.data[i].location]}
             // set locations array state
             this.setState({ locations: this.state.locations })
           })
