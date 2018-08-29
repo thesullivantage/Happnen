@@ -36,11 +36,8 @@ class Profile extends Component {
                 )
                 .catch(err => console.log(err));
         }
-    };
+    };    
 
-        const user = sessionStorage.user
-        //API.populateProfile()
-    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -53,17 +50,17 @@ class Profile extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         alert("Profile settings saved.");
-        if(this.state.username){
-        API.updateProfile({
-            bio: this.state.bio,
-            picLink: this.state.picLink
-        })
-            .then(res => {
-                console.log(this);
-                this.populateProfile()
+        if (this.state.username) {
+            API.updateProfile({
+                bio: this.state.bio,
+                picLink: this.state.picLink
             })
-            .catch(err => console.log(err));
-    };
+                .then(res => {
+                    console.log(this);
+                    this.populateProfile()
+                })
+                .catch(err => console.log(err));
+        };
     }
     // if (this.state.picLink) {
     //     API.savePhoto({
@@ -98,70 +95,70 @@ class Profile extends Component {
     // };
 
 
-    render() {
-        return (
-            <Container>
+render() {
+    return (
+        <Container>
 
-                <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
-                    <Button floating icon='pin_drop' className='blue' node='a' href='http://localhost:3000/mapdisplay'
-                        data-position="top" data-delay="50" tooltip="What's Happnen" />
-                    <Button floating icon='person' className='blue' node='a' href='http://localhost:3000/'
-                        data-position="top" data-delay="50" tooltip="Login" />
-                    <Button floating icon='person_add' className='green' node='a' href='http://localhost:3000/signup'
-                        data-position="top" data-delay="50" tooltip="Create Account" />
-                    <Button floating icon='add_box' className='yellow darken-1' node='a' href='http://localhost:3000/createevent'
-                        data-position="top" data-delay="50" tooltip="Create Event" />
-                    <Button floating icon='assignment_ind' className='red' node='a' href='http://localhost:3000/profile'
-                        data-position="top" data-delay="50" tooltip="Profile" />
-                </Button>
+            <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
+                <Button floating icon='pin_drop' className='blue' node='a' href='http://localhost:3000/mapdisplay'
+                    data-position="top" data-delay="50" tooltip="What's Happnen" />
+                <Button floating icon='person' className='blue' node='a' href='http://localhost:3000/'
+                    data-position="top" data-delay="50" tooltip="Login" />
+                <Button floating icon='person_add' className='green' node='a' href='http://localhost:3000/signup'
+                    data-position="top" data-delay="50" tooltip="Create Account" />
+                <Button floating icon='add_box' className='yellow darken-1' node='a' href='http://localhost:3000/createevent'
+                    data-position="top" data-delay="50" tooltip="Create Event" />
+                <Button floating icon='assignment_ind' className='red' node='a' href='http://localhost:3000/profile'
+                    data-position="top" data-delay="50" tooltip="Profile" />
+            </Button>
 
-                <HappnenIcon
-                    className="Icon"
-                    alt="HappnenIcon"
-                    height="300px"
-                    width="75%" />
+            <HappnenIcon
+                className="Icon"
+                alt="HappnenIcon"
+                height="300px"
+                width="75%" />
 
-                <Row>
-                    <h1>USERNAME: {this.state.username}</h1>
+            <Row>
+                <h1>USERNAME: {this.state.username}</h1>
 
-                </Row>
+            </Row>
 
-                <Row>
-                    <Icon>camera_roll</Icon>
-                    <Input
-                        s={4}
-                        name="picLink"
-                        type="file"
-                        label="Profile Photo"
-                        className="profilePhoto"
-                        value={this.state.picLink}
-                        onChange={this.handleInputChange} />
-                    {/* {cloudinary.image(this.state.picLink, { width: 100, height: 150, crop: "fill" })}/> */}
-                </Row>
+            <Row>
+                <Icon>camera_roll</Icon>
+                <Input
+                    s={4}
+                    name="picLink"
+                    type="file"
+                    label="Profile Photo"
+                    className="profilePhoto"
+                    value={this.state.picLink}
+                    onChange={this.handleInputChange} />
+                {/* {cloudinary.image(this.state.picLink, { width: 100, height: 150, crop: "fill" })}/> */}
+            </Row>
 
-                <Row>
-                    <Input
-                        s={12}
-                        label="Bio"
-                        name="bio"
-                        type="textarea"
-                        className="validate"
-                        value={this.state.bio}
-                        onChange={this.handleInputChange}>
-                        <Icon>mode_edit</Icon>
-                    </Input>
-                </Row>
+            <Row>
+                <Input
+                    s={12}
+                    label="Bio"
+                    name="bio"
+                    type="textarea"
+                    className="validate"
+                    value={this.state.bio}
+                    onChange={this.handleInputChange}>
+                    <Icon>mode_edit</Icon>
+                </Input>
+            </Row>
 
-                <Row>
-                    <Button
-                        className="Submit"
-                        onClick={this.handleFormSubmit}>Save Profile</Button>
-                </Row>
+            <Row>
+                <Button
+                    className="Submit"
+                    onClick={this.handleFormSubmit}>Save Profile</Button>
+            </Row>
 
-            </Container>
+        </Container>
 
-        )
-    };
+    )
+};
 }
 
 export default Profile;
