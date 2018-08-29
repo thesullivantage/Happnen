@@ -12,7 +12,14 @@ export default {
   signUp: function (suObj) {
     return axios.post("/api/users/signup", suObj)
   },
+
+ 
+
+
   
+  populateProfile: function () {
+    return axios.post("/api/users/populatedata")
+  }
 
 
 
