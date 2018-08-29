@@ -18,6 +18,7 @@ cloudinary.config({
 class Profile extends Component {
 
     state = {
+        user: '',
         username: "",
         bio: "",
         picLink: "",
@@ -32,10 +33,18 @@ class Profile extends Component {
         if (this.state.username) {
             API.populateProfile(this.state.username)
                 .then(res =>
-                    this.setState({ bio: this.state.user.bio, picLink: this.state.user.picLink, events: this.state.user.myEvents })
+                    this.setState({ 
+                        user: res, 
+                        // bio: this.state.user.bio, 
+                        // picLink: this.state.user.picLink, 
+                        // events: this.state.user.myEvents
+                     })
+                       
                 )
                 .catch(err => console.log(err));
+
         }
+        console.log(this.state.user)
     };
 
         const user = sessionStorage.user

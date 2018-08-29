@@ -8,11 +8,11 @@ router
     .post(usersController.createUser);
 
 // Matches with "/api/users/:id"
-router
-    .route("/:id")
-    .get(usersController.findUserByUsername)
-    .put(usersController.updateUser)
-    .delete(usersController.removeUser);
+// router
+//     .route("/:id")
+//     .get(usersController.findUserByUsername)
+//     .put(usersController.updateUser)
+//     .delete(usersController.removeUser);
 
 router 
     .route("/login")
@@ -25,6 +25,10 @@ router
 router  
     .route("/populatedata")
     .get(usersController.populateProfile)
+
+router
+    .route("/update")
+    .put(usersController.updateUser)
 
 router
     .route("/allusers")

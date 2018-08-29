@@ -5,7 +5,7 @@ export default {
 
   //BASIC LOGIN
 
-  login: function(loginObj) {
+  login: function (loginObj) {
     return axios.post("/api/users/login", loginObj)
   },
 
@@ -13,40 +13,42 @@ export default {
     return axios.post("/api/users/signup", suObj)
   },
 
-  createEvent: function(eventObj){
+  createEvent: function (eventObj) {
     return axios.post("api/events/create", eventObj)
   },
 
-//  inviteUsers: function(id) {
-//  return axios.get("api/users/")
-//}
+  //  inviteUsers: function(id) {
+  //  return axios.get("api/users/")
+  //}
+
+  updateProfile: function (updateObj) {
+    return axios.put("/api/users/update", updateObj)
+  },
 
 
-
-  
   populateProfile: function () {
     return axios.post("/api/users/populatedata")
   },
-  
+
 
   // MAP HELPERS
-  
+
   getEventLocations: function () {
     return axios.get("/api/events")
- },
-  
- // CLOUDINARY HELPERS
+  },
 
- savePhoto: function() {
-   return axios.get("/api/cloudinary")
- }
+  // CLOUDINARY HELPERS
+
+  savePhoto: function () {
+    return axios.get("/api/cloudinary")
+  }
   // REF: 
   // getBooks: function() {
-    //   return axios.get("/api/books");
-    // },
-    // // Gets the book with the given id
-    // getBook: function(id) {
-      //   return axios.get("/api/books/" + id);
+  //   return axios.get("/api/books");
+  // },
+  // // Gets the book with the given id
+  // getBook: function(id) {
+  //   return axios.get("/api/books/" + id);
   // },
   // // Deletes the book with the given id
   // deleteBook: function(id) {
