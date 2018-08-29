@@ -5,6 +5,7 @@ import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
 import cloudinary from "cloudinary";
+import API from "../../utils/API"
 
 cloudinary.config({
     cloud_name: 'happnen',
@@ -14,11 +15,12 @@ cloudinary.config({
 
 
 class Profile extends Component {
+
     state = {
+        username: "",
         bio: "",
-        link: "",
-        events: "",
-        username: ""
+        picLink: "",
+        events: ""
     };
 
 
@@ -36,7 +38,15 @@ class Profile extends Component {
 
     componentDidMount = () => {
         this.setState({ username: sessionStorage.user })
-    }
+        if (this.state.username) {
+            API.populateProfile(this.state.username)
+                .then(res =>
+                    this.setState({ bio: this.state.user.bio, picLink: this.state.user.picLink, events: this.state.user.myEvents })
+                )
+                .catch(err => console.log(err));
+        }
+    };
+
 
 
     handleInputChange = event => {
@@ -47,28 +57,29 @@ class Profile extends Component {
         });
     };
 
-    // handleFormSubmit = event => {
-    //     event.preventDefault();
-    //     this.setState({
-    //         bio: this.state.bio,
-    //         // if (this.state.bio & this.state.imgLink) {
-    //         //API.saveProfile({
-    //         //bio: this.state.bio
-    //         //link: this.state.imgLink
-    //         //})
-    //         //.then(res => this.populateProfile())
-    //         //}
+    handleFormSubmit = event => {
+        event.preventDefault();
+        alert("Profile settings saved.");
+        if(this.state.username){
+        API.updateProfile({
+            bio: this.state.bio,
+            picLink: this.state.picLink
+        })
+            .then(res => {
+                console.log(this);
+                this.populateProfile()
+            })
+            .catch(err => console.log(err));
+    };
+    }
+    // if (this.state.picLink) {
+    //     API.savePhoto({
+    //     picLink: this.state.picLink
     //     })
-    //     alert("Profile settings saved.");
-    //     console.log(this);
-    //     if (this.state.link) {
-    //         API.savePhoto({
-    //         link: this.state.link
-    //         })
-    //         .then(res => this.loadPhoto())
-    //         .catch(err => console.log(err));
-    //     }
-    // };
+    //     .then(res => this.loadPhoto())
+    //     .catch(err => console.log(err));
+
+
 
     render() {
         return (
@@ -102,13 +113,13 @@ class Profile extends Component {
                     <Icon>camera_roll</Icon>
                     <Input
                         s={4}
-                        name="link"
+                        name="picLink"
                         type="file"
                         label="Profile Photo"
                         className="profilePhoto"
-                        value={this.state.link}
+                        value={this.state.picLink}
                         onChange={this.handleInputChange} />
-                    {cloudinary.image(this.state.link, { width: 100, height: 150, crop: "fill" })}/>
+                    {/* {cloudinary.image(this.state.picLink, { width: 100, height: 150, crop: "fill" })}/> */}
                 </Row>
 
                 <Row>
