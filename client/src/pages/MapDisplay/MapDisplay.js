@@ -4,6 +4,7 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./MapDisplay.css";
 import { MapComponent, MapWithAMarkerWithLabel } from "../../components/MapContainer/MapContainer";
+import API from "../../utils/API"
 
 class MapDisplay extends Component {
 
