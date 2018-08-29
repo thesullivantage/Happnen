@@ -3,122 +3,119 @@ const db = require('../models');
 // Defining methods for the usersController
 module.exports = {
 
-    // FIND ALL USERS
-    findAllUsers: function(req, res) {
-      db.Users
-        .find(req.query)
-        .sort({ date: -1 })
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    },
+	// FIND ALL USERS
+	findAllUsers: function (req, res) {
+		db.Users
+			.find(req.query)
+			.sort({ date: -1 })
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+	},
 
-    // FIND USER BY ID
-    findUserByUsername: function(req, res) {
-      console.log( req.body );
-      db.Users
-        .findOne({'username': req.body.username })
-        .then(dbModel => {
-          console.log('DBMODEL', dbModel);
-          res.json(dbModel);
-        })
-        .catch(err => res.status(422).json(err));
-    },
+	// FIND USER BY ID
+	findUserByUsername: function (req, res) {
+		console.log(req.body);
+		db.Users
+			.findOne({ 'username': req.body.username })
+			.then(dbModel => {
+				console.log('DBMODEL', dbModel);
+				res.json(dbModel);
+			})
+			.catch(err => res.status(422).json(err));
+	},
 
-    populateProfile: function (req, res) {
-      const user = sessionStorage.getItem('userState')
-      console.log(user)
-      db.Users
-        .findOne({'username': user.username })
-        .populate({'bio': user.bio})
-        .populate({'picLink': user.picLink})
-        .populate('myEvents')
-        .populate('invites')
-        .then(dbModel => {
-          console.log('DBMODEL', dbModel);
-          res.json(dbModel);
-        })
-        .catch(err => res.status(422).json(err));
-    },
+	populateProfile: function (req, res) {
+		const user = sessionStorage.getItem('userState')
+		console.log(user)
+		db.Users
+			.findOne({ 'username': user.username })
+			.populate('myEvents')
+			.populate('invites')
+			.then(dbModel => {
+				console.log('DBMODEL', dbModel);
+				res.json(dbModel);
+			})
+			.catch(err => res.status(422).json(err));
+	},
 
-    updateProfile: function(req, res) {
-      const user = sessionStorage.getItem('userState')
-      db.Users
-      .findOneAndUpdate({ 
-        'user': user.username,
-        'bio': user.bio
-     }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-    },
+	updateUser: function (req, res) {
+		const user = sessionStorage.getItem('userState')
+		db.Users
+			.findOneAndUpdate(
+				{'user': user.username},
+				{$set:{'bio': req.body.bio, 'picLink': req.body.picLink}})
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+	},
 
-    //VALIDATE PASSWORD
-    validateUser: function(req, res) {
-      console.log( req.body );
-      
-      db.Users
-        .findOne({'username': req.body.username })
-        .then(dbModel => {
-          
-          // console.log('DBMODEL: ', dbModel)
-          // if (err) throw err; 
-          // user.comparePassword(req.body.password, function(err, isMatch) {
-          //   if (err) throw err;
-          //   console.log('Password Check:', isMatch); // -> Password123: true
-          // });
-          
-          // console.log(dbModel)          
+	//VALIDATE PASSWORD
+	validateUser: function (req, res) {
+		console.log(req.body);
 
-          if (!dbModel) {
-            res.status(605).json({ message: 'User not found.' });
-            console.log('User Not Found');
-          }           
-          else if (!dbModel.comparePassword(req.body.password)) {
-            res.status(401).json({ message: 'Invalid password.' });
-            console.log('Incorrect Password');
-            
-          } else {
-            console.log('Successful Login!')
-            res.status(200).json({ message: 'Success'})
+		db.Users
+			.findOne({ 'username': req.body.username })
+			.then(dbModel => {
 
-            // req.session.dbModel = dbModel.dataValues;
-            // console.log(req.session.dbModel);
-            // console.log('TEST');
-            // res.json({ message: 'Successful login.' });
-          }
+				// console.log('DBMODEL: ', dbModel)
+				// if (err) throw err; 
+				// user.comparePassword(req.body.password, function(err, isMatch) {
+				//   if (err) throw err;
+				//   console.log('Password Check:', isMatch); // -> Password123: true
+				// });
 
-          console.log(dbModel.comparePassword(req.body.password))
+				// console.log(dbModel)          
 
-        })
-        .catch(err => res.status(422).json(err));
-    },
-    
-    // CREATE NEW USER
+				if (!dbModel) {
+					res.status(605).json({ message: 'User not found.' });
+					console.log('User Not Found');
+				}
+				else if (!dbModel.comparePassword(req.body.password)) {
+					res.status(401).json({ message: 'Invalid password.' });
+					console.log('Incorrect Password');
 
-    createUser: function(req, res) {
-      db.Users
-        .create(req.body)
-        .then(dbModel => {
-          console.log( dbModel )
-          res.json(dbModel)
-        })
-        .catch(err => res.status(422).json(err));
-    },
+				} else {
+					console.log('Successful Login!')
+					res.status(200).json({ message: 'Success' })
 
-    // UPDATE USER INFORMATION
-    
-    updateUser: function(req, res) {
-      db.Users
-        .findOneAndUpdate({ _id: req.params.id }, req.body)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    },
+					// req.session.dbModel = dbModel.dataValues;
+					// console.log(req.session.dbModel);
+					// console.log('TEST');
+					// res.json({ message: 'Successful login.' });
+				}
 
-    // DELETE USER ACCOUNT
-    removeUser: function(req, res) {
-      db.Users
-        .findById({ _id: req.params.id })
-        .then(dbModel => dbModel.remove())
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    }
+				console.log(dbModel.comparePassword(req.body.password))
+
+			})
+			.catch(err => res.status(422).json(err));
+	},
+
+	// CREATE NEW USER
+
+	createUser: function (req, res) {
+		db.Users
+			.create(req.body)
+			.then(dbModel => {
+				console.log(dbModel)
+				res.json(dbModel)
+			})
+			.catch(err => res.status(422).json(err));
+	},
+
+	// UPDATE USER INFORMATION
+
+	updateUser: function (req, res) {
+		db.Users
+			.findOneAndUpdate({ _id: req.params.id }, req.body)
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+	},
+
+	// DELETE USER ACCOUNT
+	removeUser: function (req, res) {
+		db.Users
+			.findById({ _id: req.params.id })
+			.then(dbModel => dbModel.remove())
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+	}
 };
