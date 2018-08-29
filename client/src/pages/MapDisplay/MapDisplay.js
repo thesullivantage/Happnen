@@ -4,12 +4,13 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./MapDisplay.css";
 import { MapComponent, MapWithAMarkerWithLabel } from "../../components/MapContainer/MapContainer";
+import API from "../../utils/API"
 
 class MapDisplay extends Component {
 
     // State object for event properties
     state = {
-        location: ""
+        locations: []
     }
 
     componentDidMount() {
@@ -18,9 +19,14 @@ class MapDisplay extends Component {
 
     loadLocations = () => {
         API.getEventLocations()
-          .then(res =>
-            this.setState({ locations: res.data.location })
-          )
+          .then(res => {
+            // for each item in the data array
+            for (let i = 0; i < res.data.length; i++) {
+            // push location to locations array
+            this.state.locations.push(res.data[i].location)}
+            // set locations array state
+            this.setState({ locations: this.state.locations })
+          })
           .catch(err => console.log(err));
       };
 
