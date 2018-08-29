@@ -35,6 +35,11 @@ export default {
     return axios.get("/api/events")
  }
   
+ // CLOUDINARY HELPERS
+
+//  savePhoto: function() {
+//    retun axios.get("/api/cloudinary")
+//  }
   // REF: 
   // getBooks: function() {
     //   return axios.get("/api/books");

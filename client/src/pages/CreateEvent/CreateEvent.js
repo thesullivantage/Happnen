@@ -9,6 +9,7 @@ import DatePicker from 'react-datepicker';
 import API from '../../utils/API';
 
 class Event extends Component {
+
     state = {
         host: "",
         eventName: "",
@@ -20,19 +21,12 @@ class Event extends Component {
         type: 0,
         ageReq: 0,
         picUrl: "",
-        userSearch: ""
+        userSearch: "",
+        date: moment()
         //userQrs?
     };
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            date: moment()
-        };
-        this.handleDateTimeChange = this.handleDateTimeChange.bind(this);
-    }
-
-    handleDateTimeChange(date) {
+    handleDateTimeChange = (date) => {
         this.setState({
             date: date
         });
@@ -40,20 +34,25 @@ class Event extends Component {
 
     handleInputChange = event => {
         const { name, value } = event.target;
-
         this.setState({
             [name]: value
         });
     };
 
+    handleAutocomplete = value => {
+        console.log(value)
+        this.setState({
+            userSearch: value
+        });
+    };
+
     handleAdd = event => {
         event.preventDefault();
+        console.log(this.state.userSearch);
+        console.log(this.state.invited);
         this.setState({ 
             invited: [...this.state.invited, this.state.userSearch]
-        })
-        
-        // const {invited} = this.state
-        // invited.push(this.state.userSearch)
+        })  
     }
 
     handleFormSubmit = event => {
@@ -84,7 +83,7 @@ class Event extends Component {
 
     render() {
         return (
-            <Container>
+            <Container fluid>
                 <Logo
                     className="Logo"
                     alt="HappnenLogo"
@@ -208,12 +207,13 @@ class Event extends Component {
                         type="text"
                         name="userSearch"
                         value={this.state.userSearch}
-                        onChange={this.handleInputChange}
+                        // onChange={this.handleUserSearchChange}
+                        onAutocomplete={this.handleAutocomplete}
                         title='Invite Users'
                         data={
                             {
-                                'Apple': null,
-                                'Microsoft': null,
+                                'Apple': "null",
+                                'Microsoft': "null",
                                 'Google': 'http://placehold.it/250x250'
                             }
                         }

@@ -11,6 +11,7 @@ const userSchema = new Schema({
   // Only do 21+, validate whether or not they are 18 when they join/enter the site as some sort of basic modal, also need front end logic to say whether or not they are 21 based on the birthday that they enter, and set this value accordingly:
 
   ofAge: { type: Boolean, default: false },
+  birthday: {type: Date},
 
   //add eventid to this on creation, remove on delete, keep here for archived-- maybe split these properties into current and past events:
   myEvents: [{ type: Schema.Types.ObjectId, ref: 'Events' }],

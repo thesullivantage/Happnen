@@ -4,11 +4,19 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
+import cloudinary from "cloudinary";
+
+cloudinary.config({
+    cloud_name: 'happnen',
+    api_key: '782769678216731',
+    api_secret: 'GX7JX8WmSTNIhq4dlBLKkXqO_lE'
+});
+
 
 class Profile extends Component {
     state = {
         bio: "",
-        imgLink: "",
+        link: "",
         events: "",
         username: ""
     };
@@ -39,17 +47,28 @@ class Profile extends Component {
         });
     };
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        // if (this.state.bio & this.state.imgLink) {
-            //API.saveProfile({
-            //bio: this.state.bio
-            //link: this.state.imgLink
-            //})
-            //.then(res => this.populateProfile())
-        //}
-        alert("Profile settings saved.")
-    };
+    // handleFormSubmit = event => {
+    //     event.preventDefault();
+    //     this.setState({
+    //         bio: this.state.bio,
+    //         // if (this.state.bio & this.state.imgLink) {
+    //         //API.saveProfile({
+    //         //bio: this.state.bio
+    //         //link: this.state.imgLink
+    //         //})
+    //         //.then(res => this.populateProfile())
+    //         //}
+    //     })
+    //     alert("Profile settings saved.");
+    //     console.log(this);
+    //     if (this.state.link) {
+    //         API.savePhoto({
+    //         link: this.state.link
+    //         })
+    //         .then(res => this.loadPhoto())
+    //         .catch(err => console.log(err));
+    //     }
+    // };
 
     render() {
         return (
@@ -82,8 +101,14 @@ class Profile extends Component {
                 <Row>
                     <Icon>camera_roll</Icon>
                     <Input
+                        s={4}
+                        name="link"
                         type="file"
-                        label="Profile Photo" s={4} />
+                        label="Profile Photo"
+                        className="profilePhoto"
+                        value={this.state.link}
+                        onChange={this.handleInputChange} />
+                    {cloudinary.image(this.state.link, { width: 100, height: 150, crop: "fill" })}/>
                 </Row>
 
                 <Row>
@@ -102,7 +127,7 @@ class Profile extends Component {
                 <Row>
                     <Button
                         className="Submit"
-                        onClick={this.handleFormSubmit}>Submit</Button>
+                        onClick={this.handleFormSubmit}>Save Profile</Button>
                 </Row>
 
             </Container>
