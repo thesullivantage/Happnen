@@ -14,4 +14,8 @@ router
     .put(eventsController.updateEvent)
     .delete(eventsController.removeEvent);
 
+router
+    .route("/create")
+    .post(eventsController.createEvent);
+
 module.exports = router;

@@ -53,7 +53,7 @@ class Signup extends Component {
       })
       .then(res => {
         console.log(res);
-        sessionStorage.setItem('userState', res.username);
+        sessionStorage.user = this.state.username;
       })
       .catch(err => console.log(err));
     }
