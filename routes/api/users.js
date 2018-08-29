@@ -24,11 +24,14 @@ router
 
 router  
     .route("/populatedata")
-    .post(usersController.populateProfile)
+    .get(usersController.populateProfile)
 
 router
     .route("/update")
     .put(usersController.updateUser)
 
+router
+    .route("/allusers")
+    .get(usersController.findAllUsers)
     
 module.exports = router;

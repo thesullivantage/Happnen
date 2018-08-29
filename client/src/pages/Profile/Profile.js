@@ -4,6 +4,7 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
+
 import cloudinary from "cloudinary";
 import API from "../../utils/API"
 
@@ -21,21 +22,11 @@ class Profile extends Component {
         username: "",
         bio: "",
         picLink: "",
-        events: ""
+        events: "",
+        events: "",
+        username: "",
+        userData: ""
     };
-
-
-    // componentDidMount() {
-    //     API.populateProfile(username);
-    //     
-    // }
-
-    // loadEvents = (username) => {
-    //     API.getEvents(username)
-    //     .then(res =>
-    //     this.setState({eventsShit}))
-    //     .catch(err => console.log(err));
-    // };
 
     componentDidMount = () => {
         this.setState({ username: sessionStorage.user })
@@ -56,7 +47,9 @@ class Profile extends Component {
         console.log(this.state.user)
     };
 
-
+        const user = sessionStorage.user
+        //API.populateProfile()
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -88,6 +81,30 @@ class Profile extends Component {
     //     .then(res => this.loadPhoto())
     //     .catch(err => console.log(err));
 
+
+
+    // handleFormSubmit = event => {
+    //     event.preventDefault();
+    //     this.setState({
+    //         bio: this.state.bio,
+    //         // if (this.state.bio & this.state.imgLink) {
+    //         //API.saveProfile({
+    //         //bio: this.state.bio
+    //         //link: this.state.imgLink
+    //         //})
+    //         //.then(res => this.populateProfile())
+    //         //}
+    //     })
+    //     alert("Profile settings saved.");
+    //     console.log(this);
+    //     if (this.state.link) {
+    //         API.savePhoto({
+    //         link: this.state.link
+    //         })
+    //         .then(res => this.loadPhoto())
+    //         .catch(err => console.log(err));
+    //     }
+    // };
 
 
     render() {
