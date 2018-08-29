@@ -13,6 +13,8 @@ class Signup extends Component {
   state = {
     username: "",
     password: "",
+    passwordValidate: "",
+    birthday: Date,
     email: "",
     over18: false,
     events: [],
@@ -29,11 +31,26 @@ class Signup extends Component {
   }
 
   handleBirthdayChange(date) {
+    const years = moment().diff(date, 'years', true);
     this.setState({
       birthday: date
     });
-    console.log(date);
+
+      {if (years >= 21) {
+        this.setState({
+          over18: true
+        })
+      }
+
+      else {
+        this.setState({
+          over18: false
+        })
+      }
+    }
+
   }
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -45,20 +62,22 @@ class Signup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if(this.state.username && this.state.password){
+    if (this.state.username && this.state.password) {
       API.signUp({
         username: this.state.username,
         password: this.state.password,
+        birthday: this.state.date,
         email: this.state.email
       })
-      .then(res => {
-        console.log(res);
-        sessionStorage.user = this.state.username;
-      })
-      .catch(err => console.log(err));
+        .then(res => {
+          console.log(res);
+          sessionStorage.user = this.state.username;
+        })
+        .catch(err => console.log(err));
     }
     this.setState({ username: "", password: "", passwordValidate: "", email: "", over18: false });
   };
+
 
   render() {
     return (
@@ -161,8 +180,8 @@ class Signup extends Component {
         </Row>
 
       </Container>
-        );
-      }
-    }
-    
+    );
+  }
+}
+
 export default Signup;
