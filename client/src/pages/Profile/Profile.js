@@ -4,32 +4,22 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
+import API from "../../utils/API"
 
 class Profile extends Component {
     state = {
         bio: "",
-        imgLink: "",
+        links: "",
         events: "",
-        username: ""
+        username: "",
+        userData: ""
     };
-
-
-    // componentDidMount() {
-    //     API.populateProfile(username);
-    //     
-    // }
-
-    // loadEvents = (username) => {
-    //     API.getEvents(username)
-    //     .then(res =>
-    //     this.setState({eventsShit}))
-    //     .catch(err => console.log(err));
-    // };
 
     componentDidMount = () => {
         this.setState({ username: sessionStorage.user })
+        const user = sessionStorage.user
+        API.populateProfile()
     }
-
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -41,13 +31,6 @@ class Profile extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        // if (this.state.bio & this.state.imgLink) {
-            //API.saveProfile({
-            //bio: this.state.bio
-            //link: this.state.imgLink
-            //})
-            //.then(res => this.populateProfile())
-        //}
         alert("Profile settings saved.")
     };
 
