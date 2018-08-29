@@ -7,6 +7,22 @@ import { MapComponent, MapWithAMarkerWithLabel } from "../../components/MapConta
 
 class MapDisplay extends Component {
 
+    // State object for event properties
+    state = {
+        location: ""
+    }
+
+    componentDidMount() {
+        this.loadLocations();
+    }
+
+    loadLocations = () => {
+        API.getEventLocations()
+          .then(res =>
+            this.setState({ locations: res.data.location })
+          )
+          .catch(err => console.log(err));
+      };
 
     render() {
         return (
