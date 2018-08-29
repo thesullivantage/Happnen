@@ -13,23 +13,24 @@ export default {
     return axios.post("/api/users/signup", suObj)
   },
 
- 
-
-
-  
   populateProfile: function () {
     return axios.post("/api/users/populatedata")
-  }
+  },
+  
 
-
-
+  // MAP HELPERS
+  
+  getEventLocations: function () {
+    return axios.get("/api/events")
+ }
+  
   // REF: 
   // getBooks: function() {
-  //   return axios.get("/api/books");
-  // },
-  // // Gets the book with the given id
-  // getBook: function(id) {
-  //   return axios.get("/api/books/" + id);
+    //   return axios.get("/api/books");
+    // },
+    // // Gets the book with the given id
+    // getBook: function(id) {
+      //   return axios.get("/api/books/" + id);
   // },
   // // Deletes the book with the given id
   // deleteBook: function(id) {
