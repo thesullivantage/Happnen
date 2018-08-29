@@ -4,10 +4,9 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
-<<<<<<< HEAD
-import API from "../../utils/API"
-=======
+
 import cloudinary from "cloudinary";
+import API from "../../utils/API"
 
 cloudinary.config({
     cloud_name: 'happnen',
@@ -15,16 +14,14 @@ cloudinary.config({
     api_secret: 'GX7JX8WmSTNIhq4dlBLKkXqO_lE'
 });
 
->>>>>>> 8b4d245f448e8ac11befdb98a434f6efd4eab806
 
 class Profile extends Component {
+
     state = {
+        username: "",
         bio: "",
-<<<<<<< HEAD
-        links: "",
-=======
-        link: "",
->>>>>>> 8b4d245f448e8ac11befdb98a434f6efd4eab806
+        picLink: "",
+        events: "",
         events: "",
         username: "",
         userData: ""
@@ -32,8 +29,17 @@ class Profile extends Component {
 
     componentDidMount = () => {
         this.setState({ username: sessionStorage.user })
+        if (this.state.username) {
+            API.populateProfile(this.state.username)
+                .then(res =>
+                    this.setState({ bio: this.state.user.bio, picLink: this.state.user.picLink, events: this.state.user.myEvents })
+                )
+                .catch(err => console.log(err));
+        }
+    };
+
         const user = sessionStorage.user
-        API.populateProfile()
+        //API.populateProfile()
     }
 
     handleInputChange = event => {
@@ -44,12 +50,30 @@ class Profile extends Component {
         });
     };
 
-<<<<<<< HEAD
     handleFormSubmit = event => {
         event.preventDefault();
-        alert("Profile settings saved.")
+        alert("Profile settings saved.");
+        if(this.state.username){
+        API.updateProfile({
+            bio: this.state.bio,
+            picLink: this.state.picLink
+        })
+            .then(res => {
+                console.log(this);
+                this.populateProfile()
+            })
+            .catch(err => console.log(err));
     };
-=======
+    }
+    // if (this.state.picLink) {
+    //     API.savePhoto({
+    //     picLink: this.state.picLink
+    //     })
+    //     .then(res => this.loadPhoto())
+    //     .catch(err => console.log(err));
+
+
+
     // handleFormSubmit = event => {
     //     event.preventDefault();
     //     this.setState({
@@ -72,7 +96,7 @@ class Profile extends Component {
     //         .catch(err => console.log(err));
     //     }
     // };
->>>>>>> 8b4d245f448e8ac11befdb98a434f6efd4eab806
+
 
     render() {
         return (
@@ -106,13 +130,13 @@ class Profile extends Component {
                     <Icon>camera_roll</Icon>
                     <Input
                         s={4}
-                        name="link"
+                        name="picLink"
                         type="file"
                         label="Profile Photo"
                         className="profilePhoto"
-                        value={this.state.link}
+                        value={this.state.picLink}
                         onChange={this.handleInputChange} />
-                    {cloudinary.image(this.state.link, { width: 100, height: 150, crop: "fill" })}/>
+                    {/* {cloudinary.image(this.state.picLink, { width: 100, height: 150, crop: "fill" })}/> */}
                 </Row>
 
                 <Row>

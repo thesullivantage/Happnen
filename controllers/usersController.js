@@ -29,6 +29,8 @@ module.exports = {
       console.log(user)
       db.Users
         .findOne({'username': user.username })
+        .populate({'bio': user.bio})
+        .populate({'picLink': user.picLink})
         .populate('myEvents')
         .populate('invites')
         .then(dbModel => {
@@ -36,6 +38,17 @@ module.exports = {
           res.json(dbModel);
         })
         .catch(err => res.status(422).json(err));
+    },
+
+    updateProfile: function(req, res) {
+      const user = sessionStorage.getItem('userState')
+      db.Users
+      .findOneAndUpdate({ 
+        'user': user.username,
+        'bio': user.bio
+     }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
     },
 
     //VALIDATE PASSWORD

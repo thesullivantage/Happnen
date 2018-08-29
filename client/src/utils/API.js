@@ -33,13 +33,13 @@ export default {
   
   getEventLocations: function () {
     return axios.get("/api/events")
- }
+ },
   
  // CLOUDINARY HELPERS
 
-//  savePhoto: function() {
-//    retun axios.get("/api/cloudinary")
-//  }
+ savePhoto: function() {
+   return axios.get("/api/cloudinary")
+ }
   // REF: 
   // getBooks: function() {
     //   return axios.get("/api/books");
