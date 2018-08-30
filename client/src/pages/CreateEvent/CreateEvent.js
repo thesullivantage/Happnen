@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, Select, Autocomplete } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, Select, Autocomplete, List } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./CreateEvent.css";
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import API from '../../utils/API';
+import UserInvitedBtn from "../../components/UserInvitedBtn";
 
 class Event extends Component {
 
@@ -57,6 +58,11 @@ class Event extends Component {
         })
     }
 
+    deleteInvitee = event => {
+        event.preventDefault();
+        console.log(this);
+    }
+
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.eventName && this.state.location) {
@@ -85,6 +91,8 @@ class Event extends Component {
 
 
     render() {
+        let usersInvited = this.state.invited;
+        let userInvited = this.state.userSearch;
         return (
             <Container fluid>
                 <Logo
@@ -225,6 +233,17 @@ class Event extends Component {
                     <Button
                         className="Add"
                         onClick={this.handleAdd}>Add</Button>
+                </Row>
+
+                <Row>
+                    <Col>
+                        {usersInvited.map(userInvited =>
+                            <UserInvitedBtn
+                                id={userInvited}
+                                value={userInvited}
+                                onClick={this.deleteInvitee} />
+                        )}
+                    </Col>
                 </Row>
 
                 <Row>
