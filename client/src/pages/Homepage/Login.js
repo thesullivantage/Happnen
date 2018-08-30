@@ -47,7 +47,7 @@ class Homepage extends Component {
     const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to='/mapdisplay'/>;
+      return <Redirect to='/profile'/>;
     }
 
     return (
