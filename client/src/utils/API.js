@@ -27,7 +27,8 @@ export default {
 
 
   populateProfile: function (userObj) {
-    return axios.get("/api/users/populatedata", userObj)
+    console.log(userObj)
+    return axios.post("/api/users/populatedata", userObj)
   },
 
 
