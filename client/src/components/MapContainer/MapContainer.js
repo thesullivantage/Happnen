@@ -2,6 +2,7 @@ import React from "react";
 import { compose, withProps, withStateHandlers, withHandlers } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow} from "react-google-maps"
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
+import API from "../../utils/API"
 
 const Map = compose(
   withProps({
@@ -39,13 +40,13 @@ const Map = compose(
     >
       {props.markers.map(marker => (
         <Marker
-          key={marker.photo_id}
+          key={marker._id}
           position={{ lat: marker.latitude, lng: marker.longitude }}
           currentMarkerClicked={false}
-          onClick={props.onToggleOpen.bind(null, marker.photo_id)}       
+          onClick={props.onToggleOpen.bind(null, marker._id)}       
         > 
-          {props.markerOpen === marker.photo_id ? <InfoWindow onCloseClick={props.onToggleOpen.bind(null, marker.photo_id)}>
-            <div>{marker.photo_title}</div>
+          {props.markerOpen === marker._id ? <InfoWindow onCloseClick={props.onToggleOpen.bind(null, marker._id)}>
+            <div>{marker.eventName}</div>
           </InfoWindow> : null}
         </Marker>
       ))}
@@ -61,16 +62,9 @@ export class MapComponent extends React.Component {
   }
 
   componentDidMount() {
-    const url = [
-      `https://gist.githubusercontent.com`,
-      `/farrrr/dfda7dd7fccfec5474d3`,
-      `/raw/758852bbc1979f6c4522ab4e92d1c92cba8fb0dc/data.json`
-    ].join("")
-
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ markers: data.photos });
+    API.getEventLocations()
+      .then(res => {
+        this.setState({ markers: res.data });
       });
   }
 
