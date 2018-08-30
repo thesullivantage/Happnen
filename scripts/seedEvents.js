@@ -11,7 +11,7 @@ mongoose.connect(
 const eventsSeed = [
   {
     host: "Andy",
-    title: "First Party",
+    eventName: "First Party",
     category: 0,
     location: "5295 Woodridge Forest Trail, Atlanta, GA 30327",
     latitude: 33.89988,
@@ -34,7 +34,7 @@ const eventsSeed = [
   },
   {
     host: "Brndy",
-    title: "Second Party",
+    eventName: "Second Party",
     category: 2,
     location: "1600 Pennsylvania Ave",
     latitude: 38.897675,
@@ -57,7 +57,7 @@ const eventsSeed = [
   },
   {
     host: "Sandy",
-    title: "Third Party",
+    eventName: "Third Party",
     category: 2,
     location: "1 AMB Drive Northwest, Atlanta, GA 30313",
     latitude: 33.76,
@@ -80,7 +80,7 @@ const eventsSeed = [
   },
   {
     host: "Shandy",
-    title: "second Party",
+    eventName: "second Party",
     category: 0,
     location: "84 5th St NW, Atlanta, GA 30308",
     latitude: 33.776864,
@@ -103,7 +103,7 @@ const eventsSeed = [
   },
   {
     host: "Randy",
-    title: "Fifh Party",
+    eventName: "Fifh Party",
     category: 1,
     location: "77 12th Street, Atlanta, GA",
     latitude: 33.784331,

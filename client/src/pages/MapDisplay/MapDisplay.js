@@ -23,6 +23,7 @@ class MapDisplay extends Component {
         API.getEventLocations()
           .then(res => {
             // for each item in the data array
+            console.log(res)
             for (let i = 0; i < res.data.length; i++) {
             // add location to locations array
             this.state.latitude = [...this.state.latitude, res.data[i].latitude]
@@ -34,6 +35,7 @@ class MapDisplay extends Component {
                 longitude: this.state.longitude,
                 eventName: this.state.eventName
              })
+             console.log(this.state)
             }
           })
           .catch(err => console.log(err));
