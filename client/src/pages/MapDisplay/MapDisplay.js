@@ -10,7 +10,9 @@ class MapDisplay extends Component {
 
     // State object for event properties
     state = {
-        locations: []
+        latitude: [],
+        longitude: [],
+        eventName: []
     }
 
     componentDidMount() {
@@ -23,9 +25,16 @@ class MapDisplay extends Component {
             // for each item in the data array
             for (let i = 0; i < res.data.length; i++) {
             // add location to locations array
-            this.state.locations = [...this.state.locations, res.data[i].location]}
+            this.state.latitude = [...this.state.latitude, res.data[i].latitude]
+            this.state.longitude = [...this.state.longitude, res.data[i].longitude]
+            this.state.eventName = [...this.state.eventName, res.data[i].eventName]
             // set locations array state
-            this.setState({ locations: this.state.locations })
+            this.setState({ 
+                latitude: this.state.latitude,
+                longitude: this.state.longitude,
+                eventName: this.state.eventName
+             })
+            }
           })
           .catch(err => console.log(err));
       };
