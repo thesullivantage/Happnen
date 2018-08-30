@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, Select, Autocomplete } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, Select, Autocomplete, List } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./CreateEvent.css";
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import API from '../../utils/API';
+import UserInvitedBtn from "../../components/UserInvitedBtn";
 
 class Event extends Component {
 
@@ -57,26 +58,39 @@ class Event extends Component {
         })
     }
 
+    deleteInvitee = event => {
+        event.preventDefault();
+        console.log(this);
+    }
+
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.eventName && this.state.location) {
+            
+            // Use this if need to define type for db query
+            // const invited = this.state.invited;
+            // const mongoInvitedArr = invited.map(arr => mongoose.Types.String(arr));
+            
             API.createEvent({
                 host: sessionStorage.user,
                 eventName: this.state.eventName,
-                latLong: this.state.latLong,
                 location: this.state.location,
                 date: this.state.date,
                 description: this.state.description,
                 invited: this.state.invited,
+            // See above
+            // mongoInvited: mongoInvitedArr,
                 type: this.state.type,
                 ageReq: this.state.ageReq,
             })
-                .then(res => {
-                    console.log(res);
-                    //MAKE THIS! 
-                    API.invitedUsers(this.state.invited)
-                })
-                .catch(err => console.log(err));
+            .then(res => {
+                console.log(res);
+                //Do this all on backend (controller) 
+                // API.findAndInvite({
+                //     people: this.state.invited
+                // })
+            })
+            .catch(err => console.log(err));
         }
         alert(`${this.state.eventName}\n Created!`);
         this.setState({ eventName: "", location: "", description: "" });
@@ -85,6 +99,8 @@ class Event extends Component {
 
 
     render() {
+        let usersInvited = this.state.invited;
+        let userInvited = this.state.userSearch;
         return (
             <Container fluid>
                 <Logo
@@ -225,6 +241,17 @@ class Event extends Component {
                     <Button
                         className="Add"
                         onClick={this.handleAdd}>Add</Button>
+                </Row>
+
+                <Row>
+                    <Col>
+                        {usersInvited.map(userInvited =>
+                            <UserInvitedBtn
+                                id={userInvited}
+                                value={userInvited}
+                                onClick={this.deleteInvitee} />
+                        )}
+                    </Col>
                 </Row>
 
                 <Row>
