@@ -43,8 +43,8 @@ class Profile extends Component {
             console.log(this.state.username)
 
             if (this.state.username) {
-                const userObj = {
-                    username: sessionStorage.user
+                let userObj = {
+                    username: "pjoyce1977"
                 }
                 API.populateProfile(userObj)
                 .then(res => {
@@ -64,6 +64,8 @@ class Profile extends Component {
         })
     };
 
+
+    //Don't worry about this:
     populateFunction = () => {
         const userObj = {
             username: 'MrRoboto'

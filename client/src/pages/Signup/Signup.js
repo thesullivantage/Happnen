@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from 'react-router'
+
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./Signup.css";
