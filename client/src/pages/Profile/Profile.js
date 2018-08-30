@@ -4,7 +4,6 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
-
 import cloudinary from "cloudinary";
 import API from "../../utils/API"
 
@@ -105,7 +104,6 @@ class Profile extends Component {
     //         .catch(err => console.log(err));
     //     }
     // };
-
 
     render() {
         return (
