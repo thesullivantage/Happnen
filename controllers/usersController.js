@@ -26,7 +26,7 @@ module.exports = {
 
 	populateProfile: function (req, res) {
 		console.log("")
-		console.log("REQ", req.body.username)
+		console.log("REQ", req.body)
 		db.Users
 			.findOne({ 'username': req.body.username  })
 			.populate('myEvents')
