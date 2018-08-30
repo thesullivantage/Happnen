@@ -66,23 +66,31 @@ class Event extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.eventName && this.state.location) {
+            
+            // Use this if need to define type for db query
+            // const invited = this.state.invited;
+            // const mongoInvitedArr = invited.map(arr => mongoose.Types.String(arr));
+            
             API.createEvent({
                 host: sessionStorage.user,
                 eventName: this.state.eventName,
-                latLong: this.state.latLong,
                 location: this.state.location,
                 date: this.state.date,
                 description: this.state.description,
                 invited: this.state.invited,
+            // See above
+            // mongoInvited: mongoInvitedArr,
                 type: this.state.type,
                 ageReq: this.state.ageReq,
             })
-                .then(res => {
-                    console.log(res);
-                    //MAKE THIS! 
-                    API.invitedUsers(this.state.invited)
-                })
-                .catch(err => console.log(err));
+            .then(res => {
+                console.log(res);
+                //Do this all on backend (controller) 
+                // API.findAndInvite({
+                //     people: this.state.invited
+                // })
+            })
+            .catch(err => console.log(err));
         }
         alert(`${this.state.eventName}\n Created!`);
         this.setState({ eventName: "", location: "", description: "" });
