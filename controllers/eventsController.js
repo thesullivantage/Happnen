@@ -67,15 +67,31 @@ module.exports = {
 			db.Events
 				.create(reqCopy)
 				.then(resDocument => {
-					console.log(resDocument)
+					console.log("Create Status", resDocument)
 					db.Users
 						.updateMany(
+							// May need to add quotes
 							{ username: { $in: req.body.people } },
-							{ $push: { scores: resDocument._id } }
+							{ $push: { invites: resDocument._id } }
 						)
+						.then(invitelog => {
+							console.log("Invite Status", invitelog)
+							db.Users
+								.updateOne(
+									{username: req.body.host}, 
+									{ $push: { myEvents: resDocument._id }}
+								)
+								.then(ownerLog => {
+									console.log(ownerLog)
+									res.status(200).json("Ran the gauntlet, made it", ownerLog)
+								})
+								.catch(err => res.status(422).json("OWNERERR", err))
+
+						})
+						.catch(err => res.status(422).json("UPDATEERR", err));
 				})
 				// res.json(dbModel)
-				.catch(err => res.status(422).json(err));
+				.catch(err => res.status(422).json("CREATEERR", err));
 		}, 1000)
 	},
 
