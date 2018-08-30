@@ -39,7 +39,7 @@ class Profile extends Component {
 
     componentDidMount = () => {
         this.setState({ username: sessionStorage.user }, () => {
-            s
+
             console.log(this.state.username)
 
             if (this.state.username) {
@@ -47,19 +47,19 @@ class Profile extends Component {
                     username: sessionStorage.user
                 }
                 API.populateProfile(userObj)
-                .then(res => {
-                    console.log(res)
-                    this.setState({ 
-                        user: res, 
-                        // bio: this.state.user.bio, 
-                        // picLink: this.state.user.picLink, 
-                        // events: this.state.user.myEvents
-                    }, () => {
-                        console.log(this.state.user)
+                    .then(res => {
+                        console.log(res)
+                        this.setState({
+                            user: res,
+                            // bio: this.state.user.bio, 
+                            // picLink: this.state.user.picLink, 
+                            // events: this.state.user.myEvents
+                        }, () => {
+                            console.log(this.state.user)
+                        })
+                        console.log("SUCCESS")
                     })
-                    console.log("SUCCESS")
-                })
-                .catch(err => console.log(err));        
+                    .catch(err => console.log(err));
             }
         })
     };
@@ -69,23 +69,23 @@ class Profile extends Component {
             username: 'MrRoboto'
         }
         API.populateProfile(userObj)
-        .then(res => {
-            console.log(res)
-            this.setState({ 
-                user: res, 
-                // bio: this.state.user.bio, 
-                // picLink: this.state.user.picLink, 
-                // events: this.state.user.myEvents
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    user: res,
+                    // bio: this.state.user.bio, 
+                    // picLink: this.state.user.picLink, 
+                    // events: this.state.user.myEvents
+                })
+                console.log("SUCCESS")
+
             })
-            console.log("SUCCESS")
-            
-        })
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
     }
 
     handleInputChange = event => {
         console.log(this.state)
-        
+
         const { name, value } = event.target;
 
         this.setState({
@@ -96,17 +96,17 @@ class Profile extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         alert("Profile settings saved.");
-        if(this.state.username){
-        API.updateProfile({
-            bio: this.state.bio,
-            picLink: this.state.picLink
-        })
-        .then(res => {
-            console.log(this);
-            this.populateFunction()
-        })
-        .catch(err => console.log(err));
-    };
+        if (this.state.username) {
+            API.updateProfile({
+                bio: this.state.bio,
+                picLink: this.state.picLink
+            })
+                .then(res => {
+                    console.log(this);
+                    this.populateFunction()
+                })
+                .catch(err => console.log(err));
+        };
     }
     // if (this.state.picLink) {
     //     API.savePhoto({
