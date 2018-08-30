@@ -54,7 +54,6 @@ module.exports = {
     geoConvert(reqAddress)
     setTimeout(function () {
       reqCopy = Object.assign({}, reqCopy, latLong)
-      console.log("reqCopy sent to .create: " + JSON.stringify(reqCopy))
       db.Events
         .create(reqCopy)
         .then(dbModel => res.json(dbModel))

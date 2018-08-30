@@ -24,7 +24,7 @@ router
 
 router  
     .route("/populatedata")
-    .get(usersController.populateProfile)
+    .post(usersController.populateProfile)
 
 router
     .route("/update")

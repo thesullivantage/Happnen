@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from 'react-router'
+
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./Signup.css";
@@ -19,7 +21,8 @@ class Signup extends Component {
     over18: false,
     events: [],
     userEvents: [],
-    invites: []
+    invites: [],
+    redirect: false
   };
 
   constructor(props) {
@@ -74,12 +77,20 @@ class Signup extends Component {
           sessionStorage.user = this.state.username;
         })
         .catch(err => console.log(err));
+      this.setState({ username: "", password: "", passwordValidate: "", email: "", over18: false, redirect: true });
     }
-    this.setState({ username: "", password: "", passwordValidate: "", email: "", over18: false });
+    
   };
 
 
   render() {
+
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to='/profile'/>;
+    }
+
     return (
       <Container>
 

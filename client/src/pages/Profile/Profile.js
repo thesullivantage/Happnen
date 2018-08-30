@@ -40,12 +40,16 @@ class Profile extends Component {
     componentDidMount = () => {
         this.setState({ username: sessionStorage.user }, () => {
 
-            console.log(this.state.username)
+
+            
+            console.log(this.state.username + " ogstate.username")
+
 
             if (this.state.username) {
-                const userObj = {
-                    username: sessionStorage.user
+                let userObj = {
+                    username: this.state.username
                 }
+                console.log(userObj)
                 API.populateProfile(userObj)
                     .then(res => {
                         console.log(res)
@@ -64,6 +68,8 @@ class Profile extends Component {
         })
     };
 
+
+    //Don't worry about this:
     populateFunction = () => {
         const userObj = {
             username: 'MrRoboto'

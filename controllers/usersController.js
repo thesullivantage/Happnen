@@ -25,14 +25,11 @@ module.exports = {
 	},
 
 	populateProfile: function (req, res) {
-		console.log("")
-		console.log("REQ", req.body.username)
 		db.Users
 			.findOne({ 'username': req.body.username  })
 			.populate('myEvents')
 			.populate('invites')
 			.then(dbModel => {
-				console.log('111111', dbModel);
 				res.json(dbModel);
 			})
 			.catch(err => res.status(422).json(err));
