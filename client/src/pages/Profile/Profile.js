@@ -39,7 +39,7 @@ class Profile extends Component {
 
     componentDidMount = () => {
         this.setState({ username: sessionStorage.user }, () => {
-            
+            s
             console.log(this.state.username)
 
             if (this.state.username) {
@@ -82,10 +82,6 @@ class Profile extends Component {
         })
         .catch(err => console.log(err));
     }
-
-  
-
-
 
     handleInputChange = event => {
         console.log(this.state)

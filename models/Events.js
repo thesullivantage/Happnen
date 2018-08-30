@@ -7,7 +7,9 @@ const eventSchema = new Schema({
   location: { type: String, required: true },
   //Maybe use unix epoch format with a js library to convert to date and time (separate)
   //Also, combined date and time just based on the format; will concat when making the call
-
+  // latLong property is converted from the address:
+  latitude: { type: Number },
+  longitude: { type: Number },
   // datetimeStart: { type: Date, default: Date.now },
   // datetimeEnd: { type: Date, default: (Date.now + 3600000) },
 
