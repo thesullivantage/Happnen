@@ -19,6 +19,8 @@ const userSchema = new Schema({
   invites: [{ type: Schema.Types.ObjectId, ref: 'Events' }],
 
   userQr: String,
+  bio: {type: String},
+  
 
 });
 
