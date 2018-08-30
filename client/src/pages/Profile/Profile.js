@@ -39,7 +39,7 @@ class Profile extends Component {
 
     componentDidMount = () => {
         this.setState({ username: sessionStorage.user }, () => {
-            s
+            
             console.log(this.state.username)
 
             if (this.state.username) {
