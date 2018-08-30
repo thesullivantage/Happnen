@@ -14,6 +14,7 @@ class Event extends Component {
         host: "",
         eventName: "",
         location: "",
+        // property for geocoded location:
         QR: "",
         invited: [],
         attending: [],
@@ -25,6 +26,7 @@ class Event extends Component {
         date: moment()
         //userQrs?
     };
+
 
     handleDateTimeChange = (date) => {
         this.setState({
@@ -50,9 +52,9 @@ class Event extends Component {
         event.preventDefault();
         console.log(this.state.userSearch);
         console.log(this.state.invited);
-        this.setState({ 
+        this.setState({
             invited: [...this.state.invited, this.state.userSearch]
-        })  
+        })
     }
 
     handleFormSubmit = event => {
@@ -61,6 +63,7 @@ class Event extends Component {
             API.createEvent({
                 host: sessionStorage.user,
                 eventName: this.state.eventName,
+                latLong: this.state.latLong,
                 location: this.state.location,
                 date: this.state.date,
                 description: this.state.description,

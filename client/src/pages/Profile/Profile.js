@@ -4,9 +4,7 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
-<<<<<<< HEAD
 import API from "../../utils/API"
-=======
 import cloudinary from "cloudinary";
 
 cloudinary.config({
@@ -15,16 +13,11 @@ cloudinary.config({
     api_secret: 'GX7JX8WmSTNIhq4dlBLKkXqO_lE'
 });
 
->>>>>>> 8b4d245f448e8ac11befdb98a434f6efd4eab806
 
 class Profile extends Component {
     state = {
         bio: "",
-<<<<<<< HEAD
-        links: "",
-=======
         link: "",
->>>>>>> 8b4d245f448e8ac11befdb98a434f6efd4eab806
         events: "",
         username: "",
         userData: ""
@@ -44,12 +37,6 @@ class Profile extends Component {
         });
     };
 
-<<<<<<< HEAD
-    handleFormSubmit = event => {
-        event.preventDefault();
-        alert("Profile settings saved.")
-    };
-=======
     // handleFormSubmit = event => {
     //     event.preventDefault();
     //     this.setState({
@@ -72,7 +59,6 @@ class Profile extends Component {
     //         .catch(err => console.log(err));
     //     }
     // };
->>>>>>> 8b4d245f448e8ac11befdb98a434f6efd4eab806
 
     render() {
         return (

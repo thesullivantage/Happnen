@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "browser": {
+    "net": "net-browserify"
+  },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -28,6 +31,8 @@
     "if-env": "^1.0.4",
     "moment": "^2.22.2",
     "mongoose": "^5.0.17",
+    "net-browserify": "^0.2.4",
+    "node-geocoder": "^3.22.0",
     "prop-types": "^15.6.2",
     "react-datepicker": "^1.6.0",
     "react-google-maps": "^9.4.5",
