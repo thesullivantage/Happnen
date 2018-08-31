@@ -14,7 +14,7 @@ module.exports = {
 
 	autofill: function (req, res) {
 		db.Users
-			.find({}, '_id username')
+			.find({}, '_id username picLink')
 			.then(uzas => res.json(uzas))
 			.catch(err => res.status(422).json(err))
 	},
