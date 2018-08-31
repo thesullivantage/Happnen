@@ -105,10 +105,27 @@ class Event extends Component {
     handleAdd = event => {
         event.preventDefault();
         console.log(this.state.userSearch);
-        console.log(this.state.invited);
-        this.setState({
-            invited: [...this.state.invited, this.state.userSearch]
-        })
+        // this.setState({
+        //     invited: [...this.state.invited, this.state.userSearch]
+        // })
+        const indexedAutofills = this.state.autofill[0]
+        const indexz = indexedAutofills.findIndex(item => item['username'] === this.state.userSearch);
+        const toPush = this.state.autofill[0][indexz]['_id']
+        const newArr = this.state.invited
+        for (let i = 0; i < newArr.length; i++) {
+            if (newArr[i] === toPush) {
+                this.setState({
+                    invited: newArr
+                })
+            } else {
+                newArr.push(toPush)
+                this.setState({
+                    invited: newArr
+                })
+            }
+        }
+        console.log(newArr)
+        console.log(toPush)
     }
 
     deleteInvitee = event => {
@@ -284,11 +301,7 @@ class Event extends Component {
                         title='Invite Users'
                         
                         data={
-                            {
-                                'MrRoboto': "null",
-                                'pjoyce1977': "null",
-                                'Google': 'http://placehold.it/250x250'
-                            }
+                            this.state.autoFData[0]
                         }
                     />
 
