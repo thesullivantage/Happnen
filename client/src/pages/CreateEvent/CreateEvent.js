@@ -25,7 +25,7 @@ class Event extends Component {
         ageReq: 0,
         picUrl: "",
         userSearch: "",
-        autoFData: []
+        autoFData: [],
         // date: moment(),
         // added start and end date KB
         startDate: moment(),
