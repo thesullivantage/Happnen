@@ -138,15 +138,13 @@ class Event extends Component {
                                 invited: newArr
                             })
                             console.log(this.state.invited)
+                            console.log(newArr)
+                            console.log(toPush)
                         }
                     }
                 })
             }
         }
-
-
-        console.log(newArr)
-        console.log(toPush)
     }
 
     deleteInvitee = event => {
@@ -244,12 +242,15 @@ class Event extends Component {
                 <Row>
                     <DatePicker
                         s={12}
-                        name="date"
+                        name="startDate"
                         type="date"
                         className="date"
                         placeholderText="Event Date/Time"
                         isClearable={true}
                         selected={this.state.startDate}
+                        selectsStart
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
                         value={this.state.startDate}
                         showYearDropdown
                         dateFormatCalendar="MMMM"
@@ -265,12 +266,15 @@ class Event extends Component {
                 <Row>
                     <DatePicker
                         s={12}
-                        name="date"
+                        name="endDate"
                         type="date"
                         className="date"
                         placeholderText="Event Date/Time"
                         isClearable={true}
                         selected={this.state.endDate}
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
+                        selectsEnd
                         value={this.state.endDate}
                         showYearDropdown
                         dateFormatCalendar="MMMM"
