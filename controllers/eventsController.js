@@ -72,7 +72,7 @@ module.exports = {
 						.updateMany(
 							// May need to add quotes
 							{ username: { $in: req.body.people } },
-							{ $push: { invites: resDocument._id } }
+							{ $push: { invited: resDocument._id } }
 						)
 						.then(invitelog => {
 							console.log("Invite Status", invitelog)
@@ -83,15 +83,15 @@ module.exports = {
 								)
 								.then(ownerLog => {
 									console.log(ownerLog)
-									res.status(200).json("Ran the gauntlet, made it", ownerLog)
+									res.status(200).json(ownerLog)
 								})
-								.catch(err => res.status(422).json("OWNERERR", err))
+								.catch(err => res.status(422).json(err))
 
 						})
-						.catch(err => res.status(422).json("UPDATEERR", err));
+						.catch(err => res.status(422).json(err));
 				})
 				// res.json(dbModel)
-				.catch(err => res.status(422).json("CREATEERR", err));
+				.catch(err => res.status(422).json(err));
 		}, 1000)
 	},
 

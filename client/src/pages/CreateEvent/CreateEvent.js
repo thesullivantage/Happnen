@@ -84,7 +84,7 @@ class Event extends Component {
                 ageReq: this.state.ageReq,
             })
             .then(res => {
-                console.log(res);
+                console.log("EVENT CREATED", res);
                 //Do this all on backend (controller) 
                 // API.findAndInvite({
                 //     people: this.state.invited
@@ -231,8 +231,8 @@ class Event extends Component {
                         title='Invite Users'
                         data={
                             {
-                                'Apple': "null",
-                                'Microsoft': "null",
+                                'MrRoboto': "null",
+                                'pjoyce1977': "null",
                                 'Google': 'http://placehold.it/250x250'
                             }
                         }
