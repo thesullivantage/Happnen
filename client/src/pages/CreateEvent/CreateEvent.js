@@ -25,7 +25,10 @@ class Event extends Component {
         ageReq: 0,
         picUrl: "",
         userSearch: "",
-        date: moment()
+        // date: moment(),
+        // added start and end date KB
+        startDate: moment(),
+        endDate: null
         //userQrs?
     };
 
@@ -49,9 +52,15 @@ class Event extends Component {
         .catch(err => console.log(err))
     }
 
-    handleDateTimeChange = (date) => {
+    handleStartDateTimeChange = (date) => {
         this.setState({
-            date: date
+            startDate: date
+        });
+    }
+    
+    handleEndDateTimeChange = (date) => {
+        this.setState({
+            endDate: date
         });
     }
 
@@ -110,7 +119,8 @@ class Event extends Component {
                 host: sessionStorage.user,
                 eventName: this.state.eventName,
                 location: this.state.location,
-                date: this.state.date,
+                startDate: this.state.startDate,
+                endDate: this.state.endDate,
                 description: this.state.description,
                 invited: this.state.invited,
             // See above
@@ -192,12 +202,33 @@ class Event extends Component {
                         className="date"
                         placeholderText="Event Date/Time"
                         isClearable={true}
-                        selected={this.state.date}
-                        value={this.state.date}
+                        selected={this.state.startDate}
+                        value={this.state.startDate}
                         showYearDropdown
                         dateFormatCalendar="MMMM"
                         scrollableYearDropdown
-                        onChange={this.handleDateTimeChange}
+                        onChange={this.handleStartDateTimeChange}
+                        showTimeSelect
+                        minDate={moment()}
+                        dateFormat="LLL"
+                        withPortal />
+                        {/* DOUBLED UP ON DATEPICKER KB */}
+                </Row>
+
+                <Row>
+                    <DatePicker
+                        s={12}
+                        name="date"
+                        type="date"
+                        className="date"
+                        placeholderText="Event Date/Time"
+                        isClearable={true}
+                        selected={this.state.endDate}
+                        value={this.state.endDate}
+                        showYearDropdown
+                        dateFormatCalendar="MMMM"
+                        scrollableYearDropdown
+                        onChange={this.handleEndDateTimeChange}
                         showTimeSelect
                         minDate={moment()}
                         dateFormat="LLL"
