@@ -2,8 +2,8 @@ const db = require("../models");
 var NodeGeocoder = require("node-geocoder");
 
 var options = {
-	provider: 'locationiq',
-	apiKey: '86fe54efc4ddac'
+	provider: 'google',
+	apiKey: 'AIzaSyAEfiNQ9Wz0i7jqo6CirwVUoGdhFsr3hYQ'
 };
 
 var geocoder = NodeGeocoder(options);

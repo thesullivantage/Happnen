@@ -47,6 +47,20 @@ class Event extends Component {
         this.setState({
             userSearch: value
         });
+
+        //API."findAllUsers"
+        /*.then(result => {
+            -- pull _id's and users from result, put them into an array of 
+            new objects, store this array in state (ex: as ObjId)
+            -- Down to Autocomplete Options:
+                -- Map over each objects username and put that in an autocomplete option
+                -- On addUser click (this logic goes in handle add user function):
+                    -- Existing functionality (add user buttons)
+                    NEW Stuff
+                    -- Grab text from button added
+                    -- search array ObjId for this username, which index it occurs at
+                    -- find the _id at that index, push it to this.state.invited
+        })*/
     };
 
     handleAdd = event => {

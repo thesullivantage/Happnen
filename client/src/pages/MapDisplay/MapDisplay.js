@@ -8,28 +8,6 @@ import API from "../../utils/API"
 
 class MapDisplay extends Component {
 
-    // State object for event properties
-    state = {
-        locations: []
-    }
-
-    componentDidMount() {
-        this.loadLocations();
-    }
-
-    loadLocations = () => {
-        API.getEventLocations()
-          .then(res => {
-            // for each item in the data array
-            for (let i = 0; i < res.data.length; i++) {
-            // add location to locations array
-            this.state.locations = [...this.state.locations, res.data[i].location]}
-            // set locations array state
-            this.setState({ locations: this.state.locations })
-          })
-          .catch(err => console.log(err));
-      };
-
     render() {
         return (
             <div>
