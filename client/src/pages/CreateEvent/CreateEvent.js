@@ -25,7 +25,8 @@ class Event extends Component {
         ageReq: 0,
         picUrl: "",
         userSearch: "",
-        date: moment()
+        date: moment(),
+        autoFData: []
         //userQrs?
     };
 
@@ -38,12 +39,29 @@ class Event extends Component {
             }, () => {
                 console.log("STATE", this.state.autofill)
                 const autofills = this.state.autofill
-                const AfillData = autofills[0].map(obj => {
-                    var rObj = {};
-                    rObj[obj.username] = 'null';
-                    return rObj; 
+                const aFillSplit = autofills[0].map(obj => {                 
+                    if (!obj.picLink) {
+                        var rObj = {};
+                        rObj[obj.username] = 'null';
+                        return rObj;
+                    } else {
+                        var rObj = {};
+                        rObj[obj.username] = obj.picLink;
+                        return rObj;
+                    }
                 })
-                console.log(AfillData)
+                const aFillData = aFillSplit.reduce(function(result, currentObject) {
+                    for(var key in currentObject) {
+                        if (currentObject.hasOwnProperty(key)) {
+                            result[key] = currentObject[key];
+                        }
+                    }
+                    return result;
+                }, {});
+                this.setState({
+                    autoFData : [...this.state.autoFData, aFillData]
+                }, () => console.log(this.state.autoFData))
+
             });
         })
         .catch(err => console.log(err))
