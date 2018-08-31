@@ -35,6 +35,15 @@ class Event extends Component {
             console.log("AUTOFILLDATA", res.data);
             this.setState({
                 autofill: [...this.state.autofill, res.data]
+            }, () => {
+                console.log("STATE", this.state.autofill)
+                const autofills = this.state.autofill
+                const AfillData = autofills[0].map(obj => {
+                    var rObj = {};
+                    rObj[obj.username] = 'null';
+                    return rObj; 
+                })
+                console.log(AfillData)
             });
         })
         .catch(err => console.log(err))
@@ -255,6 +264,7 @@ class Event extends Component {
                         // onChange={this.handleUserSearchChange}
                         onAutocomplete={this.handleAutocomplete}
                         title='Invite Users'
+                        
                         data={
                             {
                                 'MrRoboto': "null",
