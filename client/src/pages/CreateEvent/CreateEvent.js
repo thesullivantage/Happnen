@@ -17,6 +17,7 @@ class Event extends Component {
         location: "",
         // property for geocoded location:
         QR: "",
+        autofill: [],
         invited: [],
         attending: [],
         description: "",
@@ -24,14 +25,60 @@ class Event extends Component {
         ageReq: 0,
         picUrl: "",
         userSearch: "",
-        date: moment()
+        autoFData: []
+        // date: moment(),
+        // added start and end date KB
+        startDate: moment(),
+        endDate: null
         //userQrs?
     };
 
+    componentDidMount = () => {
+        API.autofillusers()
+        .then(res => {
+            console.log("AUTOFILLDATA", res.data);
+            this.setState({
+                autofill: [...this.state.autofill, res.data]
+            }, () => {
+                console.log("STATE", this.state.autofill)
+                const autofills = this.state.autofill
+                const aFillSplit = autofills[0].map(obj => {                 
+                    if (!obj.picLink) {
+                        var rObj = {};
+                        rObj[obj.username] = 'null';
+                        return rObj;
+                    } else {
+                        var rObj = {};
+                        rObj[obj.username] = obj.picLink;
+                        return rObj;
+                    }
+                })
+                const aFillData = aFillSplit.reduce(function(result, currentObject) {
+                    for(var key in currentObject) {
+                        if (currentObject.hasOwnProperty(key)) {
+                            result[key] = currentObject[key];
+                        }
+                    }
+                    return result;
+                }, {});
+                this.setState({
+                    autoFData : [...this.state.autoFData, aFillData]
+                }, () => console.log(this.state.autoFData))
 
-    handleDateTimeChange = (date) => {
+            });
+        })
+        .catch(err => console.log(err))
+    }
+
+    handleStartDateTimeChange = (date) => {
         this.setState({
-            date: date
+            startDate: date
+        });
+    }
+    
+    handleEndDateTimeChange = (date) => {
+        this.setState({
+            endDate: date
         });
     }
 
@@ -48,6 +95,7 @@ class Event extends Component {
             userSearch: value
         });
 
+        
         //API."findAllUsers"
         /*.then(result => {
             -- pull _id's and users from result, put them into an array of 
@@ -66,10 +114,27 @@ class Event extends Component {
     handleAdd = event => {
         event.preventDefault();
         console.log(this.state.userSearch);
-        console.log(this.state.invited);
-        this.setState({
-            invited: [...this.state.invited, this.state.userSearch]
-        })
+        // this.setState({
+        //     invited: [...this.state.invited, this.state.userSearch]
+        // })
+        const indexedAutofills = this.state.autofill[0]
+        const indexz = indexedAutofills.findIndex(item => item['username'] === this.state.userSearch);
+        const toPush = this.state.autofill[0][indexz]['_id']
+        const newArr = this.state.invited
+        for (let i = 0; i < newArr.length; i++) {
+            if (newArr[i] === toPush) {
+                this.setState({
+                    invited: newArr
+                })
+            } else {
+                newArr.push(toPush)
+                this.setState({
+                    invited: newArr
+                })
+            }
+        }
+        console.log(newArr)
+        console.log(toPush)
     }
 
     deleteInvitee = event => {
@@ -89,7 +154,8 @@ class Event extends Component {
                 host: sessionStorage.user,
                 eventName: this.state.eventName,
                 location: this.state.location,
-                date: this.state.date,
+                startDate: this.state.startDate,
+                endDate: this.state.endDate,
                 description: this.state.description,
                 invited: this.state.invited,
             // See above
@@ -98,7 +164,7 @@ class Event extends Component {
                 ageReq: this.state.ageReq,
             })
             .then(res => {
-                console.log(res);
+                console.log("EVENT CREATED", res);
                 //Do this all on backend (controller) 
                 // API.findAndInvite({
                 //     people: this.state.invited
@@ -171,12 +237,33 @@ class Event extends Component {
                         className="date"
                         placeholderText="Event Date/Time"
                         isClearable={true}
-                        selected={this.state.date}
-                        value={this.state.date}
+                        selected={this.state.startDate}
+                        value={this.state.startDate}
                         showYearDropdown
                         dateFormatCalendar="MMMM"
                         scrollableYearDropdown
-                        onChange={this.handleDateTimeChange}
+                        onChange={this.handleStartDateTimeChange}
+                        showTimeSelect
+                        minDate={moment()}
+                        dateFormat="LLL"
+                        withPortal />
+                        {/* DOUBLED UP ON DATEPICKER KB */}
+                </Row>
+
+                <Row>
+                    <DatePicker
+                        s={12}
+                        name="date"
+                        type="date"
+                        className="date"
+                        placeholderText="Event Date/Time"
+                        isClearable={true}
+                        selected={this.state.endDate}
+                        value={this.state.endDate}
+                        showYearDropdown
+                        dateFormatCalendar="MMMM"
+                        scrollableYearDropdown
+                        onChange={this.handleEndDateTimeChange}
                         showTimeSelect
                         minDate={moment()}
                         dateFormat="LLL"
@@ -243,12 +330,9 @@ class Event extends Component {
                         // onChange={this.handleUserSearchChange}
                         onAutocomplete={this.handleAutocomplete}
                         title='Invite Users'
+                        
                         data={
-                            {
-                                'Apple': "null",
-                                'Microsoft': "null",
-                                'Google': 'http://placehold.it/250x250'
-                            }
+                            this.state.autoFData[0]
                         }
                     />
 

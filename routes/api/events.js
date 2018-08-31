@@ -18,4 +18,9 @@ router
     .route("/create")
     .post(eventsController.createEvent);
 
+// Do this in controller
+// router 
+//     .route("/invite")
+//     .post(eventsController.Invitation)
+
 module.exports = router;

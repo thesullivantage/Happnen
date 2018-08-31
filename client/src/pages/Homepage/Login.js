@@ -19,7 +19,7 @@ class Homepage extends Component {
 
     this.setState({
       [name]: value
-    });
+    }, () => console.log(this.state.password));
   };
 
   handleFormSubmit = event => {
@@ -47,7 +47,7 @@ class Homepage extends Component {
     const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to='/profile'/>;
+      return <Redirect to='/mapdisplay'/>;
     }
 
     return (

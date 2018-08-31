@@ -67,13 +67,13 @@ class Signup extends Component {
     };
     this.handleBirthdayChange = this.handleBirthdayChange.bind(this);
   }
-
+  
   handleBirthdayChange(date) {
-    const years = moment().diff(date, 'years', true);
-    this.setState({
-      birthday: date
-    });
-  }
+      const years = moment().diff(date, 'years', true);
+      this.setState({
+        birthday: date
+      });
+    }
 
   handleFormSubmit = event => {
     event.preventDefault();

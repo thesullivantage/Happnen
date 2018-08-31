@@ -31,7 +31,7 @@ router
     .put(usersController.updateUser)
 
 router
-    .route("/allusers")
-    .get(usersController.findAllUsers)
+    .route("/autofill")
+    .post(usersController.autofill)
     
 module.exports = router;

@@ -12,6 +12,13 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 
+	autofill: function (req, res) {
+		db.Users
+			.find({}, '_id username picLink')
+			.then(uzas => res.json(uzas))
+			.catch(err => res.status(422).json(err))
+	},
+
 	// FIND USER BY ID
 	findUserByUsername: function (req, res) {
 		console.log(req.body);
