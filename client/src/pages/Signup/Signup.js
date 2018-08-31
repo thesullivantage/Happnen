@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Redirect } from 'react-router'
-
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import "./Signup.css";
@@ -16,14 +15,50 @@ class Signup extends Component {
     username: "",
     password: "",
     passwordValidate: "",
-    birthday: Date,
+    passValid: false,
+    birthday: moment(),
     email: "",
-    over18: false,
+    ofAge: false,
     events: [],
     userEvents: [],
     invites: [],
     redirect: false
   };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    let age = moment().diff(this.state.birthday, 'years');
+
+    this.setState({
+      [name]: value
+    }, () => {
+
+      let pass = this.state.password;
+      let passVal = this.state.passwordValidate;
+      console.log(pass);
+      console.log(passVal);
+
+      if (pass === passVal && pass !== "" && passVal !== "") {
+        this.setState({
+          passValid: true
+        })
+      }
+
+      else {
+        this.setState({
+          passValid: false
+        })
+      }
+    });
+
+    if (age >= 21) {
+      this.setState({
+        ofAge: true
+      })
+      console.log(this.state.ofAge);
+      console.log(age);
+    }
+  }
 
   constructor(props) {
     super(props)
@@ -32,54 +67,40 @@ class Signup extends Component {
     };
     this.handleBirthdayChange = this.handleBirthdayChange.bind(this);
   }
-
+  
   handleBirthdayChange(date) {
-    const years = moment().diff(date, 'years', true);
-    this.setState({
-      birthday: date
-    });
-
-      {if (years >= 21) {
-        this.setState({
-          over18: true
-        })
-      }
-
-      else {
-        this.setState({
-          over18: false
-        })
-      }
+      const years = moment().diff(date, 'years', true);
+      this.setState({
+        birthday: date
+      });
     }
-
-  }
-
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.username && this.state.password) {
+
+    if (this.state.username && this.state.passValid === true && this.state.email) {
       API.signUp({
         username: this.state.username,
         password: this.state.password,
-        birthday: this.state.date,
+        birthday: this.state.birthday,
+        ofAge: this.state.ofAge,
         email: this.state.email
       })
         .then(res => {
           console.log(res);
-          const username = this.state.username
-          sessionStorage.user = username;
+          console.log(this.state.username);
+          console.log(this.state.passValid);
+          console.log(this.state.ofAge);
+          sessionStorage.user = this.state.username;
         })
         .catch(err => console.log(err));
-      this.setState({ username: "", password: "", passwordValidate: "", email: "", over18: false, redirect: true });
+      this.setState({ username: "", password: "", passwordValidate: "", passValid: false, email: "", ofAge: false, redirect: true });
     }
-    
+
+    else {
+      alert("Please complete all fields and match passwords.")
+    }
+
   };
 
 
@@ -88,7 +109,7 @@ class Signup extends Component {
     const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to='/profile'/>;
+      return <Redirect to='/profile' />;
     }
 
     return (
@@ -147,18 +168,22 @@ class Signup extends Component {
             name="passwordValidate"
             type="password"
             className="validate"
-            value={this.state.passwordValidate}>
+            value={this.state.passwordValidate}
+            onChange={this.handleInputChange}>
             <Icon>lock</Icon>
           </Input>
         </Row>
 
         <Row>
-          <Icon>pregnant_woman</Icon>
+        <Col>
+        <p>Birthday</p>
+          {/* <Icon>pregnant_woman</Icon> */}
           <DatePicker
             s={12}
             name="birthday"
             type="date"
             className="date"
+            calendarClassName="datepicker"
             isClearable={true}
             selected={this.state.birthday}
             value={this.state.birthday}
@@ -171,6 +196,7 @@ class Signup extends Component {
             withPortal
             placeholderText="Birthday"
           />
+          </Col>
         </Row>
 
         <Row>
