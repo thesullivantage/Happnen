@@ -25,7 +25,8 @@ class Event extends Component {
         ageReq: 0,
         picUrl: "",
         userSearch: "",
-        autoFData: []
+        autoFData: [],
+        userInvited: [],
         // date: moment(),
         // added start and end date KB
         startDate: moment(),
@@ -35,39 +36,39 @@ class Event extends Component {
 
     componentDidMount = () => {
         API.autofillusers()
-        .then(res => {
-            console.log("AUTOFILLDATA", res.data);
-            this.setState({
-                autofill: [...this.state.autofill, res.data]
-            }, () => {
-                console.log("STATE", this.state.autofill)
-                const autofills = this.state.autofill
-                const aFillSplit = autofills[0].map(obj => {                 
-                    if (!obj.picLink) {
-                        var rObj = {};
-                        rObj[obj.username] = 'null';
-                        return rObj;
-                    } else {
-                        var rObj = {};
-                        rObj[obj.username] = obj.picLink;
-                        return rObj;
-                    }
-                })
-                const aFillData = aFillSplit.reduce(function(result, currentObject) {
-                    for(var key in currentObject) {
-                        if (currentObject.hasOwnProperty(key)) {
-                            result[key] = currentObject[key];
-                        }
-                    }
-                    return result;
-                }, {});
+            .then(res => {
+                console.log("AUTOFILLDATA", res.data);
                 this.setState({
-                    autoFData : [...this.state.autoFData, aFillData]
-                }, () => console.log(this.state.autoFData))
+                    autofill: [...this.state.autofill, res.data]
+                }, () => {
+                    console.log("STATE", this.state.autofill)
+                    const autofills = this.state.autofill
+                    const aFillSplit = autofills[0].map(obj => {
+                        if (!obj.picLink) {
+                            var rObj = {};
+                            rObj[obj.username] = 'null';
+                            return rObj;
+                        } else {
+                            var rObj = {};
+                            rObj[obj.username] = obj.picLink;
+                            return rObj;
+                        }
+                    })
+                    const aFillData = aFillSplit.reduce(function (result, currentObject) {
+                        for (var key in currentObject) {
+                            if (currentObject.hasOwnProperty(key)) {
+                                result[key] = currentObject[key];
+                            }
+                        }
+                        return result;
+                    }, {});
+                    this.setState({
+                        autoFData: [...this.state.autoFData, aFillData]
+                    }, () => console.log(this.state.autoFData))
 
-            });
-        })
-        .catch(err => console.log(err))
+                });
+            })
+            .catch(err => console.log(err))
     }
 
     handleStartDateTimeChange = (date) => {
@@ -75,7 +76,7 @@ class Event extends Component {
             startDate: date
         });
     }
-    
+
     handleEndDateTimeChange = (date) => {
         this.setState({
             endDate: date
@@ -95,7 +96,7 @@ class Event extends Component {
             userSearch: value
         });
 
-        
+
         //API."findAllUsers"
         /*.then(result => {
             -- pull _id's and users from result, put them into an array of 
@@ -114,25 +115,36 @@ class Event extends Component {
     handleAdd = event => {
         event.preventDefault();
         console.log(this.state.userSearch);
-        // this.setState({
-        //     invited: [...this.state.invited, this.state.userSearch]
-        // })
-        const indexedAutofills = this.state.autofill[0]
-        const indexz = indexedAutofills.findIndex(item => item['username'] === this.state.userSearch);
-        const toPush = this.state.autofill[0][indexz]['_id']
-        const newArr = this.state.invited
-        for (let i = 0; i < newArr.length; i++) {
-            if (newArr[i] === toPush) {
-                this.setState({
-                    invited: newArr
-                })
+        const pushY = this.state.userSearch
+        const toSendArr = this.state.userInvited
+        for (let i = 0; i < toSendArr.length; i++) {
+            if (toSendArr[i] === pushY) {
+                return;
             } else {
-                newArr.push(toPush)
+                toSendArr.push(pushY)
                 this.setState({
-                    invited: newArr
+                    userInvited: toSendArr
+                }, () => {
+                    const indexedAutofills = this.state.autofill[0]
+                    const indexz = indexedAutofills.findIndex(item => item['username'] === this.state.userSearch);
+                    const toPush = this.state.autofill[0][indexz]['_id']
+                    const newArr = this.state.invited
+                    for (let i = 0; i < newArr.length; i++) {
+                        if (newArr[i] === toPush) {
+                            return;
+                        } else {
+                            newArr.push(toPush)
+                            this.setState({
+                                invited: newArr
+                            })
+                            console.log(this.state.invited)
+                        }
+                    }
                 })
             }
         }
+
+
         console.log(newArr)
         console.log(toPush)
     }
@@ -145,11 +157,11 @@ class Event extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.eventName && this.state.location) {
-            
+
             // Use this if need to define type for db query
             // const invited = this.state.invited;
             // const mongoInvitedArr = invited.map(arr => mongoose.Types.String(arr));
-            
+
             API.createEvent({
                 host: sessionStorage.user,
                 eventName: this.state.eventName,
@@ -158,19 +170,19 @@ class Event extends Component {
                 endDate: this.state.endDate,
                 description: this.state.description,
                 invited: this.state.invited,
-            // See above
-            // mongoInvited: mongoInvitedArr,
+                // See above
+                // mongoInvited: mongoInvitedArr,
                 type: this.state.type,
                 ageReq: this.state.ageReq,
             })
-            .then(res => {
-                console.log("EVENT CREATED", res);
-                //Do this all on backend (controller) 
-                // API.findAndInvite({
-                //     people: this.state.invited
-                // })
-            })
-            .catch(err => console.log(err));
+                .then(res => {
+                    console.log("EVENT CREATED", res);
+                    //Do this all on backend (controller) 
+                    // API.findAndInvite({
+                    //     people: this.state.invited
+                    // })
+                })
+                .catch(err => console.log(err));
         }
         alert(`${this.state.eventName}\n Created!`);
         this.setState({ eventName: "", location: "", description: "" });
@@ -247,7 +259,7 @@ class Event extends Component {
                         minDate={moment()}
                         dateFormat="LLL"
                         withPortal />
-                        {/* DOUBLED UP ON DATEPICKER KB */}
+                    {/* DOUBLED UP ON DATEPICKER KB */}
                 </Row>
 
                 <Row>
@@ -330,7 +342,7 @@ class Event extends Component {
                         // onChange={this.handleUserSearchChange}
                         onAutocomplete={this.handleAutocomplete}
                         title='Invite Users'
-                        
+
                         data={
                             this.state.autoFData[0]
                         }
@@ -343,10 +355,10 @@ class Event extends Component {
 
                 <Row>
                     <Col>
-                        {usersInvited.map(userInvited =>
+                        {usersInvited.map(item =>
                             <UserInvitedBtn
-                                id={userInvited}
-                                value={userInvited}
+                                id={item}
+                                value={item}
                                 onClick={this.deleteInvitee} />
                         )}
                     </Col>
