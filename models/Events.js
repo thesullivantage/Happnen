@@ -13,7 +13,11 @@ const eventSchema = new Schema({
   // datetimeStart: { type: Date, default: Date.now },
   // datetimeEnd: { type: Date, default: (Date.now + 3600000) },
 
+  // DATE TO BE DEPRECATED
   date: { type: Date, default: Date.now },
+  // ADDED START AND END DATE
+  startDate: { type: Date, default: Date.now },
+  endDate: { type: Date, default: new Date(+new Date() + 3600000)},
   description: { type: String, required: false },
   invited: [{ type: Schema.Types.ObjectId, ref: 'Users' }],
   //add id's here upon invitation by event creator:
