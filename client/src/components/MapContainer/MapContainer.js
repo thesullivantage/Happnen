@@ -1,8 +1,9 @@
 import React from "react";
-import { compose, withProps, withStateHandlers, withHandlers } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow} from "react-google-maps"
+import { compose, withProps, withStateHandlers, withHandlers } from "recompose";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow} from "react-google-maps";
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
-import API from "../../utils/API"
+import {Button, Icon, Modal} from 'react-materialize';
+import API from "../../utils/API";
 
 const Map = compose(
   withProps({
@@ -46,7 +47,22 @@ const Map = compose(
           onClick={props.onToggleOpen.bind(null, marker._id)}       
         > 
           {props.markerOpen === marker._id ? <InfoWindow onCloseClick={props.onToggleOpen.bind(null, marker._id)}>
-            <div>{marker.eventName}</div>
+            <div>
+              <h5>{marker.eventName}</h5>
+              <p>{marker.location}</p>
+              <p>{marker.date}</p>
+              <Modal
+                header={marker.eventName}
+                trigger={<Button waves='light'>More Info<Icon right>event</Icon></Button>}>
+                <p>{marker.location}</p>
+                <p>{marker.description}</p>
+                <div>
+                  pics/guest list
+                </div>
+                <p>{marker.date}</p>
+                <Button waves='light'>button<Icon right>event_available</Icon></Button>
+              </Modal>
+            </div>
           </InfoWindow> : null}
         </Marker>
       ))}
