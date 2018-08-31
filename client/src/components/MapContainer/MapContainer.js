@@ -46,7 +46,12 @@ const Map = compose(
           onClick={props.onToggleOpen.bind(null, marker._id)}       
         > 
           {props.markerOpen === marker._id ? <InfoWindow onCloseClick={props.onToggleOpen.bind(null, marker._id)}>
-            <div>{marker.eventName}</div>
+            <div>
+              <h2>{marker.eventName}</h2>
+              <p>{marker.location}</p>
+              <p>{marker.date}</p>
+              <button></button>
+            </div>
           </InfoWindow> : null}
         </Marker>
       ))}
