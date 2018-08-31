@@ -13,22 +13,30 @@ export default {
     return axios.post("/api/users/signup", suObj)
   },
 
+
+  // EVENT CREATION
+
   createEvent: function (eventObj) {
     return axios.post("api/events/create", eventObj)
   },
 
-  //  inviteUsers: function(id) {
-  //  return axios.get("api/users/")
-  //}
+  autofillusers: function () {
+    return axios.post("api/users/autofill")
+  },
 
+// Do this on backend (controller)
+//   findAndInvite: function (inviteObj) {
+// 	return axios.post("api/events/invite", inviteObj)
+//   },
+
+
+  // PROFILE
   updateProfile: function (updateObj) {
     return axios.put("/api/users/update", updateObj)
   },
 
-
   populateProfile: function (userObj) {
-    console.log(userObj)
-    return axios.post("/api/users/populatedata", userObj)
+    return axios.get("/api/users/populatedata", userObj)
   },
 
 
@@ -38,12 +46,16 @@ export default {
     return axios.get("/api/events")
   },
 
+
   // CLOUDINARY HELPERS
 
   savePhoto: function () {
     return axios.get("/api/cloudinary")
   }
+
+
   // REF: 
+
   // getBooks: function() {
   //   return axios.get("/api/books");
   // },

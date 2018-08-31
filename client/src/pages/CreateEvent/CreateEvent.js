@@ -17,6 +17,7 @@ class Event extends Component {
         location: "",
         // property for geocoded location:
         QR: "",
+        autofill: [],
         invited: [],
         attending: [],
         description: "",
@@ -28,6 +29,16 @@ class Event extends Component {
         //userQrs?
     };
 
+    componentDidMount = () => {
+        API.autofillusers()
+        .then(res => {
+            console.log("AUTOFILLDATA", res.data);
+            this.setState({
+                autofill: [...this.state.autofill, res.data]
+            });
+        })
+        .catch(err => console.log(err))
+    }
 
     handleDateTimeChange = (date) => {
         this.setState({
@@ -48,6 +59,7 @@ class Event extends Component {
             userSearch: value
         });
 
+        
         //API."findAllUsers"
         /*.then(result => {
             -- pull _id's and users from result, put them into an array of 
@@ -98,7 +110,7 @@ class Event extends Component {
                 ageReq: this.state.ageReq,
             })
             .then(res => {
-                console.log(res);
+                console.log("EVENT CREATED", res);
                 //Do this all on backend (controller) 
                 // API.findAndInvite({
                 //     people: this.state.invited
@@ -245,8 +257,8 @@ class Event extends Component {
                         title='Invite Users'
                         data={
                             {
-                                'Apple': "null",
-                                'Microsoft': "null",
+                                'MrRoboto': "null",
+                                'pjoyce1977': "null",
                                 'Google': 'http://placehold.it/250x250'
                             }
                         }
