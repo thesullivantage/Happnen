@@ -19,7 +19,7 @@ class Homepage extends Component {
 
     this.setState({
       [name]: value
-    });
+    }, () => console.log(this.state.password));
   };
 
   handleFormSubmit = event => {
