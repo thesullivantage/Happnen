@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Input, Icon, Button, Radio, File, Checkbox, Select, Autocomplete, List } from "react-materialize";
 import Logo from "../../components/Logo/index";
+import { Redirect } from 'react-router'
 import "./CreateEvent.css";
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -30,7 +31,8 @@ class Event extends Component {
         // date: moment(),
         // added start and end date KB
         startDate: moment(),
-        endDate: null
+        endDate: null,
+        redirect: false
         //userQrs?
     };
 
@@ -116,38 +118,40 @@ class Event extends Component {
         event.preventDefault();
         console.log(this.state.userSearch);
         const pushY = this.state.userSearch
+        console.log("pushY", pushY)
         const toSendArr = this.state.userInvited
-        for (let i = 0; i < toSendArr.length; i++) {
-            if (toSendArr[i] === pushY) {
-                return;
-            } else {
+        console.log("toSendArr", toSendArr)
+            if (!toSendArr.includes(pushY)) {
                 toSendArr.push(pushY)
                 this.setState({
                     userInvited: toSendArr
                 }, () => {
+                    console.log(this.state.userInvited)
                     const indexedAutofills = this.state.autofill[0]
                     const indexz = indexedAutofills.findIndex(item => item['username'] === this.state.userSearch);
                     const toPush = this.state.autofill[0][indexz]['_id']
                     const newArr = this.state.invited
-                    for (let i = 0; i < newArr.length; i++) {
-                        if (newArr[i] === toPush) {
-                            return;
-                        } else {
+                        if (!newArr.includes(toPush)) {
                             newArr.push(toPush)
                             this.setState({
-                                invited: newArr
-                            })
-                            console.log(this.state.invited)
+                                //this is what we need to send to 
+                                invited: newArr,
+                            }, () => console.log(this.state.invited))
+                        } else {
+                            return;                            
                         }
-                    }
-                })
+                })            
+            } else {
+                return;
             }
+        // id pushing function
+
+                
+            
         }
 
 
-        console.log(newArr)
-        console.log(toPush)
-    }
+    
 
     deleteInvitee = event => {
         event.preventDefault();
@@ -177,6 +181,9 @@ class Event extends Component {
             })
                 .then(res => {
                     console.log("EVENT CREATED", res);
+                    this.setState({
+                        redirect: true
+                    })
                     //Do this all on backend (controller) 
                     // API.findAndInvite({
                     //     people: this.state.invited
@@ -191,8 +198,15 @@ class Event extends Component {
 
 
     render() {
-        let usersInvited = this.state.invited;
+        let usersInvited = this.state.userInvited;
         let userInvited = this.state.userSearch;
+
+        const { redirect } = this.state;
+
+        if (redirect) {
+          return <Redirect to='/mapdisplay' />;
+        }
+
         return (
             <Container fluid>
                 <Logo
@@ -359,7 +373,8 @@ class Event extends Component {
                             <UserInvitedBtn
                                 id={item}
                                 value={item}
-                                onClick={this.deleteInvitee} />
+                                onClick={this.deleteInvitee}
+                            />
                         )}
                     </Col>
                 </Row>
