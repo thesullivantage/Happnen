@@ -54,12 +54,12 @@ class Profile extends Component {
                     .then(res => {
                         console.log(res)
                         this.setState({
-                            user: res,
+                            userData: res,
                             // bio: this.state.user.bio, 
                             // picLink: this.state.user.picLink, 
                             // events: this.state.user.myEvents
                         }, () => {
-                            console.log(this.state.user)
+                            console.log(this.state.userData)
                         })
                         console.log("SUCCESS")
                     })
@@ -72,13 +72,13 @@ class Profile extends Component {
     //Don't worry about this:
     populateFunction = () => {
         const userObj = {
-            username: 'MrRoboto'
+            username: sessionStorage.user
         }
         API.populateProfile(userObj)
             .then(res => {
                 console.log(res)
                 this.setState({
-                    user: res,
+                    userData: res,
                     // bio: this.state.user.bio, 
                     // picLink: this.state.user.picLink, 
                     // events: this.state.user.myEvents

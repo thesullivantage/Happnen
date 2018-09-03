@@ -136,6 +136,7 @@ class Event extends Component {
                             this.setState({
                                 //this is what we need to send to 
                                 invited: newArr,
+                                userSearch: ""
                             }, () => console.log(this.state.invited))
                         } else {
                             return;                            
