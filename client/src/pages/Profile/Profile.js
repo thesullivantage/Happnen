@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, Collection, CollectionItem } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
@@ -17,7 +17,7 @@ cloudinary.config({
 class Profile extends Component {
 
     state = {
-        user: "",
+        userData: [],
         username: "",
         bio: "",
         picLink: "",
@@ -41,7 +41,7 @@ class Profile extends Component {
         this.setState({ username: sessionStorage.user }, () => {
 
 
-            
+
             console.log(this.state.username + " ogstate.username")
 
 
@@ -175,6 +175,34 @@ class Profile extends Component {
                         onChange={this.handleInputChange}>
                         <Icon>mode_edit</Icon>
                     </Input>
+                </Row>
+
+                {/* Invite List */}
+
+                <Row>
+                    <Col>
+                    {if(this.state.userData.invites){
+                        
+                    }
+                    }
+                    
+                        <Collection>
+                            {this.state.userData.invites.map(invite => {
+                                <CollectionItem>
+                                    {/* modal stuff */}
+                                </CollectionItem>
+                            })}
+                        </Collection>
+                    </Col>
+                </Row>
+
+                {/* Current Events */}
+
+                <Row>
+                    <Col>
+                        <Collection>
+                        </Collection>
+                    </Col>
                 </Row>
 
                 <Row>
