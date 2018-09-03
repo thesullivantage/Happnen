@@ -344,7 +344,8 @@ class Event extends Component {
                         label="QR Code"
                         name="QR"
                         type="checkbox"
-                        value={this.state.QR} />
+                        value={this.state.QR} 
+                        />
                 </Row>
 
                 <Row>
@@ -374,7 +375,7 @@ class Event extends Component {
                                 id={item}
                                 value={item}
                                 onClick={this.deleteInvitee}
-                                />
+                            />
                         )}
                     </Col>
                 </Row>
