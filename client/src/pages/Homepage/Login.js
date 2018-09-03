@@ -24,7 +24,7 @@ class Homepage extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    alert(`Username: ${this.state.username}\nPassword: ${this.state.password}`);
+    console.log(`Username: ${this.state.username}\nPassword: ${this.state.password}`);
 
     const loginObj = {
       username: this.state.username,
@@ -39,7 +39,7 @@ class Homepage extends Component {
         console.log(res)
       })
       .catch(err => console.log(err));
-
+      //alert if all fields aren't completed
   };
 
   render() {

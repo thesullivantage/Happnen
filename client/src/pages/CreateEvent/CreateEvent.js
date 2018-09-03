@@ -374,7 +374,7 @@ class Event extends Component {
                                 id={item}
                                 value={item}
                                 onClick={this.deleteInvitee}
-                            />
+                                />
                         )}
                     </Col>
                 </Row>
