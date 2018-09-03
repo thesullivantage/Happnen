@@ -35,8 +35,8 @@ class Signup extends Component {
 
       let pass = this.state.password;
       let passVal = this.state.passwordValidate;
-      console.log(pass);
-      console.log(passVal);
+      // console.log(pass);
+      // console.log(passVal);
 
       if (pass === passVal && pass !== "" && passVal !== "") {
         this.setState({
@@ -55,8 +55,8 @@ class Signup extends Component {
       this.setState({
         ofAge: true
       })
-      console.log(this.state.ofAge);
-      console.log(age);
+      // console.log(this.state.ofAge);
+      // console.log(age);
     }
   }
 
@@ -79,6 +79,7 @@ class Signup extends Component {
     event.preventDefault();
 
     if (this.state.username && this.state.passValid === true && this.state.email) {
+      console.log("FIRST", this.state.username)
       API.signUp({
         username: this.state.username,
         password: this.state.password,
@@ -92,9 +93,11 @@ class Signup extends Component {
           console.log(this.state.passValid);
           console.log(this.state.ofAge);
           sessionStorage.user = this.state.username;
+          this.setState({ username: "", password: "", passwordValidate: "", passValid: false, email: "", ofAge: false, redirect: true });
+          console.log(sessionStorage.user)
         })
         .catch(err => console.log(err));
-      this.setState({ username: "", password: "", passwordValidate: "", passValid: false, email: "", ofAge: false, redirect: true });
+      
     }
 
     else {

@@ -41,8 +41,8 @@ class Profile extends Component {
         this.setState({ username: sessionStorage.user }, () => {
 
 
-
-            console.log(this.state.username + " ogstate.username")
+            
+            console.log(sessionStorage.user)
 
 
             if (this.state.username) {
@@ -59,6 +59,7 @@ class Profile extends Component {
                             // picLink: this.state.user.picLink, 
                             // events: this.state.user.myEvents
                         }, () => {
+                            //map 
                             console.log(this.state.userData)
                         })
                         console.log("SUCCESS")
@@ -180,12 +181,9 @@ class Profile extends Component {
                 {/* Invite List */}
 
                 <Row>
-                    <Col>
-                    {if(this.state.userData.invites){
-                        
-                    }
-                    }
                     
+                    <Col>    
+                        {/* Selective Rendering here  */}
                         <Collection>
                             {this.state.userData.invites.map(invite => {
                                 <CollectionItem>
@@ -210,7 +208,7 @@ class Profile extends Component {
                         className="Submit"
                         onClick={this.handleFormSubmit}>Save Profile</Button>
                 </Row>
-
+                
             </Container>
 
         )
