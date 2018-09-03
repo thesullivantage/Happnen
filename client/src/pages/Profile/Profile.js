@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, Collection, CollectionItem } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
@@ -176,6 +176,31 @@ class Profile extends Component {
                         onChange={this.handleInputChange}>
                         <Icon>mode_edit</Icon>
                     </Input>
+                </Row>
+
+                {/* Invite List */}
+
+                <Row>
+                    
+                    <Col>    
+                        {/* Selective Rendering here  */}
+                        <Collection>
+                            {this.state.userData.invites.map(invite => {
+                                <CollectionItem>
+                                    {/* modal stuff */}
+                                </CollectionItem>
+                            })}
+                        </Collection>
+                    </Col>
+                </Row>
+
+                {/* Current Events */}
+
+                <Row>
+                    <Col>
+                        <Collection>
+                        </Collection>
+                    </Col>
                 </Row>
 
                 <Row>
