@@ -5,7 +5,7 @@ import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
 import cloudinary from "cloudinary";
-import { MCollection } from "../../components/MCollection/";
+// import { MCollection } from "../../components/MCollection/";
 import API from "../../utils/API"
 
 cloudinary.config({
@@ -183,10 +183,10 @@ class Profile extends Component {
 
                 <Row>
                     <Col>    
-                        <MCollection 
+                        {/* <MCollection 
                             type="invitation"
                             data={this.state.userData.invites}
-                        />
+                        /> */}
                     </Col>
                 </Row>
 
@@ -194,10 +194,10 @@ class Profile extends Component {
 
                 <Row>
                     <Col>
-                        <MCollection 
+                        {/* <MCollection 
                             type="myEvents"
                             data={this.state.userData.myEvents}
-                        />
+                        /> */}
                     </Col>
                 </Row>
 
