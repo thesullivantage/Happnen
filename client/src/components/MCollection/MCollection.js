@@ -11,7 +11,7 @@ const passdata = props => {props.data}
 class MCollection extends Component {
 
   render() {
-    
+
     if (type == "invitation") {
       return <Invitation data={passdata} />;
     } else if (type == "myEvent") {
@@ -19,7 +19,6 @@ class MCollection extends Component {
     } else {
       return <PublicEvent data={passdata} />
     }
-
   }
 }
 
