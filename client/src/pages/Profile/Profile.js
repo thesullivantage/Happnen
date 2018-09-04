@@ -188,14 +188,14 @@ class Profile extends Component {
 
                 {/* Invite List */}
 
-                {/* <Row>
+                <Row>
                     <Col>
                         <MCollection
                             type="invitation"
                             data={this.state.userData.invites}
                         />
                     </Col>
-                </Row> */}
+                </Row>
 
                 {/* My Events */}
 
