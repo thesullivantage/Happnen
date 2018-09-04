@@ -20,7 +20,7 @@ const eventsSeed = [
     //Also, combined date and time just based on the format; will concat when making the call
     startDate: 1535803200,
     endDate: 1535824800,
-    qr: "u6T1Ru2AROV7",
+    eventQr: "u6T1Ru2AROV7",
     //add id's here upon invitation by event creator:
     invited: [],
     //probably disable inviting guests under 21 when we render the suggestions to invite guests, and if it is based on an "on submit" type of deal where they type in the user name, we could add in some error handling to let them know that the person is under 21
@@ -28,7 +28,7 @@ const eventsSeed = [
     attending: [],
     description: "Andy's fun party!!",
     picUrl: ["https://via.placeholder.com/350x200"],
-    //An afterthought, for later qr checking functionality via camera:
+    //An afterthought, for later eventQr checking functionality via camera:
     userQrs: []
 
   },
@@ -43,7 +43,7 @@ const eventsSeed = [
     //Also, combined date and time just based on the format; will concat when making the call
     startDate: 1535472000,
     endDate: 1535490000,
-    qr: "0RdfdV0hImtE",
+    eventQr: "0RdfdV0hImtE",
     //add id's here upon invitation by event creator:
     invited: [],
     //probably disable inviting guests under 21 when we render the suggestions to invite guests, and if it is based on an "on submit" type of deal where they type in the user name, we could add in some error handling to let them know that the person is under 21
@@ -51,7 +51,7 @@ const eventsSeed = [
     attending: [],
     description: "Brndy's fun party!!",
     picUrl: ["https://via.placeholder.com/300x200"],
-    //An afterthought, for later qr checking functionality via camera:
+    //An afterthought, for later eventQr checking functionality via camera:
     userQrs: []
 
   },
@@ -66,7 +66,7 @@ const eventsSeed = [
     //Also, combined date and time just based on the format; will concat when making the call
     startDate: 1535536800,
     endDate: 1567126800,
-    qr: "IniVqe50EgZV",
+    eventQr: "IniVqe50EgZV",
     //add id's here upon invitation by event creator:
     invited: [],
     //probably disable inviting guests under 21 when we render the suggestions to invite guests, and if it is based on an "on submit" type of deal where they type in the user name, we could add in some error handling to let them know that the person is under 21
@@ -74,7 +74,7 @@ const eventsSeed = [
     attending: [],
     description: "sandy's fun party!!",
     picUrl: ["https://via.placeholder.com/300x300"],
-    //An afterthought, for later qr checking functionality via camera:
+    //An afterthought, for later eventQr checking functionality via camera:
     userQrs: []
 
   },
@@ -89,7 +89,7 @@ const eventsSeed = [
     //Also, combined date and time just based on the format; will concat when making the call
     startDate: 1567342800,
     endDate: 1567476000,
-    qr: "D57Y50YPBf8P",
+    eventQr: "D57Y50YPBf8P",
     //add id's here upon invitation by event creator:
     invited: [],
     //probably disable inviting guests under 21 when we render the suggestions to invite guests, and if it is based on an "on submit" type of deal where they type in the user name, we could add in some error handling to let them know that the person is under 21
@@ -97,7 +97,7 @@ const eventsSeed = [
     attending: [],
     description: "shandy's fun party!!",
     picUrl: ["https://via.placeholder.com/2700x300"],
-    //An afterthought, for later qr checking functionality via camera:
+    //An afterthought, for later eventQr checking functionality via camera:
     userQrs: []
 
   },
@@ -112,7 +112,7 @@ const eventsSeed = [
     //Also, combined date and time just based on the format; will concat when making the call
     startDate: 1535536800,
     endDate: 1567126800,
-    qr: "LbA4VhB2Z9Cn",
+    eventQr: "LbA4VhB2Z9Cn",
     //add id's here upon invitation by event creator:
     invited: [],
     //probably disable inviting guests under 21 when we render the suggestions to invite guests, and if it is based on an "on submit" type of deal where they type in the user name, we could add in some error handling to let them know that the person is under 21
@@ -120,7 +120,7 @@ const eventsSeed = [
     attending: [],
     description: "sandy's fun party!!",
     picUrl: ["https://via.placeholder.com/300x300"],
-    //An afterthought, for later qr checking functionality via camera:
+    //An afterthought, for later eventQr checking functionality via camera:
     userQrs: []
 
   }
