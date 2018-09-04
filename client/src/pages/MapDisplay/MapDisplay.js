@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, SideNav, SideNavItem } from "react-materialize";
 import "./MapDisplay.css";
 import { MapComponent } from "../../components/MapContainer/MapContainer";
 import API from "../../utils/API"
@@ -12,6 +12,16 @@ class MapDisplay extends Component {
             <div>
                 <div>
                     <MapComponent />
+                    <SideNav
+                        trigger={<Button style={{position:'absolute', bottom:'40px', left:'10px', zIndex:'4'}}>Events List</Button>}
+                        options={{ closeOnClick: true }}
+                        >
+                        <SideNavItem subheader>Events List</SideNavItem>
+                        <SideNavItem divider />
+                        <SideNavItem waves>One</SideNavItem>
+                        <SideNavItem waves>Two</SideNavItem>
+                        <SideNavItem waves>Three</SideNavItem>
+                    </SideNav>
                 </div>
 
                 <Container>
