@@ -7,6 +7,18 @@ import API from "../../utils/API"
 
 class MapDisplay extends Component {
 
+    componentWillMount() {
+        this.setState({ events: [] })
+    }
+    
+      componentDidMount() {
+        API.getEventLocations()
+          .then(res => {
+            this.setState({ events: res.data });
+          }
+        );
+    }
+
     render() {
         return (
             <div>
@@ -15,12 +27,15 @@ class MapDisplay extends Component {
                     <SideNav
                         trigger={<Button style={{position:'absolute', bottom:'40px', left:'10px', zIndex:'4'}}>Events List</Button>}
                         options={{ closeOnClick: true }}
+                        events={this.state.events}
                         >
                         <SideNavItem subheader>Events List</SideNavItem>
                         <SideNavItem divider />
-                        <SideNavItem waves>One</SideNavItem>
-                        <SideNavItem waves>Two</SideNavItem>
-                        <SideNavItem waves>Three</SideNavItem>
+
+                        {this.state.events.map(event => (
+                            <SideNavItem waves>{event.eventName}</SideNavItem>
+                        ))}
+
                     </SideNav>
                 </div>
 
