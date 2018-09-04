@@ -103,4 +103,5 @@ export class MapComponent extends React.Component {
   }
 }
 
+// What does the following actually do?
 <MapComponent />

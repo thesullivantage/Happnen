@@ -15,6 +15,7 @@ const eventSchema = new Schema({
   endDate: { type: Date, default: new Date(+new Date() + 3600000)},
   description: { type: String, required: false },
   invited: [{ type: Schema.Types.ObjectId, ref: 'Users' }],
+  locationDownloaded: [],
   //add id's here upon invitation by event creator:
   type: {
     type: Number,
