@@ -5,7 +5,7 @@ import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
 import cloudinary from "cloudinary";
-// import { MCollection } from "../../components/MCollection/";
+import MCollection from "../../components/MCollection/";
 import API from "../../utils/API"
 
 cloudinary.config({
@@ -56,8 +56,8 @@ class Profile extends Component {
                         console.log(res)
                         this.setState({
                             userData: res,
-                            // bio: this.state.user.bio,
-                            // picLink: this.state.user.picLink,
+                            bio: res.data.bio,
+                            picLink: res.data.picLink
                             // events: this.state.user.myEvents
                         }, () => {
                             //map
@@ -81,8 +81,8 @@ class Profile extends Component {
                 console.log(res)
                 this.setState({
                     userData: res,
-                    // bio: this.state.user.bio,
-                    // picLink: this.state.user.picLink,
+                    bio: this.state.user.bio,
+                    picLink: this.state.user.picLink,
                     // events: this.state.user.myEvents
                 })
                 console.log("SUCCESS")
@@ -93,25 +93,31 @@ class Profile extends Component {
 
     handleInputChange = event => {
         console.log(this.state)
+        console.log(event.target)
 
         const { name, value } = event.target;
 
         this.setState({
             [name]: value
-        });
+        }, () => console.log(this.state.bio));
+        console.log(this.state)
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
         alert("Profile settings saved.");
+        const biom = this.state.bio
         if (this.state.username) {
             API.updateProfile({
-                bio: this.state.bio,
+                username: this.state.username,
+                bio: biom,
                 picLink: this.state.picLink
             })
                 .then(res => {
-                    console.log(this);
-                    this.populateFunction()
+                    console.log(res);
+                    this.setState({
+                        bio: res.data.bio
+                    })
                 })
                 .catch(err => console.log(err));
         };
@@ -154,11 +160,12 @@ class Profile extends Component {
                 </Row>
 
                 <Row>
+                {/* Change cloudinary to file */}
                     <Icon>camera_roll</Icon>
                     <Input
                         s={4}
                         name="picLink"
-                        type="file"
+                        type="text"
                         label="Profile Photo"
                         className="profilePhoto"
                         value={this.state.picLink}
@@ -181,25 +188,25 @@ class Profile extends Component {
 
                 {/* Invite List */}
 
-                <Row>
+                {/* <Row>
                     <Col>
-                        {/* <MCollection
+                        <MCollection
                             type="invitation"
                             data={this.state.userData.invites}
-                        /> */}
+                        />
                     </Col>
-                </Row>
+                </Row> */}
 
                 {/* My Events */}
 
-                <Row>
+                {/* <Row>
                     <Col>
-                        {/* <MCollection
+                        <MCollection
                             type="myEvents"
                             data={this.state.userData.myEvents}
-                        /> */}
+                        />
                     </Col>
-                </Row>
+                </Row> */}
 
                 <Row>
                     <Button

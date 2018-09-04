@@ -18,11 +18,9 @@ const userSchema = new Schema({
     myEvents: [{ type: Schema.Types.ObjectId, ref: 'Events' }],
     //add specific eventid to this on invitation, remove on RSVP of "no":
     invites: [{ type: Schema.Types.ObjectId, ref: 'Events' }],
-    picLink: String,
+    picLink: {type: String},
     userQr: String,
     bio: { type: String },
-
-
 });
 
 userSchema.pre('save', function (next) {
