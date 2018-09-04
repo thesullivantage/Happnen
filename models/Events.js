@@ -33,7 +33,7 @@ const eventSchema = new Schema({
     max: 1,
     required: true
   },
-  qr: { type: String, required: false },
+  eventQr: { type: String, required: false },
   //probably disable inviting guests under 21 when we render the suggestions to invite guests, and if it is based on an "on submit" type of deal where they type in the user name, we could add in some error handling to let them know that the person is under 21
   //add id's here upon user RSVP
   attending: [{ type: Schema.Types.ObjectId, ref: 'Users' }],
