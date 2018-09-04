@@ -53,9 +53,9 @@ class Profile extends Component {
                 console.log(userObj)
                 API.populateProfile(userObj)
                     .then(res => {
-                        console.log(res)
+                        console.log(res.data)
                         this.setState({
-                            userData: res,
+                            userData: res.data,
                             bio: res.data.bio,
                             picLink: res.data.picLink
                             // events: this.state.user.myEvents
@@ -135,6 +135,7 @@ class Profile extends Component {
         const passData = {
             obj: this.state.userData
         }
+        console.log(passData)
         return (
             <Container>
 
@@ -198,18 +199,15 @@ class Profile extends Component {
                             data={passData}
                         />
                     </Col>
+                    <Col>
+                        {/* <MCollection
+                            type="myEvents"
+                            data={this.state.userData.myEvents}
+                        /> */}
+                    </Col>
                 </Row>
 
                 {/* My Events */}
-
-                {/* <Row>
-                    <Col>
-                        <MCollection
-                            type="myEvents"
-                            data={this.state.userData.myEvents}
-                        />
-                    </Col>
-                </Row> */}
 
                 <Row>
                     <Button
