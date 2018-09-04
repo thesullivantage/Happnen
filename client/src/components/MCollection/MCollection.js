@@ -5,14 +5,6 @@ import { MyEvent } from "./myEvent"
 import { PublicEvent } from "./publicEvent"
 import API from "../../utils/API"
 
-// function Greeting(props) {
-//   const isLoggedIn = props.isLoggedIn;
-//   if (isLoggedIn) {
-//     return <UserGreeting />;
-//   }
-//   return <GuestGreeting />;
-// }
-
 const type = props => {props.type};
 const passdata = props => {props.data}
 
