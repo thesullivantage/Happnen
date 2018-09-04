@@ -28,7 +28,7 @@ router
 
 router
     .route("/update")
-    .put(usersController.updateUser)
+    .post(usersController.updateUser)
 
 router
     .route("/autofill")

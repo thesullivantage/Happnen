@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
-import { Invitation } from "./invitation/";
-import { MyEvent } from "./myEvent"
-import { PublicEvent } from "./publicEvent"
+import Invitation from "./invitation/";
+import MyEvent from "./myEvent"
+import PublicEvent from "./publicEvent"
 import API from "../../utils/API"
 
 const type = props => {props.type};
 const passdata = props => {props.data}
 
-class MCollection extends React.Component {
+class MCollection extends Component {
 
   render() {
 

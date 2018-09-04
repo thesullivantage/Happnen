@@ -33,7 +33,7 @@ export default {
 
   // PROFILE
   updateProfile: function (updateObj) {
-    return axios.put("/api/users/update", updateObj)
+    return axios.post("/api/users/update", updateObj)
   },
 
   populateProfile: function (userObj) {
