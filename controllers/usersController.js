@@ -43,10 +43,10 @@ module.exports = {
 	},
 
 	updateUser: function (req, res) {
-		const user = sessionStorage.getItem('userState')
+		console.log(req);
 		db.Users
 			.findOneAndUpdate(
-				{'user': req.body.username},
+				{'username': req.body.username},
 				{$set:{'bio': req.body.bio, 'picLink': req.body.picLink}})
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
