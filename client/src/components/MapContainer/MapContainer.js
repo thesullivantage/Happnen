@@ -5,6 +5,7 @@ import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClust
 import {Button, Icon, Modal} from 'react-materialize';
 import API from "../../utils/API";
 import moment from 'moment';
+import QRCode from 'react-qr-code';
 
 // helper function to convert date
 function convertDate (inputDate) {
@@ -72,6 +73,7 @@ const Map = compose(
                 </div>
                 <p>Starts: {convertDate(marker.startDate)}</p>
                 <p>Ends: {convertDate(marker.endDate)}</p>
+                <QRCode size={96} value={marker.eventQr} />
                 <Button waves='light'>button<Icon right>event_available</Icon></Button>
               </Modal>
             </div>
