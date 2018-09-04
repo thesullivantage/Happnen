@@ -12,23 +12,28 @@ class Invitation extends React.Component {
 	}
 
 	render() {
-		return (
-			passdata.map(item =>
-				<CollectionItem>
-					<Modal
-						header='Modal Header'
-						bottomSheet
-						trigger={<Button>MODAL BUTTOM SHEET STYLE</Button>}>
-						<h1>{item.eventName}</h1>
-						<h3>Hosted by {item.host}</h3>
-						<h4>Start Date: {item.startDate}</h4>
-						<h4>End Date: {item.endDate}</h4>
-						<h5>Description:</h5>
-						<p>{item.description}</p>
-					</Modal>
-				</CollectionItem>
+		if (this.props.data) {
+			return (
+		
+				this.props.data.obj.data.invites.map(item =>
+					<CollectionItem>
+						<Modal
+							header='Modal Header'
+							bottomSheet
+							trigger={<Button>More Information</Button>}>
+							<h1>{item.eventName}</h1>
+							<h3>Hosted by {item.host}</h3>
+							<h4>Start Date: {item.startDate}</h4>
+							<h4>End Date: {item.endDate}</h4>
+							<h5>Description:</h5>
+							<p>{item.description}</p>
+						</Modal>
+					</CollectionItem>
+				)
 			)
-		)
+		} else {
+			return <h1>Hello!!!</h1>
+		}
 	}
 
 }
