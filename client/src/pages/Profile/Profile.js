@@ -72,24 +72,24 @@ class Profile extends Component {
 
 
     //Don't worry about this:
-    populateFunction = () => {
-        const userObj = {
-            username: sessionStorage.user
-        }
-        API.populateProfile(userObj)
-            .then(res => {
-                console.log(res)
-                this.setState({
-                    userData: res,
-                    bio: this.state.user.bio,
-                    picLink: this.state.user.picLink,
-                    // events: this.state.user.myEvents
-                })
-                console.log("SUCCESS")
+    // populateFunction = () => {
+    //     const userObj = {
+    //         username: sessionStorage.user
+    //     }
+    //     API.populateProfile(userObj)
+    //         .then(res => {
+    //             console.log(res)
+    //             this.setState({
+    //                 userData: res,
+    //                 bio: this.state.user.bio,
+    //                 picLink: this.state.user.picLink,
+    //                 // events: this.state.user.myEvents
+    //             })
+    //             console.log("SUCCESS")
 
-            })
-            .catch(err => console.log(err));
-    }
+    //         })
+    //         .catch(err => console.log(err));
+    // }
 
     handleInputChange = event => {
         console.log(this.state)
@@ -132,6 +132,9 @@ class Profile extends Component {
 
 
     render() {
+        const passData = {
+            obj: this.state.userData
+        }
         return (
             <Container>
 
@@ -192,7 +195,7 @@ class Profile extends Component {
                     <Col>
                         <MCollection
                             type="invitation"
-                            data={this.state.userData.invites}
+                            data={passData}
                         />
                     </Col>
                 </Row>
