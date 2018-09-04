@@ -5,7 +5,7 @@ import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
 import cloudinary from "cloudinary";
-import { MCollection } from "../../components/MCollection/";
+// import { MCollection } from "../../components/MCollection/";
 import API from "../../utils/API"
 
 cloudinary.config({
@@ -28,7 +28,7 @@ class Profile extends Component {
 
     // componentDidMount() {
     //     API.populateProfile(username);
-    //     
+    //
     // }
 
     // loadEvents = (username) => {
@@ -42,7 +42,7 @@ class Profile extends Component {
         this.setState({ username: sessionStorage.user }, () => {
 
 
-            
+
             console.log(sessionStorage.user)
 
 
@@ -56,11 +56,11 @@ class Profile extends Component {
                         console.log(res)
                         this.setState({
                             userData: res,
-                            // bio: this.state.user.bio, 
-                            // picLink: this.state.user.picLink, 
+                            // bio: this.state.user.bio,
+                            // picLink: this.state.user.picLink,
                             // events: this.state.user.myEvents
                         }, () => {
-                            //map 
+                            //map
                             console.log(this.state.userData)
                         })
                         console.log("SUCCESS")
@@ -81,8 +81,8 @@ class Profile extends Component {
                 console.log(res)
                 this.setState({
                     userData: res,
-                    // bio: this.state.user.bio, 
-                    // picLink: this.state.user.picLink, 
+                    // bio: this.state.user.bio,
+                    // picLink: this.state.user.picLink,
                     // events: this.state.user.myEvents
                 })
                 console.log("SUCCESS")
@@ -182,11 +182,11 @@ class Profile extends Component {
                 {/* Invite List */}
 
                 <Row>
-                    <Col>    
-                        <MCollection 
+                    <Col>
+                        {/* <MCollection
                             type="invitation"
                             data={this.state.userData.invites}
-                        />
+                        /> */}
                     </Col>
                 </Row>
 
@@ -194,10 +194,10 @@ class Profile extends Component {
 
                 <Row>
                     <Col>
-                        <MCollection 
+                        {/* <MCollection
                             type="myEvents"
                             data={this.state.userData.myEvents}
-                        />
+                        /> */}
                     </Col>
                 </Row>
 
@@ -206,7 +206,7 @@ class Profile extends Component {
                         className="Submit"
                         onClick={this.handleFormSubmit}>Save Profile</Button>
                 </Row>
-                
+
             </Container>
 
         )
