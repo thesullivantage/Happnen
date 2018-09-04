@@ -14,11 +14,12 @@ class MCollection extends React.Component {
 
     if (type == "invitation") {
       return <Invitation data={passdata} />;
-    } else if (type == "myEvent") {
-      return <MyEvent data={passdata} />
-    } else {
-      return <PublicEvent data={passdata} />
     }
+    // } else if (type == "myEvent") {
+    //   return <MyEvent data={passdata} />
+    // } else {
+    //   return <PublicEvent data={passdata} />
+    // }
   }
 }
 
