@@ -5,10 +5,11 @@ import { myEvent } from "./myEvent"
 import { publicEvent } from "./publicEvent"
 import API from "../../utils/API"
 
-function Greeting(props) {
-  const isLoggedIn = props.isLoggedIn;
+function MCollection(props) {
   if (isLoggedIn) {
     return <UserGreeting />;
   }
   return <GuestGreeting />;
 }
+
+export default MCollection
