@@ -10,6 +10,10 @@ import DatePicker from 'react-datepicker';
 import API from '../../utils/API';
 import UserInvitedBtn from "../../components/UserInvitedBtn";
 
+const dictionary = {
+    alphabet: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+}
+
 class Event extends Component {
 
     state = {
@@ -17,7 +21,7 @@ class Event extends Component {
         eventName: "",
         location: "",
         // property for geocoded location:
-        QR: "",
+        eventQr: "",
         autofill: [],
         invited: [],
         attending: [],
@@ -35,6 +39,22 @@ class Event extends Component {
         redirect: false
         //userQrs?
     };
+
+    generateQr = () => {
+        let randomQr = ""
+        if (!this.state.eventQr) {
+            for (let i = 0; i < 12; i++) {
+                randomQr += dictionary.alphabet[Math.floor(Math.random() * dictionary.alphabet.length)]
+            }
+        }
+        else {
+            randomQr = ""
+        }
+        console.log(randomQr)
+        this.setState({
+            eventQr: randomQr
+        });
+    }
 
     componentDidMount = () => {
         API.autofillusers()
@@ -121,38 +141,38 @@ class Event extends Component {
         console.log("pushY", pushY)
         const toSendArr = this.state.userInvited
         console.log("toSendArr", toSendArr)
-            if (!toSendArr.includes(pushY)) {
-                toSendArr.push(pushY)
-                this.setState({
-                    userInvited: toSendArr
-                }, () => {
-                    console.log(this.state.userInvited)
-                    const indexedAutofills = this.state.autofill[0]
-                    const indexz = indexedAutofills.findIndex(item => item['username'] === this.state.userSearch);
-                    const toPush = this.state.autofill[0][indexz]['_id']
-                    const newArr = this.state.invited
-                        if (!newArr.includes(toPush)) {
-                            newArr.push(toPush)
-                            this.setState({
-                                //this is what we need to send to 
-                                invited: newArr,
-                                userSearch: ""
-                            }, () => console.log(this.state.invited))
-                        } else {
-                            return;                            
-                        }
-                })            
-            } else {
-                return;
-            }
+        if (!toSendArr.includes(pushY)) {
+            toSendArr.push(pushY)
+            this.setState({
+                userInvited: toSendArr
+            }, () => {
+                console.log(this.state.userInvited)
+                const indexedAutofills = this.state.autofill[0]
+                const indexz = indexedAutofills.findIndex(item => item['username'] === this.state.userSearch);
+                const toPush = this.state.autofill[0][indexz]['_id']
+                const newArr = this.state.invited
+                if (!newArr.includes(toPush)) {
+                    newArr.push(toPush)
+                    this.setState({
+                        //this is what we need to send to 
+                        invited: newArr,
+                        userSearch: ""
+                    }, () => console.log(this.state.invited))
+                } else {
+                    return;
+                }
+            })
+        } else {
+            return;
+        }
         // id pushing function
 
-                
-            
-        }
 
 
-    
+    }
+
+
+
 
 
     deleteInvitee = event => {
@@ -180,6 +200,7 @@ class Event extends Component {
                 // mongoInvited: mongoInvitedArr,
                 type: this.state.type,
                 ageReq: this.state.ageReq,
+                eventQr: this.state.eventQr
             })
                 .then(res => {
                     console.log("EVENT CREATED", res);
@@ -206,7 +227,7 @@ class Event extends Component {
         const { redirect } = this.state;
 
         if (redirect) {
-          return <Redirect to='/mapdisplay' />;
+            return <Redirect to='/mapdisplay' />;
         }
 
         return (
@@ -352,8 +373,8 @@ class Event extends Component {
                         label="QR Code"
                         name="QR"
                         type="checkbox"
-                        value={this.state.QR} 
-                        />
+                        onClick={this.generateQr}
+                    />
                 </Row>
 
                 <Row>
