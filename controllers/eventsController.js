@@ -71,8 +71,8 @@ module.exports = {
 					db.Users
 						.updateMany(
 							// May need to add quotes
-							{ username: { $in: req.body.people } },
-							{ $push: { invited: resDocument._id } }
+							{ _id: { $in: req.body.invited } },
+							{ $push: { invites: resDocument._id } }
 						)
 						.then(invitelog => {
 							console.log("Invite Status", invitelog)

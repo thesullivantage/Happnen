@@ -5,6 +5,7 @@ import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
 import cloudinary from "cloudinary";
+import { MCollection } from "../../components/MCollection/";
 import API from "../../utils/API"
 
 cloudinary.config({
@@ -181,25 +182,22 @@ class Profile extends Component {
                 {/* Invite List */}
 
                 <Row>
-                    
                     <Col>    
-                        {/* Selective Rendering here  */}
-                        <Collection>
-                            {this.state.userData.invites.map(invite => {
-                                <CollectionItem>
-                                    {/* modal stuff */}
-                                </CollectionItem>
-                            })}
-                        </Collection>
+                        <MCollection 
+                            type="invitation"
+                            data={this.state.userData.invites}
+                        />
                     </Col>
                 </Row>
 
-                {/* Current Events */}
+                {/* My Events */}
 
                 <Row>
                     <Col>
-                        <Collection>
-                        </Collection>
+                        <MCollection 
+                            type="myEvents"
+                            data={this.state.userData.myEvents}
+                        />
                     </Col>
                 </Row>
 
