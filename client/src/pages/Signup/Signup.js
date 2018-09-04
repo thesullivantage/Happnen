@@ -10,6 +10,10 @@ import DatePicker from 'react-datepicker';
 import HappnenIcon from "../../components/Icon/index";
 import API from "../../utils/API";
 
+const dictionary = {
+  alphabet: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+}
+
 class Signup extends Component {
   state = {
     username: "",
@@ -22,8 +26,22 @@ class Signup extends Component {
     events: [],
     userEvents: [],
     invites: [],
-    redirect: false
+    redirect: false,
+    userQr: ""
   };
+
+
+  componentDidMount = () => {
+    let randomQr = ""
+    for (let i=0; i<12; i++) {
+      randomQr += dictionary.alphabet[Math.floor(Math.random()*dictionary.alphabet.length)]
+    }
+    console.log(randomQr)
+    this.setState({
+      userQr: randomQr
+    });
+    console.log(this.state)
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -85,7 +103,8 @@ class Signup extends Component {
         password: this.state.password,
         birthday: this.state.birthday,
         ofAge: this.state.ofAge,
-        email: this.state.email
+        email: this.state.email,
+        userQr: this.state.userQr
       })
         .then(res => {
           console.log(res);
@@ -93,7 +112,7 @@ class Signup extends Component {
           console.log(this.state.passValid);
           console.log(this.state.ofAge);
           sessionStorage.user = this.state.username;
-          this.setState({ username: "", password: "", passwordValidate: "", passValid: false, email: "", ofAge: false, redirect: true });
+          this.setState({ username: "", password: "", passwordValidate: "", passValid: false, email: "", ofAge: false, userQr: "", redirect: true });
           console.log(sessionStorage.user)
         })
         .catch(err => console.log(err));
