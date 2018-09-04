@@ -14,7 +14,6 @@ return moment(inputDate).format("llll")
 
 const Map = compose(
 
-
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCzhrxRlHVOD13tasY5VxcdBrOGeDjsPIU&v=3.exp&libraries=geometry,drawing,places",
     containerElement: <div style={{ height: `100vh`, width: `100vw` }} />,
