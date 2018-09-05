@@ -1,43 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button, SideNav, SideNavItem } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import "./MapDisplay.css";
 import { MapComponent } from "../../components/MapContainer/MapContainer";
 import API from "../../utils/API"
 
 class MapDisplay extends Component {
 
-    componentWillMount() {
-        this.setState({ events: [] })
-    }
-    
-      componentDidMount() {
-        API.getEventLocations()
-          .then(res => {
-            this.setState({ events: res.data });
-          }
-        );
-    }
-
     render() {
         return (
             <div>
-                <div>
-                    <MapComponent />
-                    <SideNav
-                        trigger={<Button style={{position:'absolute', bottom:'40px', left:'10px', zIndex:'4'}}>Events List</Button>}
-                        options={{ closeOnClick: true }}
-                        events={this.state.events}
-                        >
-                        <SideNavItem subheader>Events List</SideNavItem>
-                        <SideNavItem divider />
-
-                        {this.state.events.map(event => (
-                            <SideNavItem waves>{event.eventName}</SideNavItem>
-                        ))}
-
-                    </SideNav>
-                </div>
+                <MapComponent />
 
                 <Container>
 
