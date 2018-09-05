@@ -8,6 +8,21 @@ router
     .post(eventsController.createEvent)
     // .delete(eventsController.deleteExpiredEvents);
 
+// Matches with "/api/events/daily
+router
+    .route("/daily")
+    .get(eventsController.findAllDailyEvents)
+    
+// Matches with "/api/events/weekly
+router
+    .route("/weekly")
+    .get(eventsController.findAllWeeklyEvents)
+
+// Matches with "/api/events/montly
+router
+    .route("/monthly")
+    .get(eventsController.findAllMonthlyEvents)
+
 // Matches with "/api/events/:id"
 router
     .route("/:id")
