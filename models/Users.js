@@ -15,9 +15,11 @@ const userSchema = new Schema({
     birthday: { type: Date },
 
     //add eventid to this on creation, remove on delete, keep here for archived-- maybe split these properties into current and past events:
-    myEvents: [{ type: Schema.Types.ObjectId, ref: 'Events' }],
+    myEvents: [{ type: Schema.Types.ObjectId, ref: "Events" }],
     //add specific eventid to this on invitation, remove on RSVP of "no":
-    invites: [{ type: Schema.Types.ObjectId, ref: 'Events' }],
+    invites: [{ type: Schema.Types.ObjectId, ref: "Events" }],
+    attends: [{type: Schema.Types.ObjectId, ref: "Events"}],
+
     picLink: {type: String},
     userQr: String,
     bio: { type: String },
