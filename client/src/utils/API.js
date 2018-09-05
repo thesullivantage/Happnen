@@ -47,6 +47,10 @@ export default {
     return axios.get("/api/events")
   },
 
+  // currently not used:
+  // deleteExpiredEvents: function () {
+  //   return axios.get("/api/events")
+  // },
 
   // CLOUDINARY HELPERS
 

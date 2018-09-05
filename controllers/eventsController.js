@@ -1,5 +1,6 @@
 const db = require("../models");
 var NodeGeocoder = require("node-geocoder");
+var moment = require('moment')
 
 var options = {
 	provider: 'google',
@@ -30,14 +31,26 @@ geoConvert = (eventAddress) => geocoder.geocode(eventAddress)
 // Defining methods for the eventsController
 module.exports = {
 
-	// FIND ALL EVENTS FOR DISPLAYING ON MAP
+	// FIND ALL NON EXPIRED EVENTS FOR DISPLAYING ON MAP
 	findAllEvents: function (req, res) {
 		db.Events
-			.find(req.query)
+			// removes events that already have passed first
+			.find({"endDate": {"$gt": moment().toISOString()}})
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
+
+	// // DELETE EXPIRED EVENTS	
+	// deleteExpiredEvents: function (req, res) {
+	// 	console.log("CHECKING DELETE EVENTS")
+	// 	// console.log(req)
+	// 	db.Events
+	// 		.find({"endDate": {"$lt": moment().toISOString()}})
+	// 		.then(dbModel => dbModel.remove())
+	// 		.then(dbModel => res.json(dbModel))
+	// 		.catch(err => res.status(422).json(err));
+	// },
 
 	// FIND ONE EVENT TO DISPLAY DETAILS
 	findEventById: function (req, res) {
@@ -78,8 +91,8 @@ module.exports = {
 							console.log("Invite Status", invitelog)
 							db.Users
 								.updateOne(
-									{username: req.body.host}, 
-									{ $push: { myEvents: resDocument._id }}
+									{ username: req.body.host },
+									{ $push: { myEvents: resDocument._id } }
 								)
 								.then(ownerLog => {
 									console.log(ownerLog)

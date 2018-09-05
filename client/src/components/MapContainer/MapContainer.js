@@ -1,16 +1,16 @@
 import React from "react";
 import { compose, withProps, withStateHandlers, withHandlers } from "recompose";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow} from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
-import {Button, Icon, Modal, SideNav, SideNavItem} from 'react-materialize';
+import { Button, Icon, Modal, SideNav, SideNavItem } from 'react-materialize';
 import API from "../../utils/API";
 import moment from 'moment';
 import QRCode from 'react-qr-code';
 
 // helper function to convert date
-function convertDate (inputDate) {
+function convertDate(inputDate) {
   // adjust format here to adjust all dates displayed:
-return moment(inputDate).format("llll")
+  return moment(inputDate).format("llll")
 }
 
 const Map = compose(
@@ -24,10 +24,10 @@ const Map = compose(
   withStateHandlers(() => ({
     markerOpen: null,
   }), {
-    onToggleOpen: ({ markerOpen }) => (markerId) => ({
-      markerOpen: markerId
-    })
-  }),
+      onToggleOpen: ({ markerOpen }) => (markerId) => ({
+        markerOpen: markerId
+      })
+    }),
   withHandlers({
     onMarkerClustererClick: () => (markerClusterer) => {
       const clickedMarkers = markerClusterer.getMarkers()
@@ -53,8 +53,8 @@ const Map = compose(
           key={marker._id}
           position={{ lat: marker.latitude, lng: marker.longitude }}
           currentMarkerClicked={false}
-          onClick={props.onToggleOpen.bind(null, marker._id)}       
-        > 
+          onClick={props.onToggleOpen.bind(null, marker._id)}
+        >
           {props.markerOpen === marker._id ? <InfoWindow onCloseClick={props.onToggleOpen.bind(null, marker._id)}>
             <div>
               {/* EVENT INFORMATION DISPLAYED IN MARKER */}
@@ -95,7 +95,7 @@ export class MapComponent extends React.Component {
     API.getEventLocations()
       .then(res => {
         this.setState({ markers: res.data });
-      });
+      })
   }
 
   // handleClick (pull the state of onToggleOpen)
@@ -105,15 +105,15 @@ export class MapComponent extends React.Component {
       <div>
         <Map markers={this.state.markers} />
         <SideNav
-          trigger={<Button style={{position:'absolute', bottom:'40px', left:'10px', zIndex:'4'}}>Events List</Button>}
+          trigger={<Button style={{ position: 'absolute', bottom: '40px', left: '10px', zIndex: '4' }}>Events List</Button>}
           options={{ closeOnClick: true }}
-          >
+        >
           <SideNavItem subheader>Events List</SideNavItem>
           <SideNavItem divider />
           {this.state.markers.map(event => (
             <SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event.eventName)}>
-                {/* onClick={this.navItemClick.bind()} */}
-                {event.eventName}
+              {/* onClick={this.navItemClick.bind()} */}
+              {event.eventName}
             </SideNavItem>
           ))}
         </SideNav>
