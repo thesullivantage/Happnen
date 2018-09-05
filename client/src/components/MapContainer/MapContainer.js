@@ -2,7 +2,7 @@ import React from "react";
 import { compose, withProps, withStateHandlers, withHandlers } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
-import { Button, Icon, Modal } from 'react-materialize';
+import {Button, Icon, Modal, SideNav, SideNavItem} from 'react-materialize';
 import API from "../../utils/API";
 import moment from 'moment';
 import QRCode from 'react-qr-code';
@@ -98,12 +98,26 @@ export class MapComponent extends React.Component {
 			});
 	}
 
-	render() {
-		return (
-			<Map markers={this.state.markers} />
-		)
-	}
-}
+  // handleClick (pull the state of onToggleOpen)
 
-// What does the following actually do?
-<MapComponent />
+  render() {
+    return (
+      <div>
+        <Map markers={this.state.markers} />
+        <SideNav
+          trigger={<Button style={{position:'absolute', bottom:'40px', left:'10px', zIndex:'4'}}>Events List</Button>}
+          options={{ closeOnClick: true }}
+          >
+          <SideNavItem subheader>Events List</SideNavItem>
+          <SideNavItem divider />
+          {this.state.markers.map(event => (
+            <SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event.eventName)}>
+                {/* onClick={this.navItemClick.bind()} */}
+                {event.eventName}
+            </SideNavItem>
+          ))}
+        </SideNav>
+      </div>
+    )
+  }
+}
