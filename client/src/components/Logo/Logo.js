@@ -1,6 +1,6 @@
 import React from "react";
 //this is where you import the logo image
-import Happnen from "./Logo09.png";
+import Happnen from "./Logo.png";
 import "./Logo.css";
 
 const Logo = (props) => (

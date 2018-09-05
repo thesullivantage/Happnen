@@ -6,6 +6,8 @@ import {Button, Icon, Modal, SideNav, SideNavItem} from 'react-materialize';
 import API from "../../utils/API";
 import moment from 'moment';
 import QRCode from 'react-qr-code';
+import RequestInviteBtn from "../../components/RequestInviteBtn";
+import AddEventBtn from "../../components/AddEventBtn";
 
 // helper function to convert date
 function convertDate (inputDate) {
@@ -69,12 +71,13 @@ const Map = compose(
                 <p>{marker.location}</p>
                 <p>{marker.description}</p>
                 <div>
+                
                   pics/guest list
                 </div>
                 <p>Starts: {convertDate(marker.startDate)}</p>
                 <p>Ends: {convertDate(marker.endDate)}</p>
                 <QRCode size={96} value={marker.eventQr} />
-                <Button waves='light'>button<Icon right>event_available</Icon></Button>
+                <AddEventBtn waves='light'></AddEventBtn>
               </Modal>
             </div>
           </InfoWindow> : null}
@@ -112,7 +115,7 @@ export class MapComponent extends React.Component {
           <SideNavItem divider />
           {this.state.markers.map(event => (
             <SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event.eventName)}>
-                {/* onClick={this.navItemClick.bind()} */}
+                {/* onClick={this.navItemClick.bind(event)} */}
                 {event.eventName}
             </SideNavItem>
           ))}
