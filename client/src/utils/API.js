@@ -47,6 +47,18 @@ export default {
     return axios.get("/api/events")
   },
 
+  getDailyLocations: function () {
+    return axios.get("/api/events/daily")
+  },
+
+  getWeeklyLocations: function () {
+    return axios.get("/api/events/weekly")
+  },
+
+  getMonthlyLocations: function () {
+    return axios.get("/api/events/monthly")
+  },
+
   // currently not used:
   // deleteExpiredEvents: function () {
   //   return axios.get("/api/events")
