@@ -1,0 +1,9 @@
+.react-datepicker__input-container {
+    
+    margin-left: 10px;
+}
+
+.react-datepicker__close-icon{
+    display: flex;
+    left: 20px;
+}
