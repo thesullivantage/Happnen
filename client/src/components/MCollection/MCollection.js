@@ -4,23 +4,50 @@ import Invitation from "./invitation/invitation";
 // import { MyEvent } from "./myEvent"
 // import { PublicEvent } from "./publicEvent"
 import API from "../../utils/API"
-
-const type = props => {props.type};
-const passdata = props => {props.data}
+import Collection from "react-materialize/lib/Collection";
+import MyEvent from "./myEvent";
 
 class MCollection extends React.Component {
 
-  render() {
+	componentDidMount() {
+		console.log("test")
+	}
 
-    if (type == "invitation") {
-      return <Invitation data={passdata} />;
-    }
-    // } else if (type == "myEvent") {
-    //   return <MyEvent data={passdata} />
-    // } else {
-    //   return <PublicEvent data={passdata} />
-    // }
-  }
+	render() {
+		console.log("Render")
+		console.log("type", this.props.type)
+		console.log("data", this.props.data)
+		if (this.props.type === "invitation" && this.props.data) {
+			console.log("Suxcess")
+			return (
+				<Collection>
+					<Invitation data={this.props.data} />
+				</Collection>
+			);
+
+		} else if(this.props.type === "myEvents") {
+			return (
+				<Collection>
+					<MyEvent data={this.props.data}/>
+				</Collection>
+			);
+
+		} else if (!this.props.data) {
+			return null;
+
+		} else {
+			return(
+				<h1>Teeest</h1>
+			)
+		}
+
+
+		// } else if (type == "myEvent") {
+		//   return <MyEvent data={passdata} />
+		// } else {
+		//   return <PublicEvent data={passdata} />
+		// }
+	}
 }
 
 export default MCollection;

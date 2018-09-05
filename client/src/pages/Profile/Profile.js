@@ -53,9 +53,9 @@ class Profile extends Component {
                 console.log(userObj)
                 API.populateProfile(userObj)
                     .then(res => {
-                        console.log(res)
+                        console.log(res.data)
                         this.setState({
-                            userData: res,
+                            userData: res.data,
                             bio: res.data.bio,
                             picLink: res.data.picLink
                             // events: this.state.user.myEvents
@@ -72,24 +72,24 @@ class Profile extends Component {
 
 
     //Don't worry about this:
-    populateFunction = () => {
-        const userObj = {
-            username: sessionStorage.user
-        }
-        API.populateProfile(userObj)
-            .then(res => {
-                console.log(res)
-                this.setState({
-                    userData: res,
-                    bio: this.state.user.bio,
-                    picLink: this.state.user.picLink,
-                    // events: this.state.user.myEvents
-                })
-                console.log("SUCCESS")
+    // populateFunction = () => {
+    //     const userObj = {
+    //         username: sessionStorage.user
+    //     }
+    //     API.populateProfile(userObj)
+    //         .then(res => {
+    //             console.log(res)
+    //             this.setState({
+    //                 userData: res,
+    //                 bio: this.state.user.bio,
+    //                 picLink: this.state.user.picLink,
+    //                 // events: this.state.user.myEvents
+    //             })
+    //             console.log("SUCCESS")
 
-            })
-            .catch(err => console.log(err));
-    }
+    //         })
+    //         .catch(err => console.log(err));
+    // }
 
     handleInputChange = event => {
         console.log(this.state)
@@ -132,6 +132,10 @@ class Profile extends Component {
 
 
     render() {
+        const passData = {
+            obj: this.state.userData
+        }
+        console.log(passData)
         return (
             <Container>
 
@@ -192,21 +196,18 @@ class Profile extends Component {
                     <Col>
                         <MCollection
                             type="invitation"
-                            data={this.state.userData.invites}
+                            data={passData}
+                        />
+                    </Col>
+                    <Col>
+                        <MCollection
+                            type="myEvents"
+                            data={passData}
                         />
                     </Col>
                 </Row>
 
                 {/* My Events */}
-
-                {/* <Row>
-                    <Col>
-                        <MCollection
-                            type="myEvents"
-                            data={this.state.userData.myEvents}
-                        />
-                    </Col>
-                </Row> */}
 
                 <Row>
                     <Button
