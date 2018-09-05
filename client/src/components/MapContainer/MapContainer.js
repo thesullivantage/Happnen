@@ -98,6 +98,8 @@ export class MapComponent extends React.Component {
       });
   }
 
+  // handleClick (pull the state of onToggleOpen)
+
   render() {
     return (
       <div>
@@ -119,6 +121,3 @@ export class MapComponent extends React.Component {
     )
   }
 }
-
-// What does the following actually do?
-<MapComponent />
