@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Input, Icon, Button, CollectionItem, Modal, SideNavItem} from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, CollectionItem, Modal, SideNavItem } from "react-materialize";
 import API from "../../../utils/API";
 import moment from 'moment';
 import DeleteBtn from "../../DeleteBtn";
 import AcceptBtn from "../../AcceptBtn";
 import EventLabel from "../misc/EventLabels";
- 
+
 
 // helper function to convert date
 function convertDate(inputDate) {
@@ -20,19 +20,30 @@ class PublicEvent extends React.Component {
 	}
 
 	render() {
-		const markers = this.props.markers
+		const markers = this.props.markerObj.marker
 		console.log(markers)
 		if (markers) {
 			return (
+				markers.map(event => (
 
-				this.state.markers.map(event => (
-					<SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event)}>
-						{event.name}
-
-
+					
+					<Modal
+						header
+						basic
+						trigger={
+							<SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event)}>
+								{event.eventName} <br/> <h1> hosted by {event.host} </h1> 
+							</SideNavItem>
 						
+						}>
+						<h1>{event.eventName}</h1>
+						<h3>Hosted by {event.host}</h3>
+						<h4>Start Date: {convertDate(event.startDate)}</h4>
+						<h4>End Date: {convertDate(event.endDate)}</h4>
+						<h5>Description: </h5>
+						<p className="event-description">{event.description}</p>
 
-					</SideNavItem>
+					</Modal>
 				))
 
 

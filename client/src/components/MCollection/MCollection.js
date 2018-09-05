@@ -34,9 +34,10 @@ class MCollection extends React.Component {
 			);
 
 		} else if (this.props.type === "publicEvents") {
-			console.log("SUCCESS")
+			console.log("SUCCES")
+			console.log(this.props.markerObj)
 			return (
-				<PublicEvent markers={this.props.markers}/>
+				<PublicEvent markerObj={this.props.markerObj}/>
 			)
 			
 		} else if (!this.props.data) {

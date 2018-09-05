@@ -107,6 +107,10 @@ export class MapComponent extends React.Component {
 
 	render() {
 		console.log(this.state.markers)
+		const markerObj = {
+			marker: this.state.markers
+		}
+		console.log(markerObj)
 		return (
 			<div>
 				<Map markers={this.state.markers} />
@@ -117,18 +121,12 @@ export class MapComponent extends React.Component {
 					<SideNavItem subheader>Events List</SideNavItem>
 					<SideNavItem divider />
 					
-					{/* <MCollection 
+					<MCollection 
 						type="publicEvents"
-						markers={this.state.markers}
-					/> */}
+						markerObj={markerObj}
+					/>
 
-					{this.state.markers.map(event => (
-						<SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event.eventName)}>
-							{/* onClick={this.navItemClick.bind(event)} */}
-							{event.eventName}
-						</SideNavItem>
-					))
-					}
+					
 
 				</SideNav>
 			</div>
