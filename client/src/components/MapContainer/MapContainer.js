@@ -2,12 +2,13 @@ import React from "react";
 import { compose, withProps, withStateHandlers, withHandlers } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
-import {Button, Icon, Modal, SideNav, SideNavItem} from 'react-materialize';
+import { Button, Icon, Modal, SideNav, SideNavItem } from 'react-materialize';
 import API from "../../utils/API";
 import moment from 'moment';
 import QRCode from 'react-qr-code';
 import RequestInviteBtn from "../../components/RequestInviteBtn";
 import AddEventBtn from "../../components/AddEventBtn";
+import MCollection from "../MCollection";
 
 // helper function to convert date
 function convertDate(inputDate) {
@@ -40,51 +41,51 @@ const Map = compose(
 	withScriptjs,
 	withGoogleMap
 )((props) =>
-  <GoogleMap
-    defaultZoom={14}
-    defaultCenter={{ lat: 33.749, lng: -84.388 }}
-  >
-    <MarkerClusterer
-      onClick={props.onMarkerClustererClick}
-      averageCenter
-      enableRetinaIcons
-      gridSize={60}
-    >
-      {props.markers.map(marker => (
-        <Marker
-          key={marker._id}
-          position={{ lat: marker.latitude, lng: marker.longitude }}
-          currentMarkerClicked={false}
-          onClick={props.onToggleOpen.bind(null, marker._id)}       
-        > 
-          {props.markerOpen === marker._id ? <InfoWindow onCloseClick={props.onToggleOpen.bind(null, marker._id)}>
-            <div>
-              {/* EVENT INFORMATION DISPLAYED IN MARKER */}
-              <h5>{marker.eventName}</h5>
-              <p>{marker.location}</p>
-              <p>Starts: {convertDate(marker.startDate)}</p>
-              <p>Ends: {convertDate(marker.endDate)}</p>
-              <Modal
-                header={marker.eventName}
-                trigger={<Button waves='light'>More Info<Icon right>event</Icon></Button>}>
-                {/* EVENT INFORMATION DISPLAYED IN MODAL */}
-                <p>{marker.location}</p>
-                <p>{marker.description}</p>
-                <div>
-                
-                  pics/guest list
+	<GoogleMap
+		defaultZoom={14}
+		defaultCenter={{ lat: 33.749, lng: -84.388 }}
+	>
+		<MarkerClusterer
+			onClick={props.onMarkerClustererClick}
+			averageCenter
+			enableRetinaIcons
+			gridSize={60}
+		>
+			{props.markers.map(marker => (
+				<Marker
+					key={marker._id}
+					position={{ lat: marker.latitude, lng: marker.longitude }}
+					currentMarkerClicked={false}
+					onClick={props.onToggleOpen.bind(null, marker._id)}
+				>
+					{props.markerOpen === marker._id ? <InfoWindow onCloseClick={props.onToggleOpen.bind(null, marker._id)}>
+						<div>
+							{/* EVENT INFORMATION DISPLAYED IN MARKER */}
+							<h5>{marker.eventName}</h5>
+							<p>{marker.location}</p>
+							<p>Starts: {convertDate(marker.startDate)}</p>
+							<p>Ends: {convertDate(marker.endDate)}</p>
+							<Modal
+								header={marker.eventName}
+								trigger={<Button waves='light'>More Info<Icon right>event</Icon></Button>}>
+								{/* EVENT INFORMATION DISPLAYED IN MODAL */}
+								<p>{marker.location}</p>
+								<p>{marker.description}</p>
+								<div>
+
+									pics/guest list
                 </div>
-                <p>Starts: {convertDate(marker.startDate)}</p>
-                <p>Ends: {convertDate(marker.endDate)}</p>
-                <QRCode size={96} value={marker.eventQr} />
-                <AddEventBtn waves='light'></AddEventBtn>
-              </Modal>
-            </div>
-          </InfoWindow> : null}
-        </Marker>
-      ))}
-    </MarkerClusterer>
-  </GoogleMap>
+								<p>Starts: {convertDate(marker.startDate)}</p>
+								<p>Ends: {convertDate(marker.endDate)}</p>
+								<QRCode size={96} value={marker.eventQr} />
+								<AddEventBtn waves='light'></AddEventBtn>
+							</Modal>
+						</div>
+					</InfoWindow> : null}
+				</Marker>
+			))}
+		</MarkerClusterer>
+	</GoogleMap>
 
 );
 
@@ -102,26 +103,34 @@ export class MapComponent extends React.Component {
 			});
 	}
 
-  // handleClick (pull the state of onToggleOpen)
+	// handleClick (pull the state of onToggleOpen)
 
-  render() {
-    return (
-      <div>
-        <Map markers={this.state.markers} />
-        <SideNav
-          trigger={<Button style={{position:'absolute', bottom:'40px', left:'10px', zIndex:'4'}}>Events List</Button>}
-          options={{ closeOnClick: true }}
-          >
-          <SideNavItem subheader>Events List</SideNavItem>
-          <SideNavItem divider />
-          {this.state.markers.map(event => (
-            <SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event.eventName)}>
-                {/* onClick={this.navItemClick.bind(event)} */}
-                {event.eventName}
-            </SideNavItem>
-          ))}
-        </SideNav>
-      </div>
-    )
-  }
+	render() {
+		return (
+			<div>
+				<Map markers={this.state.markers} />
+				<SideNav
+					trigger={<Button style={{ position: 'absolute', bottom: '40px', left: '10px', zIndex: '4' }}>Events List</Button>}
+					options={{ closeOnClick: true }}
+				>
+					<SideNavItem subheader>Events List</SideNavItem>
+					<SideNavItem divider />
+
+					<MCollection 
+						type="publicEvents"
+						markers={this.state.markers}
+					/>
+
+					{this.state.markers.map(event => (
+						<SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event.eventName)}>
+							{/* onClick={this.navItemClick.bind(event)} */}
+							{event.eventName}
+						</SideNavItem>
+					))
+					}
+
+				</SideNav>
+			</div>
+		)
+	}
 }
