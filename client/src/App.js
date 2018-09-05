@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import CreateEvent from "./pages/CreateEvent";
 import Profile from "./pages/Profile";
 import MapDisplay from "./pages/MapDisplay";
+import "./main.css"
 
 const App = () => (
   <Router>

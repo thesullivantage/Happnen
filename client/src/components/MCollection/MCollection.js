@@ -4,6 +4,8 @@ import Invitation from "./invitation/invitation";
 // import { MyEvent } from "./myEvent"
 // import { PublicEvent } from "./publicEvent"
 import API from "../../utils/API"
+import Collection from "react-materialize/lib/Collection";
+import MyEvent from "./myEvent";
 
 class MCollection extends React.Component {
 
@@ -18,10 +20,21 @@ class MCollection extends React.Component {
 		if (this.props.type === "invitation" && this.props.data) {
 			console.log("Suxcess")
 			return (
-				<Invitation data={this.props.data} />
+				<Collection>
+					<Invitation data={this.props.data} />
+				</Collection>
 			);
+
+		} else if(this.props.type === "myEvents") {
+			return (
+				<Collection>
+					<MyEvent data={this.props.data}/>
+				</Collection>
+			);
+
 		} else if (!this.props.data) {
 			return null;
+
 		} else {
 			return(
 				<h1>Teeest</h1>
