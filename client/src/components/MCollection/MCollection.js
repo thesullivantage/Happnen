@@ -6,6 +6,7 @@ import Invitation from "./invitation/invitation";
 import API from "../../utils/API"
 import Collection from "react-materialize/lib/Collection";
 import MyEvent from "./myEvent";
+import PublicEvent from "./publicEvent";
 
 class MCollection extends React.Component {
 
@@ -32,7 +33,11 @@ class MCollection extends React.Component {
 				</Collection>
 			);
 
-		} else if (this.props.type === "") {
+		} else if (this.props.type === "publicEvents") {
+			console.log("SUCCESS")
+			return (
+				<PublicEvent markers={this.props.markers}/>
+			)
 			
 		} else if (!this.props.data) {
 			return null;

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Input, Icon, Button, CollectionItem, Modal } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, CollectionItem, Modal, SideNavItem} from "react-materialize";
 import API from "../../../utils/API";
 import moment from 'moment';
 import DeleteBtn from "../../DeleteBtn";
 import AcceptBtn from "../../AcceptBtn";
 import EventLabel from "../misc/EventLabels";
+ 
 
 // helper function to convert date
 function convertDate(inputDate) {
@@ -26,7 +27,7 @@ class PublicEvent extends React.Component {
 
 				this.state.markers.map(event => (
 					<SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event)}>
-
+						{event.name}
 
 
 						

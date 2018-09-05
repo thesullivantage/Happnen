@@ -106,6 +106,7 @@ export class MapComponent extends React.Component {
 	// handleClick (pull the state of onToggleOpen)
 
 	render() {
+		console.log(this.state.markers)
 		return (
 			<div>
 				<Map markers={this.state.markers} />
@@ -115,11 +116,11 @@ export class MapComponent extends React.Component {
 				>
 					<SideNavItem subheader>Events List</SideNavItem>
 					<SideNavItem divider />
-
-					<MCollection 
+					
+					{/* <MCollection 
 						type="publicEvents"
 						markers={this.state.markers}
-					/>
+					/> */}
 
 					{this.state.markers.map(event => (
 						<SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event.eventName)}>
