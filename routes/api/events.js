@@ -5,7 +5,8 @@ const eventsController = require("../../controllers/eventsController");
 router
     .route("/")
     .get(eventsController.findAllEvents)
-    .post(eventsController.createEvent);
+    .post(eventsController.createEvent)
+    // .delete(eventsController.deleteExpiredEvents);
 
 // Matches with "/api/events/:id"
 router
