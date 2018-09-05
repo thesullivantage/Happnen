@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "./HappnenIcon.png";
+import Icon from "./Icon10.png";
 import "./Icon.css";
 
 const HappnenIcon = (props) => (

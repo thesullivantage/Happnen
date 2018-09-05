@@ -2,18 +2,19 @@
     display: flex;
     justify-content: center;
     margin: auto;
-    color: rgb(186, 253, 250);
+    color: rgb(19, 79, 125);
     border-radius: 150px;
     width: 200px;
     height: 40px;
 }
 
 .btn {
-    background-color: rgb(143, 55, 143);
+    background-color: rgb(69, 167, 210);
 }
 
 .btn:hover {
-    background-color: rgb(71, 154, 160);
+    background-color: rgb(26, 69, 96);
+    color:white;
 }
 
 .Logo {
@@ -26,7 +27,7 @@
 }
 
 .input-field {
-    color: rgb(143, 55, 143);
+    color: rgb(87, 28, 87);
     text-align: left;
 }
 
@@ -37,23 +38,23 @@
 }
 
 label focus color .input-field input:focus+label {
-    color: rgb(143, 55, 143) !important;
+    color: rgb(99, 24, 99) !important;
 }
 
 .input-field input[type=text]:focus {
-    border-bottom: 1px solid rgb(143, 55, 143);
-    box-shadow: 0 1px 0 0 rgb(143, 55, 143);
+    border-bottom: 1px solid rgb(111, 35, 111);
+    box-shadow: 0 1px 0 0 rgb(109, 38, 109);
 }
 
 .input-field input[type=password]:focus {
-    border-bottom: 1px solid rgb(143, 55, 143);
-    box-shadow: 0 1px 0 0 rgb(143, 55, 143);
+    border-bottom: 1px solid rgb(109, 36, 109);
+    box-shadow: 0 1px 0 0 rgb(118, 39, 118);
     border-radius: 85px;
 }
 
 .input-field input[type=text] {
-    border-bottom: 1px solid rgb(71, 154, 160);
-    box-shadow: 0 1px 0 0 rgb(71, 154, 160);
+    border-bottom: 1px solid rgb(44, 106, 111);
+    box-shadow: 0 1px 0 0 rgb(50, 109, 113);
 }
 
 .input-field input[type=password] {
@@ -62,5 +63,5 @@ label focus color .input-field input:focus+label {
 }
 
 .input-field .prefix.active {
-    color: rgb(143, 55, 143);
+    color: rgb(87, 20, 87);
 }
