@@ -78,8 +78,8 @@ module.exports = {
 							console.log("Invite Status", invitelog)
 							db.Users
 								.updateOne(
-									{username: req.body.host}, 
-									{ $push: { myEvents: resDocument._id }}
+									{ username: req.body.host },
+									{ $push: { myEvents: resDocument._id } }
 								)
 								.then(ownerLog => {
 									console.log(ownerLog)
@@ -93,6 +93,29 @@ module.exports = {
 				// res.json(dbModel)
 				.catch(err => res.status(422).json(err));
 		}, 1000)
+	},
+
+	rsvpNo: function (req, res) {
+		//need to pass userId, eventId in the object from api call on front end
+		db.Events
+			.findOneAndUpdate(
+				{_id: req.body.eventId},
+				{$pull: { invited: req.body.userId }}
+			)
+			.then(response => {
+				console.log("FirstStep", response)
+				db.Users
+					.findOneAndUpdate(
+						{_id: req.body.userId},
+						{$pull: {invites: req.body.eventId}}
+					)
+					.then(finalres => {
+						console.log("finalres", finalres)
+						res.status(200).json(finalres)
+					})
+					.catch(err => res.status(422).json(err))
+			})
+			.catch(err => res.status(422).json(err))
 	},
 
 	// EDIT EVENT

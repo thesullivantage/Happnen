@@ -32,6 +32,8 @@ class MCollection extends React.Component {
 				</Collection>
 			);
 
+		} else if (this.props.type === "") {
+			
 		} else if (!this.props.data) {
 			return null;
 
