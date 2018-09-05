@@ -1,6 +1,6 @@
 import React from "react";
 import { compose, withProps, withStateHandlers, withHandlers } from "recompose";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow} from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
 import {Button, Icon, Modal, SideNav, SideNavItem} from 'react-materialize';
 import API from "../../utils/API";
@@ -10,35 +10,35 @@ import RequestInviteBtn from "../../components/RequestInviteBtn";
 import AddEventBtn from "../../components/AddEventBtn";
 
 // helper function to convert date
-function convertDate (inputDate) {
-  // adjust format here to adjust all dates displayed:
-return moment(inputDate).format("llll")
+function convertDate(inputDate) {
+	// adjust format here to adjust all dates displayed:
+	return moment(inputDate).format("llll")
 }
 
 const Map = compose(
 
-  withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCzhrxRlHVOD13tasY5VxcdBrOGeDjsPIU&v=3.exp&libraries=geometry,drawing,places",
-    containerElement: <div style={{ height: `100vh`, width: `100vw` }} />,
-    loadingElement: <div style={{ height: `100%` }} />,
-    mapElement: <div style={{ height: `100%` }} />,
-  }),
-  withStateHandlers(() => ({
-    markerOpen: null,
-  }), {
-    onToggleOpen: ({ markerOpen }) => (markerId) => ({
-      markerOpen: markerId
-    })
-  }),
-  withHandlers({
-    onMarkerClustererClick: () => (markerClusterer) => {
-      const clickedMarkers = markerClusterer.getMarkers()
-      console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-      console.log(clickedMarkers)
-    },
-  }),
-  withScriptjs,
-  withGoogleMap
+	withProps({
+		googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCzhrxRlHVOD13tasY5VxcdBrOGeDjsPIU&v=3.exp&libraries=geometry,drawing,places",
+		containerElement: <div style={{ height: `100vh`, width: `100vw` }} />,
+		loadingElement: <div style={{ height: `100%` }} />,
+		mapElement: <div style={{ height: `100%` }} />,
+	}),
+	withStateHandlers(() => ({
+		markerOpen: null,
+	}), {
+			onToggleOpen: ({ markerOpen }) => (markerId) => ({
+				markerOpen: markerId
+			})
+		}),
+	withHandlers({
+		onMarkerClustererClick: () => (markerClusterer) => {
+			const clickedMarkers = markerClusterer.getMarkers()
+			console.log(`Current clicked markers length: ${clickedMarkers.length}`)
+			console.log(clickedMarkers)
+		},
+	}),
+	withScriptjs,
+	withGoogleMap
 )((props) =>
   <GoogleMap
     defaultZoom={14}
@@ -85,21 +85,22 @@ const Map = compose(
       ))}
     </MarkerClusterer>
   </GoogleMap>
+
 );
 
 //=============================================================================
 
 export class MapComponent extends React.Component {
-  componentWillMount() {
-    this.setState({ markers: [] })
-  }
+	componentWillMount() {
+		this.setState({ markers: [] })
+	}
 
-  componentDidMount() {
-    API.getEventLocations()
-      .then(res => {
-        this.setState({ markers: res.data });
-      });
-  }
+	componentDidMount() {
+		API.getEventLocations()
+			.then(res => {
+				this.setState({ markers: res.data });
+			});
+	}
 
   // handleClick (pull the state of onToggleOpen)
 
