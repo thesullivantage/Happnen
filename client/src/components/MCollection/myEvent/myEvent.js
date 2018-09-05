@@ -1,13 +1,13 @@
-import React from "react";
 import React, { Component } from "react";
-import { Container, Row, Col, Input, Icon, Button, CollectionItem } from "react-materialize";
-import { Invitation } from "./invitation/";
-import { MyEvent } from "./myEvent"
-import { PublicEvent } from "./publicEvent"
-import API from "../../utils/API"
+import { Container, Row, Col, Input, Icon, Button, CollectionItem, Modal } from "react-materialize";
+import moment from 'moment';
+import API from "../../../utils/API"
 
-const type = props => { props.type };
-const passdata = props => { props.data }
+// helper function to convert date
+function convertDate (inputDate) {
+	// adjust format here to adjust all dates displayed:
+  return moment(inputDate).format("llll")
+}
 
 class MyEvent extends React.Component {
 
@@ -16,17 +16,33 @@ class MyEvent extends React.Component {
 	}
 
 	render() {
-		passdata.map(item =>
-			<CollectionItem>
-				<Modal
-					header='Modal Header'
-					bottomSheet
-					trigger={<Button>MODAL BUTTOM SHEET STYLE</Button>}>
-					<h1>{item.eventName}</h1>
-					<h3>{item.host}</h3>
-				</Modal>
-			</CollectionItem>
-		)
+
+		const impData = this.props.data.obj.myEvents
+		console.log("MyEvent", this.props.data.obj)
+		if (impData) {
+			return (
+				// <h1>Here I am</h1>
+				impData.map(item =>
+					<CollectionItem>
+						<Modal
+							header='Modal Header'
+							basic
+							trigger={<Button>More Information</Button>}>
+							<h1>{item.eventName}</h1>
+							<h3>Hosted by {item.host}</h3>
+							<h4>Start Date: {convertDate(item.startDate)}</h4>
+							<h4>End Date: {convertDate(item.endDate)}</h4>
+							<h5>Description: </h5>
+							<p>{item.description}</p>
+
+						</Modal>
+					</CollectionItem>
+				)
+			)
+		} else {
+			return <h1>Hello!!!</h1>
+		}
+
 	}
 
 }
