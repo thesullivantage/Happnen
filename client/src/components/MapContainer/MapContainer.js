@@ -12,74 +12,12 @@ import MCollection from "../MCollection";
 
 // helper function to convert date
 function convertDate(inputDate) {
-<<<<<<< HEAD
-  // adjust format here to adjust all dates displayed:
-  return moment(inputDate).format("llll")
-=======
 	// adjust format here to adjust all dates displayed:
 	return moment(inputDate).format("llll")
->>>>>>> e413d1d89af4493732f9e26068224d8345bbcef0
 }
 
 const Map = compose(
 
-<<<<<<< HEAD
-  withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCzhrxRlHVOD13tasY5VxcdBrOGeDjsPIU&v=3.exp&libraries=geometry,drawing,places",
-    containerElement: <div style={{ height: `100vh`, width: `100vw` }} />,
-    loadingElement: <div style={{ height: `100%` }} />,
-    mapElement: <div style={{ height: `100%` }} />,
-  }),
-  withStateHandlers(() => ({
-    markerOpen: null,
-  }), {
-      onToggleOpen: ({ markerOpen }) => (markerId) => ({
-        markerOpen: markerId
-      })
-    }),
-  withHandlers({
-    onMarkerClustererClick: () => (markerClusterer) => {
-      const clickedMarkers = markerClusterer.getMarkers()
-      console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-      console.log(clickedMarkers)
-    },
-  }),
-  withScriptjs,
-  withGoogleMap
-)((props) =>
-  <GoogleMap
-    defaultZoom={14}
-    defaultCenter={{ lat: 33.749, lng: -84.388 }}
-  >
-    <MarkerClusterer
-      onClick={props.onMarkerClustererClick}
-      averageCenter
-      enableRetinaIcons
-      gridSize={60}
-    >
-      {props.markers.map(marker => (
-        <Marker
-          key={marker._id}
-          position={{ lat: marker.latitude, lng: marker.longitude }}
-          currentMarkerClicked={false}
-          onClick={props.onToggleOpen.bind(null, marker._id)}
-        >
-          {props.markerOpen === marker._id ? <InfoWindow onCloseClick={props.onToggleOpen.bind(null, marker._id)}>
-            <div>
-              {/* EVENT INFORMATION DISPLAYED IN MARKER */}
-              <h5>{marker.eventName}</h5>
-              <p>{marker.location}</p>
-              <p>Starts: {convertDate(marker.startDate)}</p>
-              <p>Ends: {convertDate(marker.endDate)}</p>
-              <Modal
-                header={marker.eventName}
-                trigger={<Button waves='light'>More Info<Icon right>event</Icon></Button>}>
-                {/* EVENT INFORMATION DISPLAYED IN MODAL */}
-                <p>{marker.location}</p>
-                <p>{marker.description}</p>
-                <div>
-                  pics/guest list
-=======
 	withProps({
 		googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCzhrxRlHVOD13tasY5VxcdBrOGeDjsPIU&v=3.exp&libraries=geometry,drawing,places",
 		containerElement: <div style={{ height: `100vh`, width: `100vw` }} />,
@@ -136,7 +74,6 @@ const Map = compose(
 								<div>
 
 									pics/guest list
->>>>>>> e413d1d89af4493732f9e26068224d8345bbcef0
                 </div>
 								<p>Starts: {convertDate(marker.startDate)}</p>
 								<p>Ends: {convertDate(marker.endDate)}</p>
@@ -179,19 +116,10 @@ export class MapComponent extends React.Component {
 					<SideNavItem subheader>Events List</SideNavItem>
 					<SideNavItem divider />
 
-<<<<<<< HEAD
-  componentDidMount() {
-    API.getEventLocations()
-      .then(res => {
-        this.setState({ markers: res.data });
-      })
-  }
-=======
 					<MCollection 
 						type="publicEvents"
 						markers={this.state.markers}
 					/>
->>>>>>> e413d1d89af4493732f9e26068224d8345bbcef0
 
 					{this.state.markers.map(event => (
 						<SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event.eventName)}>
@@ -201,31 +129,8 @@ export class MapComponent extends React.Component {
 					))
 					}
 
-<<<<<<< HEAD
-  render() {
-    return (
-      <div>
-        <Map markers={this.state.markers} />
-        <SideNav
-          trigger={<Button style={{ position: 'absolute', bottom: '40px', left: '10px', zIndex: '4' }}>Events List</Button>}
-          options={{ closeOnClick: true }}
-        >
-          <SideNavItem subheader>Events List</SideNavItem>
-          <SideNavItem divider />
-          {this.state.markers.map(event => (
-            <SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event.eventName)}>
-              {/* onClick={this.navItemClick.bind()} */}
-              {event.eventName}
-            </SideNavItem>
-          ))}
-        </SideNav>
-      </div>
-    )
-  }
-=======
 				</SideNav>
 			</div>
 		)
 	}
->>>>>>> e413d1d89af4493732f9e26068224d8345bbcef0
 }
