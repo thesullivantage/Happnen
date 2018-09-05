@@ -200,10 +200,10 @@ class Profile extends Component {
                         />
                     </Col>
                     <Col>
-                        {/* <MCollection
+                        <MCollection
                             type="myEvents"
-                            data={this.state.userData.myEvents}
-                        /> */}
+                            data={passData}
+                        />
                     </Col>
                 </Row>
 

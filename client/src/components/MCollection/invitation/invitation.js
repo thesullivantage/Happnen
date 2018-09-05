@@ -7,10 +7,7 @@ import moment from 'moment';
 function convertDate (inputDate) {
 	// adjust format here to adjust all dates displayed:
   return moment(inputDate).format("llll")
-  }
-
-const type = props => { props.type };
-const passdata = props => { props.data };
+}
 
 class Invitation extends React.Component {
 
