@@ -6,7 +6,8 @@ import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
 import cloudinary from "cloudinary";
 import MCollection from "../../components/MCollection/";
-import API from "../../utils/API"
+import API from "../../utils/API";
+import EventLabel from "../../components/MCollection/misc/EventLabels"
 
 cloudinary.config({
     cloud_name: 'happnen',
@@ -194,12 +195,18 @@ class Profile extends Component {
 
                 <Row>
                     <Col>
+                        <EventLabel 
+                        text="Your Invitations"
+                        />
                         <MCollection
                             type="invitation"
                             data={passData}
                         />
                     </Col>
                     <Col>
+                        <EventLabel 
+                        text="Hosted Events"
+                        />
                         <MCollection
                             type="myEvents"
                             data={passData}
