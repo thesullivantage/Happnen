@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Input, Icon, Button, CollectionItem, Modal } from "react-materialize";
-import API from "../../../utils/API"
+import API from "../../../utils/API";
 import moment from 'moment';
+import DeleteBtn from "../../DeleteBtn";
+import AcceptBtn from "../../AcceptBtn";
+import EventLabel from "../misc/EventLabels";
 
 // helper function to convert date
-function convertDate (inputDate) {
+function convertDate(inputDate) {
 	// adjust format here to adjust all dates displayed:
-  return moment(inputDate).format("llll")
+	return moment(inputDate).format("llll")
 }
 
 class Invitation extends React.Component {
@@ -21,13 +24,14 @@ class Invitation extends React.Component {
 		console.log("impData", impData)
 		if (impData) {
 			return (
-				// <h1>Here I am</h1>
 				impData.map(item =>
 					<CollectionItem>
+						<AcceptBtn />
+						<DeleteBtn />
 						<Modal
-							header='Modal Header'
+							header
 							basic
-							trigger={<Button>More Information</Button>}>
+							trigger={<Button>{item.eventName}</Button>}>
 							<h1>{item.eventName}</h1>
 							<h3>Hosted by {item.host}</h3>
 							<h4>Start Date: {convertDate(item.startDate)}</h4>

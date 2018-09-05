@@ -1,5 +1,5 @@
 import React from "react";
-import "./AcceptInviteBtn.css";
+import "./AcceptBtn.css";
 import {Button} from "react-materialize";
 
 const AcceptBtn = props => (
