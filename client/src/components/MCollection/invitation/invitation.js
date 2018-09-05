@@ -25,7 +25,6 @@ class Invitation extends React.Component {
 				impData.map(item =>
 					<CollectionItem>
 						<Modal
-							header='Modal Header'
 							basic
 							trigger={<Button>More Information</Button>}>
 							<h1>{item.eventName}</h1>

@@ -2,10 +2,14 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie);
 
 body {
-  font-family: 'Cookie', cursive;
-  /* font-family: 'Roboto', sans-serif; */
+  /* font-family: 'Cookie', cursive; */
+  font-family: 'Roboto', sans-serif;
   /* Don't you dare take away my cursive! */
 };
+
+h1 {
+  font-family: 'Cookie', cursive;
+}
 
 .profilePhoto {
   width: 96.1%;
