@@ -14,6 +14,10 @@ function convertDate(inputDate) {
 
 class Invitation extends React.Component {
 
+	state = {
+		
+	}
+
 	componentDidMount() {
 
 	}
@@ -26,7 +30,7 @@ class Invitation extends React.Component {
 			return (
 				impData.map(item =>
 					<CollectionItem>
-						<AcceptBtn />
+						<AcceptBtn onClick="" />
 						<DeleteBtn />
 						<Modal
 							header
