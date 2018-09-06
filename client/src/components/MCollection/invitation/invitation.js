@@ -14,9 +14,9 @@ function convertDate(inputDate) {
 
 class Invitation extends React.Component {
 
-	state = {
+	// state = {
 		
-	}
+	// }
 
 	componentDidMount() {
 
@@ -40,8 +40,9 @@ class Invitation extends React.Component {
 							<h5>End Date: {convertDate(item.endDate)}</h5>
 							<h5>Description: </h5>
 							<p className="event-description">{item.description}</p>
-							<AcceptBtn />
-							<DeleteBtn />
+							<AcceptBtn status/>
+							<DeleteBtn status/>
+
 						</Modal>
 					</CollectionItem>
 				)
