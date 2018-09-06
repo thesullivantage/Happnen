@@ -30,11 +30,11 @@ class MyEvent extends React.Component {
 							basic
 							trigger={<Button>{item.eventName}</Button>}>
 							<h1>{item.eventName}</h1>
-							<h3>Hosted by {item.host}</h3>
-							<h4>Start Date: {convertDate(item.startDate)}</h4>
-							<h4>End Date: {convertDate(item.endDate)}</h4>
+							<h4>Hosted by {item.host}</h4>
+							<h5>Start Date: {convertDate(item.startDate)}</h5>
+							<h5>End Date: {convertDate(item.endDate)}</h5>
 							<h5>Description: </h5>
-							<p>{item.description}</p>
+							<p className="event-description">{item.description}</p>
 							<CancelBtn />
 
 						</Modal>
@@ -42,7 +42,7 @@ class MyEvent extends React.Component {
 				)
 			)
 		} else {
-			return <h1>Hello!!!</h1>
+			return <h4>Get your life together, make some friends, and invite them to things here!</h4>
 		}
 
 	}

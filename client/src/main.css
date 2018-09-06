@@ -15,3 +15,15 @@ h1 {
   width: 96.1%;
   padding-left: 52.5px;
 }
+
+.side-nav .userView {
+  padding: 200px 16px 0;
+}
+
+.side-nav .userView {
+  margin-bottom: 0px;
+}
+
+.event-description {
+  margin-left: 0px;
+}

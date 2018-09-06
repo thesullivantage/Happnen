@@ -79,7 +79,7 @@ class Homepage extends Component {
 
           <Input
             s={6}
-            label="Username"
+            // label="Username"
             name="username"
             type="text"
             className="validate"
@@ -92,7 +92,7 @@ class Homepage extends Component {
         <Row>
           <Input
             s={6}
-            label="Password"
+            // label="Password"
             name="password"
             type="password"
             value={this.state.password}

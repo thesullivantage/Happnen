@@ -37,9 +37,9 @@ class PublicEvent extends React.Component {
 						
 						}>
 						<h1>{event.eventName}</h1>
-						<h3>Hosted by {event.host}</h3>
-						<h4>Start Date: {convertDate(event.startDate)}</h4>
-						<h4>End Date: {convertDate(event.endDate)}</h4>
+						<h4>Hosted by {event.host}</h4>
+						<h5>Start Date: {convertDate(event.startDate)}</h5>
+						<h5>End Date: {convertDate(event.endDate)}</h5>
 						<h5>Description: </h5>
 						<p className="event-description">{event.description}</p>
 

@@ -118,15 +118,21 @@ export class MapComponent extends React.Component {
 					trigger={<Button style={{ position: 'absolute', bottom: '40px', left: '10px', zIndex: '4' }}>Events List</Button>}
 					options={{ closeOnClick: true }}
 				>
-					<SideNavItem subheader>Events List</SideNavItem>
-					<SideNavItem divider />
-					
-					<MCollection 
+					<SideNavItem userView
+						user={{
+							background: 'https://media.gettyimages.com/photos/atlanta-skyline-and-highway-at-sunset-picture-id162452615?b=1&k=6&m=162452615&s=170667a&w=0&h=-I7V_xOkGjXznkAFodwBkljD1H235i7YXIQ1b11ypUE=',
+							image: '',
+							name: 'Events',
+							email: 'Public'
+						}}
+					/>
+
+					<MCollection
 						type="publicEvents"
 						markerObj={markerObj}
 					/>
 
-					
+
 
 				</SideNav>
 			</div>
