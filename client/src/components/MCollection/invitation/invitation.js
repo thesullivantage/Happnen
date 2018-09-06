@@ -30,8 +30,6 @@ class Invitation extends React.Component {
 			return (
 				impData.map(item =>
 					<CollectionItem>
-						<AcceptBtn onClick="" />
-						<DeleteBtn />
 						<Modal
 							header
 							basic
@@ -42,7 +40,8 @@ class Invitation extends React.Component {
 							<h5>End Date: {convertDate(item.endDate)}</h5>
 							<h5>Description: </h5>
 							<p className="event-description">{item.description}</p>
-
+							<AcceptBtn />
+							<DeleteBtn />
 						</Modal>
 					</CollectionItem>
 				)
