@@ -1,19 +1,21 @@
-.Submit {
+.btn.Submit {
     display: flex;
     justify-content: center;
     margin: auto;
-    color: rgb(19, 79, 125);
+    color: white;
     border-radius: 150px;
     width: 200px;
     height: 40px;
+    margin-top: 15px;
 }
 
 .btn {
-    background-color: rgb(69, 167, 210);
+    background-color: #1A3456;
+    color: white;
 }
 
 .btn:hover {
-    background-color: rgb(26, 69, 96);
+    background-color: #2B5797;
     color:white;
 }
 
@@ -27,41 +29,41 @@
 }
 
 .input-field {
-    color: rgb(87, 28, 87);
+    color: #1A3456;
     text-align: left;
 }
 
 .input-field input[type=text]:focus {
-    border-bottom: 1px solid #000;
-    box-shadow: 0 1px 0 0 #000;
+    border-bottom: 1px solid #1A3456;
+    box-shadow: 0 1px 0 0 #1A3456;
     border-radius: 85px;
 }
 
 label focus color .input-field input:focus+label {
-    color: rgb(99, 24, 99) !important;
+    color: #1A3456 !important;
 }
 
 .input-field input[type=text]:focus {
-    border-bottom: 1px solid rgb(111, 35, 111);
-    box-shadow: 0 1px 0 0 rgb(109, 38, 109);
+    border-bottom: 1px solid #1A3456;
+    box-shadow: 0 1px 0 0 #1A3456;
 }
 
 .input-field input[type=password]:focus {
-    border-bottom: 1px solid rgb(109, 36, 109);
-    box-shadow: 0 1px 0 0 rgb(118, 39, 118);
+    border-bottom: 1px solid #1A3456;
+    box-shadow: 0 1px 0 0 #1A3456;
     border-radius: 85px;
 }
 
 .input-field input[type=text] {
-    border-bottom: 1px solid rgb(44, 106, 111);
-    box-shadow: 0 1px 0 0 rgb(50, 109, 113);
+    border-bottom: 1px solid #2B5797;
+    box-shadow: 0 1px 0 0 #2B5797;
 }
 
 .input-field input[type=password] {
-    border-bottom: 1px solid rgb(71, 154, 160);
-    box-shadow: 0 1px 0 0 rgb(71, 154, 160);
+    border-bottom: 1px solid #1A3456;
+    box-shadow: 0 1px 0 0 #1A3456;
 }
 
 .input-field .prefix.active {
-    color: rgb(87, 20, 87);
+    color: #1A3456;
 }
