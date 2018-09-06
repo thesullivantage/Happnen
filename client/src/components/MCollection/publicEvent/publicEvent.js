@@ -5,6 +5,7 @@ import moment from 'moment';
 import DeleteBtn from "../../DeleteBtn";
 import AcceptBtn from "../../AcceptBtn";
 import EventLabel from "../misc/EventLabels";
+import QRCode from 'react-qr-code';
 
 
 // helper function to convert date
@@ -26,21 +27,30 @@ class PublicEvent extends React.Component {
 			return (
 				markers.map(event => (
 
-					
+
 					<Modal
 						header
 						basic
 						trigger={
 							<SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event)}>
-								{event.eventName} <br/> <h1> hosted by {event.host} </h1> 
+								{event.eventName} <br /> <h1> hosted by {event.host} </h1>
 							</SideNavItem>
-						
+
 						}>
-						<h1>{event.eventName}</h1>
-						<h4>Hosted by {event.host}</h4>
+
+						<Row>
+							<Col>
+								<h1>{event.eventName}</h1>
+								<h4>Hosted by {event.host}</h4>
+							</Col>
+							<Col>
+								<QRCode size={96} value={event.eventQr} />
+							</Col>
+						</Row>
+						<h5>Location: {event.location}</h5>
 						<h5>Start Date: {convertDate(event.startDate)}</h5>
 						<h5>End Date: {convertDate(event.endDate)}</h5>
-						<h5>Description: </h5>
+						<h5>Description:{event.description} </h5>
 						<p className="event-description">{event.description}</p>
 
 					</Modal>
