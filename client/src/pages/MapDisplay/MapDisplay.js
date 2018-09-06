@@ -15,15 +15,15 @@ class MapDisplay extends Component {
                 <Container>
 
                     <Button floating fab='horizontal' toolbarEnabled='true' className='red mapButton' icon='add' large style={{ top: '45px', left: '24px' }}>
-                        <Button floating icon='pin_drop' className='purple' node='a' href='http://localhost:3000/mapdisplay'
+                        <Button floating icon='pin_drop' className='purple' node='a' href='/mapdisplay'
                             data-position="top" data-delay="50" tooltip="What's Happnen" />
-                        <Button floating icon='person' className='blue' node='a' href='http://localhost:3000/'
+                        <Button floating icon='person' className='blue' node='a' href='/'
                             data-position="top" data-delay="50" tooltip="Login" />
-                        <Button floating icon='person_add' className='green' node='a' href='http://localhost:3000/signup'
+                        <Button floating icon='person_add' className='green' node='a' href='/signup'
                             data-position="top" data-delay="50" tooltip="Create Account" />
-                        <Button floating icon='add_box' className='yellow darken-1' node='a' href='http://localhost:3000/createevent'
+                        <Button floating icon='add_box' className='yellow darken-1' node='a' href='/createevent'
                             data-position="top" data-delay="50" tooltip="Create Event" />
-                        <Button floating icon='assignment_ind' className='red mapButton' node='a' href='http://localhost:3000/profile'
+                        <Button floating icon='assignment_ind' className='red mapButton' node='a' href='/profile'
                             data-position="top" data-delay="50" tooltip="Profile" />
                     </Button>
 
