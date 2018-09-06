@@ -160,7 +160,7 @@ class Profile extends Component {
                     width="75%" />
 
                 <Row>
-                    <h1>USERNAME: {this.state.username}</h1>
+                    <h1 className="userHeader">Username: {this.state.username}</h1>
 
                 </Row>
 
@@ -169,6 +169,7 @@ class Profile extends Component {
                     <Icon>camera_roll</Icon>
                     <Input
                         s={4}
+                        placeholder="Link a Profile Pic"
                         name="picLink"
                         type="text"
                         label="Profile Photo"
@@ -181,10 +182,11 @@ class Profile extends Component {
                 <Row>
                     <Input
                         s={12}
+                        placeholder="Enter Your Bio"
                         label="Bio"
                         name="bio"
                         type="textarea"
-                        className="validate"
+                        className="userBio"
                         value={this.state.bio}
                         onChange={this.handleInputChange}>
                         <Icon>mode_edit</Icon>
