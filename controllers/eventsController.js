@@ -40,6 +40,44 @@ module.exports = {
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
+	
+	// FIND ALL NON EXPIRED EVENTS FOR DISPLAYING ON MAP
+	findAllDailyEvents: function (req, res) {
+		db.Events
+			// removes events that already have passed first
+			.find({
+				"endDate": {"$gt": moment().toISOString()}, 
+				"startDate": {"$lt": moment().add(1,"day").toISOString()}
+			})
+			.sort({ date: -1 })
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+	},
+
+	// FIND ALL NON EXPIRED EVENTS FOR DISPLAYING ON MAP
+	findAllWeeklyEvents: function (req, res) {
+		db.Events
+			// removes events that already have passed first
+			.find({
+				"endDate": {"$gt": moment().toISOString()}, 
+				"startDate": {"$lt": moment().add(7,"days").toISOString()}
+			})
+			.sort({ date: -1 })
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+	},
+	// FIND ALL NON EXPIRED EVENTS FOR DISPLAYING ON MAP
+	findAllMonthlyEvents: function (req, res) {
+		db.Events
+			// removes events that already have passed first
+			.find({
+				"endDate": {"$gt": moment().toISOString()}, 
+				"startDate": {"$lt": moment().add(31,"days").toISOString()}
+			})
+			.sort({ date: -1 })
+			.then(dbModel => res.json(dbModel))
+			.catch(err => res.status(422).json(err));
+	},
 
 	// // DELETE EXPIRED EVENTS	
 	// deleteExpiredEvents: function (req, res) {

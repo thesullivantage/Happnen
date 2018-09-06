@@ -19,7 +19,19 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.set("debug", true);
+
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/happnen");
+
+var db = mongoose.connection
+
+db.on("error", (err) => {
+  console.log("Mongoose Error", err)
+})
+
+db.once("open", () => {
+  console.log("Mongoose Connection Successful")
+})
 
 // Start the API server
 app.listen(PORT, function() {
