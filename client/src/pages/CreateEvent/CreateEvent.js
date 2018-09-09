@@ -34,7 +34,7 @@ class Event extends Component {
         userInvited: [],
         // date: moment(),
         // added start and end date KB
-        startDate: moment(),
+        startDate: null,
         endDate: null,
         redirect: false
         //userQrs?
@@ -280,13 +280,12 @@ class Event extends Component {
                 </Row>
 
                 <Row>
-                    <p>Event Starts:</p>
                     <DatePicker
-                        s={12}
+                        s={6}
                         name="startDate"
                         type="date"
                         className="date"
-                        placeholderText="Event Date/Time"
+                        placeholderText="Start Date & Time"
                         isClearable={true}
                         selected={this.state.startDate}
                         selectsStart
@@ -303,13 +302,12 @@ class Event extends Component {
                         withPortal />
                     {/* DOUBLED UP ON DATEPICKER KB */}
 
-                    <p>Event Ends: </p>
                     <DatePicker
-                        s={12}
+                        s={6}
                         name="endDate"
                         type="date"
                         className="date"
-                        placeholderText="Event Date/Time"
+                        placeholderText="End Date & Time"
                         isClearable={true}
                         selected={this.state.endDate}
                         startDate={this.state.startDate}
@@ -326,7 +324,7 @@ class Event extends Component {
                         withPortal />
                 </Row>
 
-                <Row>
+                <Row className="descriptionRow">
                     <Input
                         s={12}
                         label="Event Description"
@@ -339,7 +337,7 @@ class Event extends Component {
                     </Input>
                 </Row>
 
-                <Row>
+                <Row className="inputRow">
                     <Input
                         s={6}
                         name='type'
@@ -365,7 +363,7 @@ class Event extends Component {
                 <Row>
                     <Input
                         type="file"
-                        label="Event Photo" s={12} />
+                        label="Event Photo" s={4} />
                     <Input
                         s={4}
                         label="QR Code"
