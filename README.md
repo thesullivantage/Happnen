@@ -22,12 +22,12 @@
 ## Built With:
 
 * Html
+* CSS
 * Javascript
 * Mongoose
 * Express
 * React
 * React Materialize Library
-* External css style sheets
 * Google Maps API
 * Google Geocoding API
 
