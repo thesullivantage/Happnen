@@ -2,7 +2,7 @@ import React from "react";
 import { compose, withProps, withStateHandlers, withHandlers } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
-import { Button, Icon, Modal, SideNav, SideNavItem } from 'react-materialize';
+import { Button, Icon, Modal, SideNav, SideNavItem, Row, Col } from 'react-materialize';
 import API from "../../utils/API";
 import moment from 'moment';
 import QRCode from 'react-qr-code';
@@ -17,6 +17,9 @@ function convertDate(inputDate) {
 }
 
 const Map = compose(
+	componentDidMount ( () => {
+		console.log(props.markers)
+	}),
 
 	withProps({
 		googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCzhrxRlHVOD13tasY5VxcdBrOGeDjsPIU&v=3.exp&libraries=geometry,drawing,places",
@@ -70,19 +73,19 @@ const Map = compose(
 								trigger={<Button waves='light'>More Info<Icon right>event</Icon></Button>}>
 								{/* EVENT INFORMATION DISPLAYED IN MODAL */}
 								<Row>
-									<Col>
+									<Col s={6}>
 										<h1>{marker.markerName}</h1>
 										<h4>Hosted by {marker.host}</h4>
 									</Col>
-									<Col>
+									<Col s={6} className="qrCode right-align">
 										<QRCode size={96} value={marker.eventQr} />
 									</Col>
 								</Row>
-								<h5>Location: {marker.location}</h5>
-								<h5>Start Date: {convertDate(marker.startDate)}</h5>
-								<h5>End Date: {convertDate(marker.endDate)}</h5>
-								<h5>Description:{marker.description} </h5>
-								<p className="event-description">{marker.description}</p>
+								<h5 style={{marginLeft: "15px"}}>Location: {marker.location}</h5>
+								<h5 style={{marginLeft: "15px"}}>Start Date: {convertDate(marker.startDate)}</h5>
+								<h5 style={{marginLeft: "15px"}}>End Date: {convertDate(marker.endDate)}</h5>
+								<h5 style={{marginLeft: "15px"}}>Description:{marker.description} </h5>
+								<p style={{marginLeft: "15px"}} className="event-description">{marker.description}</p>
 								<AddEventBtn waves='light'></AddEventBtn>
 							</Modal>
 						</div>
