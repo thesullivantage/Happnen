@@ -66,18 +66,23 @@ const Map = compose(
 							<p>Starts: {convertDate(marker.startDate)}</p>
 							<p>Ends: {convertDate(marker.endDate)}</p>
 							<Modal
-								header={marker.eventName}
+								basic
 								trigger={<Button waves='light'>More Info<Icon right>event</Icon></Button>}>
 								{/* EVENT INFORMATION DISPLAYED IN MODAL */}
-								<p>{marker.location}</p>
-								<p>{marker.description}</p>
-								<div>
-
-									pics/guest list
-                </div>
-								<p>Starts: {convertDate(marker.startDate)}</p>
-								<p>Ends: {convertDate(marker.endDate)}</p>
-								<QRCode size={96} value={marker.eventQr} />
+								<Row>
+									<Col>
+										<h1>{marker.markerName}</h1>
+										<h4>Hosted by {marker.host}</h4>
+									</Col>
+									<Col>
+										<QRCode size={96} value={marker.eventQr} />
+									</Col>
+								</Row>
+								<h5>Location: {marker.location}</h5>
+								<h5>Start Date: {convertDate(marker.startDate)}</h5>
+								<h5>End Date: {convertDate(marker.endDate)}</h5>
+								<h5>Description:{marker.description} </h5>
+								<p className="event-description">{marker.description}</p>
 								<AddEventBtn waves='light'></AddEventBtn>
 							</Modal>
 						</div>
