@@ -186,7 +186,7 @@ class Signup extends Component {
 
           <Input
             s={6}
-            label="Validate Your Password"
+            label="Confirm Password"
             name="passwordValidate"
             type="password"
             className="validate"
@@ -197,26 +197,26 @@ class Signup extends Component {
         </Row>
 
         <Row>
-            {/* <Icon>pregnant_woman</Icon> */}
-            <Icon>child_friendly</Icon>
-            <DatePicker
-              s={6}
-              name="birthday"
-              type="date"
-              className="birthday"
-              calendarClassName="datepicker"
-              isClearable={true}
-              selected={this.state.birthday}
-              value={this.state.birthday}
-              showYearDropdown
-              dateFormatCalendar="MMMM"
-              scrollableYearDropdown
-              yearDropdownItemNumber={50}
-              maxDate={moment()}
-              onChange={this.handleBirthdayChange}
-              withPortal
-              placeholderText="Enter Your Birthday"
-            />
+          {/* <Icon>pregnant_woman</Icon> */}
+          <Icon>child_friendly</Icon>
+          <DatePicker
+            s={6}
+            name="birthday"
+            type="date"
+            className="birthday"
+            calendarClassName="datepicker"
+            isClearable={true}
+            selected={this.state.birthday}
+            value={this.state.birthday}
+            showYearDropdown
+            dateFormatCalendar="MMMM"
+            scrollableYearDropdown
+            yearDropdownItemNumber={50}
+            maxDate={moment()}
+            onChange={this.handleBirthdayChange}
+            withPortal
+            placeholderText="Enter Your Birthday"
+          />
 
           <Input
             s={6}
