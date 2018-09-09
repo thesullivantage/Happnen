@@ -223,7 +223,7 @@ class Signup extends Component {
             label="Email"
             name="email"
             type="email"
-            className="validate"
+3            className="validate"
             value={this.state.email}
             onChange={this.handleInputChange}>
             <Icon>email</Icon>
