@@ -239,6 +239,7 @@ class Event extends Component {
                     width="75%"
                 />
 
+
                 <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
                     <Button floating icon='pin_drop' className='purple' node='a' href='/mapdisplay'
                         data-position="top" data-delay="50" tooltip="What's Happnen" />
@@ -279,6 +280,7 @@ class Event extends Component {
                 </Row>
 
                 <Row>
+                    <p>Event Starts:</p>
                     <DatePicker
                         s={12}
                         name="startDate"
@@ -300,9 +302,8 @@ class Event extends Component {
                         dateFormat="LLL"
                         withPortal />
                     {/* DOUBLED UP ON DATEPICKER KB */}
-                </Row>
 
-                <Row>
+                    <p>Event Ends: </p>
                     <DatePicker
                         s={12}
                         name="endDate"
@@ -365,11 +366,8 @@ class Event extends Component {
                     <Input
                         type="file"
                         label="Event Photo" s={12} />
-                </Row>
-
-                <Row>
                     <Input
-                        s={12}
+                        s={4}
                         label="QR Code"
                         name="QR"
                         type="checkbox"
