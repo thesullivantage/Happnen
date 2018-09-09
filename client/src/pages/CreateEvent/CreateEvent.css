@@ -1,3 +1,7 @@
+/* body{
+    background-image: url("../../components/billie_holiday.png");
+} */
+
 .react-datepicker__input-container {
     margin-right: 150px;
     margin-left: 17px;
@@ -9,6 +13,7 @@
 }
 
 .container{
+    background-image: url("../../components/billie_holiday.png");
     background-color: white;
     border: 2px solid rgb(9, 0, 65);
     margin-top: 10px;
@@ -37,6 +42,8 @@
     display: flex;
     align-content: center;
     margin-right: auto;
+    margin-top: -30px;
+    margin-bottom: 50px;
     /* float: left; */
 }
 
@@ -45,4 +52,12 @@
     display: flex;
     align-content: center;
     margin-right: auto;
+}
+
+.row.dateRow{
+    margin-bottom: -10px;
+}
+
+.row.photoRow{
+    margin-top: 50px;
 }

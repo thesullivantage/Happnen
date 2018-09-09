@@ -279,7 +279,7 @@ class Event extends Component {
                     </Input>
                 </Row>
 
-                <Row>
+                <Row className="dateRow">
                     <DatePicker
                         s={6}
                         name="startDate"
@@ -360,7 +360,7 @@ class Event extends Component {
                     </Input>
                 </Row>
 
-                <Row>
+                <Row className="photoRow">
                     <Input
                         type="file"
                         label="Event Photo" s={4} />
