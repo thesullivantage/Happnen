@@ -33,8 +33,8 @@
 
 ### Authors:
 
-* Patrick Joyce
 * Jack Sullivan
 * Aaron Endelman
 * Kyle Behm
 * Wyatt Simpson
+* Patrick Joyce
