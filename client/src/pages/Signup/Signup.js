@@ -20,7 +20,7 @@ class Signup extends Component {
     password: "",
     passwordValidate: "",
     passValid: false,
-    birthday: moment(),
+    birthday: null,
     email: "",
     ofAge: false,
     events: [],
@@ -33,8 +33,8 @@ class Signup extends Component {
 
   componentDidMount = () => {
     let randomQr = ""
-    for (let i=0; i<12; i++) {
-      randomQr += dictionary.alphabet[Math.floor(Math.random()*dictionary.alphabet.length)]
+    for (let i = 0; i < 12; i++) {
+      randomQr += dictionary.alphabet[Math.floor(Math.random() * dictionary.alphabet.length)]
     }
     console.log(randomQr)
     this.setState({
@@ -81,17 +81,17 @@ class Signup extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      birthday: moment()
+      birthday: null
     };
     this.handleBirthdayChange = this.handleBirthdayChange.bind(this);
   }
-  
+
   handleBirthdayChange(date) {
-      const years = moment().diff(date, 'years', true);
-      this.setState({
-        birthday: date
-      });
-    }
+    const years = moment().diff(date, 'years', true);
+    this.setState({
+      birthday: date
+    });
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -116,7 +116,7 @@ class Signup extends Component {
           console.log(sessionStorage.user)
         })
         .catch(err => console.log(err));
-      
+
     }
 
     else {
@@ -172,7 +172,7 @@ class Signup extends Component {
           </Input>
         </Row>
 
-        <Row>
+        <Row className="passwordRow">
           <Input
             s={6}
             label="Password"
@@ -197,36 +197,32 @@ class Signup extends Component {
         </Row>
 
         <Row>
-        <Col>
-        <p>Birthday</p>
-          {/* <Icon>pregnant_woman</Icon> */}
-          <DatePicker
-            s={12}
-            name="birthday"
-            type="date"
-            className="date"
-            calendarClassName="datepicker"
-            isClearable={true}
-            selected={this.state.birthday}
-            value={this.state.birthday}
-            showYearDropdown
-            dateFormatCalendar="MMMM"
-            scrollableYearDropdown
-            yearDropdownItemNumber={50}
-            maxDate={moment()}
-            onChange={this.handleBirthdayChange}
-            withPortal
-            placeholderText="Birthday"
-          />
-          </Col>
-        </Row>
+            {/* <Icon>pregnant_woman</Icon> */}
+            <Icon>child_friendly</Icon>
+            <DatePicker
+              s={6}
+              name="birthday"
+              type="date"
+              className="birthday"
+              calendarClassName="datepicker"
+              isClearable={true}
+              selected={this.state.birthday}
+              value={this.state.birthday}
+              showYearDropdown
+              dateFormatCalendar="MMMM"
+              scrollableYearDropdown
+              yearDropdownItemNumber={50}
+              maxDate={moment()}
+              onChange={this.handleBirthdayChange}
+              withPortal
+              placeholderText="Enter Your Birthday"
+            />
 
-        <Row>
           <Input
-            s={12}
+            s={6}
             label="Email"
             name="email"
-            type="text"
+            type="email"
             className="validate"
             value={this.state.email}
             onChange={this.handleInputChange}>

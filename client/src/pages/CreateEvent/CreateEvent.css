@@ -1,9 +1,34 @@
 .react-datepicker__input-container {
-    
+    margin-right: 50px;
     margin-left: 10px;
 }
 
 .react-datepicker__close-icon{
     display: flex;
     left: -6px;
+}
+
+.container{
+    background-color: white;
+    border: 2px solid rgb(9, 0, 65);
+    margin-top: 10px;
+}
+
+.Logo {
+    /* background-color: rgb(171, 0, 171); */
+    margin-bottom: 200px;
+}
+
+.row {
+    padding: 5px;
+    /* background-color: #d2d2d2 */
+}
+
+#input_7{
+    margin-bottom: 50px;
+}
+
+.btn.Submit{
+    margin-top: 20px;
+    margin-bottom: -15px;
 }

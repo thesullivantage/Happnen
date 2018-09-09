@@ -6,3 +6,11 @@ input.date{
 p{
     margin-left: 45px;
 }
+
+.row.passwordRow{
+    margin-bottom: -10px;
+}
+
+.input.birthday{
+    margin-top: 10px;
+}
