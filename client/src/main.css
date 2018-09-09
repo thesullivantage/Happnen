@@ -32,3 +32,11 @@ h1 {
   margin-left: 0px;
   margin-bottom: 15px;
 }
+
+.modal-content {
+  display: contents;
+}
+
+.btn .waves-effect .waves-light .add-btn {
+  margin: 15px 15px 15px;
+}

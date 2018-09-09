@@ -16,10 +16,14 @@ function convertDate(inputDate) {
 
 class PublicEvent extends React.Component {
 
+
+
 	componentDidMount() {
 
 	}
 
+
+	
 	render() {
 		const markers = this.props.markerObj.marker
 		console.log(markers)
@@ -43,15 +47,15 @@ class PublicEvent extends React.Component {
 								<h1>{event.eventName}</h1>
 								<h4>Hosted by {event.host}</h4>
 							</Col>
-							<Col>
+							<Col className="qrCode">
 								<QRCode size={96} value={event.eventQr} />
 							</Col>
 						</Row>
 						<h5>Location: {event.location}</h5>
 						<h5>Start Date: {convertDate(event.startDate)}</h5>
 						<h5>End Date: {convertDate(event.endDate)}</h5>
-						<h5>Description:{event.description} </h5>
-						<p className="event-description">{event.description}</p>
+						<h5 style={{marginLeft: "15px"}}>Description:{event.description} </h5>
+						<p style={{marginLeft: "15px"}}>{event.description}</p>
 
 					</Modal>
 				))
