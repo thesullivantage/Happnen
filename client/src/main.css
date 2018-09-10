@@ -40,3 +40,7 @@ h1 {
 .btn .waves-effect .waves-light .add-btn {
   margin: 15px 15px 15px;
 }
+
+.material-icons {
+  padding-left: 0px;
+}

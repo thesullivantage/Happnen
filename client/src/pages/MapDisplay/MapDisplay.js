@@ -6,7 +6,9 @@ import { MapComponent } from "../../components/MapContainer/MapContainer";
 import API from "../../utils/API"
 
 class MapDisplay extends Component {
-
+    componentDidMount () {
+        console.log("Hello out there?")
+    }
     render() {
         return (
             <div>

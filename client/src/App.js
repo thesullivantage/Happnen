@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import {  } from "react-router";
+import { } from "react-router";
 import NoMatch from "./pages/NoMatch";
 import Homepage from "./pages/Homepage";
 import Signup from "./pages/Signup";
@@ -9,31 +9,65 @@ import Profile from "./pages/Profile";
 import MapDisplay from "./pages/MapDisplay";
 import "./main.css"
 
-const App = () => (
-  <Router>
-    <div>
-      <Switch>
-        {/* None of these components are created yet */}
-        <Route exact path="/" component={Homepage} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/createevent" component={CreateEvent} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/mapdisplay" component={MapDisplay} />
-        {/*<Route exact path="/login" component={Login} />
-        <Route exact path="/events" component={Events} /> */}
+class App extends React.Component {
+	render() {
+		if (sessionStorage.user) {
+			return (
+				<Router>
+					<div>
+						<Switch>
+							{/* None of these components are created yet */}
+							<Route exact path="/" component={Homepage} />
+							<Route exact path="/signup" component={Signup} />
+							<Route exact path="/createevent" component={CreateEvent} />
+							<Route exact path="/profile" component={Profile} />
+							<Route exact path="/mapdisplay" component={MapDisplay} />
+							{/*<Route exact path="/login" component={Login} />
+				<Route exact path="/events" component={Events} /> */}
 
-        {/* We can also avoid /:id and get user info from user stored in user state after login */}
-        {/*
-        <Route exact path="/profilesettings/:id" component={Events} /> 
-        <Route exact path="/event/:id" component={EventWithid} /> */}
+							{/* We can also avoid /:id and get user info from user stored in user state after login */}
+							{/*
+				<Route exact path="/profilesettings/:id" component={Events} /> 
+				<Route exact path="/event/:id" component={EventWithid} /> */}
 
-        <Route component={NoMatch} />
-  
-      </Switch>
+							<Route component={NoMatch} />
 
-      {/* Put nav button here as a jsx tag */}
-    </div>
-  </Router>
-);
+							{/* FOR AARON: */}
+							{/* <FAB type="logged"/> */}
+
+
+						</Switch>
+						{/* Put nav button here as a jsx tag */}
+					</div>
+				</Router>
+			)
+		} else {
+			return (
+				<Router>
+					<div>
+						<Switch>
+							{/* None of these components are created yet */}
+							<Route exact path="/" component={Homepage} />
+							<Route exact path="/signup" component={Signup} />
+							<Route exact path="/createevent" component={Homepage} />
+							<Route exact path="/profile" component={Homepage} />
+							<Route exact path="/mapdisplay" component={Homepage} />
+							{/*<Route exact path="/login" component={Login} />
+            <Route exact path="/events" component={Events} /> */}
+
+							{/* We can also avoid /:id and get user info from user stored in user state after login */}
+							{/*
+            <Route exact path="/profilesettings/:id" component={Events} /> 
+            <Route exact path="/event/:id" component={EventWithid} /> */}
+
+							<Route component={NoMatch} />
+						</Switch>
+						{/* Put nav button here as a jsx tag */}
+					</div>
+				</Router>
+			)
+		}
+	}
+};
 
 export default App;
