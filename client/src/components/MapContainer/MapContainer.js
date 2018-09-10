@@ -94,8 +94,6 @@ const Map = compose(
 
 );
 
-//=============================================================================
-
 export class MapComponent extends React.Component {
 	componentWillMount() {
 		this.setState({ markers: [] })
