@@ -1,6 +1,6 @@
-/* body{
-    background-image: url("../../components/billie_holiday.png");
-} */
+body{
+    background-image: url("../../components/chruch.png");
+}
 
 .react-datepicker__input-container {
     margin-right: 150px;
@@ -13,7 +13,7 @@
 }
 
 .container{
-    background-image: url("../../components/billie_holiday.png");
+    /* background-image: url("../../components/chruch.png"); */
     background-color: white;
     border: 2px solid rgb(9, 0, 65);
     margin-top: 10px;

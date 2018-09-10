@@ -22,7 +22,7 @@ class Profile extends Component {
         userData: [],
         username: "",
         bio: "",
-        picLink: "",
+        picLink: null,
         events: ""
     };
 
@@ -58,7 +58,7 @@ class Profile extends Component {
                         this.setState({
                             userData: res.data,
                             bio: res.data.bio,
-                            picLink: res.data.picLink
+                            // picLink: res.data.picLink
                             // events: this.state.user.myEvents
                         }, () => {
                             //map
@@ -171,7 +171,7 @@ class Profile extends Component {
                         s={4}
                         placeholder="Link a Profile Pic"
                         name="picLink"
-                        type="text"
+                        type="file"
                         label="Profile Photo"
                         className="profilePhoto"
                         value={this.state.picLink}
