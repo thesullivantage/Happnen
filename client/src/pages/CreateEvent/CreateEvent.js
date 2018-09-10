@@ -9,6 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import API from '../../utils/API';
 import UserInvitedBtn from "../../components/UserInvitedBtn";
+import UserFab from "../../components/UserFab";
 
 const dictionary = {
     alphabet: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -240,18 +241,7 @@ class Event extends Component {
                 />
 
 
-                <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
-                    <Button floating icon='pin_drop' className='purple' node='a' href='/mapdisplay'
-                        data-position="top" data-delay="50" tooltip="What's Happnen" />
-                    <Button floating icon='person' className='blue' node='a' href='/'
-                        data-position="top" data-delay="50" tooltip="Login" />
-                    <Button floating icon='person_add' className='green' node='a' href='/signup'
-                        data-position="top" data-delay="50" tooltip="Create Account" />
-                    <Button floating icon='add_box' className='yellow darken-1' node='a' href='/createevent'
-                        data-position="top" data-delay="50" tooltip="Create Event" />
-                    <Button floating icon='assignment_ind' className='red' node='a' href='/profile'
-                        data-position="top" data-delay="50" tooltip="Profile" />
-                </Button>
+                <UserFab />
 
                 <Row>
                     <Input

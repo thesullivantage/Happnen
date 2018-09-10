@@ -49,8 +49,8 @@ class App extends React.Component {
 							{/* None of these components are created yet */}
 							<Route exact path="/" component={Homepage} />
 							<Route exact path="/signup" component={Signup} />
-							<Route exact path="/createevent" component={Homepage} />
-							<Route exact path="/profile" component={Homepage} />
+							<Route exact path="/createevent" component={Signup} />
+							<Route exact path="/profile" component={Signup} />
 							<Route exact path="/mapdisplay" component={Homepage} />
 							{/*<Route exact path="/login" component={Login} />
             <Route exact path="/events" component={Events} /> */}

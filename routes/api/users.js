@@ -18,6 +18,9 @@ router
     .route("/login")
     .post(usersController.validateUser)
 
+router
+    .route("/logout")
+
 router 
     .route("/signup")
     .post(usersController.createUser)
