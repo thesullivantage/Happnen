@@ -231,7 +231,7 @@ class Signup extends Component {
         </Row>
 
         <Row>
-          <Button className="Submit" onClick={this.handleFormSubmit}>Submit</Button>
+          <Button className="signupSubmit" onClick={this.handleFormSubmit}>Submit</Button>
         </Row>
 
       </Container>

@@ -17,9 +17,9 @@ function convertDate(inputDate) {
 }
 
 const Map = compose(
-	componentDidMount ( () => {
-		console.log(props.markers)
-	}),
+	// componentDidMount ( () => {
+	// 	console.log(props.markers)
+	// }),
 
 	withProps({
 		googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCzhrxRlHVOD13tasY5VxcdBrOGeDjsPIU&v=3.exp&libraries=geometry,drawing,places",
@@ -96,8 +96,6 @@ const Map = compose(
 	</GoogleMap>
 
 );
-
-//=============================================================================
 
 export class MapComponent extends React.Component {
 	componentWillMount() {

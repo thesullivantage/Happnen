@@ -34,6 +34,7 @@
 }
 
 .input-field input[type=text]:focus {
+    color: black;
     border-bottom: 1px solid #1A3456;
     box-shadow: 0 1px 0 0 #1A3456;
     border-radius: 85px;
@@ -44,6 +45,7 @@ label focus color .input-field input:focus+label {
 }
 
 .input-field input[type=text]:focus {
+    color: black;
     border-bottom: 1px solid #1A3456;
     box-shadow: 0 1px 0 0 #1A3456;
 }
@@ -60,6 +62,7 @@ label focus color .input-field input:focus+label {
 }
 
 .input-field input[type=password] {
+    color: black;
     border-bottom: 1px solid #1A3456;
     box-shadow: 0 1px 0 0 #1A3456;
 }
