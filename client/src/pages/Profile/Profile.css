@@ -1,5 +1,9 @@
-h1.userHeader{
-    text-align: center;
+.row.userHeader{
+    align-content: center;
+    margin-left: 200px;
+    margin-right: auto;
+    margin-top: -20px;
+    margin-bottom: 100px;
 }
 
 /* body {
