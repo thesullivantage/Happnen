@@ -10,19 +10,19 @@ import PublicEvent from "./publicEvent";
 
 class MCollection extends React.Component {
 
-	constructor(props){
-        super(props);
-    }
+	constructor(props) {
+		super(props);
+	}
 
 	state = {
-
+		data: this.props.data
 	}
 
 	componentDidMount = () => {
 		console.log("test")
 	}
 
-	render () {
+	render() {
 		console.log("Render")
 		console.log("type", this.props.type)
 		console.log("HALP", this.props.data)
@@ -30,6 +30,7 @@ class MCollection extends React.Component {
 			console.log("Suxcess")
 			return (
 				<Collection>
+					{/* changed from this.props.data */}
 					<Invitation data={this.props.data} />
 				</Collection>
 			);
