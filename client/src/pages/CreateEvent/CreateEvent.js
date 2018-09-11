@@ -10,6 +10,8 @@ import DatePicker from 'react-datepicker';
 import API from '../../utils/API';
 import UserInvitedBtn from "../../components/UserInvitedBtn";
 import UserFab from "../../components/UserFab";
+import LocationSearchInput from "../../components/LocationSearchInput";
+import PlacesAutocomplete, { geocodeByAddress, getLatLng, } from 'react-places-autocomplete';
 
 const dictionary = {
     alphabet: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -119,7 +121,6 @@ class Event extends Component {
             userSearch: value
         });
 
-
         //API."findAllUsers"
         /*.then(result => {
             -- pull _id's and users from result, put them into an array of 
@@ -133,6 +134,17 @@ class Event extends Component {
                     -- search array ObjId for this username, which index it occurs at
                     -- find the _id at that index, push it to this.state.invited
         })*/
+    };
+
+    handleChange = location => {
+        this.setState({ location });
+    };
+
+    handleSelect = location => {
+        geocodeByAddress(location)
+            .then(results => getLatLng(results[0]))
+            .then(latLng => console.log('Success', latLng))
+            .catch(error => console.error('Error', error));
     };
 
     handleAdd = event => {
@@ -240,7 +252,7 @@ class Event extends Component {
                     width="75%"
                 />
 
-                <Row>
+                <Row className="EventNameRow">
                     <Input
                         s={12}
                         label="Event Name"
@@ -254,6 +266,50 @@ class Event extends Component {
                 </Row>
 
                 <Row>
+                    <PlacesAutocomplete
+                        label="Location"
+                        name="location"
+                        type="text"
+                        value={this.state.location}
+                        onChange={this.handleChange}
+                        onSelect={this.handleSelect}
+                    >
+                        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                            <div>
+                                <input
+                                    {...getInputProps({
+                                        placeholder: 'Search Location ...',
+                                        className: 'location-search-input',
+                                    })}
+                                />
+                                <div className="autocomplete-dropdown-container">
+                                    {loading && <div>Loading...</div>}
+                                    {suggestions.map(suggestion => {
+                                        const className = suggestion.active
+                                            ? 'suggestion-item--active'
+                                            : 'suggestion-item';
+                                        // inline style for demonstration purpose
+                                        const style = suggestion.active
+                                            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                                            : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                        return (
+                                            <div
+                                                {...getSuggestionItemProps(suggestion, {
+                                                    className,
+                                                    style,
+                                                })}
+                                            >
+                                                <span>{suggestion.description}</span>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
+                    </PlacesAutocomplete>
+                </Row>
+
+                {/* <Row>
                     <Input
                         s={12}
                         label="Location"
@@ -264,7 +320,7 @@ class Event extends Component {
                         onChange={this.handleInputChange}>
                         <Icon></Icon>
                     </Input>
-                </Row>
+                </Row> */}
 
                 <Row className="dateRow">
                     <DatePicker

@@ -37,7 +37,9 @@ body{
     margin-top: 20px;
     margin-bottom: -15px;
 }
-
+.row.EventNameRow{
+    margin-top: 50px;
+}
 .row.inputRow{
     display: flex;
     align-content: center;
@@ -60,4 +62,9 @@ body{
 
 .row.photoRow{
     margin-top: 50px;
+}
+
+input.location-search-input{
+    margin-left: 55px;
+    width: 800px;
 }
