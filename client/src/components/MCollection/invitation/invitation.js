@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { Container, Row, Col, Input, Icon, Button, CollectionItem, Modal } from "react-materialize";
 import API from "../../../utils/API";
 import moment from 'moment';
-import DeleteBtn from "../../DeleteBtn";
-import AcceptBtn from "../../AcceptBtn";
-import EventLabel from "../misc/EventLabels";
-import QRCode from 'react-qr-code';
-import UnacceptBtn from "../../UnacceptBtn";
 import InvModal from "./InvModal"
 
 
@@ -23,6 +18,7 @@ class Invitation extends React.Component {
 
 		console.log("impData", this.props.data.obj.invites)
 		const data = this.props.data.obj.invites
+		console.log("data", data)
 		const user = this.props.data.obj._id
 		if (data) {
 			// Conditional Rendering Here 

@@ -16,7 +16,7 @@ function convertDate(inputDate) {
 }
 
 class Invitation extends React.Component {
-
+	
 	state = {
 		attending: false,
 		eventid: this.props.data._id,
@@ -25,14 +25,43 @@ class Invitation extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log("data", this.state.data)
-		console.log("user", this.state.userId)
+		const attending = this.state.data.attending
+		const userId = this.props.user
+		if (attending.includes(userId)) {
+			this.setState({
+				attending: true
+			})
+		}
+		console.log("PLZ WORK", this.props.data)
+		// console.log("user", this.state.userId)
 		//call to check and see if invitation confirmed yet
 		// Accepting userid as well as eventid
 	}
 
 	handleAccept() {
 
+		const userI = this.props.user
+		const eventI = this.props.data._id
+
+		console.log("TestPLZ", this.state)
+
+		const inviteObj = {
+			userId: this.state.userId,
+			eventId: this.state.eventid
+		}
+		console.log("inviteObj: ", inviteObj)
+		API.inviteAccept(inviteObj)
+			.then(res => {
+				// Do this if status is 200
+				this.setState({ attending: true })
+				console.log(res)
+			})
+			.catch(err => console.log(err));
+
+
+
+
+		//alert if all fields aren't completed	}
 	}
 
 	handleReject() {
@@ -52,7 +81,7 @@ class Invitation extends React.Component {
 				<Modal
 					header
 					basic
-					trigger={<Button>{item.eventName}</Button>}>
+					trigger={<Button >{item.eventName}</Button>}>
 					<Row>
 						<Col>
 							<h1>{item.eventName}</h1>
@@ -67,16 +96,19 @@ class Invitation extends React.Component {
 					<h5>End Date: {convertDate(item.endDate)}</h5>
 					<h5>Description: {item.description}</h5>
 					<p className="event-description">{item.description}</p>
-					<AcceptBtn status onClick={this.handleAccept} />
+					<AcceptBtn status onClick={this.handleAccept.bind(this)} />
 					<DeleteBtn status onClick={this.handleReject} />
 				</Modal>
 			)
 		} else {
+			const btnStyle = {
+				background: "green"
+			}
 			return (
 				<Modal
 					header
 					basic
-					trigger={<Button>{item.eventName}</Button>}>
+					trigger={<Button style={btnStyle}>{item.eventName}</Button>}>
 					<Row>
 						<Col>
 							<h1>{item.eventName}</h1>

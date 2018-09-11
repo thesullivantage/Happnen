@@ -40,17 +40,26 @@ export default {
     return axios.post("/api/users/populatedata", userObj)
   },
 
-  inviteAccept: function () {
-    return axios.post("/api/events/yes")
+
+  
+  //INVITATION 
+
+  inviteAccept: function (inviteObj) {
+    return axios.post("/api/events/yes", inviteObj)
   },
 
-  inviteDeny: function () {
+  inviteDeny: function (inviteObj) {
     return axios.post("/api/events/no")
+  },
+
+  inviteUnaccept: function (inviteObj) {
+    return axios.post("/api/events/undo")
   },
 
   // inviteCheck: function () {
   //   return axios.post("/api/users/", userObj)
   // },
+
 
   // MAP HELPERS
 

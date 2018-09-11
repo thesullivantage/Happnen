@@ -172,6 +172,37 @@ module.exports = {
 
 	//also needs userId and eventId passed into the object passed to the api call for this one
 	rsvpYes: function (req, res) {
+		console.log("Starting off in right field")
+		db.Events
+			.findOneAndUpdate(
+				{_id: req.body.eventId},
+				{
+					$pull: {invited: req.body.userId},
+					$push: {attending: req.body.userId}
+				}
+			)
+			.then(initialres => {
+				console.log("initial response", initialres)
+				db.Users
+					.findOneAndUpdate(
+						{_id: req.body.userId},
+						{
+							$pull: {invites: req.body.eventId},
+							$push: {attends: req.body.eventId}
+						}
+					)
+					.then(finalres => {
+						console.log("finalres", finalres)
+						res.status(200).json(finalres)
+					})
+					.catch(err => res.status(422).json(err))
+
+				// res.status(200).json(finalres)
+			})
+			.catch(err => res.status(422).json(err))
+	},
+
+	Unaccept: function (req, res) {
 		db.Events
 			.findOneAndUpdate(
 				{_id: req.body.eventId},
