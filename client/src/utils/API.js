@@ -49,11 +49,11 @@ export default {
   },
 
   inviteDeny: function (inviteObj) {
-    return axios.post("/api/events/no")
+    return axios.post("/api/events/no", inviteObj)
   },
 
   inviteUnaccept: function (inviteObj) {
-    return axios.post("/api/events/undo")
+    return axios.post("/api/events/undo", inviteObj)
   },
 
   // inviteCheck: function () {

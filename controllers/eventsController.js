@@ -147,6 +147,7 @@ module.exports = {
 	},
 
 	rsvpNo: function (req, res) {
+		console.log("THIS IS THE WRONG FUNCTION")
 		//need to pass userId, eventId in the object from api call on front end
 		db.Events
 			.findOneAndUpdate(
@@ -176,16 +177,15 @@ module.exports = {
 			.findOneAndUpdate(
 				{_id: req.body.eventId},
 				{
-					$pull: {invited: req.body.userId},
 					$push: {attending: req.body.userId}
 				}
 			)
 			.then(initialres => {
+				console.log("AM I Working FATHER?")
 				db.Users
 					.findOneAndUpdate(
 						{_id: req.body.userId},
 						{
-							$pull: {invites: req.body.eventId},
 							$push: {attends: req.body.eventId}
 						}
 					)

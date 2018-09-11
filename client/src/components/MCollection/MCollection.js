@@ -10,14 +10,22 @@ import PublicEvent from "./publicEvent";
 
 class MCollection extends React.Component {
 
-	componentDidMount() {
+	constructor(props){
+        super(props);
+    }
+
+	state = {
+
+	}
+
+	componentDidMount = () => {
 		console.log("test")
 	}
 
-	render() {
+	render () {
 		console.log("Render")
 		console.log("type", this.props.type)
-		console.log("data", this.props.data)
+		console.log("HALP", this.props.data)
 		if (this.props.type === "invitation" && this.props.data) {
 			console.log("Suxcess")
 			return (
@@ -26,25 +34,25 @@ class MCollection extends React.Component {
 				</Collection>
 			);
 
-		} else if(this.props.type === "myEvents") {
+		} else if (this.props.type === "myEvents" && this.props.data) {
 			return (
 				<Collection>
-					<MyEvent data={this.props.data}/>
+					<MyEvent data={this.props.data} />
 				</Collection>
 			);
 
-		} else if (this.props.type === "publicEvents") {
+		} else if (this.props.type === "publicEvents" && this.props.data) {
 			console.log("SUCCES")
 			console.log(this.props.markerObj)
 			return (
-				<PublicEvent markerObj={this.props.markerObj}/>
+				<PublicEvent markerObj={this.props.markerObj} />
 			)
-			
+
 		} else if (!this.props.data) {
 			return null;
 
 		} else {
-			return(
+			return (
 				<h1>Teeest</h1>
 			)
 		}
