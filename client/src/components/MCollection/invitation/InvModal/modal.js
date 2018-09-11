@@ -16,7 +16,7 @@ function convertDate(inputDate) {
 }
 
 class Invitation extends React.Component {
-	
+
 	state = {
 		attending: false,
 		eventid: this.props.data._id,
@@ -58,18 +58,41 @@ class Invitation extends React.Component {
 			})
 			.catch(err => console.log(err));
 
-
-
-
 		//alert if all fields aren't completed	}
 	}
 
 	handleReject() {
+		// const userI = this.props.user
+		// const eventI = this.props.data._id
 
+		console.log("TestPLZ", this.state)
+
+		const inviteObj = {
+			userId: this.state.userId,
+			eventId: this.state.eventid
+		}
+		console.log("inviteObj: ", inviteObj)
+		API.inviteDeny(inviteObj)
+			.then(res => {
+				// Do this if status is 200
+				console.log("DELETED", res)
+			})
+			.catch(err => console.log(err));
 	}
 
 	handleUnaccept() {
-
+		const inviteObj = {
+			userId: this.state.userId,
+			eventId: this.state.eventid
+		}
+		console.log("inviteObj: ", inviteObj)
+		API.inviteUnaccept(inviteObj)
+			.then(res => {
+				// Do this if status is 200
+				this.setState({ attending: false })
+				console.log(res)
+			})
+			.catch(err => console.log(err));
 	}
 
 	render() {
@@ -97,7 +120,7 @@ class Invitation extends React.Component {
 					<h5>Description: {item.description}</h5>
 					<p className="event-description">{item.description}</p>
 					<AcceptBtn status onClick={this.handleAccept.bind(this)} />
-					<DeleteBtn status onClick={this.handleReject} />
+					<DeleteBtn status onClick={this.handleReject.bind(this)} />
 				</Modal>
 			)
 		} else {
@@ -123,7 +146,7 @@ class Invitation extends React.Component {
 					<h5>End Date: {convertDate(item.endDate)}</h5>
 					<h5>Description: {item.description}</h5>
 					<p className="event-description">{item.description}</p>
-					<UnacceptBtn />
+					<UnacceptBtn onClick={this.handleUnaccept.bind(this)}/>
 				</Modal>
 			)
 		}
