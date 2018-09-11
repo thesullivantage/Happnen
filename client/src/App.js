@@ -8,6 +8,8 @@ import CreateEvent from "./pages/CreateEvent";
 import Profile from "./pages/Profile";
 import MapDisplay from "./pages/MapDisplay";
 import "./main.css"
+import UserFab from "./components/UserFab";
+import NonUserFab from "./components/NonUserFab";
 
 class App extends React.Component {
 	render() {
@@ -38,8 +40,10 @@ class App extends React.Component {
 
 						</Switch>
 						{/* Put nav button here as a jsx tag */}
+						<UserFab/>
 					</div>
 				</Router>
+				
 			)
 		} else {
 			return (
@@ -62,6 +66,7 @@ class App extends React.Component {
 
 							<Route component={NoMatch} />
 						</Switch>
+						<NonUserFab/>
 						{/* Put nav button here as a jsx tag */}
 					</div>
 				</Router>

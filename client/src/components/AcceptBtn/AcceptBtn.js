@@ -5,7 +5,7 @@ import { Button } from "react-materialize";
 const AcceptBtn = props => (
 	<Button className="accept-btn" {...props}>
 		Accept
-  	</Button>
+	</Button>
 );
 
 export default AcceptBtn;

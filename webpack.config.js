@@ -22,5 +22,4 @@ var config = {
 };
 
 module.exports = config;
-Basic configuration -- an entry, output and loaders to handle the React .jsx files.
 

@@ -41,6 +41,26 @@ export default {
   },
 
 
+  
+  //INVITATION 
+
+  inviteAccept: function (inviteObj) {
+    return axios.post("/api/events/yes", inviteObj)
+  },
+
+  inviteDeny: function (inviteObj) {
+    return axios.post("/api/events/no")
+  },
+
+  inviteUnaccept: function (inviteObj) {
+    return axios.post("/api/events/undo")
+  },
+
+  // inviteCheck: function () {
+  //   return axios.post("/api/users/", userObj)
+  // },
+
+
   // MAP HELPERS
 
   getEventLocations: function () {

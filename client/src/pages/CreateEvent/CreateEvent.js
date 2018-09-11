@@ -240,9 +240,6 @@ class Event extends Component {
                     width="75%"
                 />
 
-
-                <UserFab />
-
                 <Row>
                     <Input
                         s={12}

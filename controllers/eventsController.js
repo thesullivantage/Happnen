@@ -181,6 +181,34 @@ module.exports = {
 				}
 			)
 			.then(initialres => {
+				db.Users
+					.findOneAndUpdate(
+						{_id: req.body.userId},
+						{
+							$pull: {invites: req.body.eventId},
+							$push: {attends: req.body.eventId}
+						}
+					)
+					.then(finalres => {
+						res.status(200).json(finalres)
+					})
+					.catch(err => res.status(422).json(err))
+
+				// res.status(200).json(finalres)
+			})
+			.catch(err => res.status(422).json(err))
+	},
+
+	Unaccept: function (req, res) {
+		db.Events
+			.findOneAndUpdate(
+				{_id: req.body.eventId},
+				{
+					$pull: {invited: req.body.userId},
+					$push: {attending: req.body.userId}
+				}
+			)
+			.then(initialres => {
 				console.log("initial response", initialres)
 				db.Users
 					.findOneAndUpdate(

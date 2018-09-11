@@ -34,6 +34,17 @@ router
     .route("/create")
     .post(eventsController.createEvent);
 
+router 
+    .route("/yes")
+    .post(eventsController.rsvpYes)
+
+router
+    .route("/no")
+    .post(eventsController.rsvpNo)
+
+router 
+    .route("/undo")
+    .post(eventsController.Unaccept)
 // Do this in controller
 // router 
 //     .route("/invite")

@@ -13,7 +13,7 @@ class UserFab extends Component {
 
     handleLogout = event => {
         this.setState({ username: "", password: "", redirect: true });
-        sessionStorage.data.clear();
+        sessionStorage.user = ""
 
         //alert if all fields aren't completed
     };
@@ -35,7 +35,7 @@ class UserFab extends Component {
                     <Button floating icon='assignment_ind' className='green' node='a' href='/profile'
                         data-position="top" data-delay="50" tooltip="Profile" />
                     <Button floating icon='person' className='yellow darken-1' node='a' href='/'
-                        data-position="top" data-delay="50" tooltip="Logout" onClick="handleLogout" />
+                        data-position="top" data-delay="50" tooltip="Logout" onClick={this.handleLogout} />
                 </Button>
 
             </Container>
