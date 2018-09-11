@@ -12,7 +12,9 @@ function convertDate(inputDate) {
 }
 
 class Invitation extends React.Component {
-
+	state= {
+		data: this.props.data.obj.invites
+	}
 
 	render() {
 
@@ -20,8 +22,9 @@ class Invitation extends React.Component {
 		const data = this.props.data.obj.invites
 		console.log("data", data)
 		const user = this.props.data.obj._id
-		if (data) {
+		if (this.state.data) {
 			// Conditional Rendering Here 
+				console.log(data)
 				return (
 					data.map(item =>
 						<CollectionItem>
