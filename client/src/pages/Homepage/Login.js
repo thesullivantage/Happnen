@@ -55,8 +55,6 @@ class Homepage extends Component {
     return (
       <Container>
 
-        <NonUserFab />
-
         <Row>
           <Logo
             className="Logo"

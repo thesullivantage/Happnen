@@ -141,8 +141,6 @@ class Profile extends Component {
         return (
             <Container>
 
-                <UserFab />
-
                 <HappnenIcon
                     className="Icon"
                     alt="HappnenIcon"

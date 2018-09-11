@@ -6,6 +6,8 @@ import DeleteBtn from "../../DeleteBtn";
 import AcceptBtn from "../../AcceptBtn";
 import EventLabel from "../misc/EventLabels";
 import QRCode from 'react-qr-code';
+import UnacceptBtn from "../../UnacceptBtn";
+import InvModal from "./InvModal"
 
 
 // helper function to convert date
@@ -16,46 +18,22 @@ function convertDate(inputDate) {
 
 class Invitation extends React.Component {
 
-	// state = {
-		
-	// }
-
-	componentDidMount() {
-
-	}
 
 	render() {
-		console.log("PATHFINDER", this.props.data.obj.invites)
-		const impData = this.props.data.obj.invites
-		console.log("impData", impData)
-		if (impData) {
-			return (
-				impData.map(item =>
-					<CollectionItem>
-						<Modal
-							header
-							basic
-							trigger={<Button>{item.eventName}</Button>}>
-							<Row>
-								<Col>
-									<h1>{item.eventName}</h1>
-									<h4>Hosted by {item.host}</h4>
-								</Col>
-								<Col>
-									<QRCode size={96} value={item.eventQr} />
-								</Col>
-							</Row>
-									<h5>Location: {item.location}</h5>
-									<h5>Start Date: {convertDate(item.startDate)}</h5>
-									<h5>End Date: {convertDate(item.endDate)}</h5>
-									<h5>Description: {item.description}</h5>
-									<p className="event-description">{item.description}</p>
-									<AcceptBtn status/>
-									<DeleteBtn status/>
-						</Modal>
-					</CollectionItem>
+
+		console.log("impData", this.props.data.obj.invites)
+		const data = this.props.data.obj.invites
+		const user = this.props.data.obj._id
+		if (data) {
+			// Conditional Rendering Here 
+				return (
+					data.map(item =>
+						<CollectionItem>
+							<InvModal data={item} user={user}/>
+						</CollectionItem>
+					)
 				)
-			)
+
 		} else {
 			return <h4>Get your life together, make some friends, and get invited to things here!</h4>
 		}

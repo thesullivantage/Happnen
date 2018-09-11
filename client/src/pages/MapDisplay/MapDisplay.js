@@ -12,36 +12,9 @@ class MapDisplay extends Component {
         console.log("Hello out there?")
     }
     render() {
-
-        if (sessionStorage.user) {
             return (
-                <div>
-                    <MapComponent />
-
-                    <Container>
-
-                        <UserFab />
-
-                    </Container>
-
-                </div>
+                <MapComponent />
             );
-        }
-
-        else {
-            return (
-                <div>
-                    <MapComponent />
-
-                    <Container>
-
-                        <NonUserFab />
-
-                    </Container>
-
-                </div>
-            )
-        }
     }
 }
 
