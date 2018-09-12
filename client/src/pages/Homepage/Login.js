@@ -35,8 +35,8 @@ class Homepage extends Component {
 		console.log("suObj: ", loginObj)
 		API.login(loginObj)
 			.then(res => {
-				sessionStorage.user = loginObj.username;
-				this.setState({ username: "", password: "", redirect: true });				
+				sessionStorage.user = this.state.username;
+				this.setState({ username: "", password: "",	redirect: true});				
 				// Do this if status is 200
 				console.log(res)
 			})

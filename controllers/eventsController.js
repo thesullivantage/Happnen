@@ -1,6 +1,7 @@
 const db = require("../models");
 var NodeGeocoder = require("node-geocoder");
 var moment = require('moment')
+var Cryptr = require('cryptr')
 
 var options = {
 	provider: 'google',
@@ -25,6 +26,16 @@ geoConvert = (eventAddress) => geocoder.geocode(eventAddress)
 	.catch(function (err) {
 		console.log(err)
 	})
+
+genKey = () => {
+	const key = "";
+	const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	for (var i = 0; i < 10; i++) {
+		key += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+	return key;
+}
 
 
 
@@ -110,7 +121,14 @@ module.exports = {
 
 	// CREATE AN EVENT AND ADD TO DB
 	createEvent: function (req, res) {
+
 		let reqCopy = req.body;
+		console.log(reqCopy)
+		if (reqCopy) {
+
+		}
+		let key = genKey();
+		reqCopy.EKey = key
 		let reqAddress = req.body.location
 		geoConvert(reqAddress)
 		setTimeout(function () {
@@ -205,7 +223,7 @@ module.exports = {
 				{ _id: req.body.eventId },
 				{
 
-					$pull: {attending: req.body.userId},
+					$pull: { attending: req.body.userId },
 
 				}
 			)
@@ -216,7 +234,7 @@ module.exports = {
 						{ _id: req.body.userId },
 						{
 
-							$pull: {attends: req.body.eventId}
+							$pull: { attends: req.body.eventId }
 
 						}
 					)
