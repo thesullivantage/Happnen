@@ -10,7 +10,7 @@ function convertDate(inputDate) {
 	return moment(inputDate).format("llll")
 }
 
-class Invitation extends Component {
+class Invitation extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -20,7 +20,7 @@ class Invitation extends Component {
 	}
 
 	state = {
-		data: "hello",
+		data: "",
 		user: ""
 	};
 
@@ -39,7 +39,7 @@ class Invitation extends Component {
 	static getDerivedStateFromProps = (props, state) => {
 		return {
 			data: props.data.obj.invites,
-			user: "hello"
+			user: props.data.obj._id
 		};
 	}
 

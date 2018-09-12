@@ -204,8 +204,9 @@ module.exports = {
 			.findOneAndUpdate(
 				{ _id: req.body.eventId },
 				{
-					$pull: { invited: req.body.userId },
-					$push: { attending: req.body.userId }
+
+					$pull: {attending: req.body.userId},
+
 				}
 			)
 			.then(initialres => {
@@ -214,8 +215,9 @@ module.exports = {
 					.findOneAndUpdate(
 						{ _id: req.body.userId },
 						{
-							$pull: { invites: req.body.eventId },
-							$push: { attends: req.body.eventId }
+
+							$pull: {attends: req.body.eventId}
+
 						}
 					)
 					.then(finalres => {

@@ -147,8 +147,8 @@ class Profile extends Component {
                     height="300px"
                     width="75%" />
 
-                <Row>
-                    <h1 className="userHeader">Username: {this.state.username}</h1>
+                <Row  className="userHeader">
+                    <h1>Username: {this.state.username}</h1>
 
                 </Row>
 
