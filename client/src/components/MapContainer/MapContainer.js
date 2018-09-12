@@ -130,11 +130,11 @@ export class MapComponent extends React.Component {
 						this.setState({ markers: res.data });
 					});
 				break;
-				case "Monthly":
+			case "Monthly":
 				API.getMonthlyLocations()
-				.then(res => {
-					this.setState({ markers: res.data });
-				});
+					.then(res => {
+						this.setState({ markers: res.data });
+					});
 				break;
 		}
 		console.log("switch over")
@@ -144,14 +144,14 @@ export class MapComponent extends React.Component {
 	// dateRange picker
 	dateFilter = event => {
 		const { value } = event.target
-		this.setState({ 
+		this.setState({
 
 			activeFilter: value,
 
-		}, 
-		// rerun loadmarkers to render them
-		() => this.loadMarkers()
-	)
+		},
+			// rerun loadmarkers to render them
+			() => this.loadMarkers()
+		)
 	}
 
 	render() {
@@ -164,10 +164,12 @@ export class MapComponent extends React.Component {
 			<div>
 				<Map markers={this.state.markers} />
 				<Row>
-					<Input name='DateSelect' type='radio' value='All' label='All Events' onChange={this.dateFilter} />
-					<Input name='DateSelect' type='radio' value='Today' label='Daily Events' onChange={this.dateFilter} />
-					<Input name='DateSelect' type='radio' value='Weekly' label='Weekly Events' onChange={this.dateFilter} />
-					<Input name='DateSelect' type='radio' value='Monthly' label='Monthly Events' onChange={this.dateFilter} />
+					<Input s={12} type='select' label="Materialize Select" defaultValue='All' onChange={this.dateFilter}>
+						<option value='All'>All Events</option>
+						<option value='Today'>Today's Events</option>
+						<option value='Weekly'>Weekly Events</option>
+						<option value='Monthly'>Monthly Events</option>
+					</Input>
 				</Row>
 				<SideNav
 					trigger={<Button style={{ position: 'absolute', bottom: '40px', left: '10px', zIndex: '4' }}>Events List</Button>}
