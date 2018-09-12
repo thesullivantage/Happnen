@@ -10,10 +10,18 @@ const eventSchema = new Schema({
   // latLong property is converted from the address:
   latitude: { type: Number },
   longitude: { type: Number },
+
+  elat: String,
+  elong: String,
   // ADDED START AND END DATE
   startDate: { type: Date, default: Date.now },
   endDate: { type: Date, default: new Date(+new Date() + 3600000)},
   description: { type: String, required: false },
+  //encryptedLocStuff; secure is for a later feature
+  EKey: { type: String, required: false },
+  secure: { type: Boolean, required: false, default: false },
+  spentIds: [],
+
   invited: [{ type: Schema.Types.ObjectId, ref: "Users" }],
   attending: [{type: Schema.Types.ObjectId, ref: "Users"}],
   locationDownloaded: [],

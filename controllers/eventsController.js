@@ -1,6 +1,7 @@
 const db = require("../models");
 var NodeGeocoder = require("node-geocoder");
 var moment = require('moment')
+var Cryptr = require('cryptr')
 
 var options = {
 	provider: 'google',
@@ -25,6 +26,16 @@ geoConvert = (eventAddress) => geocoder.geocode(eventAddress)
 	.catch(function (err) {
 		console.log(err)
 	})
+
+genKey = () => {
+	var key = "";
+	const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	for (var i = 0; i < 10; i++) {
+		key += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+	return key;
+}
 
 
 
@@ -110,11 +121,39 @@ module.exports = {
 
 	// CREATE AN EVENT AND ADD TO DB
 	createEvent: function (req, res) {
-		let reqCopy = req.body;
+
+		var reqCopy = req.body;
+		console.log("reqCopay", reqCopy)
+		
+
+
 		let reqAddress = req.body.location
 		geoConvert(reqAddress)
 		setTimeout(function () {
 			reqCopy = Object.assign({}, reqCopy, latLong)
+			if (reqCopy.type == 2) {
+				const keyz = {
+					EKey: genKey()
+				}
+				reqCopy = Object.assign({}, reqCopy, keyz)
+				console.log("Newnew", reqCopy)
+				
+				const cryptr = new Cryptr(keyz.EKey)
+
+				const eObj = {
+					location: cryptr.encrypt(reqCopy.location),
+					//We'll probably want to do something besides the north pole at some point
+					latitude: 34.2218685,
+					longitude: -83.96913459999999,
+					elat: cryptr.encrypt(reqCopy.latitude),
+					elong: cryptr.encrypt(reqCopy.longitude)
+				}
+
+				reqCopy = Object.assign({}, reqCopy, eObj)
+
+				console.log("PostEnc", reqCopy)
+			}
+
 			db.Events
 				.create(reqCopy)
 				.then(resDocument => {
@@ -205,7 +244,7 @@ module.exports = {
 				{ _id: req.body.eventId },
 				{
 
-					$pull: {attending: req.body.userId},
+					$pull: { attending: req.body.userId },
 
 				}
 			)
@@ -216,7 +255,7 @@ module.exports = {
 						{ _id: req.body.userId },
 						{
 
-							$pull: {attends: req.body.eventId}
+							$pull: { attends: req.body.eventId }
 
 						}
 					)

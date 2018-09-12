@@ -1,11 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Cookie);
 
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 body {
   /* font-family: 'Cookie', cursive; */
   font-family: 'Roboto', sans-serif;
   /* Don't you dare take away my cursive! */
-};
+}
 
 h1 {
   font-family: 'Cookie', cursive;
@@ -44,3 +50,12 @@ h1 {
 .material-icons {
   padding-left: 0px;
 }
+
+input.location-search-input {
+  width: 650.17px;
+}
+
+.autocomplete-dropdown-container {
+  margin-left: 55px;
+}
+

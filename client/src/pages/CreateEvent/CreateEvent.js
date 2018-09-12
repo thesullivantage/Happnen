@@ -140,6 +140,13 @@ class Event extends Component {
         this.setState({ location });
     };
 
+    handlePrivacy = event => {
+        const { value } = event.target
+		this.setState({
+			type: parseInt(value)
+		})
+    };
+
     handleSelect = location => {
         geocodeByAddress(location)
             .then(results => getLatLng(results[0]))
@@ -180,13 +187,7 @@ class Event extends Component {
         }
         // id pushing function
 
-
-
     }
-
-
-
-
 
     deleteInvitee = event => {
         event.preventDefault();
@@ -386,7 +387,8 @@ class Event extends Component {
                         name='type'
                         type='select'
                         label="Privacy"
-                        defaultValue='0'>
+                        defaultValue='0'
+                        onChange={this.handlePrivacy}>
                         <option value='0'>Public</option>
                         <option value='1'>Invite Only</option>
                         <option value='2'>Private</option>
