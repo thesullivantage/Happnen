@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Input, Icon, Button, Collection, CollectionItem } from "react-materialize";
+import { Container, Row, Col, Input, Icon, Button, Collection, CollectionItem, Preloader } from "react-materialize";
 import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
@@ -24,7 +24,8 @@ class Profile extends Component {
         username: "",
         bio: "",
         picLink: null,
-        events: ""
+        events: "",
+        loading: true
     };
 
 
@@ -41,12 +42,12 @@ class Profile extends Component {
     // };
 
     componentDidMount = () => {
+
+        setTimeout(() => this.setState({ loading: false }), 1500);
+
         this.setState({ username: sessionStorage.user }, () => {
 
-
-
             console.log(sessionStorage.user)
-
 
             if (this.state.username) {
                 let userObj = {
@@ -134,26 +135,37 @@ class Profile extends Component {
 
 
     render() {
+
+        const { loading } = this.state;
+
+        if (loading) {
+            return <Col className="loader" s={4}>
+                <Preloader 
+                flashing="true"
+                size='big' />
+            </Col>;
+        }
+
         const passData = {
             obj: this.state.userData
         }
         console.log(passData)
+
         return (
             <Container>
 
                 <HappnenIcon
-                    className="Icon"
+                    className="profileIcon"
                     alt="HappnenIcon"
                     height="300px"
                     width="75%" />
 
-                <Row  className="userHeader">
+                <Row className="userHeader">
                     <h1>Username: {this.state.username}</h1>
-
                 </Row>
 
                 <Row>
-                {/* Change cloudinary to file */}
+                    {/* Change cloudinary to file */}
                     <Icon>camera_roll</Icon>
                     <Input
                         s={4}
@@ -185,8 +197,8 @@ class Profile extends Component {
 
                 <Row>
                     <Col>
-                        <EventLabel 
-                        text="Your Invitations"
+                        <EventLabel
+                            text="Your Invitations"
                         />
                         <MCollection
                             type="invitation"
@@ -194,8 +206,8 @@ class Profile extends Component {
                         />
                     </Col>
                     <Col>
-                        <EventLabel 
-                        text="Hosted Events"
+                        <EventLabel
+                            text="Hosted Events"
                         />
                         <MCollection
                             type="myEvents"
