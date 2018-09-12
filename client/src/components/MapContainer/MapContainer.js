@@ -164,7 +164,7 @@ export class MapComponent extends React.Component {
 			<div>
 				<Map markers={this.state.markers} />
 				<Row>
-					<Input s={12} type='select' label="Materialize Select" defaultValue='All' onChange={this.dateFilter}>
+					<Input s={12} type='select' label="Time Select" defaultValue='All' onChange={this.dateFilter}>
 						<option value='All'>All Events</option>
 						<option value='Today'>Today's Events</option>
 						<option value='Weekly'>Weekly Events</option>
