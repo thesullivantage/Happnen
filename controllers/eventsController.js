@@ -122,7 +122,7 @@ module.exports = {
 	// CREATE AN EVENT AND ADD TO DB
 	createEvent: function (req, res) {
 
-		var reqCopy = req.body;
+		let reqCopy = req.body;
 		console.log("reqCopay", reqCopy)
 		
 
@@ -136,22 +136,25 @@ module.exports = {
 					EKey: genKey()
 				}
 				reqCopy = Object.assign({}, reqCopy, keyz)
-				console.log("Newnew", reqCopy)
 				
 				const cryptr = new Cryptr(keyz.EKey)
 
-				const eObj = {
-					location: cryptr.encrypt(reqCopy.location),
-					//We'll probably want to do something besides the north pole at some point
-					latitude: 34.2218685,
-					longitude: -83.96913459999999,
-					elat: cryptr.encrypt(reqCopy.latitude),
-					elong: cryptr.encrypt(reqCopy.longitude)
-				}
+				reqCopy.location = cryptr.encrypt(reqCopy.location)
+				reqCopy.latitude = 0
+				reqCopy.longitude = 0
+				reqCopy.elat = cryptr.encrypt(reqCopy.latitude)
+				reqCopy.elong = cryptr.encrypt(reqCopy.longitude)
 
-				reqCopy = Object.assign({}, reqCopy, eObj)
+				// const eObj = {
+				// 	We'll probably want to do something besides the north pole at some point
+				// 	latitude: 0,
+				// 	longitude: 0,
+				// 	elat: cryptr.encrypt(reqCopy.latitude),
+				// 	elong: cryptr.encrypt(reqCopy.longitude)
+				// }
 
-				console.log("PostEnc", reqCopy)
+				// reqCopy = Object.assign({}, reqCopy, eObj)
+
 			}
 
 			db.Events
