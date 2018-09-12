@@ -18,11 +18,11 @@ export default {
   // EVENT CREATION
 
   createEvent: function (eventObj) {
-    return axios.post("api/events/create", eventObj)
+    return axios.post("/api/events/create", eventObj)
   },
 
   autofillusers: function () {
-    return axios.post("api/users/autofill")
+    return axios.post("/api/users/autofill")
   },
 
 // Do this on backend (controller)
