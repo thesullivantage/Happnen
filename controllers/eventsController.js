@@ -28,7 +28,7 @@ geoConvert = (eventAddress) => geocoder.geocode(eventAddress)
 	})
 
 genKey = () => {
-	const key = "";
+	var key = "";
 	const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 	for (var i = 0; i < 10; i++) {
@@ -122,13 +122,15 @@ module.exports = {
 	// CREATE AN EVENT AND ADD TO DB
 	createEvent: function (req, res) {
 
-		let reqCopy = req.body;
-		console.log(reqCopy)
+		var reqCopy = req.body;
+		console.log("reqCopay", reqCopy)
 		if (reqCopy) {
-
+			const keyz = genKey()
+			reqCopy.EKey = keyz
+	
 		}
-		let key = genKey();
-		reqCopy.EKey = key
+
+
 		let reqAddress = req.body.location
 		geoConvert(reqAddress)
 		setTimeout(function () {
