@@ -2,7 +2,7 @@ import React from "react";
 import { compose, withProps, withStateHandlers, withHandlers } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
-import { Button, Icon, Modal, SideNav, SideNavItem, Row, Col } from 'react-materialize';
+import { Button, Icon, Modal, SideNav, SideNavItem, Row, Col, Input } from 'react-materialize';
 import API from "../../utils/API";
 import moment from 'moment';
 import QRCode from 'react-qr-code';
@@ -78,11 +78,11 @@ const Map = compose(
 										<QRCode size={96} value={marker.eventQr} />
 									</Col>
 								</Row>
-								<h5 style={{marginLeft: "15px"}}>Location: {marker.location}</h5>
-								<h5 style={{marginLeft: "15px"}}>Start Date: {convertDate(marker.startDate)}</h5>
-								<h5 style={{marginLeft: "15px"}}>End Date: {convertDate(marker.endDate)}</h5>
-								<h5 style={{marginLeft: "15px"}}>Description:{marker.description} </h5>
-								<p style={{marginLeft: "15px"}} className="event-description">{marker.description}</p>
+								<h5 style={{ marginLeft: "15px" }}>Location: {marker.location}</h5>
+								<h5 style={{ marginLeft: "15px" }}>Start Date: {convertDate(marker.startDate)}</h5>
+								<h5 style={{ marginLeft: "15px" }}>End Date: {convertDate(marker.endDate)}</h5>
+								<h5 style={{ marginLeft: "15px" }}>Description:{marker.description} </h5>
+								<p style={{ marginLeft: "15px" }} className="event-description">{marker.description}</p>
 								<AddEventBtn waves='light'></AddEventBtn>
 							</Modal>
 						</div>
@@ -95,18 +95,64 @@ const Map = compose(
 );
 
 export class MapComponent extends React.Component {
-	componentWillMount() {
+
+	state = {
+		activeFilter: "All"
+	}
+
+	componentWillMount = () => {
 		this.setState({ markers: [] })
 	}
 
-	componentDidMount() {
-		API.getEventLocations()
-			.then(res => {
-				this.setState({ markers: res.data });
-			});
+	componentDidMount = () => {
+		this.loadMarkers()
 	}
 
-	// handleClick (pull the state of onToggleOpen)
+	loadMarkers = () => {
+		//passing in this.state.activeFilter into below function
+		switch (this.state.activeFilter) {
+			case "All":
+				API.getEventLocations()
+					.then(res => {
+						this.setState({ markers: res.data });
+					});
+				break;
+			case "Today":
+				console.log("dailyEvents")
+				API.getDailyLocations()
+					.then(res => {
+						this.setState({ markers: res.data });
+					});
+				break;
+			case "Weekly":
+				API.getWeeklyLocations()
+					.then(res => {
+						this.setState({ markers: res.data });
+					});
+				break;
+				case "Monthly":
+				API.getMonthlyLocations()
+				.then(res => {
+					this.setState({ markers: res.data });
+				});
+				break;
+		}
+		console.log("switch over")
+		// switch for activeFilter
+	}
+
+	// dateRange picker
+	dateFilter = event => {
+		const { value } = event.target
+		this.setState({ 
+
+			activeFilter: value,
+
+		}, 
+		// rerun loadmarkers to render them
+		() => this.loadMarkers()
+	)
+	}
 
 	render() {
 		console.log(this.state.markers)
@@ -117,6 +163,12 @@ export class MapComponent extends React.Component {
 		return (
 			<div>
 				<Map markers={this.state.markers} />
+				<Row>
+					<Input name='DateSelect' type='radio' value='All' label='All Events' onChange={this.dateFilter} />
+					<Input name='DateSelect' type='radio' value='Today' label='Daily Events' onChange={this.dateFilter} />
+					<Input name='DateSelect' type='radio' value='Weekly' label='Weekly Events' onChange={this.dateFilter} />
+					<Input name='DateSelect' type='radio' value='Monthly' label='Monthly Events' onChange={this.dateFilter} />
+				</Row>
 				<SideNav
 					trigger={<Button style={{ position: 'absolute', bottom: '40px', left: '10px', zIndex: '4' }}>Events List</Button>}
 					options={{ closeOnClick: true }}
