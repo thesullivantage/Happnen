@@ -35,19 +35,19 @@ module.exports = {
 	findAllEvents: function (req, res) {
 		db.Events
 			// removes events that already have passed first
-			.find({"endDate": {"$gt": moment().toISOString()}})
+			.find({ "endDate": { "$gt": moment().toISOString() } })
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
-	
+
 	// FIND ALL NON EXPIRED EVENTS FOR DISPLAYING ON MAP
 	findAllDailyEvents: function (req, res) {
 		db.Events
 			// removes events that already have passed first
 			.find({
-				"endDate": {"$gt": moment().toISOString()}, 
-				"startDate": {"$lt": moment().add(1,"day").toISOString()}
+				"endDate": { "$gt": moment().toISOString() },
+				"startDate": { "$lt": (moment().add("days", 1).toISOString()) }
 			})
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
@@ -59,8 +59,8 @@ module.exports = {
 		db.Events
 			// removes events that already have passed first
 			.find({
-				"endDate": {"$gt": moment().toISOString()}, 
-				"startDate": {"$lt": moment().add(7,"days").toISOString()}
+				"endDate": { "$gt": moment().toISOString() },
+				"startDate": { "$lt": moment().add("days", 7).toISOString() }
 			})
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
@@ -71,8 +71,8 @@ module.exports = {
 		db.Events
 			// removes events that already have passed first
 			.find({
-				"endDate": {"$gt": moment().toISOString()}, 
-				"startDate": {"$lt": moment().add(31,"days").toISOString()}
+				"endDate": { "$gt": moment().toISOString() },
+				"startDate": { "$lt": moment().add("days", 31).toISOString() }
 			})
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
@@ -151,15 +151,15 @@ module.exports = {
 		//need to pass userId, eventId in the object from api call on front end
 		db.Events
 			.findOneAndUpdate(
-				{_id: req.body.eventId},
-				{$pull: { invited: req.body.userId }}
+				{ _id: req.body.eventId },
+				{ $pull: { invited: req.body.userId } }
 			)
 			.then(response => {
 				console.log("FirstStep", response)
 				db.Users
 					.findOneAndUpdate(
-						{_id: req.body.userId},
-						{$pull: {invites: req.body.eventId}}
+						{ _id: req.body.userId },
+						{ $pull: { invites: req.body.eventId } }
 					)
 					.then(finalres => {
 						console.log("finalres", finalres)
@@ -175,18 +175,18 @@ module.exports = {
 	rsvpYes: function (req, res) {
 		db.Events
 			.findOneAndUpdate(
-				{_id: req.body.eventId},
+				{ _id: req.body.eventId },
 				{
-					$push: {attending: req.body.userId}
+					$push: { attending: req.body.userId }
 				}
 			)
 			.then(initialres => {
 				console.log("AM I Working FATHER?")
 				db.Users
 					.findOneAndUpdate(
-						{_id: req.body.userId},
+						{ _id: req.body.userId },
 						{
-							$push: {attends: req.body.eventId}
+							$push: { attends: req.body.eventId }
 						}
 					)
 					.then(finalres => {
@@ -202,18 +202,22 @@ module.exports = {
 	Unaccept: function (req, res) {
 		db.Events
 			.findOneAndUpdate(
-				{_id: req.body.eventId},
+				{ _id: req.body.eventId },
 				{
+
 					$pull: {attending: req.body.userId},
+
 				}
 			)
 			.then(initialres => {
 				console.log("initial response", initialres)
 				db.Users
 					.findOneAndUpdate(
-						{_id: req.body.userId},
+						{ _id: req.body.userId },
 						{
+
 							$pull: {attends: req.body.eventId}
+
 						}
 					)
 					.then(finalres => {
