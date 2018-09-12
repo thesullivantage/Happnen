@@ -14,6 +14,11 @@ const eventSchema = new Schema({
   startDate: { type: Date, default: Date.now },
   endDate: { type: Date, default: new Date(+new Date() + 3600000)},
   description: { type: String, required: false },
+  //encryptedLocStuff; secure is for a later feature
+  EKey: { type: Boolean, required: false },
+  secure: { type: Boolean, required: false },
+  spentIds: [],
+
   invited: [{ type: Schema.Types.ObjectId, ref: "Users" }],
   attending: [{type: Schema.Types.ObjectId, ref: "Users"}],
   locationDownloaded: [],
