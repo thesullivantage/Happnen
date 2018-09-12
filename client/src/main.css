@@ -59,3 +59,12 @@ input.location-search-input {
   margin-left: 55px;
 }
 
+col.input-field.s6 {
+  padding: 0px;
+}
+
+/* .input-field input[type=text] {
+   margin-left: 43.5px;
+} */
+
+

@@ -266,7 +266,7 @@ class Event extends Component {
                     </Input>
                 </Row>
 
-                <Row>
+                <Row className="EventNameRow">
                     <PlacesAutocomplete
                         label="Location"
                         name="location"
@@ -383,6 +383,7 @@ class Event extends Component {
 
                 <Row className="inputRow">
                     <Input
+                        className="privacy"
                         s={6}
                         name='type'
                         type='select'

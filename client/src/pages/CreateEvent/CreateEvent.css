@@ -41,6 +41,8 @@ body{
     margin-top: 50px;
 }
 .row.inputRow{
+    width: 801.347px;
+    margin-left: 45px;
     display: flex;
     align-content: center;
     margin-right: auto;
@@ -68,3 +70,29 @@ input.location-search-input{
     margin-left: 55px;
     width: 800px;
 }
+
+.privacy {
+    padding: 0px;
+}
+
+input.location-search-input {
+    width: 812.597px;
+}
+
+col.input-field.s12 {
+    padding: 0px;
+}
+
+.row.photoRow {
+    width: 812.597px;
+    margin-left: 3.25rem;
+}
+
+.row {
+    padding: 0px;
+    padding-top: 5px;
+}
+
+/* .col.input-field.s6 {
+    padding: 0px;
+} */
