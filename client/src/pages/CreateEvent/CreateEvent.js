@@ -144,7 +144,7 @@ class Event extends Component {
         const { value } = event.target
 		this.setState({
 			type: value
-		}, () => console.log(this.state.type))
+		})
     };
 
     handleSelect = location => {

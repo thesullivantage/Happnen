@@ -50,3 +50,12 @@ h1 {
 .material-icons {
   padding-left: 0px;
 }
+
+input.location-search-input {
+  width: 650.17px;
+}
+
+.autocomplete-dropdown-container {
+  margin-left: 55px;
+}
+
