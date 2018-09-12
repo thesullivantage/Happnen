@@ -143,7 +143,7 @@ class Event extends Component {
     handlePrivacy = event => {
         const { value } = event.target
 		this.setState({
-			type: value
+			type: parseInt(value)
 		})
     };
 

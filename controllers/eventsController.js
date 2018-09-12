@@ -124,17 +124,36 @@ module.exports = {
 
 		var reqCopy = req.body;
 		console.log("reqCopay", reqCopy)
-		if (reqCopy) {
-			const keyz = genKey()
-			reqCopy.EKey = keyz
-	
-		}
+		
 
 
 		let reqAddress = req.body.location
 		geoConvert(reqAddress)
 		setTimeout(function () {
 			reqCopy = Object.assign({}, reqCopy, latLong)
+			if (reqCopy.type == 2) {
+				const keyz = {
+					EKey: genKey()
+				}
+				reqCopy = Object.assign({}, reqCopy, keyz)
+				console.log("Newnew", reqCopy)
+				
+				const cryptr = new Cryptr(keyz.EKey)
+
+				const eObj = {
+					location: cryptr.encrypt(reqCopy.location),
+					//We'll probably want to do something besides the north pole at some point
+					latitude: 34.2218685,
+					longitude: -83.96913459999999,
+					elat: cryptr.encrypt(reqCopy.latitude),
+					elong: cryptr.encrypt(reqCopy.longitude)
+				}
+
+				reqCopy = Object.assign({}, reqCopy, eObj)
+
+				console.log("PostEnc", reqCopy)
+			}
+
 			db.Events
 				.create(reqCopy)
 				.then(resDocument => {

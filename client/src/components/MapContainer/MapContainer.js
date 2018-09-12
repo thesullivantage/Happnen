@@ -115,26 +115,30 @@ export class MapComponent extends React.Component {
 				API.getEventLocations()
 					.then(res => {
 						this.setState({ markers: res.data });
-					});
+					})
+					.catch(error => console.error('Error', error));
 				break;
 			case "Today":
 				console.log("dailyEvents")
 				API.getDailyLocations()
 					.then(res => {
 						this.setState({ markers: res.data });
-					});
+					})
+					.catch(error => console.error('Error', error));
 				break;
 			case "Weekly":
 				API.getWeeklyLocations()
 					.then(res => {
 						this.setState({ markers: res.data });
-					});
+					})
+					.catch(error => console.error('Error', error));
 				break;
 			case "Monthly":
 				API.getMonthlyLocations()
 					.then(res => {
 						this.setState({ markers: res.data });
-					});
+					})
+					.catch(error => console.error('Error', error));
 				break;
 		}
 		console.log("switch over")
