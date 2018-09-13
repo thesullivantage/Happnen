@@ -47,6 +47,7 @@ module.exports = {
 		db.Events
 			// removes events that already have passed first
 			.find({ "endDate": { "$gt": moment().toISOString() } })
+			.select("-EKey")
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
@@ -60,6 +61,7 @@ module.exports = {
 				"endDate": { "$gt": moment().toISOString() },
 				"startDate": { "$lt": (moment().add("days", 1).toISOString()) }
 			})
+			.select("-EKey")
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
@@ -73,6 +75,7 @@ module.exports = {
 				"endDate": { "$gt": moment().toISOString() },
 				"startDate": { "$lt": moment().add("days", 7).toISOString() }
 			})
+			.select("-EKey")
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
@@ -85,6 +88,7 @@ module.exports = {
 				"endDate": { "$gt": moment().toISOString() },
 				"startDate": { "$lt": moment().add("days", 31).toISOString() }
 			})
+			.select("-EKey")
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
@@ -105,6 +109,7 @@ module.exports = {
 	findEventById: function (req, res) {
 		db.Events
 			.findById(req.params.id)
+			.select("-EKey")
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
@@ -114,6 +119,7 @@ module.exports = {
 			.find({
 				'username': { $in: req.body.people }
 			})
+			.select("-EKey")
 			.then(users => {
 
 			})
@@ -144,16 +150,6 @@ module.exports = {
 				reqCopy.longitude = 0
 				reqCopy.elat = cryptr.encrypt(reqCopy.latitude)
 				reqCopy.elong = cryptr.encrypt(reqCopy.longitude)
-
-				// const eObj = {
-				// 	We'll probably want to do something besides the north pole at some point
-				// 	latitude: 0,
-				// 	longitude: 0,
-				// 	elat: cryptr.encrypt(reqCopy.latitude),
-				// 	elong: cryptr.encrypt(reqCopy.longitude)
-				// }
-
-				// reqCopy = Object.assign({}, reqCopy, eObj)
 
 			}
 
@@ -196,6 +192,7 @@ module.exports = {
 				{ _id: req.body.eventId },
 				{ $pull: { invited: req.body.userId } }
 			)
+			.select("-EKey")
 			.then(response => {
 				console.log("FirstStep", response)
 				db.Users
@@ -222,6 +219,7 @@ module.exports = {
 					$push: { attending: req.body.userId }
 				}
 			)
+			.select("-EKey")
 			.then(initialres => {
 				console.log("AM I Working FATHER?")
 				db.Users
@@ -251,6 +249,7 @@ module.exports = {
 
 				}
 			)
+			.select("-EKey")
 			.then(initialres => {
 				console.log("initial response", initialres)
 				db.Users
@@ -277,6 +276,7 @@ module.exports = {
 	updateEvent: function (req, res) {
 		db.Events
 			.findOneAndUpdate({ _id: req.params.id }, req.body)
+			.select("-EKey")
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
@@ -285,6 +285,7 @@ module.exports = {
 	removeEvent: function (req, res) {
 		db.Events
 			.findById({ _id: req.params.id })
+			.select("-EKey")
 			.then(dbModel => dbModel.remove())
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
