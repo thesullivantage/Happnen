@@ -143,7 +143,7 @@ class Invitation extends React.Component {
 							<QRCode size={96} value={item.eventQr} />
 						</Col>
 					</Row>
-					<h5>Location: {item.location}</h5>
+					<MLocation data={this.state.data}/>
 					<h5>Start Date: {convertDate(item.startDate)}</h5>
 					<h5>End Date: {convertDate(item.endDate)}</h5>
 					<h5>Description: {item.description}</h5>
