@@ -1,6 +1,3 @@
-.makeit {
-  color: slategray;
-}
 
 .locationWarn {
   background-color: red;
@@ -12,4 +9,11 @@
 .daBigOne {
   background-color: white;
   color: black;
+}
+
+/* consolidate modals into one class at some point */
+.accessGranted {
+  background-color: green;
+  color: white;
+  margin: 10px;
 }

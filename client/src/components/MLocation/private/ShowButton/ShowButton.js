@@ -5,6 +5,9 @@ import moment from 'moment';
 import EventLabel from "../../misc/EventLabels";
 import QRCode from 'react-qr-code';
 import "./Show.css"
+//Hopefully won't need the following in the future:
+var Cryptr = require('cryptr')
+
 
 
 // helper function to convert date
@@ -17,7 +20,7 @@ class ShowButton extends React.Component {
 
 	state = {
 		accessed: false,
-		eventid: this.props.data._id,
+		eventId: this.props.data._id,
 		data: this.props.data,
 		userId: this.props.user,
 		location: this.props.data.location
@@ -27,8 +30,29 @@ class ShowButton extends React.Component {
 		console.log("FINAL DATA", this.state.data)
 	}
 
-	handleClick = () => {
+	handleDecrypt = () => {
+		const cryptObj = {
+			eventId: this.state.eventId,
+			userId: this.state.userId
+		}
+		API.decrypter(cryptObj)
+			.then(res => {
+				console.log("RIGHT BEFORE", res.data.EKey)
+				API.spenter(cryptObj)
+					.then(spentz => {
+						console.log("spent", spentz)
+						var EKey = res.data.EKey
+						const cryptr = new Cryptr(EKey)
+						const dcLocat = cryptr.decrypt(this.state.location)
+						this.setState({
+							location: dcLocat,
+							accessed: true
+						})
+					})
+					.catch(err => console.log(err));
 
+			})
+			.catch(err => console.log(err));
 	}
 
 	// handleUnaccept() {
@@ -52,9 +76,9 @@ class ShowButton extends React.Component {
 		// Conditional Rendering Here 
 		if (this.state.accessed == true) {
 			return (
-				<Collection>
-					<CollectionItem className="locationColl center-align">
-						<h5 className="makeit">Make it Count...</h5>
+				<Collection className="accessGranted">
+					<CollectionItem className="center-align">
+						<h4>Access Granted</h4>
 						<h5>{this.state.location}</h5>
 					</CollectionItem>
 				</Collection>
@@ -65,7 +89,7 @@ class ShowButton extends React.Component {
 				<Collection className="locationWarn">
 					<CollectionItem className="center-align">
 						<h5>You may only access this event's location once. Do you wish to proceed? </h5>
-						<Button className="daBigOne" onClick={this.handleClick}>YES</Button>
+						<Button className="daBigOne" onClick={this.handleDecrypt}>YES</Button>
 					</CollectionItem>
 				</Collection>
 

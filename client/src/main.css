@@ -63,3 +63,7 @@ input.location-search-input {
   margin: 15px;
 }
 
+.container {
+  border-width: 0px;
+}
+

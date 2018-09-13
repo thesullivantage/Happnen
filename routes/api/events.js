@@ -49,7 +49,15 @@ router
 router 
     .route("/checker")
     .post(eventsController.checker)
-    
+
+router 
+    .route("/decrypt")
+    .post(eventsController.decrypter)
+
+router 
+    .route("/spend")
+    .post(eventsController.spenter)
+
 // Do this in controller
 // router 
 //     .route("/invite")

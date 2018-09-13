@@ -316,7 +316,34 @@ module.exports = {
 
 	},
 
+	decrypter: function (req, res) {
+		//needs: eventId, userId
+		db.Events
+			// .findOne({_id: req.body.eventId})
+			.findOne(
+				{ _id: req.body.eventId }
+			)
+			.select("EKey")
+			.then(keyere => {
+				console.log("KEYEERE", keyere)
+				res.status(200).json(keyere)
+			})
+			.catch(err => res.status(422).json(err));
+	},
 
+	spenter: function (req, res) {
+		db.Events
+		.findOneAndUpdate(
+			{ _id: req.body.eventId },
+			{ $push: { spentIds: req.body.userId }},
+			{new: true}
+		)
+		.then(spends => {
+			console.log("spendme", spends)
+			res.status(200).json(spends)
+		})
+		.catch(err => res.status(422).json(err));
+	},
 
 	// EDIT EVENT
 	updateEvent: function (req, res) {

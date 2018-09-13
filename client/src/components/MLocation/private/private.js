@@ -37,39 +37,58 @@ class Private extends React.Component {
 					userId: user.data._id
 				}, () => {
 					//Still using API.checker to avoid taking away the backend checking potential altogether
-					API.checker(checkObj)
-						.then(res => {
-							console.log("CHECKER", res)
-							var invArr = res.invited
-							var invited = true
-							if (invArr) {
-								invited = invArr.includes(this.state.userId)
-								console.log("TEEEEST", invited)
-							}
-							if (invited == true) {
-									console.log("STEP1COMPLETE")
-									var spentArr = res.spentIds
-									console.log("spentArr", spentArr)
-									var spent = true;
-									if (spentArr === undefined) {
-										spent = false
-									} else {
-										spent = spentArr.includes(this.state.userId)
+					
+					console.log("STEP1COMPLETE")
+					var spentArr = this.props.data.spentIds
+					console.log("spentArr", spentArr)
+					var spent = true;
+					if (spentArr === undefined) {
+						spent = false
+					} else if (spentArr.length) {
+						spent = spentArr.includes(this.state.userId)
+						console.log("AM i here Yet?", spent)
+					}
+					if (spent == false) {
+						this.setState({
+							GTG: true
+						}, () => console.log("DONE!", this.state.GTG))
+					} else {
+						return;
+					}
+					
+					// API.checker(checkObj)
+					// 	.then(res => {
+					// 		console.log("CHECKER", res)
+					// 		var invArr = res.invited
+					// 		var invited = true
+					// 		if (invArr) {
+					// 			invited = invArr.includes(this.state.userId)
+					// 			console.log("TEEEEST", invited)
+					// 		}
+					// 		if (invited == true) {
+					// 				console.log("STEP1COMPLETE")
+					// 				var spentArr = res.spentIds
+					// 				console.log("spentArr", spentArr)
+					// 				var spent = true;
+					// 				if (spentArr === undefined) {
+					// 					spent = false
+					// 				} else if (spentArr.length) {
+					// 					spent = spentArr.includes(this.state.userId)
+					// 					console.log("AM i here Yet?", spent)
+					// 				}
+					// 				if (spent == false) {
+					// 					this.setState({
+					// 						GTG: true
+					// 					}, () => console.log("DONE!", this.state.GTG))
+					// 				} else {
+					// 					return;
+					// 				}
 
-									}
-									if (spent == false) {
-										this.setState({
-											GTG: true
-										}, () => console.log("DONE!", this.state.GTG))
-									} else {
-										return;
-									}
-
-							} else {
-								return;
-							}
-						})
-						.catch(err => console.log("BAD CHECKER ERR!", err));
+					// 		} else {
+					// 			return;
+					// 		}
+					// 	})
+					// 	.catch(err => console.log("BAD CHECKER ERR!", err));
 				})
 			})
 			.catch(err => console.log("BAD USER ERR!", err));
