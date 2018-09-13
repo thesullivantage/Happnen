@@ -14,7 +14,7 @@ body {
 }
 
 h1 {
-  font-family: 'Cookie', cursive;
+  font-family: 'Roboto', sans-serif;
 }
 
 .profilePhoto {
@@ -57,5 +57,13 @@ input.location-search-input {
 
 .autocomplete-dropdown-container {
   margin-left: 55px;
+}
+
+.locationColl {
+  margin: 15px;
+}
+
+.container {
+  border-width: 0px;
 }
 

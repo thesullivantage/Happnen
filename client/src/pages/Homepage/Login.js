@@ -35,10 +35,11 @@ class Homepage extends Component {
 		console.log("suObj: ", loginObj)
 		API.login(loginObj)
 			.then(res => {
+
 				sessionStorage.user = this.state.username;
 				this.setState({ username: "", password: "",	redirect: true});				
 				// Do this if status is 200
-				console.log(res)
+				console.log("GET RES HERE", res)
 			})
 			.catch(err => console.log(err));
 		//alert if all fields aren't completed

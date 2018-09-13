@@ -88,6 +88,24 @@ export default {
 
   savePhoto: function () {
     return axios.get("/api/cloudinary")
+  },
+
+  //ENC Location
+
+  checker: function (checkObj) {
+    return axios.post("/api/events/checker", checkObj)
+  },
+
+  findUser: function (checkObj) {
+    return axios.post("/api/users/getuser", checkObj)
+  },
+
+  decrypter: function (cryptObj) {
+    return axios.post("/api/events/decrypt", cryptObj)
+  },
+
+  spenter: function (cryptObj) {
+    return axios.post("/api/events/spend", cryptObj)
   }
 
 

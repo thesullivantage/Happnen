@@ -147,6 +147,13 @@ class Event extends Component {
 		})
     };
 
+    handleAge = event => {
+        const { value } = event.target
+		this.setState({
+			type: parseInt(value)
+		})
+    };
+
     handleSelect = location => {
         geocodeByAddress(location)
             .then(results => getLatLng(results[0]))
