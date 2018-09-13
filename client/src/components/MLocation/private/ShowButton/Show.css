@@ -1,0 +1,15 @@
+.makeit {
+  color: slategray;
+}
+
+.locationWarn {
+  background-color: red;
+  color: white;
+  margin: 10px;
+  
+}
+
+.daBigOne {
+  background-color: white;
+  color: black;
+}

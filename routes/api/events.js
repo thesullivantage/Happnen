@@ -45,6 +45,11 @@ router
 router 
     .route("/undo")
     .post(eventsController.Unaccept)
+
+router 
+    .route("/checker")
+    .post(eventsController.checker)
+    
 // Do this in controller
 // router 
 //     .route("/invite")

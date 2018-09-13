@@ -1,5 +1,4 @@
 .accept-btn {
-  float: right;
-  color: green;
-  margin-left: 15px;
+  background: slategrey;
+  color: white
 }

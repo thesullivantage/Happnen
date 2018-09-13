@@ -18,33 +18,17 @@ class MLocation extends React.Component {
 	}
 
 	render() {
-		console.log("Props", this.props.data)
-		if (this.props.type === "invitation" && this.props.data) {
+		// console.log("Props", this.props.data)
+		// this.props.data.type
+		//
+		if (this.props.data.type === 2 && this.props.data.type) {
 			return (
-				<Collection>
-					{/* changed from this.props.data */}
-					<h1>placeholder</h1>
-				</Collection>
+				<Private data={this.props.data}/>
 			);
-
-		} else if (this.props.type === "myEvents" && this.props.data) {
-			return (
-				<h1>placeholder</h1>
-			);
-
-		} else if (this.props.type === "publicEvents" && this.props.data) {
-			console.log("SUCCES")
-			console.log(this.props.markerObj)
-			return (
-				<h1>placeholder</h1>
-			)
-
-		} else if (!this.props.data) {
-			return null;
 
 		} else {
 			return (
-				<h1>placeholder</h1>
+				<Public data={this.props.data}/>
 			)
 		}
 

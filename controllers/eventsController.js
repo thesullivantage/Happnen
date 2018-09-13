@@ -39,6 +39,8 @@ genKey = () => {
 
 
 
+
+
 // Defining methods for the eventsController
 module.exports = {
 
@@ -130,7 +132,7 @@ module.exports = {
 
 		let reqCopy = req.body;
 		console.log("reqCopay", reqCopy)
-		
+
 
 
 		let reqAddress = req.body.location
@@ -142,7 +144,7 @@ module.exports = {
 					EKey: genKey()
 				}
 				reqCopy = Object.assign({}, reqCopy, keyz)
-				
+
 				const cryptr = new Cryptr(keyz.EKey)
 
 				reqCopy.location = cryptr.encrypt(reqCopy.location)
@@ -271,6 +273,50 @@ module.exports = {
 			})
 			.catch(err => res.status(422).json(err))
 	},
+
+
+	// ENC Location
+
+	checker: function (req, res) {
+		//needs username, eventId ...
+
+		db.Users
+			.find({ username: req.body.username })
+			.then(uName => {
+				//console.log(uName._id)
+				var userId = uName._id
+				db.Events
+					.find({_id: req.body.eventId}) 
+						// { invited: req.body.userId }
+					.select("-EKey")
+					.then(checked => {
+						console.log("HERE I AM", checked)
+						checked.userId = userId
+						res.status(200).json(checked)
+						// Stuff for MIDDLEWARE Later: 
+						// const thing1 = checked.invited
+						// const invited = thing1.includes(userId)
+						// if (invited == true) {
+						// 	const thing2 = checked.spentIds
+						// 	const spent = thing2.includes(userId) 
+						// 	if (spent == false) {
+						// 		res.status(200).send("GTG")
+						// 	} else {
+						// 		res.status(200).send("NGTG")
+						// 	}
+						// } else {
+						// 	res.status(200).send("notInvited")
+						// }
+
+					})
+					.catch(err => res.status(422).json(err))
+			})
+			.catch(err => res.status(422).json(err))
+
+
+	},
+
+
 
 	// EDIT EVENT
 	updateEvent: function (req, res) {

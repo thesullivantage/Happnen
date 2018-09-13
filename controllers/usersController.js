@@ -34,8 +34,8 @@ module.exports = {
 	populateProfile: function (req, res) {
 		db.Users
 			.findOne({ 'username': req.body.username  })
-			.populate('myEvents')
-			.populate('invites')
+			.populate({path: 'myEvents', select: "-EKey -password"})
+			.populate({path: 'invites', select: "-EKey -password"})
 			.then(dbModel => {
 				res.json(dbModel);
 			})

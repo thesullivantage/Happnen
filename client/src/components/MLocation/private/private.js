@@ -13,61 +13,85 @@ function convertDate(inputDate) {
 
 class Private extends React.Component {
 
-	constructor(props) {
-		super(props)
-		// this.componentDidMount = this.componentDidMount.bind(this),
-		// this.render = this.render.bind(this)
-		// this.DeleteHandler.this
-	}
-
 	state = {
-		data: "",
-		user: ""
+		GTG: false,
+		invited: true,
+		userId: ""
 	};
 
 	componentDidMount = () => {
+		console.log("GODS NOT DEAD!")
+		console.log("PROPS", this.props.data._id)
 
-		this.setState({
-			data: this.props.data.obj.invites,
-			user: this.props.data.obj._id
-		}, () => console.log("WHOOP", this.state))
+		const checkObj = {
+			eventId: this.props.data._id,
+			username: sessionStorage.user
+		}
+
+		//checking on front end
+		
+		API.findUser(checkObj)
+			.then(user => {
+				console.log("USERFOUND", user)
+				this.setState({
+					userId: user.data._id
+				}, () => {
+					//Still using API.checker to avoid taking away the backend checking potential altogether
+					API.checker(checkObj)
+						.then(res => {
+							console.log("CHECKER", res)
+							var invArr = res.invited
+							var invited = true
+							if (invArr) {
+								invited = invArr.includes(this.state.userId)
+								console.log("TEEEEST", invited)
+							}
+							if (invited == true) {
+									console.log("STEP1COMPLETE")
+									var spentArr = res.spentIds
+									console.log("spentArr", spentArr)
+									var spent = true;
+									if (spentArr === undefined) {
+										spent = false
+									} else {
+										spent = spentArr.includes(this.state.userId)
+
+									}
+									if (spent == false) {
+										this.setState({
+											GTG: true
+										}, () => console.log("DONE!", this.state.GTG))
+									} else {
+										return;
+									}
+
+							} else {
+								return;
+							}
+						})
+						.catch(err => console.log("BAD CHECKER ERR!", err));
+				})
+			})
+			.catch(err => console.log("BAD USER ERR!", err));
+
+
+
+		// API.
 	}
 
-	DeleteHandler = (value) => {
-
-	}
-
-	static getDerivedStateFromProps = (props, state) => {
-		return {
-			data: props.data.obj.invites,
-			user: props.data.obj._id
-		};
-	}
 
 	render = () => {
-		console.log("impData", this.state)
-		const data = this.props.data.obj.invites
-		console.log("data", data)
-		const user = this.props.data.obj._id
-
-		// this.setState({
-		// 	user: this.props.data.obj._id,
-		// 	data: this.props.data.obj.invites
-		// })
-
-		// const data = this.state.data
-		// const user = this.state.user
-
-		if (data) {
-			console.log("KEYZKEYZKEYZ", this.state)
+		// console.log("I'm ALIVE", this.props)
+		if (this.state.GTG == true) {
 			return (
-				data.map(item =>
-					<h1>placeholder</h1>
-				)
+				//add props here
+				<ShowButton data={this.props.data} user={this.state.userId}/>
 			)
-
-		} else {
-			return <h4>Get your life together, make some friends, and get invited to things here!</h4>
+		}
+		else {
+			return (
+				<Grey />
+			)
 		}
 	}
 

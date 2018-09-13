@@ -32,7 +32,7 @@ class Invitation extends React.Component {
 				attending: true
 			})
 		}
-		console.log("PLZ WORK", this.props.data)
+		// console.log("PLZ WORK", this.props.data)
 		// console.log("user", this.state.userId)
 		//call to check and see if invitation confirmed yet
 		// Accepting userid as well as eventid
@@ -99,6 +99,7 @@ class Invitation extends React.Component {
 		const item = this.state.data
 
 		// Conditional Rendering Here 
+		
 		if (this.state.attending == false) {
 			return (
 				<Modal
