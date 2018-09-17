@@ -1,4 +1,4 @@
-# Happnen ReadMe
+# Happnen
 
 + Happnen is an event based app for consumers looking for events regardless of their size.
 + You can find smaller events like poker games, playing ultimate frisbee in the park, business meet-ups, speed dating events, and many more. 
