@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
-  host: { type: String, required: true },
+  host: { type: String, required: false },
   eventName: { type: String, required: true },
   location: { type: String, required: true },
   //Maybe use unix epoch format with a js library to convert to date and time (separate)
@@ -31,7 +31,7 @@ const eventSchema = new Schema({
     get: v => Math.round(v),
     set: v => Math.round(v),
     min: 0,
-    max: 1,
+    max: 2,
     required: true
   },
   ageReq: {
