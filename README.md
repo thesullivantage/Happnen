@@ -1,7 +1,10 @@
 # Happnen
+
 An easier, softer way to find out what is "happnen" in your area, for almost any type of event.
 
 ## Vision
+
+
 
 
 
