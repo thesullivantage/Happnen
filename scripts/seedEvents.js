@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+const moment = require('moment')
 
 // This file empties the happnen collection and inserts the events below
 
@@ -18,8 +19,8 @@ const eventsSeed = [
     longitude: -84.420841,
     //Maybe use unix epoch format with a js library to convert to date and time (separate)
     //Also, combined date and time just based on the format; will concat when making the call
-    startDate: 1535803200,
-    endDate: 1535824800,
+    startDate: new Date("2018-09-21T14:00:00.000Z"),
+    endDate: new Date("2018-09-26T19:00:00.000Z"),
     eventQr: "u6T1Ru2AROV7",
     //add id's here upon invitation by event creator:
     invited: [],
@@ -41,8 +42,8 @@ const eventsSeed = [
     longitude: -77.036547,
     //Maybe use unix epoch format with a js library to convert to date and time (separate)
     //Also, combined date and time just based on the format; will concat when making the call
-    startDate: 1535472000,
-    endDate: 1535490000,
+    startDate: new Date("2018-09-25T20:00:00.000Z"),
+    endDate: new Date("2018-09-29T20:00:00.000Z"),
     eventQr: "0RdfdV0hImtE",
     //add id's here upon invitation by event creator:
     invited: [],
@@ -64,8 +65,8 @@ const eventsSeed = [
     longitude: -84.4,
     //Maybe use unix epoch format with a js library to convert to date and time (separate)
     //Also, combined date and time just based on the format; will concat when making the call
-    startDate: 1535536800,
-    endDate: 1567126800,
+    startDate: new Date("2018-09-26T18:00:00.000Z"),
+    endDate: new Date("2018-09-26T22:00:00.000Z"),
     eventQr: "IniVqe50EgZV",
     //add id's here upon invitation by event creator:
     invited: [],
@@ -87,8 +88,8 @@ const eventsSeed = [
     longitude: -84.39004,
     //Maybe use unix epoch format with a js library to convert to date and time (separate)
     //Also, combined date and time just based on the format; will concat when making the call
-    startDate: 1567342800,
-    endDate: 1567476000,
+    startDate: new Date("2018-10-02T08:00:00.000Z"),
+    endDate: new Date("2018-10-04T18:00:00.000Z"),
     eventQr: "D57Y50YPBf8P",
     //add id's here upon invitation by event creator:
     invited: [],
@@ -110,8 +111,8 @@ const eventsSeed = [
     longitude: -84.385098,
     //Maybe use unix epoch format with a js library to convert to date and time (separate)
     //Also, combined date and time just based on the format; will concat when making the call
-    startDate: 1535536800,
-    endDate: 1567126800,
+    startDate: new Date("2018-10-31T18:00:00.000Z"),
+    endDate: new Date("2018-11-01T04:00:00.000Z"),
     eventQr: "LbA4VhB2Z9Cn",
     //add id's here upon invitation by event creator:
     invited: [],
