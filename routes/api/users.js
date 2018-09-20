@@ -36,5 +36,9 @@ router
 router
     .route("/autofill")
     .post(usersController.autofill)
+
+router
+    .route("/getuser")
+    .post(usersController.findUserByUsername)
     
 module.exports = router;

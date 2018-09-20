@@ -39,6 +39,8 @@ genKey = () => {
 
 
 
+
+
 // Defining methods for the eventsController
 module.exports = {
 
@@ -47,6 +49,7 @@ module.exports = {
 		db.Events
 			// removes events that already have passed first
 			.find({ "endDate": { "$gt": moment().toISOString() } })
+			.select("-EKey")
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
@@ -60,6 +63,7 @@ module.exports = {
 				"endDate": { "$gt": moment().toISOString() },
 				"startDate": { "$lt": (moment().add("days", 1).toISOString()) }
 			})
+			.select("-EKey")
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
@@ -73,6 +77,7 @@ module.exports = {
 				"endDate": { "$gt": moment().toISOString() },
 				"startDate": { "$lt": moment().add("days", 7).toISOString() }
 			})
+			.select("-EKey")
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
@@ -85,6 +90,7 @@ module.exports = {
 				"endDate": { "$gt": moment().toISOString() },
 				"startDate": { "$lt": moment().add("days", 31).toISOString() }
 			})
+			.select("-EKey")
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
@@ -105,6 +111,7 @@ module.exports = {
 	findEventById: function (req, res) {
 		db.Events
 			.findById(req.params.id)
+			.select("-EKey")
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
@@ -114,6 +121,7 @@ module.exports = {
 			.find({
 				'username': { $in: req.body.people }
 			})
+			.select("-EKey")
 			.then(users => {
 
 			})
@@ -122,9 +130,9 @@ module.exports = {
 	// CREATE AN EVENT AND ADD TO DB
 	createEvent: function (req, res) {
 
-		var reqCopy = req.body;
+		let reqCopy = req.body;
 		console.log("reqCopay", reqCopy)
-		
+
 
 
 		let reqAddress = req.body.location
@@ -136,22 +144,15 @@ module.exports = {
 					EKey: genKey()
 				}
 				reqCopy = Object.assign({}, reqCopy, keyz)
-				console.log("Newnew", reqCopy)
-				
+
 				const cryptr = new Cryptr(keyz.EKey)
 
-				const eObj = {
-					location: cryptr.encrypt(reqCopy.location),
-					//We'll probably want to do something besides the north pole at some point
-					latitude: 34.2218685,
-					longitude: -83.96913459999999,
-					elat: cryptr.encrypt(reqCopy.latitude),
-					elong: cryptr.encrypt(reqCopy.longitude)
-				}
+				reqCopy.location = cryptr.encrypt(reqCopy.location)
+				reqCopy.latitude = 0
+				reqCopy.longitude = 0
+				reqCopy.elat = cryptr.encrypt(reqCopy.latitude)
+				reqCopy.elong = cryptr.encrypt(reqCopy.longitude)
 
-				reqCopy = Object.assign({}, reqCopy, eObj)
-
-				console.log("PostEnc", reqCopy)
 			}
 
 			db.Events
@@ -193,6 +194,7 @@ module.exports = {
 				{ _id: req.body.eventId },
 				{ $pull: { invited: req.body.userId } }
 			)
+			.select("-EKey")
 			.then(response => {
 				console.log("FirstStep", response)
 				db.Users
@@ -219,6 +221,7 @@ module.exports = {
 					$push: { attending: req.body.userId }
 				}
 			)
+			.select("-EKey")
 			.then(initialres => {
 				console.log("AM I Working FATHER?")
 				db.Users
@@ -248,6 +251,7 @@ module.exports = {
 
 				}
 			)
+			.select("-EKey")
 			.then(initialres => {
 				console.log("initial response", initialres)
 				db.Users
@@ -270,10 +274,82 @@ module.exports = {
 			.catch(err => res.status(422).json(err))
 	},
 
+
+	// ENC Location
+
+	checker: function (req, res) {
+		//needs username, eventId ...
+
+		db.Users
+			.find({ username: req.body.username })
+			.then(uName => {
+				//console.log(uName._id)
+				var userId = uName._id
+				db.Events
+					.find({_id: req.body.eventId}) 
+						// { invited: req.body.userId }
+					.select("-EKey")
+					.then(checked => {
+						console.log("HERE I AM", checked)
+						checked.userId = userId
+						res.status(200).json(checked)
+						// Stuff for MIDDLEWARE Later: 
+						// const thing1 = checked.invited
+						// const invited = thing1.includes(userId)
+						// if (invited == true) {
+						// 	const thing2 = checked.spentIds
+						// 	const spent = thing2.includes(userId) 
+						// 	if (spent == false) {
+						// 		res.status(200).send("GTG")
+						// 	} else {
+						// 		res.status(200).send("NGTG")
+						// 	}
+						// } else {
+						// 	res.status(200).send("notInvited")
+						// }
+
+					})
+					.catch(err => res.status(422).json(err))
+			})
+			.catch(err => res.status(422).json(err))
+
+
+	},
+
+	decrypter: function (req, res) {
+		//needs: eventId, userId
+		db.Events
+			// .findOne({_id: req.body.eventId})
+			.findOne(
+				{ _id: req.body.eventId }
+			)
+			.select("EKey")
+			.then(keyere => {
+				console.log("KEYEERE", keyere)
+				res.status(200).json(keyere)
+			})
+			.catch(err => res.status(422).json(err));
+	},
+
+	spenter: function (req, res) {
+		db.Events
+		.findOneAndUpdate(
+			{ _id: req.body.eventId },
+			{ $push: { spentIds: req.body.userId }},
+			{new: true}
+		)
+		.then(spends => {
+			console.log("spendme", spends)
+			res.status(200).json(spends)
+		})
+		.catch(err => res.status(422).json(err));
+	},
+
 	// EDIT EVENT
 	updateEvent: function (req, res) {
 		db.Events
 			.findOneAndUpdate({ _id: req.params.id }, req.body)
+			.select("-EKey")
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
@@ -282,6 +358,7 @@ module.exports = {
 	removeEvent: function (req, res) {
 		db.Events
 			.findById({ _id: req.params.id })
+			.select("-EKey")
 			.then(dbModel => dbModel.remove())
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));

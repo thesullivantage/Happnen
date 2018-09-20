@@ -7,7 +7,7 @@ import AcceptBtn from "../../../AcceptBtn";
 import EventLabel from "../../misc/EventLabels";
 import QRCode from 'react-qr-code';
 import UnacceptBtn from "../../../UnacceptBtn";
-
+import MLocation from "../../../MLocation"
 
 // helper function to convert date
 function convertDate(inputDate) {
@@ -32,7 +32,7 @@ class Invitation extends React.Component {
 				attending: true
 			})
 		}
-		console.log("PLZ WORK", this.props.data)
+		// console.log("PLZ WORK", this.props.data)
 		// console.log("user", this.state.userId)
 		//call to check and see if invitation confirmed yet
 		// Accepting userid as well as eventid
@@ -99,56 +99,116 @@ class Invitation extends React.Component {
 		const item = this.state.data
 
 		// Conditional Rendering Here 
-		if (this.state.attending == false) {
-			return (
-				<Modal
-					header
-					basic
-					trigger={<Button >{item.eventName}</Button>}>
-					<Row>
-						<Col>
-							<h1>{item.eventName}</h1>
-							<h4>Hosted by {item.host}</h4>
-						</Col>
-						<Col>
-							<QRCode size={96} value={item.eventQr} />
-						</Col>
-					</Row>
-					<h5>Location: {item.location}</h5>
-					<h5>Start Date: {convertDate(item.startDate)}</h5>
-					<h5>End Date: {convertDate(item.endDate)}</h5>
-					<h5>Description: {item.description}</h5>
-					<p className="event-description">{item.description}</p>
-					<AcceptBtn status onClick={this.handleAccept.bind(this)} />
-					<DeleteBtn status onClick={this.handleReject.bind(this)} />
-				</Modal>
-			)
-		} else {
-			const btnStyle = {
-				background: "green"
+
+		if (this.props.data.type == 0 || this.props.data.type == 1) {
+			if (this.state.attending == false) {
+				return (
+					<Modal
+						header
+						basic
+						trigger={<Button >{item.eventName}</Button>}>
+						<Row>
+							<Col>
+								<h1>{item.eventName}</h1>
+								<h4>Hosted by {item.host}</h4>
+							</Col>
+							<Col>
+								<QRCode size={96} value={item.eventQr} />
+							</Col>
+						</Row>
+						{/* <h5>Location: {item.location}</h5> */}
+						<MLocation data={this.state.data} />
+						<h5>Start Date: {convertDate(item.startDate)}</h5>
+						<h5>End Date: {convertDate(item.endDate)}</h5>
+						<h5>Description: {item.description}</h5>
+						<p className="event-description">{item.description}</p>
+						<AcceptBtn status onClick={this.handleAccept.bind(this)} />
+						<DeleteBtn status onClick={this.handleReject.bind(this)} />
+					</Modal>
+				)
+			} else {
+				const btnStyle = {
+					background: "green"
+				}
+				return (
+					<Modal
+						header
+						basic
+						trigger={<Button style={btnStyle}>{item.eventName}</Button>}>
+						<Row>
+							<Col>
+								<h1>{item.eventName}</h1>
+								<h4>Hosted by {item.host}</h4>
+							</Col>
+							<Col>
+								<QRCode size={96} value={item.eventQr} />
+							</Col>
+						</Row>
+						<MLocation data={this.state.data} />
+						<h5>Start Date: {convertDate(item.startDate)}</h5>
+						<h5>End Date: {convertDate(item.endDate)}</h5>
+						<h5>Description: {item.description}</h5>
+						<p className="event-description">{item.description}</p>
+						<UnacceptBtn onClick={this.handleUnaccept.bind(this)} />
+					</Modal>
+				)
 			}
-			return (
-				<Modal
-					header
-					basic
-					trigger={<Button style={btnStyle}>{item.eventName}</Button>}>
-					<Row>
-						<Col>
-							<h1>{item.eventName}</h1>
-							<h4>Hosted by {item.host}</h4>
-						</Col>
-						<Col>
-							<QRCode size={96} value={item.eventQr} />
-						</Col>
-					</Row>
-					<h5>Location: {item.location}</h5>
-					<h5>Start Date: {convertDate(item.startDate)}</h5>
-					<h5>End Date: {convertDate(item.endDate)}</h5>
-					<h5>Description: {item.description}</h5>
-					<p className="event-description">{item.description}</p>
-					<UnacceptBtn onClick={this.handleUnaccept.bind(this)}/>
-				</Modal>
-			)
+		} else {
+			const btnStyleprivate = {
+				background: "#8a0707"
+			}
+			if (this.state.attending == false) {
+				return (
+					<Modal
+						header
+						basic
+						trigger={<Button style={btnStyleprivate} >{item.eventName}</Button>}>
+						<Row>
+							<Col>
+								<h1>{item.eventName}</h1>
+								<h4>Hosted by {item.host}</h4>
+							</Col>
+							<Col>
+								<QRCode size={96} value={item.eventQr} />
+							</Col>
+						</Row>
+						{/* <h5>Location: {item.location}</h5> */}
+						<MLocation data={this.state.data} />
+						<h5>Start Date: {convertDate(item.startDate)}</h5>
+						<h5>End Date: {convertDate(item.endDate)}</h5>
+						<h5>Description: {item.description}</h5>
+						<p className="event-description">{item.description}</p>
+						<AcceptBtn status onClick={this.handleAccept.bind(this)} />
+						<DeleteBtn status onClick={this.handleReject.bind(this)} />
+					</Modal>
+				)
+			} else {
+				const btnStyle = {
+					background: "green"
+				}
+				return (
+					<Modal
+						header
+						basic
+						trigger={<Button style={btnStyle}>{item.eventName}</Button>}>
+						<Row>
+							<Col>
+								<h1>{item.eventName}</h1>
+								<h4>Hosted by {item.host}</h4>
+							</Col>
+							<Col>
+								<QRCode size={96} value={item.eventQr} />
+							</Col>
+						</Row>
+						<MLocation data={this.state.data} />
+						<h5>Start Date: {convertDate(item.startDate)}</h5>
+						<h5>End Date: {convertDate(item.endDate)}</h5>
+						<h5>Description: {item.description}</h5>
+						<p className="event-description">{item.description}</p>
+						<UnacceptBtn onClick={this.handleUnaccept.bind(this)} />
+					</Modal>
+				)
+			}
 		}
 
 	}
