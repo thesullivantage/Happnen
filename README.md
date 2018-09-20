@@ -1,4 +1,5 @@
 # Happnen
+<<<<<<< HEAD
 An easier, softer way to find out what is "happnen" in your area, for almost any type of event.
 
 ## Vision
@@ -7,6 +8,8 @@ An easier, softer way to find out what is "happnen" in your area, for almost any
 
 
 
+=======
+>>>>>>> b96b3d795a2e5181183f60f8006f146a73b6b963
 
 <!-- + Happnen is an event based app for consumers looking for events regardless of their size.
 + You can find smaller events like poker games, playing ultimate frisbee in the park, business meet-ups, speed dating events, and many more. 
