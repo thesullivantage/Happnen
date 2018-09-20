@@ -1,14 +1,7 @@
 # Happnen
 
-An easier way to find out what is "happnen" in your area, for almost any type of event.
 
 ## Vision
-
-
-
-
-
-
 
 
 <!-- + Happnen is an event based app for consumers looking for events regardless of their size.

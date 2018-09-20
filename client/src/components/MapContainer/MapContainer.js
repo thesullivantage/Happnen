@@ -122,7 +122,7 @@ export class MapComponent extends React.Component {
 				console.log("dailyEvents")
 				API.getDailyLocations()
 					.then(res => {
-						this.setState({ markers: res.data })
+						this.setState({ markers: res.data });
 						console.log("THIS IS WHAT WE WANT", res.data);
 					})
 					.catch(error => console.error('Error', error));
@@ -160,24 +160,21 @@ export class MapComponent extends React.Component {
 	}
 
 	render() {
-		console.log("TESTY MCTESTERSON", JSON.stringify(this.state.activeFilter))
 		const markerObj = {
 			marker: this.state.markers
 		}
-		console.log(markerObj)
+		console.log("markerObj", markerObj)
 		return (
 			<div>
 				<Map markers={this.state.markers} />
-				<Row>
-					<Input s={12} type='select' label="Time Select" defaultValue='All' onChange={this.dateFilter}>
-						<option value='All'>All Events</option>
-						<option value='Today'>Today's Events</option>
-						<option value='Weekly'>Weekly Events</option>
-						<option value='Monthly'>Monthly Events</option>
-					</Input>
-				</Row>
+
 				<SideNav
-					trigger={<Button style={{ position: 'absolute', bottom: '40px', left: '10px', zIndex: '4' }}>Events List</Button>}
+					trigger={
+						//put style in separate stylesheet or in
+						// <Button floating fab='horizontal' style={{position: 'absolute', bottom: '40px', left: '10px'}} className='blue' icon='menu' large></Button>
+					
+						<Button floating className="blue" icon='menu' large style={{ position: 'absolute', bottom: '23px', left: '45px', zIndex: '4' }} />
+					}
 					options={{ closeOnClick: true }}
 				>
 					<SideNavItem userView
@@ -188,6 +185,15 @@ export class MapComponent extends React.Component {
 							email: 'Public'
 						}}
 					/>
+
+					<Row id="filterRow" style={{marginBottom: "0px"}}>
+						<Input s={12} type='select' label="Filter by Time" defaultValue='All' onChange={this.dateFilter}>
+							<option value='All'>All Events</option>
+							<option value='Today'>Today's Events</option>
+							<option value='Weekly'>Weekly Events</option>
+							<option value='Monthly'>Monthly Events</option>
+						</Input>
+					</Row>
 
 					<MCollection
 						type="publicEvents"

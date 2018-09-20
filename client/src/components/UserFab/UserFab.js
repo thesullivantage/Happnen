@@ -23,7 +23,7 @@ class UserFab extends Component {
         return (
 
             <Container>
-                <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
+                <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '40px', left: '24px' }}>
                     <Button floating icon='pin_drop' className='purple' node='a' href='/mapdisplay'
                         data-position="top" data-delay="50" tooltip="What's Happnen" />
                     {/* <Button floating icon='person' className='blue' node='a' href='/'

@@ -64,8 +64,8 @@ module.exports = {
 				"endDate": { "$gt": moment().toISOString() },
 				"startDate": { "$lt": (moment().add("days", 1).toISOString()) }
 			})
-			// .select("-EKey")
-			// .sort({ date: -1 })
+			.select("-EKey")
+			.sort({ date: -1 })
 			.then(dbModel => {
 				console.log("dbModel", dbModel)
 				res.json(dbModel)
@@ -135,7 +135,6 @@ module.exports = {
 	createEvent: function (req, res) {
 
 		let reqCopy = req.body;
-		console.log("reqCopay", reqCopy)
 
 
 
@@ -191,7 +190,6 @@ module.exports = {
 	},
 
 	rsvpNo: function (req, res) {
-		console.log("THIS IS THE WRONG FUNCTION")
 		//need to pass userId, eventId in the object from api call on front end
 		db.Events
 			.findOneAndUpdate(
@@ -227,7 +225,6 @@ module.exports = {
 			)
 			.select("-EKey")
 			.then(initialres => {
-				console.log("AM I Working FATHER?")
 				db.Users
 					.findOneAndUpdate(
 						{ _id: req.body.userId },
@@ -294,7 +291,6 @@ module.exports = {
 						// { invited: req.body.userId }
 					.select("-EKey")
 					.then(checked => {
-						console.log("HERE I AM", checked)
 						checked.userId = userId
 						res.status(200).json(checked)
 						// Stuff for MIDDLEWARE Later: 
@@ -329,7 +325,6 @@ module.exports = {
 			)
 			.select("EKey")
 			.then(keyere => {
-				console.log("KEYEERE", keyere)
 				res.status(200).json(keyere)
 			})
 			.catch(err => res.status(422).json(err));
