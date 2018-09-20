@@ -57,15 +57,19 @@ module.exports = {
 
 	// FIND ALL NON EXPIRED EVENTS FOR DISPLAYING ON MAP
 	findAllDailyEvents: function (req, res) {
+		console.log("FUNCTION HIT")
 		db.Events
 			// removes events that already have passed first
 			.find({
 				"endDate": { "$gt": moment().toISOString() },
 				"startDate": { "$lt": (moment().add("days", 1).toISOString()) }
 			})
-			.select("-EKey")
-			.sort({ date: -1 })
-			.then(dbModel => res.json(dbModel))
+			// .select("-EKey")
+			// .sort({ date: -1 })
+			.then(dbModel => {
+				console.log("dbModel", dbModel)
+				res.json(dbModel)
+			})
 			.catch(err => res.status(422).json(err));
 	},
 
@@ -77,7 +81,7 @@ module.exports = {
 				"endDate": { "$gt": moment().toISOString() },
 				"startDate": { "$lt": moment().add("days", 7).toISOString() }
 			})
-			.select("-EKey")
+			// .select("-EKey")
 			.sort({ date: -1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
