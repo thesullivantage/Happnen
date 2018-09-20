@@ -1,5 +1,16 @@
 # Happnen
 
+An easier way to find out what is "happnen" in your area, for almost any type of event.
+
+## Vision
+
+
+
+
+
+
+
+
 <!-- + Happnen is an event based app for consumers looking for events regardless of their size.
 + You can find smaller events like poker games, playing ultimate frisbee in the park, business meet-ups, speed dating events, and many more. 
 + You can also find larger events like concerts, trivia events, happy hours, parties, and marriage receptions. -->
@@ -11,20 +22,22 @@
 + The Sign up page will allow the users who have not created a username and password to do so. -->
 
 
-+ Once a user has logged in or created an account, they will be redirected back to the map page.  
+<!-- + Once a user has logged in or created an account, they will be redirected back to the map page.  
 + Once an account is created the user will have the ability to create their own events that will populate on the map page.
 + The user will be able to create public, private, and invite only events.
 
 
 + Another feature the user can access once an account is created is their own personal profile page.
-+ On this page, you can add a profile image and a short bio. 
++ On this page, you can add a profile image and a short bio.  -->
 
-## Notable Technologies in Use:
+
+## Notable Technologies Utilized:
 
 #### General: 
+
+* MERN Stack
 * Javascript
 * Google Maps API <br/>
-
 
 #### Front End: 
 * React.js
@@ -35,17 +48,18 @@
 #### Back End:
 * Node.js
 * Express.js
+* Axios
 * MongoDB (Mongoose ODM)
 * Cryptr
 
-#### Future Development Technologies 
-* 
+#### Potential Future Development Technologies:
+* JWT
+* Stanford Javascript Crypto Library
 
 <!-- * Google Geocoding API -->
 
-
 ### Contributors:
-
+https://github.com/thesullivantage/Happnen/graphs/contributors
 * Jack Sullivan
 * Aaron Endelman
 * Kyle Behm

@@ -142,16 +142,16 @@ class Event extends Component {
 
     handlePrivacy = event => {
         const { value } = event.target
-		this.setState({
-			type: parseInt(value)
-		})
+        this.setState({
+            type: parseInt(value)
+        })
     };
 
     handleAge = event => {
         const { value } = event.target
-		this.setState({
-			type: parseInt(value)
-		})
+        this.setState({
+            type: parseInt(value)
+        })
     };
 
     handleSelect = location => {
@@ -203,7 +203,7 @@ class Event extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.eventName && this.state.location) {
+        if (this.state.eventName && this.state.location && this.state.startDate && this.state.endDate) {
 
             // Use this if need to define type for db query
             // const invited = this.state.invited;
@@ -232,11 +232,14 @@ class Event extends Component {
                     // API.findAndInvite({
                     //     people: this.state.invited
                     // })
+                    alert(`${this.state.eventName}\n Created!`);
+                    this.setState({ eventName: "", location: "", description: "" })
                 })
                 .catch(err => console.log(err));
-        }
-        alert(`${this.state.eventName}\n Created!`);
-        this.setState({ eventName: "", location: "", description: "" });
+        // Make the following alert stuff more dry at some point
+        } else {
+            alert("Please enter all required fields!")
+        };
     };
 
 

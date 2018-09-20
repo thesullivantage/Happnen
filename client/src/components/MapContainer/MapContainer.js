@@ -122,7 +122,8 @@ export class MapComponent extends React.Component {
 				console.log("dailyEvents")
 				API.getDailyLocations()
 					.then(res => {
-						this.setState({ markers: res.data });
+						this.setState({ markers: res.data })
+						console.log("THIS IS WHAT WE WANT", res.data);
 					})
 					.catch(error => console.error('Error', error));
 				break;
@@ -159,7 +160,7 @@ export class MapComponent extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.markers)
+		console.log("TESTY MCTESTERSON", JSON.stringify(this.state.activeFilter))
 		const markerObj = {
 			marker: this.state.markers
 		}
