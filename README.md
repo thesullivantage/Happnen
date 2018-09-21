@@ -17,7 +17,7 @@
 #### - Neverending Callbacks (Fix in Progress)
 #### - Asynchronicity issue with storing basic session storage ()
 
-_Some of the above reflected in the issues section of this repository _
+_ Some of the above reflected in the issues section of this repository _
 
 
 ## Notable Technologies Utilized:
