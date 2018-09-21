@@ -1,6 +1,6 @@
 # Happnen 
 ---
-<center> <a style="text-align: center;" href="https://aqueous-earth-83627.herokuapp.com/">Deployed</a> </center>
+<div style="content-align: center;"> <a href="https://aqueous-earth-83627.herokuapp.com/">Deployed</a></div>
 
 ---
 ## Vision
@@ -23,7 +23,7 @@ With Happnen, the simple yet versatile approach is taken when it comes to planni
 #### - Neverending Callbacks (Fix in Progress)
 #### - Asynchronicity issue with storing basic session storage ()
 
-_Some of the above reflected in the issues section of this repository as well as _
+_Some of the above reflected in the issues section of this repository _
 
 ## Notable Technologies Utilized:
 ---
