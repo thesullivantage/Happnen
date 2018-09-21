@@ -5,7 +5,7 @@
 With Happnen, the simple yet versatile approach is taken when it comes to planning, attending, and finding events in your area. And with  new private event features, secure location sharing has never been so easy.  
 ---
 ---
-
+<br/>
 ## How to Use:
 ---
 
@@ -13,7 +13,9 @@ With Happnen, the simple yet versatile approach is taken when it comes to planni
 #### 2. View Public Events 
 
 
+<br/>
 
+---
 ## Problems
 ---
 
