@@ -1,4 +1,4 @@
-<center><h1>Happnen</h1></center> 
+<p align="center"><h1>Happnen</h1></p>
 ---
 <center style="width: 100%; margin: 0 auto;"> <a href="https://aqueous-earth-83627.herokuapp.com/">Deployed</a></center>
 
