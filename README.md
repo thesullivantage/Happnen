@@ -1,7 +1,6 @@
 # Happnen 
-[[Deployed](https://aqueous-earth-83627.herokuapp.com/)]
 ---
-
+<center> <h1> [Deployed](https://aqueous-earth-83627.herokuapp.com/)</h1> </center>
 
 ---
 ## Vision
