@@ -11,7 +11,6 @@
 
 
 
----
 ## Problems
 
 #### - 
@@ -20,7 +19,6 @@
 
 _Some of the above reflected in the issues section of this repository _
 
----
 
 ## Notable Technologies Utilized:
 
@@ -44,12 +42,9 @@ _Some of the above reflected in the issues section of this repository _
 * MongoDB (Mongoose ODM)
 * Cryptr
 
----
 ## Future Development (Short-Term):
 * JWT
 * Stanford Javascript Crypto Library
-
-<!-- * Google Geocoding API -->
 
 ## Contributors:
 [Stats](https://github.com/thesullivantage/Happnen/graphs/contributors)
