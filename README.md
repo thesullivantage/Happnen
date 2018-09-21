@@ -1,8 +1,7 @@
 # Happnen 
-
+[![Deployed](https://aqueous-earth-83627.herokuapp.com/)]
 ---
- |[Deployed](https://aqueous-earth-83627.herokuapp.com/)|
- |:----------------------------------------------------:|
+
 
 ---
 ## Vision
