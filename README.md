@@ -3,7 +3,6 @@
 ### [Deployed](https://aqueous-earth-83627.herokuapp.com/)
 
 ---
----
 ## Vision
 With Happnen, the simple yet versatile approach is taken when it comes to planning, attending, and finding events in your area. And with  new private event features, secure location sharing has never been so easy.  
 ---
