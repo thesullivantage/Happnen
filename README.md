@@ -1,6 +1,6 @@
 # Happnen 
 ---
-<center> <a href="https://aqueous-earth-83627.herokuapp.com/">Deployed</a> </center>
+<center> <a style="text-align: center;" href="https://aqueous-earth-83627.herokuapp.com/">Deployed</a> </center>
 
 ---
 ## Vision
