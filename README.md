@@ -1,8 +1,9 @@
 # Happnen 
 ### [Deployed](https://aqueous-earth-83627.herokuapp.com/mapdisplay) 
 ---
-<center><h1> With Happnen, the simple yet versatile approach is taken when it comes to planning, attending, and finding events in your area. And with  new private event features, secure location sharing has never been so easy. <h1></center>
+With Happnen, the simple yet versatile approach is taken when it comes to planning, attending, and finding events in your area. And with  new private event features, secure location sharing has never been so easy. 
 ---
+
 ## How to Use:
 
 
