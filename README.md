@@ -1,6 +1,6 @@
 # Happnen 
 ---
-<div style="width: 300px; margin: 0 auto;"> <link href="https://aqueous-earth-83627.herokuapp.com/">Deployed</link></div>
+<div style="width: 100%; margin: 0 auto;"> <a href="https://aqueous-earth-83627.herokuapp.com/">Deployed</a></div>
 
 ---
 ## Vision
