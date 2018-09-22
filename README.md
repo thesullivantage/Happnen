@@ -1,4 +1,4 @@
-# Happnen 
+# Happnen © 
 ### [Deployed](https://aqueous-earth-83627.herokuapp.com/mapdisplay) 
 
 ---
@@ -7,11 +7,14 @@
 
 ---
 
-## How to Use:
+## Description & How to Use:
 
 
 #### 1. Create an account / Login
-#### 2. View Public Events 
+#### 2. View Map (Public Events)
+        - Modals with event details can be accessed via side menu or by clicking on the pins themselves
+        - Private/Invite Only Events not displayed on the map (functionality coming soon)
+        -
 
 
 
