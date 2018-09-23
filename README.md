@@ -1,42 +1,46 @@
-# Happnen
+# Happnen © 
+### [Deployed](https://aqueous-earth-83627.herokuapp.com/mapdisplay) 
+
+---
+
+### With Happnen, the simple yet versatile approach is taken when it comes to planning, attending, and finding events in your area. And with  new private event features, secure location sharing has never been so easy. 
+
+---
+
+## Description & How to Use:
 
 
-## Vision
+#### 1. Create an account / Login
+#### 2. View Map (Public Events)
+        - Modals with event details can be accessed via side menu or by clicking on the pins themselves
+        - Private/Invite Only Events not displayed on the map (functionality coming soon)
+        -
 
 
-<!-- + Happnen is an event based app for consumers looking for events regardless of their size.
-+ You can find smaller events like poker games, playing ultimate frisbee in the park, business meet-ups, speed dating events, and many more. 
-+ You can also find larger events like concerts, trivia events, happy hours, parties, and marriage receptions. -->
 
+## Problems
 
-<!-- + When you first open the page, You will see a map including all of the public events happening near you.
-+ Once on the home page, You have the option to redirect over to the login page or the sign up page.
-+ The login Page will be used for users who have already created a username and password for the site.
-+ The Sign up page will allow the users who have not created a username and password to do so. -->
+#### - 
+#### - Neverending Callbacks (Fix in Progress)
+#### - Asynchronicity issue with storing basic session storage ()
 
-
-<!-- + Once a user has logged in or created an account, they will be redirected back to the map page.  
-+ Once an account is created the user will have the ability to create their own events that will populate on the map page.
-+ The user will be able to create public, private, and invite only events.
-
-
-+ Another feature the user can access once an account is created is their own personal profile page.
-+ On this page, you can add a profile image and a short bio.  -->
+_ Some of the above reflected in the issues section of this repository _
 
 
 ## Notable Technologies Utilized:
 
-#### General: 
 
+#### General: 
 * MERN Stack
 * Javascript
 * Google Maps API <br/>
 
 #### Front End: 
 * React.js
+* ECMAScript 6 ([ES6])
+* HTML5
 * Materialize CSS Library
-* Html
-* CSS
+* CSS3
 
 #### Back End:
 * Node.js
@@ -45,14 +49,12 @@
 * MongoDB (Mongoose ODM)
 * Cryptr
 
-#### Potential Future Development Technologies:
+## Future Development (Short-Term):
 * JWT
 * Stanford Javascript Crypto Library
 
-<!-- * Google Geocoding API -->
-
-### Contributors:
-https://github.com/thesullivantage/Happnen/graphs/contributors
+## Contributors:
+[Stats](https://github.com/thesullivantage/Happnen/graphs/contributors)
 * Jack Sullivan
 * Aaron Endelman
 * Kyle Behm
