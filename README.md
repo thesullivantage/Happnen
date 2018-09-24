@@ -33,7 +33,7 @@ creating an account
 * Need to link functionality ([on profile]) for viewing public event locations (React component already in place)
 * React-Materialize issues (general)
 
-_ Some of the above reflected in the issues section of this repository _
+_Some of the above reflected in the issues section of this repository_
 
 ## Tests:
 ##### _Building of tests in progress_ 
