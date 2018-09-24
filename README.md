@@ -25,13 +25,13 @@ creating an account
 
 ## Problems/Issues [Include] (but are not limitied to):
 
-#### * Obvious Speed Issues with Heroku
-#### * Refactoring encrypted location controller functions to backend (Express middleware) from its current location (done in front end (within React components) for demo purposes)
-#### * Neverending Callbacks (Refactoring in Progress)
-#### * Asynchronicity issue with storing basic session storage parameter (placeholder login functionality)
-#### * Cannot click on same map pin twice sequentially
-#### * Need to link functionality ([on profile]) for viewing public event locations (React component already in place)
-#### * React-Materialize issues (general)
+#### ○ Obvious Speed Issues with Heroku
+#### ○ Refactoring encrypted location controller functions to backend (Express middleware) from its current location (done in front end (within React components) for demo purposes)
+#### ○ Neverending Callbacks (Refactoring in Progress)
+#### ○ Asynchronicity issue with storing basic session storage parameter (placeholder login functionality)
+#### ○ Cannot click on same map pin twice sequentially
+#### ○ Need to link functionality ([on profile]) for viewing public event locations (React component already in place)
+#### ○ React-Materialize issues (general)
 
 _ Some of the above reflected in the issues section of this repository _
 
