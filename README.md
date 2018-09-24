@@ -10,16 +10,16 @@
 ## Description & How to Use:
 
 
-#### 1. Create an account / Login
-        - To actually log in (with the current bug), go to the lower right hand button
+#### 1. Create an account / Login:
+        * To actually log in (with the current bug), go to the lower right hand button
         and click on the map button after logging in or 
         creating an account
 #### 2. View Map (Public Events)
-        - Modals with event details can be accessed via side menu or by clicking on the pins themselves
-        - Private/Invite Only events not displayed on the map
+        * Modals with event details can be accessed via side menu or by clicking on the pins themselves
+        * Private/Invite Only events not displayed on the map
                 * Invite Only events development in progress
 #### 3. Create an Event
-        - Encrypted  
+        * Encrypted  
 
 
 
