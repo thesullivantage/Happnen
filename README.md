@@ -11,21 +11,30 @@
 
 
 #### 1. Create an account / Login
+        - To actually log in (with the current bug), go to the lower right hand button and click on the map button after logging in or             creating an account
 #### 2. View Map (Public Events)
         - Modals with event details can be accessed via side menu or by clicking on the pins themselves
-        - Private/Invite Only Events not displayed on the map (functionality coming soon)
-        -
+        - Private/Invite Only events not displayed on the map
+                * Invite Only events development in progress
+#### 3. Create an Event
+        - Encrypted  
 
 
 
-## Problems
+## Problems/Issues [Include] (but are not limitied to):
 
-#### - 
-#### - Neverending Callbacks (Fix in Progress)
-#### - Asynchronicity issue with storing basic session storage ()
+#### - Obvious Speed Issues with Heroku
+#### - Refactoring encrypted location controller functions to backend (Express middleware) from its current location (done in front end (within React components) for demo purposes)
+#### - Neverending Callbacks (Refactoring in Progress)
+#### - Asynchronicity issue with storing basic session storage parameter (placeholder login functionality)
+#### - Cannot click on same map pin twice sequentially
+#### - Need to link functionality ([on profile]) for viewing public event locations (React component already in place)
+#### - React-Materialize issues (general)
 
 _ Some of the above reflected in the issues section of this repository _
 
+## Tests:
+##### _Building of tests in progress_ 
 
 ## Notable Technologies Utilized:
 
