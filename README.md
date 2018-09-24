@@ -10,7 +10,7 @@
 ## Description & How to Use:
 
 
-#### 1. Create an account / Login:
+#### - Create an account / Login:
         * To actually log in (with the current bug), go to the lower right hand button
         and click on the map button after logging in or 
         creating an account
