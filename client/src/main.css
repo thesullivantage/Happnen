@@ -67,3 +67,8 @@ input.location-search-input {
   border-width: 0px;
 }
 
+.modal { width: 75% !important ; height: 75% !important ; } 
+
+h5 {
+  margin-left: 15px;
+}
