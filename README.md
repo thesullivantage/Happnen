@@ -29,7 +29,7 @@ creating an account
  * Click on an event's respective button to see its detail modal
  * If it is an event that you created, you will see a different option than if you are an invitee 
 
-## Problems/Issues [Include] (but are not limitied to):
+## Problems/Issues Include (but are not limitied to):
 * Neverending Callbacks (Refactor in Progress)
 * Asynchronicity issue with storing basic session storage parameter (placeholder login functionality)
 * Obvious speed Issues with Heroku
