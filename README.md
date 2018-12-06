@@ -1,4 +1,4 @@
-# Happnen © Readme Under Construction
+# Happnen ©
 ### [Deployed](https://aqueous-earth-83627.herokuapp.com/mapdisplay) 
 
 ---
