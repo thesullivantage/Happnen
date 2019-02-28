@@ -113,8 +113,13 @@ class Signup extends Component {
           console.log(this.state.passValid);
           console.log(this.state.ofAge);
           sessionStorage.user = this.state.username;
-          this.setState({ username: "", password: "", passwordValidate: "", passValid: false, email: "", ofAge: false, userQr: "", redirect: true });
           console.log(sessionStorage.user)
+        })
+        .then(() => {
+          this.setState({username: "", password: "", passwordValidate: "", passValid: false, email: "", ofAge: false, userQr: ""});
+        })
+        .then(() => {
+          this.setState({redirect: "true"});
         })
         .catch(err => console.log(err));
 

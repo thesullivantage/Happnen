@@ -31,6 +31,7 @@
     "cloudinary-react": "^1.0.6",
     "cryptr": "^4.0.0",
     "express": "^4.15.4",
+    "history": "^4.7.2",
     "if-env": "^1.0.4",
     "moment": "^2.22.2",
     "mongoose": "^5.0.17",
@@ -44,6 +45,7 @@
     "react-google-maps": "^9.4.5",
     "react-places-autocomplete": "^7.2.0",
     "react-qr-code": "^0.1.2",
-    "recompose": "^0.29.0"
+    "recompose": "^0.29.0",
+    "semantic-ui-react": "^0.82.5"
   }
 }

@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Owner\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add cryptr
+  C:\Program Files\nodejs\node.exe C:\Users\Owner\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add semantic-ui-react
 
 PATH: 
-  C:\Users\Owner\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Owner\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\WINDOWS\System32\OpenSSH;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\Owner\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\heroku\bin;C:\Users\Owner\AppData\Roaming\npm;C:\Users\Owner\AppData\Local\atom\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\Users\Owner\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Owner\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\WINDOWS\System32\OpenSSH;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\Owner\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\heroku\bin;C:\Users\Owner\AppData\Roaming\npm;C:\Users\Owner\AppData\Local\atom\bin;C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\bin;D:\Owner\miktext\miktex\bin\x64;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
   1.9.4
@@ -14,7 +14,10 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\Owner\bootcamp\Homework\Happnen\node_modules\create-react-class\node_modules\.bin'
+  Error: connect ETIMEDOUT 104.16.18.35:443
+      at Object._errnoException (util.js:992:11)
+      at _exceptionWithHostPort (util.js:1014:20)
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
 
 npm manifest: 
   {
@@ -41,7 +44,6 @@ npm manifest:
       "concurrently": "^3.5.0",
       "nodemon": "^1.11.0",
       "webpack": "^1.14.0"
-  
     },
     "dependencies": {
       "axios": "^0.16.2",
@@ -49,6 +51,7 @@ npm manifest:
       "body-parser": "^1.17.2",
       "cloudinary": "^1.11.0",
       "cloudinary-react": "^1.0.6",
+      "cryptr": "^4.0.0",
       "express": "^4.15.4",
       "if-env": "^1.0.4",
       "moment": "^2.22.2",
@@ -61,6 +64,7 @@ npm manifest:
       "react-art-svg-renderer": "^0.0.1-rc.8",
       "react-datepicker": "^1.6.0",
       "react-google-maps": "^9.4.5",
+      "react-places-autocomplete": "^7.2.0",
       "react-qr-code": "^0.1.2",
       "recompose": "^0.29.0"
     }
@@ -804,6 +808,10 @@ Lockfile:
   crypto-random-string@^1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
+  
+  cryptr@^4.0.0:
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/cryptr/-/cryptr-4.0.0.tgz#f6932c14b1b5ee9e10d9708b10a4e7eafc2a14d0"
   
   dashdash@^1.12.0:
     version "1.14.1"
@@ -1874,6 +1882,10 @@ Lockfile:
       json5 "^0.5.0"
       object-assign "^4.0.1"
   
+  lodash.debounce@^4.0.8:
+    version "4.0.8"
+    resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  
   lodash.get@4.4.2:
     version "4.4.2"
     resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
@@ -2702,6 +2714,13 @@ Lockfile:
   react-onclickoutside@^6.7.1:
     version "6.7.1"
     resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.7.1.tgz#6a5b5b8b4eae6b776259712c89c8a2b36b17be93"
+  
+  react-places-autocomplete@^7.2.0:
+    version "7.2.0"
+    resolved "https://registry.yarnpkg.com/react-places-autocomplete/-/react-places-autocomplete-7.2.0.tgz#85319ff42a1e3e0d2b02cc40471c1e2911e6dfbe"
+    dependencies:
+      lodash.debounce "^4.0.8"
+      prop-types "^15.5.8"
   
   react-popper@^0.9.1:
     version "0.9.5"

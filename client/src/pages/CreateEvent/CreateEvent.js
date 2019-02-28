@@ -17,6 +17,7 @@ const dictionary = {
     alphabet: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 }
 
+//need margin bottom = 200 underneath 
 class Event extends Component {
 
     state = {
@@ -72,6 +73,7 @@ class Event extends Component {
                         if (!obj.picLink) {
                             var rObj = {};
                             rObj[obj.username] = 'null';
+                            console.log("RESTARTER", rObj)
                             return rObj;
                         } else {
                             var rObj = {};

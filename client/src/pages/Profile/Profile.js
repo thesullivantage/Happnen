@@ -28,19 +28,6 @@ class Profile extends Component {
         loading: true
     };
 
-
-    // componentDidMount() {
-    //     API.populateProfile(username);
-    //
-    // }
-
-    // loadEvents = (username) => {
-    //     API.getEvents(username)
-    //     .then(res =>
-    //     this.setState({eventsShit}))
-    //     .catch(err => console.log(err));
-    // };
-
     componentDidMount = () => {
 
         setTimeout(() => this.setState({ loading: false }), 1500);

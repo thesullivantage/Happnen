@@ -1,0 +1,42 @@
+.input-field {
+  color: #1A3456;
+  text-align: left;
+}
+
+.input-field input[type=text]:focus {
+  color: black;
+  border-bottom: 1px solid #1A3456;
+  box-shadow: 0 1px 0 0 #1A3456;
+  border-radius: 85px;
+}
+
+label focus color .input-field input:focus+label {
+  color: #1A3456 !important;
+}
+
+.input-field input[type=text]:focus {
+  color: black;
+  border-bottom: 1px solid #1A3456;
+  box-shadow: 0 1px 0 0 #1A3456;
+}
+
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid #1A3456;
+  box-shadow: 0 1px 0 0 #1A3456;
+  border-radius: 85px;
+}
+
+.input-field input[type=text] {
+  border-bottom: 1px solid #2B5797;
+  box-shadow: 0 1px 0 0 #2B5797;
+}
+
+.input-field input[type=password] {
+  color: black;
+  border-bottom: 1px solid #1A3456;
+  box-shadow: 0 1px 0 0 #1A3456;
+}
+
+.input-field .prefix.active {
+  color: #1A3456;
+}

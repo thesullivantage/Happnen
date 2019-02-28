@@ -14,7 +14,8 @@ class Invitation extends React.Component {
 
 	constructor(props) {
 		super(props)
-		// this.componentDidMount = this.componentDidMount.bind(this),
+		this.componentDidMount = this.componentDidMount.bind(this)
+		
 		// this.render = this.render.bind(this)
 		// this.DeleteHandler.this
 	}
@@ -25,7 +26,6 @@ class Invitation extends React.Component {
 	};
 
 	componentDidMount = () => {
-
 		this.setState({
 			data: this.props.data.obj.invites,
 			user: this.props.data.obj._id
@@ -43,7 +43,8 @@ class Invitation extends React.Component {
 		};
 	}
 
-	render = () => {
+	// Removed arrow function, replaced with normal one 
+	render() {
 		console.log("impData", this.state)
 		const data = this.props.data.obj.invites
 		console.log("data", data)

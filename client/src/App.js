@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { } from "react-router";
 import NoMatch from "./pages/NoMatch";
+// Destructure all of the pages
 import Homepage from "./pages/Homepage";
 import Signup from "./pages/Signup";
 import CreateEvent from "./pages/CreateEvent";
@@ -15,8 +16,8 @@ class App extends React.Component {
 	render() {
 		if (sessionStorage.user) {
 			return (
-				<Router>
-					<div>
+				<div>
+					<Router>
 						<Switch>
 							{/* None of these components are created yet */}
 							<Route exact path="/" component={Homepage} />
@@ -40,15 +41,16 @@ class App extends React.Component {
 
 						</Switch>
 						{/* Put nav button here as a jsx tag */}
-						<UserFab/>
-					</div>
-				</Router>
-				
+					</Router>
+					<UserFab />
+				</div>
+
+
 			)
-		} else {
+		} else if (!sessionStorage.user) {
 			return (
-				<Router>
-					<div>
+				<div>
+					<Router>
 						<Switch>
 							{/* None of these components are created yet */}
 							<Route exact path="/" component={Homepage} />
@@ -56,8 +58,7 @@ class App extends React.Component {
 							<Route exact path="/createevent" component={Signup} />
 							<Route exact path="/profile" component={Signup} />
 							<Route exact path="/mapdisplay" component={Homepage} />
-							{/*<Route exact path="/login" component={Login} />
-            <Route exact path="/events" component={Events} /> */}
+				
 
 							{/* We can also avoid /:id and get user info from user stored in user state after login */}
 							{/*
@@ -66,10 +67,12 @@ class App extends React.Component {
 
 							<Route component={NoMatch} />
 						</Switch>
-						<NonUserFab/>
 						{/* Put nav button here as a jsx tag */}
-					</div>
-				</Router>
+					</Router>
+					<NonUserFab />
+				</div>
+
+
 			)
 		}
 	}

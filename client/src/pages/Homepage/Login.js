@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Redirect } from 'react-router';
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import Logo from "../../components/Logo/index";
-import "./Login.css";
 import API from "../../utils/API";
 import HappnenIcon from "../../components/Icon/index";
 import NonUserFab from "../../components/NonUserFab";
@@ -15,6 +14,10 @@ class Homepage extends Component {
 		password: "",
 		redirect: false
 	};
+
+	componentDidMount = (props) => {
+		console.log("PROPS ", this.context)
+	} 
 
 	handleInputChange = event => {
 		const { name, value } = event.target;
@@ -35,11 +38,14 @@ class Homepage extends Component {
 		console.log("suObj: ", loginObj)
 		API.login(loginObj)
 			.then(res => {
-
 				sessionStorage.user = this.state.username;
-				this.setState({ username: "", password: "",	redirect: true});				
-				// Do this if status is 200
 				console.log("GET RES HERE", res)
+			})
+			.then(() => {
+				this.setState({ username: "", password: "",	});				
+			})
+			.then(() => {
+				this.setState({redirect: "true"});				
 			})
 			.catch(err => console.log(err));
 		//alert if all fields aren't completed
