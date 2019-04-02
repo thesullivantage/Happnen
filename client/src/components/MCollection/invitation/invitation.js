@@ -45,9 +45,9 @@ class Invitation extends React.Component {
 
 	// Removed arrow function, replaced with normal one 
 	render() {
-		console.log("impData", this.state)
+		("impData", this.state)
 		const data = this.props.data.obj.invites
-		console.log("data", data)
+		("data", data)
 		const user = this.props.data.obj._id
 
 		// this.setState({
@@ -59,7 +59,6 @@ class Invitation extends React.Component {
 		// const user = this.state.user
 
 		if (data) {
-			console.log("KEYZKEYZKEYZ", this.state)
 			return (
 				data.map(item =>
 					<CollectionItem>

@@ -21,7 +21,6 @@ class Cloudinary extends Components {
             }).then(response => {
                 const data = response.data;
                 const fileURL = data.secure_url // You should store this URL for future references in your app
-                console.log(data);
             })
         });
 

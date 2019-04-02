@@ -15,27 +15,21 @@ class Homepage extends Component {
 		redirect: false
 	};
 
-	componentDidMount = (props) => {
-		console.log("PROPS ", this.context)
-	} 
-
 	handleInputChange = event => {
 		const { name, value } = event.target;
 
 		this.setState({
 			[name]: value
-		}, () => console.log(this.state.password));
+		});
 	};
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-		console.log(`Username: ${this.state.username}\nPassword: ${this.state.password}`);
 
 		const loginObj = {
 			username: this.state.username,
 			password: this.state.password
 		}
-		console.log("suObj: ", loginObj)
 		API.login(loginObj)
 			.then(res => {
 				sessionStorage.setItem('user', this.state.username);
@@ -44,7 +38,6 @@ class Homepage extends Component {
 				this.setState({ username: "", password: ""});
 				const { history } = this.props;
 				history.push('/mapdisplay')
-				console.log()				
 			})
 			.then(() => {
 				this.setState({redirect: "true"});				

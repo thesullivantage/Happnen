@@ -26,10 +26,6 @@ class ShowButton extends React.Component {
 		location: this.props.data.location
 	}
 
-	componentDidMount() {
-		console.log("FINAL DATA", this.state.data)
-	}
-
 	handleDecrypt = () => {
 		const cryptObj = {
 			eventId: this.state.eventId,
@@ -37,10 +33,8 @@ class ShowButton extends React.Component {
 		}
 		API.decrypter(cryptObj)
 			.then(res => {
-				console.log("RIGHT BEFORE", res.data.EKey)
 				API.spenter(cryptObj)
 					.then(spentz => {
-						console.log("spent", spentz)
 						var EKey = res.data.EKey
 						const cryptr = new Cryptr(EKey)
 						const dcLocat = cryptr.decrypt(this.state.location)
@@ -60,12 +54,10 @@ class ShowButton extends React.Component {
 	// 		userId: this.state.userId,
 	// 		eventId: this.state.eventid
 	// 	}
-	// 	console.log("inviteObj: ", inviteObj)
 	// 	API.inviteUnaccept(inviteObj)
 	// 		.then(res => {
 	// 			// Do this if status is 200
 	// 			this.setState({ attending: false })
-	// 			console.log(res)
 	// 		})
 	// 		.catch(err => console.log(err));
 	// }

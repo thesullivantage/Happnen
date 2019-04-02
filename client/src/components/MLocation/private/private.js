@@ -20,8 +20,7 @@ class Private extends React.Component {
 	};
 
 	componentDidMount = () => {
-		console.log("GODS NOT DEAD!")
-		console.log("PROPS", this.props.data._id)
+
 
 		const checkObj = {
 			eventId: this.props.data._id,
@@ -32,7 +31,6 @@ class Private extends React.Component {
 		
 		API.findUser(checkObj)
 			.then(user => {
-				console.log("USERFOUND", user)
 				this.setState({
 					userId: user.data._id
 				}, () => {
@@ -40,52 +38,42 @@ class Private extends React.Component {
 					
 					
 					var spentArr = this.props.data.spentIds
-					console.log("spentArr", spentArr)
 					var spent;
 					if (spentArr.length == 0) {
-						console.log("Step 1")
 						this.setState({
 							GTG: true
-						}, () => console.log("DONE!", this.state.GTG))
+						})
 					} else if (spentArr.length > 0) {
-						console.log("Step 1")
 						const checkSpent = spentArr.includes(this.state.userId)
-						console.log("deciding vote", checkSpent)
 						if (checkSpent == false) {
 							this.setState({
 								GTG: true
-							}, () => console.log("DONE!", this.state.GTG))
+							})
 						} else {
 							return;
 						}
-						console.log("AM i here Yet?", spent)
 					}
 					
 					
 					// API.checker(checkObj)
 					// 	.then(res => {
-					// 		console.log("CHECKER", res)
 					// 		var invArr = res.invited
 					// 		var invited = true
 					// 		if (invArr) {
 					// 			invited = invArr.includes(this.state.userId)
-					// 			console.log("TEEEEST", invited)
 					// 		}
 					// 		if (invited == true) {
-					// 				console.log("STEP1COMPLETE")
 					// 				var spentArr = res.spentIds
-					// 				console.log("spentArr", spentArr)
 					// 				var spent = true;
 					// 				if (spentArr === undefined) {
 					// 					spent = false
 					// 				} else if (spentArr.length) {
 					// 					spent = spentArr.includes(this.state.userId)
-					// 					console.log("AM i here Yet?", spent)
 					// 				}
 					// 				if (spent == false) {
 					// 					this.setState({
 					// 						GTG: true
-					// 					}, () => console.log("DONE!", this.state.GTG))
+					// 					})
 					// 				} else {
 					// 					return;
 					// 				}
@@ -97,7 +85,7 @@ class Private extends React.Component {
 					// 	.catch(err => console.log("BAD CHECKER ERR!", err));
 				})
 			})
-			.catch(err => console.log("BAD USER ERR!", err));
+			.catch(err => console.log("BAD USER ERR: ", err));
 
 
 
@@ -106,7 +94,6 @@ class Private extends React.Component {
 
 
 	render = () => {
-		// console.log("I'm ALIVE", this.props)
 		if (this.state.GTG == true) {
 			return (
 				//add props here

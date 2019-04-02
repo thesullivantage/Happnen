@@ -34,24 +34,18 @@ class Profile extends Component {
 
         this.setState({ username: sessionStorage.user }, () => {
 
-            console.log(sessionStorage.user)
 
             if (this.state.username) {
                 let userObj = {
                     username: this.state.username
                 }
-                console.log(userObj)
                 API.populateProfile(userObj)
                     .then(res => {
-                        console.log(res.data)
                         this.setState({
                             userData: res.data,
                             bio: res.data.bio,
                             // picLink: res.data.picLink
                             // events: this.state.user.myEvents
-                        }, () => {
-                            //map
-                            console.log(this.state.userData)
                         })
                         console.log("SUCCESS")
                     })
@@ -68,29 +62,24 @@ class Profile extends Component {
     //     }
     //     API.populateProfile(userObj)
     //         .then(res => {
-    //             console.log(res)
     //             this.setState({
     //                 userData: res,
     //                 bio: this.state.user.bio,
     //                 picLink: this.state.user.picLink,
     //                 // events: this.state.user.myEvents
     //             })
-    //             console.log("SUCCESS")
 
     //         })
     //         .catch(err => console.log(err));
     // }
 
     handleInputChange = event => {
-        console.log(this.state)
-        console.log(event.target)
 
         const { name, value } = event.target;
 
         this.setState({
             [name]: value
-        }, () => console.log(this.state.bio));
-        console.log(this.state)
+        });
     };
 
     handleFormSubmit = event => {
@@ -104,7 +93,6 @@ class Profile extends Component {
                 picLink: this.state.picLink
             })
                 .then(res => {
-                    console.log(res);
                     this.setState({
                         bio: res.data.bio
                     })
@@ -136,7 +124,6 @@ class Profile extends Component {
         const passData = {
             obj: this.state.userData
         }
-        console.log(passData)
 
         return (
             <Container>

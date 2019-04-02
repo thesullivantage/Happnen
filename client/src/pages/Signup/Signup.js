@@ -37,11 +37,9 @@ class Signup extends Component {
     for (let i = 0; i < 12; i++) {
       randomQr += dictionary.alphabet[Math.floor(Math.random() * dictionary.alphabet.length)]
     }
-    console.log(randomQr)
     this.setState({
       userQr: randomQr
     });
-    console.log(this.state)
   }
 
   handleInputChange = event => {
@@ -54,8 +52,6 @@ class Signup extends Component {
 
       let pass = this.state.password;
       let passVal = this.state.passwordValidate;
-      // console.log(pass);
-      // console.log(passVal);
 
       if (pass === passVal && pass !== "" && passVal !== "") {
         this.setState({
@@ -74,8 +70,7 @@ class Signup extends Component {
       this.setState({
         ofAge: true
       })
-      // console.log(this.state.ofAge);
-      // console.log(age);
+   
     }
   }
 
@@ -98,7 +93,6 @@ class Signup extends Component {
     event.preventDefault();
 
     if (this.state.username && this.state.passValid === true && this.state.email) {
-      console.log("FIRST", this.state.username)
       API.signUp({
         username: this.state.username,
         password: this.state.password,
@@ -108,12 +102,7 @@ class Signup extends Component {
         userQr: this.state.userQr
       })
         .then(res => {
-          console.log(res);
-          console.log(this.state.username);
-          console.log(this.state.passValid);
-          console.log(this.state.ofAge);
           sessionStorage.user = this.state.username;
-          console.log(sessionStorage.user)
         })
         .then(() => {
           this.setState({username: "", password: "", passwordValidate: "", passValid: false, email: "", ofAge: false, userQr: ""});

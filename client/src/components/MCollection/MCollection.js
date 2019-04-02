@@ -18,16 +18,10 @@ class MCollection extends React.Component {
 		data: this.props.data
 	}
 
-	componentDidMount = () => {
-		console.log("test")
-	}
 
 	render() {
-		console.log("Render")
-		console.log("type", this.props.type)
-		console.log("HALP", this.props.data)
+
 		if (this.props.type === "invitation" && this.props.data) {
-			console.log("Suxcess")
 			return (
 				<Collection>
 					{/* changed from this.props.data */}
@@ -43,8 +37,6 @@ class MCollection extends React.Component {
 			);
 
 		} else if (this.props.type === "publicEvents") {
-			console.log("SUCCES")
-			console.log(this.props.markerObj)
 			return (
 				<PublicEvent markerObj={this.props.markerObj} />
 			)

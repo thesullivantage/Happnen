@@ -14,7 +14,6 @@ class MapDisplay extends Component {
 
     componentDidMount() {
         setTimeout(() => this.setState({ loading: false }), 1500);
-        console.log("Hello out there?")
     }
     render() {
 

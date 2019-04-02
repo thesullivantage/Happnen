@@ -26,7 +26,6 @@ class PublicEvent extends React.Component {
 	
 	render() {
 		const markers = this.props.markerObj.marker
-		console.log(markers)
 		if (markers) {
 			return (
 				markers.map(event => (
@@ -36,7 +35,7 @@ class PublicEvent extends React.Component {
 						header
 						basic
 						trigger={
-							<SideNavItem waves key={event.eventName} eventName={event.eventName} onClick={() => console.log(event)}>
+							<SideNavItem waves key={event.eventName} eventName={event.eventName}>
 								{event.eventName} <br /> <h1> hosted by {event.host} </h1>
 							</SideNavItem>
 

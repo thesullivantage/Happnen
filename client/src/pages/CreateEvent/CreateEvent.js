@@ -54,7 +54,6 @@ class Event extends Component {
         else {
             randomQr = ""
         }
-        console.log(randomQr)
         this.setState({
             eventQr: randomQr
         });
@@ -63,17 +62,14 @@ class Event extends Component {
     componentDidMount = () => {
         API.autofillusers()
             .then(res => {
-                console.log("AUTOFILLDATA", res.data);
                 this.setState({
                     autofill: [...this.state.autofill, res.data]
                 }, () => {
-                    console.log("STATE", this.state.autofill)
                     const autofills = this.state.autofill
                     const aFillSplit = autofills[0].map(obj => {
                         if (!obj.picLink) {
                             var rObj = {};
                             rObj[obj.username] = 'null';
-                            console.log("RESTARTER", rObj)
                             return rObj;
                         } else {
                             var rObj = {};
@@ -91,7 +87,7 @@ class Event extends Component {
                     }, {});
                     this.setState({
                         autoFData: [...this.state.autoFData, aFillData]
-                    }, () => console.log(this.state.autoFData))
+                    })
 
                 });
             })
@@ -118,7 +114,6 @@ class Event extends Component {
     };
 
     handleAutocomplete = value => {
-        console.log(value)
         this.setState({
             userSearch: value
         });
@@ -159,23 +154,19 @@ class Event extends Component {
     handleSelect = location => {
         geocodeByAddress(location)
             .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', latLng))
+            // .then(latLng => console.log('Success', latLng))
             .catch(error => console.error('Error', error));
     };
 
     handleAdd = event => {
         event.preventDefault();
-        console.log(this.state.userSearch);
         const pushY = this.state.userSearch
-        console.log("pushY", pushY)
         const toSendArr = this.state.userInvited
-        console.log("toSendArr", toSendArr)
         if (!toSendArr.includes(pushY)) {
             toSendArr.push(pushY)
             this.setState({
                 userInvited: toSendArr
             }, () => {
-                console.log(this.state.userInvited)
                 const indexedAutofills = this.state.autofill[0]
                 const indexz = indexedAutofills.findIndex(item => item['username'] === this.state.userSearch);
                 const toPush = this.state.autofill[0][indexz]['_id']
@@ -186,7 +177,7 @@ class Event extends Component {
                         //this is what we need to send to 
                         invited: newArr,
                         userSearch: ""
-                    }, () => console.log(this.state.invited))
+                    })
                 } else {
                     return;
                 }
@@ -200,7 +191,6 @@ class Event extends Component {
 
     deleteInvitee = event => {
         event.preventDefault();
-        console.log(this);
     }
 
     handleFormSubmit = event => {
@@ -226,7 +216,6 @@ class Event extends Component {
                 eventQr: this.state.eventQr
             })
                 .then(res => {
-                    console.log("EVENT CREATED", res);
                     this.setState({
                         redirect: true
                     })

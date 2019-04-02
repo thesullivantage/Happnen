@@ -34,8 +34,8 @@ const Map = compose(
 	withHandlers({
 		onMarkerClustererClick: () => (markerClusterer) => {
 			const clickedMarkers = markerClusterer.getMarkers()
-			console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-			console.log(clickedMarkers)
+			(`Current clicked markers length: ${clickedMarkers.length}`)
+			(clickedMarkers)
 		},
 	}),
 	withScriptjs,
@@ -119,11 +119,11 @@ export class MapComponent extends React.Component {
 					.catch(error => console.error('Error', error));
 				break;
 			case "Today":
-				console.log("dailyEvents")
+				("dailyEvents")
 				API.getDailyLocations()
 					.then(res => {
 						this.setState({ markers: res.data });
-						console.log("THIS IS WHAT WE WANT", res.data);
+						("THIS IS WHAT WE WANT", res.data);
 					})
 					.catch(error => console.error('Error', error));
 				break;
@@ -142,7 +142,7 @@ export class MapComponent extends React.Component {
 					.catch(error => console.error('Error', error));
 				break;
 		}
-		console.log("switch over")
+		("switch over")
 		// switch for activeFilter
 	}
 
@@ -163,7 +163,6 @@ export class MapComponent extends React.Component {
 		const markerObj = {
 			marker: this.state.markers
 		}
-		console.log("markerObj", markerObj)
 		return (
 			<div>
 				<Map markers={this.state.markers} />
