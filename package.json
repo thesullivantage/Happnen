@@ -43,6 +43,7 @@
     "react-art-svg-renderer": "^0.0.1-rc.8",
     "react-datepicker": "^1.6.0",
     "react-google-maps": "^9.4.5",
+    "react-grid-gallery": "^0.5.3",
     "react-places-autocomplete": "^7.2.0",
     "react-qr-code": "^0.1.2",
     "recompose": "^0.29.0",

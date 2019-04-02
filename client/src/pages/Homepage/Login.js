@@ -38,26 +38,28 @@ class Homepage extends Component {
 		console.log("suObj: ", loginObj)
 		API.login(loginObj)
 			.then(res => {
-				sessionStorage.user = this.state.username;
-				console.log("GET RES HERE", res)
+				sessionStorage.setItem('user', this.state.username);
 			})
 			.then(() => {
-				this.setState({ username: "", password: "",	});				
+				this.setState({ username: "", password: ""});
+				const { history } = this.props;
+				history.push('/mapdisplay')
+				console.log()				
 			})
 			.then(() => {
 				this.setState({redirect: "true"});				
 			})
 			.catch(err => console.log(err));
-		//alert if all fields aren't completed
 	};
 
 	render() {
 
-		const { redirect } = this.state;
+		//OLD REDIRECT WAY
+		// const { redirect } = this.state;
 
-		if (redirect) {
-			return <Redirect to='/mapdisplay' />;
-		}
+		// if (redirect) {
+		// 	return <Redirect to='/mapdisplay' />;
+		// }
 
 		return (
 			<Container>

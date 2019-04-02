@@ -1,23 +1,20 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Owner\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add semantic-ui-react
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-redux
 
 PATH: 
-  C:\Users\Owner\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Owner\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\WINDOWS\System32\OpenSSH;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\Owner\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\heroku\bin;C:\Users\Owner\AppData\Roaming\npm;C:\Users\Owner\AppData\Local\atom\bin;C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\bin;D:\Owner\miktext\miktex\bin\x64;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Owner\bin;C:\Users\Owner\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Owner\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Users\Owner\AppData\Local\Microsoft\WindowsApps;C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Owner\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Users\Owner\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
-  1.9.4
+  1.13.0
 
 Node version: 
-  8.11.2
+  10.14.2
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: connect ETIMEDOUT 104.16.18.35:443
-      at Object._errnoException (util.js:992:11)
-      at _exceptionWithHostPort (util.js:1014:20)
-      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Owner\bootcamp\Homework\Happnen\node_modules\bcrypt\lib\binding\bcrypt_lib.node'
 
 npm manifest: 
   {
@@ -53,6 +50,7 @@ npm manifest:
       "cloudinary-react": "^1.0.6",
       "cryptr": "^4.0.0",
       "express": "^4.15.4",
+      "history": "^4.7.2",
       "if-env": "^1.0.4",
       "moment": "^2.22.2",
       "mongoose": "^5.0.17",
@@ -66,7 +64,8 @@ npm manifest:
       "react-google-maps": "^9.4.5",
       "react-places-autocomplete": "^7.2.0",
       "react-qr-code": "^0.1.2",
-      "recompose": "^0.29.0"
+      "recompose": "^0.29.0",
+      "semantic-ui-react": "^0.82.5"
     }
   }
 
@@ -83,6 +82,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0.tgz#adeb78fedfc855aa05bc041640f3f6f98e85424c"
     dependencies:
       regenerator-runtime "^0.12.0"
+  
+  "@semantic-ui-react/event-stack@^2.0.0":
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/@semantic-ui-react/event-stack/-/event-stack-2.0.0.tgz#d2d568a9fb0ee204b0e40d6b73ac2a2403c08451"
+    dependencies:
+      exenv "^1.2.2"
+      prop-types "^15.6.2"
   
   abbrev@1:
     version "1.1.1"
@@ -605,7 +611,7 @@ Lockfile:
       isobject "^3.0.0"
       static-extend "^0.1.1"
   
-  classnames@^2.2.5:
+  classnames@^2.2.5, classnames@^2.2.6:
     version "2.2.6"
     resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   
@@ -986,6 +992,10 @@ Lockfile:
       p-finally "^1.0.0"
       signal-exit "^3.0.0"
       strip-eof "^1.0.0"
+  
+  exenv@^1.2.2:
+    version "1.2.2"
+    resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
   
   expand-brackets@^0.1.4:
     version "0.1.5"
@@ -1451,6 +1461,17 @@ Lockfile:
       hoek "2.x.x"
       sntp "1.x.x"
   
+  history@^4.7.2:
+    version "4.7.2"
+    resolved "https://registry.yarnpkg.com/history/-/history-4.7.2.tgz#22b5c7f31633c5b8021c7f4a8a954ac139ee8d5b"
+    integrity sha512-1zkBRWW6XweO0NBcjiphtVJVsIQ+SXF29z9DVkceeaSLVMFXHool+fdCZD4spDCfZJCILPILc3bm7Bc+HRi0nA==
+    dependencies:
+      invariant "^2.2.1"
+      loose-envify "^1.2.0"
+      resolve-pathname "^2.2.0"
+      value-equal "^0.4.0"
+      warning "^3.0.0"
+  
   hoek@2.x.x:
     version "2.16.3"
     resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
@@ -1837,6 +1858,10 @@ Lockfile:
     version "2.2.1"
     resolved "https://registry.yarnpkg.com/kareem/-/kareem-2.2.1.tgz#9950809415aa3cde62ab43b4f7b919d99816e015"
   
+  keyboard-key@^1.0.2:
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/keyboard-key/-/keyboard-key-1.0.2.tgz#212e14dde4c2059814336159bbc5acd0a348ca6b"
+  
   kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
     version "3.2.2"
     resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
@@ -1902,7 +1927,7 @@ Lockfile:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
   
-  loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1:
+  loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3.1:
     version "1.4.0"
     resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
     dependencies:
@@ -2920,6 +2945,11 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-2.0.0.tgz#9480ab20e94ffa1d9e80a804c7ea147611966b57"
   
+  resolve-pathname@^2.2.0:
+    version "2.2.0"
+    resolved "https://registry.yarnpkg.com/resolve-pathname/-/resolve-pathname-2.2.0.tgz#7e9ae21ed815fd63ab189adeee64dc831eefa879"
+    integrity sha512-bAFz9ld18RzJfddgrO2e/0S2O81710++chRMUxHjXOYKF6jTAMrUNZrEZ1PvV0zlhfjidm08iRPdTLPno1FuRg==
+  
   resolve-url@^0.2.1:
     version "0.2.1"
     resolved "https://registry.yarnpkg.com/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
@@ -2967,6 +2997,18 @@ Lockfile:
   scriptjs@^2.5.8:
     version "2.5.8"
     resolved "https://registry.yarnpkg.com/scriptjs/-/scriptjs-2.5.8.tgz#d0c43955c2e6bad33b6e4edf7b53b8965aa7ca5f"
+  
+  semantic-ui-react@^0.82.5:
+    version "0.82.5"
+    resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.82.5.tgz#3bc098a0b22d3a76d8d7fb020dee07311bc2784f"
+    dependencies:
+      "@babel/runtime" "^7.0.0"
+      "@semantic-ui-react/event-stack" "^2.0.0"
+      classnames "^2.2.6"
+      keyboard-key "^1.0.2"
+      lodash "^4.17.10"
+      prop-types "^15.6.2"
+      shallowequal "^1.1.0"
   
   semver-diff@^2.0.0:
     version "2.1.0"
@@ -3079,6 +3121,10 @@ Lockfile:
   sha.js@2.2.6:
     version "2.2.6"
     resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.2.6.tgz#17ddeddc5f722fb66501658895461977867315ba"
+  
+  shallowequal@^1.1.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   
   shebang-command@^1.2.0:
     version "1.2.0"
@@ -3589,6 +3635,11 @@ Lockfile:
   uuid@^3.0.1, uuid@^3.3.2:
     version "3.3.2"
     resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
+  
+  value-equal@^0.4.0:
+    version "0.4.0"
+    resolved "https://registry.yarnpkg.com/value-equal/-/value-equal-0.4.0.tgz#c5bdd2f54ee093c04839d71ce2e4758a6890abc7"
+    integrity sha512-x+cYdNnaA3CxvMaTX0INdTCN8m8aF2uY9BvEqmxuYp8bL09cs/kWVQPVGcA35fMktdOsP69IgU7wFj/61dJHEw==
   
   vary@~1.1.2:
     version "1.1.2"

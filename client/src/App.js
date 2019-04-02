@@ -11,7 +11,16 @@ import MapDisplay from "./pages/MapDisplay";
 import "./main.css"
 import UserFab from "./components/UserFab";
 import NonUserFab from "./components/NonUserFab";
+import history from './history';
 
+
+// Have one fab component that goes into store to get what it needs, but keep this janky system for now
+//Steps:
+// 1. Implement Redux
+//Provider component, store within that
+// 2. Conditional Rendering on Fab component instead of in App.js
+// 3. Implement history redirect instead of redirect component locally in the login page
+// 4. Looking at Higher Order Functions
 class App extends React.Component {
 	render() {
 		if (sessionStorage.user) {
