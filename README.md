@@ -1,4 +1,4 @@
-# Happnen © Readme Under Construction
+# Happnen ©
 ### [Deployed](https://aqueous-earth-83627.herokuapp.com/mapdisplay) 
 
 ---
@@ -30,7 +30,7 @@ creating an account
  * If you click on an event that you created in the "My Events" column, you will see a different modal than when you open an invite from "My Invites" column
  
 
-## Problems/Issues [Include] (but are not limitied to):
+## Problems/Issues Include (but are not limitied to):
 * Neverending Callbacks (Refactor in Progress)
 * Asynchronicity issue with storing basic session storage parameter (placeholder login functionality)
 * Obvious speed Issues with Heroku
