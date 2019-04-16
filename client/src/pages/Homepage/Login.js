@@ -15,9 +15,12 @@ class Homepage extends Component {
 		redirect: false
 	};
 
+	componentDidMount = props => {
+		console.log("What this is: ", this.props)
+	}
+
 	handleInputChange = event => {
 		const { name, value } = event.target;
-
 		this.setState({
 			[name]: value
 		});
@@ -25,6 +28,8 @@ class Homepage extends Component {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
+
+
 
 		const loginObj = {
 			username: this.state.username,
@@ -36,8 +41,9 @@ class Homepage extends Component {
 			})
 			.then(() => {
 				this.setState({ username: "", password: ""});
-				const { history } = this.props;
-				history.push('/mapdisplay')
+				// const { history } = this.props;
+				// history.push('/mapdisplay')
+				// this.setState({redirect: "true"})
 			})
 			.then(() => {
 				this.setState({redirect: "true"});				
@@ -47,12 +53,10 @@ class Homepage extends Component {
 
 	render() {
 
-		//OLD REDIRECT WAY
-		// const { redirect } = this.state;
+		let { from } = this.props.location.state || { from: { pathname: "/" } };
+		let { redirect } = this.state;
 
-		// if (redirect) {
-		// 	return <Redirect to='/mapdisplay' />;
-		// }
+		if (redirect) { return <Redirect  to={from} /> }
 
 		return (
 			<Container>

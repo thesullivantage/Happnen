@@ -2,3 +2,5 @@ node_modules
 jwtNotes.js
 Readmes
 nodeTester.js
+.env
+.vscode
