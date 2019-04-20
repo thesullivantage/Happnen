@@ -9,7 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import API from '../../utils/API';
 import UserInvitedBtn from "../../components/UserInvitedBtn";
-import UserFab from "../../components/UserFab";
+// import UserFab from "../../components/UserFab";
 import LocationSearchInput from "../../components/LocationSearchInput";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng, } from 'react-places-autocomplete';
 

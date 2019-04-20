@@ -13,10 +13,13 @@ class UserFab extends Component {
 
     // REDUX
     handleLogout = event => {
-        this.setState({ username: "", password: "", redirect: true });
-        sessionStorage.user = ""
-
-        //alert if all fields aren't completed
+        // this.setState({ username: "", password: ""})
+        let { history } = this.props
+        sessionStorage.setItem('user', null)
+        // Or use history here
+        .then(() => {
+            history.push("/")
+        })
     };
 
     render() {

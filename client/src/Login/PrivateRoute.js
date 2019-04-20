@@ -1,44 +1,59 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 import { Redirect } from 'react-router';
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
-import Logo from "../../components/Logo/index";
-import API from "../../utils/API";
-import HappnenIcon from "../../components/Icon/index";
-import NonUserFab from "../../components/NonUserFab";
+import API from "../utils/API";
+
 
 //REDUX
-class Homepage extends Component {
-	constructor(props) {
-        super(props);
-        //rd1
-        this.state = {
-            loggedIn: "false"
-        }
-     }
 
-	componentDidMount = props => {
-		console.log("What this is: ", this.props)
-	}
-	handleInputChange = event => {
-		const { name, value } = event.target;
+const Private = ({ component: Component, ...rest }) => (
+	<Route {...rest} render={(props) => (
+		// JWT
+		sessionStorage.user
+			? (<Component {...props} />)
+			: (<Redirect to={{
+				pathname: '/',
+				state: { from: props.location }
+			}} />)
+	)} />
+)
+// class Homepage extends Component {
+// 	constructor(props) {
+// 		super(props);
+// 		//rd1
+// 		this.state = {
+// 			loggedIn: "false"
+// 		}
+// 	}
 
-		this.setState({
-			[name]: value
-		});
-	};
+// 	componentDidMount = props => {
+// 		console.log("What this is: ", this.props)
+// 	}
 
-    AuthCheck = () => {
-        //JWT
-        sessionStorage.user ? () : ()
-    }
+// 	render() {
 
-	render() {
+// 		let {propObj} = this.props
+// 		return (
+// 			<Route
+// 				{...rest}
+// 				render={props =>
+// 					sessionStorage.user ? (
+// 						<Component {...props} />
+// 					) : (
+// 							<Redirect
+// 								to={{
+// 									pathname: "/login",
+// 									state: { from: props.location }
+// 								}}
+// 							/>
+// 						)
+// 				}
+// 			/>
 
-		return (
-			<div/>
-		);
-	}
-}
+// 		);
+// 	}
+// }
 
-export default Homepage;
+export default Private;

@@ -4,17 +4,16 @@ import { Container, Row, Col, Input, Icon, Button, Collection, CollectionItem, P
 import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
-import cloudinary from "cloudinary";
 import MCollection from "../../components/MCollection/";
 import API from "../../utils/API";
 import EventLabel from "../../components/MCollection/misc/EventLabels";
-import UserFab from "../../components/UserFab";
+// import UserFab from "../../components/UserFab";
 
-cloudinary.config({
-    cloud_name: 'happnen',
-    api_key: '782769678216731',
-    api_secret: 'GX7JX8WmSTNIhq4dlBLKkXqO_lE'
-});
+// cloudinary.config({
+//     cloud_name: 'happnen',
+//     api_key: '782769678216731',
+//     api_secret: 'GX7JX8WmSTNIhq4dlBLKkXqO_lE'
+// });
 
 
 class Profile extends Component {

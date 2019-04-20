@@ -3,18 +3,20 @@ import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router
 import { } from "react-router";
 import NoMatch from "./pages/NoMatch";
 // Destructure all of the pages
-import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import CreateEvent from "./pages/CreateEvent";
 import Profile from "./pages/Profile";
 import MapDisplay from "./pages/MapDisplay";
 import "./main.css"
+import PrivateRoute from "./Login/PrivateRoute"
 
 import preFab from "./components/Fab";
+import { createBrowserHistory } from "history";
+
 // withRouter for access to the history object. TODO: TRY location first
 const Fab = withRouter(preFab)
 
-import { createBrowserHistory } from "history";
 const customHistory = createBrowserHistory();
 
 
@@ -24,66 +26,39 @@ const customHistory = createBrowserHistory();
 //Provider component, store within that
 // 2. Conditional Rendering on Fab component instead of in App.js
 // 3. Implement history redirect instead of redirect component locally in the login page
+// 4. Settle on constructor vs. not for all
 
 class App extends React.Component {
 	render() {
-			return (
-				<div>
-					<Router history={customHistory}>
-						<Switch>
-							{/* Change Homepage name to Login*/}
-							<Route exact path="/" component={withRouter(Homepage)} />
-							<Route path="/signup" component={withRouter(Signup)} />
-							<Route path="/createevent" component={withRouter(CreateEvent)} />
-							<Route path="/profile" component={withRouter(Profile)} />
-							<Route exact path="/mapdisplay" component={withRouter(MapDisplay)} />
-							
+		return (
+			<div>
+				<Router history={customHistory}>
+					<Switch>
+						{/* Change Homepage name to Login*/}
+						<Route exact path="/" component={withRouter(Login)} />
+						<PrivateRoute path="/signup" component={withRouter(Signup)} />
+						<PrivateRoute path="/createevent" component={withRouter(CreateEvent)} />
+						<PrivateRoute path="/profile" component={withRouter(Profile)} />
+						<PrivateRoute path="/mapdisplay" component={withRouter(MapDisplay)} />
+						{/* Need public map display */}
 
-							{/* We can also avoid /:id and get user info from user stored in user state after login */}
-							{/*
+
+						{/* We can also avoid /:id and get user info from user stored in user state after login */}
+						{/*
 				<Route exact path="/profilesettings/:id" component={Events} /> 
 				<Route exact path="/event/:id" component={EventWithid} /> */}
 
-							<Route component={NoMatch} />
-						</Switch>
-					</Router>
-					<Fab />
-					{/* For Fab, ternary render based off of
+						<Route component={NoMatch} />
+					</Switch>
+				</Router>
+				<Fab />
+				{/* For Fab, ternary render based off of
 					1. sessionStorage Object
 					2. JWT in sessionStorage
 					 */}
-				</div>
+			</div>
 
-
-			)
-		// else if (!sessionStorage.user) {
-		// 	return (
-		// 		<div>
-		// 			<Router>
-		// 				<Switch>
-		// 					{/* None of these components are created yet */}
-		// 					<Route exact path="/" component={Homepage} />
-		// 					<Route exact path="/signup" component={Signup} />
-		// 					<Route exact path="/createevent" component={Signup} />
-		// 					<Route exact path="/profile" component={Signup} />
-		// 					<Route exact path="/mapdisplay" component={Homepage} />
-				
-
-		// 					{/* We can also avoid /:id and get user info from user stored in user state after login */}
-		// 					{/*
-        //     <Route exact path="/profilesettings/:id" component={Events} /> 
-        //     <Route exact path="/event/:id" component={EventWithid} /> */}
-
-		// 					<Route component={NoMatch} />
-		// 				</Switch>
-		// 				{/* Put nav button here as a jsx tag */}
-		// 			</Router>
-		// 			<NonUserFab />
-		// 		</div>
-
-
-		// 	)
-		// }
+		)
 	}
 };
 

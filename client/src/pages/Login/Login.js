@@ -8,7 +8,7 @@ import HappnenIcon from "../../components/Icon/index";
 import NonUserFab from "../../components/NonUserFab";
 
 
-class Homepage extends Component {
+class Login extends Component {
 	state = {
 		username: "",
 		password: "",
@@ -53,7 +53,7 @@ class Homepage extends Component {
 
 	render() {
 
-		let { from } = this.props.location.state || { from: { pathname: "/" } };
+		let { from } = this.props.location.state || { from: { pathname: "/mapdisplay" } };
 		let { redirect } = this.state;
 
 		if (redirect) { return <Redirect  to={from} /> }
@@ -111,4 +111,4 @@ class Homepage extends Component {
 	}
 }
 
-export default Homepage;
+export default Login;
