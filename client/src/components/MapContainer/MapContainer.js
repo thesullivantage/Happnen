@@ -119,11 +119,9 @@ export class MapComponent extends React.Component {
 					.catch(error => console.error('Error', error));
 				break;
 			case "Today":
-				("dailyEvents")
 				API.getDailyLocations()
 					.then(res => {
 						this.setState({ markers: res.data });
-						("THIS IS WHAT WE WANT", res.data);
 					})
 					.catch(error => console.error('Error', error));
 				break;
@@ -142,7 +140,6 @@ export class MapComponent extends React.Component {
 					.catch(error => console.error('Error', error));
 				break;
 		}
-		("switch over")
 		// switch for activeFilter
 	}
 
