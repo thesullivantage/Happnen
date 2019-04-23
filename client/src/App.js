@@ -52,6 +52,7 @@ class App extends React.Component {
 				<Route exact path="/event/:id" component={EventWithid} /> */}
 
 						<Route component={NoMatch} />
+
 					</Switch>
 				</Router>
 				<Fab />
