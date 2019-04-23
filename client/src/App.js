@@ -52,10 +52,10 @@ class App extends React.Component {
 				<Route exact path="/event/:id" component={EventWithid} /> */}
 
 						<Route component={NoMatch} />
-						<Fab />
 
 					</Switch>
 				</Router>
+				<Fab />
 				{/* For Fab, ternary render based off of
 					1. sessionStorage Object
 					2. JWT in sessionStorage

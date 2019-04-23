@@ -9,8 +9,18 @@ class UserFab extends Component {
     state = {
         username: "",
         password: "",
+        loggedIn: "false"
     };
 
+
+    componentDidMount = () => {
+        if (sessionStorage.user) {
+            this.setState({
+                loggedIn: "true"
+            })
+        }  
+    }
+    
     // REDUX
     handleLogout = event => {
         // this.setState({ username: "", password: ""})
@@ -25,7 +35,7 @@ class UserFab extends Component {
     render() {
         return (
             <div>
-                {sessionStorage.user ? (
+                {this.state.loggedIn ? (
                     <Container>
                         <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '40px', left: '24px' }}>
                             <Button floating icon='pin_drop' className='purple' node='a' href='/mapdisplay'
@@ -45,8 +55,7 @@ class UserFab extends Component {
                 ) : (
                         <Container>
                             <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
-                                <Button floating icon='pin_drop' className='purple' node='a' href='/mapdisplay'
-                                    data-position="top" data-delay="50" tooltip="What's Happnen" />
+                                
                                 <Button floating icon='person' className='blue' node='a' href='/'
                                     data-position="top" data-delay="50" tooltip="Login" />
                                 <Button floating icon='person_add' className='yellow darken-1' node='a' href='/signup'
@@ -54,10 +63,13 @@ class UserFab extends Component {
                             </Button>
                         </Container>
                     )}
+                    
             </div>
         );
     }
 }
 
+{/* <Button floating icon='pin_drop' className='purple' node='a' href='/mapdisplay'
+                                    data-position="top" data-delay="50" tooltip="What's Happnen" /> */}
 export default UserFab;
 
