@@ -1,5 +1,18 @@
 img.Logo {
-    height: 275px;
-    width: 1000px;
-    margin-bottom: -70px;
+    border-radius: 0px;
+}
+
+.Logo {
+    /* display: block; */
+    margin: 40px auto 0px auto;
+
+    width: 100%;
+    height: auto;
+    justify-content: center;
+
+}
+
+.LogoCont {
+    position: relative;
+    padding: 5%;
 }

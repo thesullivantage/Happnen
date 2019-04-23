@@ -3,7 +3,7 @@ import Icon from "./Icon10.png";
 import "./Icon.css";
 
 const HappnenIcon = (props) => (
-  <div className="center-align">
+  <div className="center-align IconCont">
     <img className="Icon" src={Icon} {...props}>
     </img>
   </div>

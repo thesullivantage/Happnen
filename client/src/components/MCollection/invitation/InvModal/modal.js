@@ -32,8 +32,8 @@ class Invitation extends React.Component {
 				attending: true
 			})
 		}
-		// console.log("PLZ WORK", this.props.data)
-		// console.log("user", this.state.userId)
+		// ("PLZ WORK", this.props.data)
+		// ("user", this.state.userId)
 		//call to check and see if invitation confirmed yet
 		// Accepting userid as well as eventid
 	}
@@ -43,18 +43,15 @@ class Invitation extends React.Component {
 		const userI = this.props.user
 		const eventI = this.props.data._id
 
-		console.log("TestPLZ", this.state)
 
 		const inviteObj = {
 			userId: this.state.userId,
 			eventId: this.state.eventid
 		}
-		console.log("inviteObj: ", inviteObj)
 		API.inviteAccept(inviteObj)
 			.then(res => {
 				// Do this if status is 200
 				this.setState({ attending: true })
-				console.log(res)
 			})
 			.catch(err => console.log(err));
 
@@ -65,13 +62,11 @@ class Invitation extends React.Component {
 		// const userI = this.props.user
 		// const eventI = this.props.data._id
 
-		console.log("TestPLZ", this.state)
 
 		const inviteObj = {
 			userId: this.state.userId,
 			eventId: this.state.eventid
 		}
-		console.log("inviteObj: ", inviteObj)
 		API.inviteDeny(inviteObj)
 			.then(res => {
 				// Do this if status is 200
@@ -85,12 +80,10 @@ class Invitation extends React.Component {
 			userId: this.state.userId,
 			eventId: this.state.eventid
 		}
-		console.log("inviteObj: ", inviteObj)
 		API.inviteUnaccept(inviteObj)
 			.then(res => {
 				// Do this if status is 200
 				this.setState({ attending: false })
-				console.log(res)
 			})
 			.catch(err => console.log(err));
 	}

@@ -18,9 +18,6 @@ class MLocation extends React.Component {
 	}
 
 	render() {
-		// console.log("Props", this.props.data)
-		// this.props.data.type
-		//
 		if (this.props.data.type === 2 && this.props.data.type) {
 			return (
 				<Private data={this.props.data}/>

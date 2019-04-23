@@ -21,7 +21,6 @@ class MyEvent extends React.Component {
 	render() {
 
 		const impData = this.props.data.obj.myEvents
-		console.log("MyEvent", this.props.data.obj)
 		if (impData) {
 			return (
 				// <h1>Here I am</h1>

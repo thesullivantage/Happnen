@@ -1,6 +1,10 @@
 .Icon{
-    width: 325px;
-    height: 325px;
+    width: 100%;
+    height: 100%;
     margin-left: 0px;
-    padding: 75px;
+}
+
+.IconCont {
+    position: relative;
+    padding: 10%;
 }

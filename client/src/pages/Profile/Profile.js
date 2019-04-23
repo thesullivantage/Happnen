@@ -4,17 +4,16 @@ import { Container, Row, Col, Input, Icon, Button, Collection, CollectionItem, P
 import Logo from "../../components/Logo/index";
 import HappnenIcon from "../../components/Icon/index";
 import "./Profile.css";
-import cloudinary from "cloudinary";
 import MCollection from "../../components/MCollection/";
 import API from "../../utils/API";
 import EventLabel from "../../components/MCollection/misc/EventLabels";
-import UserFab from "../../components/UserFab";
+// import UserFab from "../../components/UserFab";
 
-cloudinary.config({
-    cloud_name: 'happnen',
-    api_key: '782769678216731',
-    api_secret: 'GX7JX8WmSTNIhq4dlBLKkXqO_lE'
-});
+// cloudinary.config({
+//     cloud_name: 'happnen',
+//     api_key: '782769678216731',
+//     api_secret: 'GX7JX8WmSTNIhq4dlBLKkXqO_lE'
+// });
 
 
 class Profile extends Component {
@@ -28,43 +27,24 @@ class Profile extends Component {
         loading: true
     };
 
-
-    // componentDidMount() {
-    //     API.populateProfile(username);
-    //
-    // }
-
-    // loadEvents = (username) => {
-    //     API.getEvents(username)
-    //     .then(res =>
-    //     this.setState({eventsShit}))
-    //     .catch(err => console.log(err));
-    // };
-
     componentDidMount = () => {
 
         setTimeout(() => this.setState({ loading: false }), 1500);
 
         this.setState({ username: sessionStorage.user }, () => {
 
-            console.log(sessionStorage.user)
 
             if (this.state.username) {
                 let userObj = {
                     username: this.state.username
                 }
-                console.log(userObj)
                 API.populateProfile(userObj)
                     .then(res => {
-                        console.log(res.data)
                         this.setState({
                             userData: res.data,
                             bio: res.data.bio,
                             // picLink: res.data.picLink
                             // events: this.state.user.myEvents
-                        }, () => {
-                            //map
-                            console.log(this.state.userData)
                         })
                         console.log("SUCCESS")
                     })
@@ -81,29 +61,24 @@ class Profile extends Component {
     //     }
     //     API.populateProfile(userObj)
     //         .then(res => {
-    //             console.log(res)
     //             this.setState({
     //                 userData: res,
     //                 bio: this.state.user.bio,
     //                 picLink: this.state.user.picLink,
     //                 // events: this.state.user.myEvents
     //             })
-    //             console.log("SUCCESS")
 
     //         })
     //         .catch(err => console.log(err));
     // }
 
     handleInputChange = event => {
-        console.log(this.state)
-        console.log(event.target)
 
         const { name, value } = event.target;
 
         this.setState({
             [name]: value
-        }, () => console.log(this.state.bio));
-        console.log(this.state)
+        });
     };
 
     handleFormSubmit = event => {
@@ -117,7 +92,6 @@ class Profile extends Component {
                 picLink: this.state.picLink
             })
                 .then(res => {
-                    console.log(res);
                     this.setState({
                         bio: res.data.bio
                     })
@@ -149,7 +123,6 @@ class Profile extends Component {
         const passData = {
             obj: this.state.userData
         }
-        console.log(passData)
 
         return (
             <Container>

@@ -27,7 +27,8 @@ creating an account
  #### 4. Navigate to your Profile
  * Edit your profile photo and bio, using the save button to store each
  * Click on an event's respective button to see its detail modal
- * If it is an event that you created, you will see a different option than if you are an invitee 
+ * If you click on an event that you created in the "My Events" column, you will see a different modal than when you open an invite from "My Invites" column
+ 
 
 ## Problems/Issues Include (but are not limitied to):
 * Neverending Callbacks (Refactor in Progress)

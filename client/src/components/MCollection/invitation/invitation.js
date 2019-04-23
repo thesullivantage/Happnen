@@ -14,7 +14,8 @@ class Invitation extends React.Component {
 
 	constructor(props) {
 		super(props)
-		// this.componentDidMount = this.componentDidMount.bind(this),
+		this.componentDidMount = this.componentDidMount.bind(this)
+		
 		// this.render = this.render.bind(this)
 		// this.DeleteHandler.this
 	}
@@ -25,7 +26,6 @@ class Invitation extends React.Component {
 	};
 
 	componentDidMount = () => {
-
 		this.setState({
 			data: this.props.data.obj.invites,
 			user: this.props.data.obj._id
@@ -43,10 +43,11 @@ class Invitation extends React.Component {
 		};
 	}
 
-	render = () => {
-		console.log("impData", this.state)
+	// Removed arrow function, replaced with normal one 
+	render() {
+		// ("impData", this.state)
 		const data = this.props.data.obj.invites
-		console.log("data", data)
+		// ("data", data)
 		const user = this.props.data.obj._id
 
 		// this.setState({
@@ -58,7 +59,6 @@ class Invitation extends React.Component {
 		// const user = this.state.user
 
 		if (data) {
-			console.log("KEYZKEYZKEYZ", this.state)
 			return (
 				data.map(item =>
 					<CollectionItem>

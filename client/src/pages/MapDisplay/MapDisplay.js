@@ -4,8 +4,8 @@ import { Container, Row, Col, Input, Icon, Button, Preloader } from "react-mater
 import "./MapDisplay.css";
 import { MapComponent } from "../../components/MapContainer/MapContainer";
 import API from "../../utils/API"
-import UserFab from "../../components/UserFab";
-import NonUserFab from "../../components/NonUserFab";
+// import UserFab from "../../components/UserFab";
+// import NonUserFab from "../../components/NonUserFab";
 
 class MapDisplay extends Component {
     state = {
@@ -14,7 +14,6 @@ class MapDisplay extends Component {
 
     componentDidMount() {
         setTimeout(() => this.setState({ loading: false }), 1500);
-        console.log("Hello out there?")
     }
     render() {
 
