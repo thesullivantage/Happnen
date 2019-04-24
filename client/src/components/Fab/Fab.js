@@ -9,17 +9,34 @@ class UserFab extends Component {
     state = {
         username: "",
         password: "",
+        loggedIn: "false"
     };
 
+
+    componentDidMount = () => {
+    
+        if (this.props.fab === "user") {
+            this.setState({
+                loggedIn: "true"
+            })
+        }  
+    }
+    
     // REDUX
     handleLogout = event => {
         // this.setState({ username: "", password: ""})
         let { history } = this.props
-        sessionStorage.setItem('user', null)
+        sessionStorage.setItem('user', "")
         // Or use history here
         .then(() => {
             history.push("/")
         })
+        // Direct handling here ??
+        // .then(() => {
+        //     this.setState({
+
+        //     })
+        // })
     };
 
     render() {
@@ -45,8 +62,8 @@ class UserFab extends Component {
                 ) : (
                         <Container>
                             <Button floating fab='horizontal' toolbarEnabled='true' className='red' icon='add' large style={{ top: '45px', left: '24px' }}>
-                                <Button floating icon='pin_drop' className='purple' node='a' href='/mapdisplay'
-                                    data-position="top" data-delay="50" tooltip="What's Happnen" />
+                            {/* <Button floating icon='pin_drop' className='purple' node='a' href='/mapdisplay'
+                                    data-position="top" data-delay="50" tooltip="What's Happnen" /> */}
                                 <Button floating icon='person' className='blue' node='a' href='/'
                                     data-position="top" data-delay="50" tooltip="Login" />
                                 <Button floating icon='person_add' className='yellow darken-1' node='a' href='/signup'
@@ -54,10 +71,12 @@ class UserFab extends Component {
                             </Button>
                         </Container>
                     )}
+                    
             </div>
         );
     }
 }
 
+{/*  */}
 export default UserFab;
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
+import { Router, Route, Switch, withRouter } from "react-router-dom";
 import { } from "react-router";
 import NoMatch from "./pages/NoMatch";
 // Destructure all of the pages
@@ -29,8 +29,28 @@ const customHistory = createBrowserHistory();
 // 4. Settle on constructor vs. not for all
 
 class App extends React.Component {
-	
-	
+	state = {
+		// fab: "nonuser",
+		history: customHistory
+	}
+
+	// componentDidMount = () => {
+	// 	this.setState({
+	// 		fab: "nonuser"
+	// 	})
+	// }
+
+	// JWT here
+	// componentDidUpdate = () => {
+	// 	if (this.state.fab === "nonuser") {
+	// 		if (sessionStorage.user) {
+	// 			this.setState({
+	// 				fab: "user"
+	// 			})
+	// 		}
+	// 	}
+	// }
+
 
 	render() {
 		return (
@@ -52,10 +72,10 @@ class App extends React.Component {
 				<Route exact path="/event/:id" component={EventWithid} /> */}
 
 						<Route component={NoMatch} />
-						<Fab />
 
 					</Switch>
 				</Router>
+				<Fab />
 				{/* For Fab, ternary render based off of
 					1. sessionStorage Object
 					2. JWT in sessionStorage
