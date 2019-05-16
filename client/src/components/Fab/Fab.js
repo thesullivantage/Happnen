@@ -15,7 +15,7 @@ class UserFab extends Component {
     handleLogout = event => {
         // this.setState({ username: "", password: ""})
         let { history } = this.props
-        sessionStorage.setItem('user', null)
+        sessionStorage.removeItem('user')
         // Or use history here
         .then(() => {
             history.push("/")
