@@ -4,7 +4,7 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import API from "../../utils/API"
 
 
-class UserFab extends Component {
+class Fab extends Component {
 
     state = {
         username: "",
@@ -15,7 +15,7 @@ class UserFab extends Component {
     handleLogout = event => {
         // this.setState({ username: "", password: ""})
         let { history } = this.props
-        sessionStorage.setItem('user', null)
+        sessionStorage.removeItem('user')
         // Or use history here
         .then(() => {
             history.push("/")
@@ -59,5 +59,5 @@ class UserFab extends Component {
     }
 }
 
-export default UserFab;
+export default Fab;
 

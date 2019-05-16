@@ -10,7 +10,7 @@ import Profile from "./pages/Profile";
 import MapDisplay from "./pages/MapDisplay";
 import "./main.css"
 import PrivateRoute from "./Login/PrivateRoute"
-
+import Fabulous from "./Login/Fabulous"
 import preFab from "./components/Fab";
 import { createBrowserHistory } from "history";
 
@@ -29,36 +29,34 @@ const customHistory = createBrowserHistory();
 // 4. Settle on constructor vs. not for all
 
 class App extends React.Component {
-	
-	
+
+
 
 	render() {
 		return (
 			<div>
 				<Router history={customHistory}>
-					<Switch>
-						{/* Change Homepage name to Login*/}
-						<Route exact path="/" component={withRouter(Login)} />
-						<PrivateRoute path="/signup" component={withRouter(Signup)} />
-						<PrivateRoute path="/createevent" component={withRouter(CreateEvent)} />
-						<PrivateRoute path="/profile" component={withRouter(Profile)} />
-						<PrivateRoute path="/mapdisplay" component={withRouter(MapDisplay)} />
-						{/* Need public map display */}
+					<React.Fragment>
+						<Switch>
+							{/* Change Homepage name to Login*/}
+							<Route exact path="/" component={withRouter(Login)} />
+							<PrivateRoute path="/signup" component={withRouter(Signup)} />
+							<PrivateRoute path="/createevent" component={withRouter(CreateEvent)} />
+							<PrivateRoute path="/profile" component={withRouter(Profile)} />
+							<PrivateRoute path="/mapdisplay" component={withRouter(MapDisplay)} />
+							{/* Need public map display */}
 
 
-						{/* We can also avoid /:id and get user info from user stored in user state after login */}
-						{/*
+							{/* We can also avoid /:id and get user info from user stored in user state after login */}
+							{/*
 				<Route exact path="/profilesettings/:id" component={Events} /> 
 				<Route exact path="/event/:id" component={EventWithid} /> */}
 
-						<Route component={NoMatch} />
-					</Switch>
+							<Route component={NoMatch} />
+						</Switch>
+						<Fabulous component={Fab} />
+					</React.Fragment>
 				</Router>
-				<Fab />
-				{/* For Fab, ternary render based off of
-					1. sessionStorage Object
-					2. JWT in sessionStorage
-					 */}
 			</div>
 
 		)
