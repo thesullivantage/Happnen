@@ -4,7 +4,7 @@ import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import API from "../../utils/API"
 
 
-class UserFab extends Component {
+class Fab extends Component {
 
     state = {
         username: "",
@@ -59,5 +59,5 @@ class UserFab extends Component {
     }
 }
 
-export default UserFab;
+export default Fab;
 

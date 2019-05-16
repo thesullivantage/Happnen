@@ -54,7 +54,7 @@ class App extends React.Component {
 
 							<Route component={NoMatch} />
 						</Switch>
-						<Fabulous/>
+						<Fabulous component={Fab} />
 					</React.Fragment>
 				</Router>
 			</div>

@@ -4,18 +4,14 @@ import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router
 import { Redirect } from 'react-router';
 import { Container, Row, Col, Input, Icon, Button } from "react-materialize";
 import API from "../utils/API";
-import preFab from "../components/Fab";
-
-const Fab = withRouter(preFab)
-
 
 //REDUX workaround, letting React Router change FAB as a conditional route rather than using a store for the time being
-const Fabulous = ({ ...all }) => (
-	<Route {...all} render={(props) => (
+const Fabulous = ({ component: Component, ...rest }) => (
+	<Route {...rest} render={(props) => (
 		// JWT
 		sessionStorage.user
-			? (<Component component={Fab} type="user" />)
-			: (<Component component={Fab} type="nonuser" />)
+			? (<Component type="user" />)
+			: (<Component type="nonuser" />)
 	)} />
 )
 // class Homepage extens Component {
