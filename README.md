@@ -1,5 +1,7 @@
 # Happnen ©
-### [Deployed](https://aqueous-earth-83627.herokuapp.com/mapdisplay) 
+---
+
+April 2021 Note: Will recompile and reregister for Google API key soon for showcasing purposes. Site is also not currently deployed; plan on linking to AWS Amplify and re-deploying back end on Heroku. 
 
 ---
 
@@ -28,20 +30,7 @@ creating an account
  * Edit your profile photo and bio, using the save button to store each
  * Click on an event's respective button to see its detail modal
  * If you click on an event that you created in the "My Events" column, you will see a different modal than when you open an invite from "My Invites" column
- 
 
-## Problems/Issues Include (but are not limitied to):
-* Neverending Callbacks (Refactor in Progress)
-* Asynchronicity issue with storing basic session storage parameter (placeholder login functionality)
-* Obvious speed Issues with Heroku
-* Refactoring encrypted location controller functions to backend (Express middleware) from its current location (done in front end (within React components) for demo purposes)
-* In need of an image hosting service
-* Cannot click on same map pin twice sequentially
-* Need to link functionality ([on profile]) for viewing public event locations (React component already in place)
-* Create Event autofill issues
-* React-Materialize UI aesthetic issues (general)
-
-_Some of the above reflected in the issues section of this repository_
 
 ## Future Development:
 * Refactor for Happnen mobile application
@@ -74,9 +63,7 @@ _Some of the above reflected in the issues section of this repository_
 * Express.js
 * Axios
 * MongoDB (Mongoose ODM)
-* Cryptr
-
-
+* Cryptr API
 
 ## Contributors:
 [Stats](https://github.com/thesullivantage/Happnen/graphs/contributors)
